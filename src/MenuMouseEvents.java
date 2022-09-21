@@ -7,9 +7,13 @@ import java.awt.event.MouseListener;
 
 public class MenuMouseEvents implements MouseListener {
     Timer timer = new Timer(50,null);
-    UI ui;
-    MenuMouseEvents(UI ui){
-        this.ui = ui;
+    JLabel label;
+    ImageIcon imageDefault;
+    ImageIcon imageHover;
+    MenuMouseEvents(JLabel label, ImageIcon imageDefault, ImageIcon imageHover){
+        this.imageDefault = imageDefault;
+        this.imageHover = imageHover;
+        this.label = label;
     }
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -28,11 +32,12 @@ public class MenuMouseEvents implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        label.setIcon(imageHover);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        label.setIcon(imageDefault);
 
     }
 

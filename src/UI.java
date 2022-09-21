@@ -19,7 +19,6 @@ public class UI {
     public JPanel bgPanel = new JPanel();
     Font eastSeaDokdo ;
     public JLabel bgLabel = new JLabel();
-    public JLabel bgLabeltoggle = new JLabel();
 
 
     public UI(GameManager gm){
@@ -112,48 +111,18 @@ public class UI {
         locationButton.setBounds(posx,posy,200,36);
         locationButton.setFocusPainted(false);
         locationButton.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.decode("#55a38b"),2)));
-        locationButton.addMouseListener(new MouseListener() {
-            ImageIcon outOfFocus = menuImages("images/Level images/Levelbackground.png");
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-                label.setIcon(outOfFocus);
-
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-                label.setIcon(getDefaultImage());
-
-
-            }
-        });
+        ImageIcon outOfFocus = menuImages("images/Level images/Levelbackground.png");
+        locationButton.addMouseListener(new MenuMouseEvents(label,getDefaultImage(), outOfFocus));
         return locationButton;
     }
     public void createMenuButtons(){
         bgPanel.add(createLocationButton("Academic Building",450,50, "images/Level images/AcademicBuildingCutOut.png", bgLabel,bgPanel));
         bgPanel.add(createLocationButton("Dormitory",699,145,"images/Level images/DormCutOut.png", bgLabel,bgPanel));
-        bgPanel.add(createLocationButton("Library",580,320,"images/Level images/LibraryCutOut.png",bgLabel,bgPanel));
+        bgPanel.add(createLocationButton("Library",580,475,"images/Level images/LibraryCutOut.png",bgLabel,bgPanel));
         bgPanel.add(createLocationButton("CDS",979,300,"images/Level images/CDSCutOut.png", bgLabel,bgPanel));
         bgPanel.add(createTranslucentSideBar(300));
         bgPanel.add(bgLabel);
+        //hibijini
 
     }
     public JLabel createTranslucentSideBar(int widthOfSideBar){
