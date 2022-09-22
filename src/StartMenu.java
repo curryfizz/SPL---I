@@ -19,6 +19,6 @@ public class StartMenu {
         startMenuPanel.setBounds(ui.maxBounds);
         startMenuPanel.setBackground(Color.decode("#14171C"));
         startMenuPanel.setForeground(Color.decode("#C64C1D"));
-
+        ui.window.add(startMenuPanel);
     }
 }

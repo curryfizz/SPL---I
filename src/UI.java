@@ -30,6 +30,7 @@ public class UI {
         importFont();
         createMainField();
         startMenu = new StartMenu(this);
+//        window.add(startMenu.startMenuPanel);
         createStartButton();
 //        createMenuBackground();
 //        createMenuButtons();
@@ -38,7 +39,6 @@ public class UI {
     }
 
     public void createStartButton(){
-        window.add(startMenu.startMenuPanel);
         button = new JButton();
         button.setBounds(500,500,200,50);
         button.setText("Start korr");
