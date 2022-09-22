@@ -11,6 +11,6 @@ public class GameManager {
     }
 
     public GameManager(){
-        GameTimer gameTimer = new GameTimer(ui);
+//        GameTimer gameTimer = new GameTimer(ui);
     }
 }
