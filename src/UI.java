@@ -20,6 +20,8 @@ public class UI {
     Font eastSeaDokdo ;
     public JLabel bgLabel = new JLabel();
 
+    JButton button;
+    StartMenu startMenu;
 
     public UI(GameManager gm){
         this.gm = gm;
@@ -27,9 +29,17 @@ public class UI {
         getScreenInformation();
         importFont();
         createMainField();
-        createMenuBackground();
-        createMenuButtons();
+        startMenu = new StartMenu(this);
+//        createMenuBackground();
+//        createMenuButtons();
+
         window.setVisible(true);
+    }
+
+    public void createStartButton(){
+        button = new JButton();
+        button.setBounds(500,500,200,50);
+
     }
 
     private void getScreenInformation(){
