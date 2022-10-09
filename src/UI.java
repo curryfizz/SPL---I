@@ -23,56 +23,58 @@ public class UI {
     JButton button;
     StartMenu startMenu;
 
+    GraphicsDevice gd;
     public UI(GameManager gm){
         this.gm = gm;
         //hierarchy is important :3
         getScreenInformation();
+        gd = ge.getDefaultScreenDevice();
         importFont();
         createMainField();
-        startMenu = new StartMenu(this);
+//        startMenu = new StartMenu(this);
 //        window.add(startMenu.startMenuPanel);
-        createStartButton();
-//        createMenuBackground();
+//        createStartButton();
+        createMenuBackground();
 //        createMenuButtons();
-
         window.setVisible(true);
+        gd.setFullScreenWindow(window);
     }
 
     public void createStartButton(){
         button = new JButton();
         button.setBounds(500,500,200,50);
         button.setText("Start korr");
-        startMenu.startMenuPanel.add(button);
-        button.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                window.remove(startMenu.startMenuPanel);
-                window.repaint();
-                createMenuBackground();
-                createMenuButtons();
-//                window.revalidate();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
+//        startMenu.startMenuPanel.add(button);
+//        button.addMouseListener(new MouseListener() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                window.remove(startMenu.startMenuPanel);
+//                window.repaint();
+//                createMenuBackground();
+//                createMenuButtons();
+////                window.revalidate();
+//            }
+//
+//            @Override
+//            public void mousePressed(MouseEvent e) {
+//
+//            }
+//
+//            @Override
+//            public void mouseReleased(MouseEvent e) {
+//
+//            }
+//
+//            @Override
+//            public void mouseEntered(MouseEvent e) {
+//
+//            }
+//
+//            @Override
+//            public void mouseExited(MouseEvent e) {
+//
+//            }
+//        });
 
     }
 
@@ -118,7 +120,7 @@ public class UI {
     public void createMainField() {
         window = new JFrame();
         window.setSize(maxBounds.width, maxBounds.height);
-        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.GRAY);
         window.setResizable(false);
