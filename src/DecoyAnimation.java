@@ -94,7 +94,7 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         if (loadingDotCurrentX > loadingDotMaxX){
             loadingDotCurrentX = loadingDotPosX;
         }else{
-            loadingDotCurrentX += 6;
+            loadingDotCurrentX += 1;
         }
 
 
