@@ -6,14 +6,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class StartMenu extends JPanel{
+    JFrame jFrame;
     JLabel gameTitle;
-    JButton startGame;
+    JButton startGameButton;
     DeviceScreenInformation deviceScreenInformation;
     FontInfo fontInfo;
     CloseButton closeButton;
     int width;
     int height;
     public StartMenu(JFrame jFrame){
+        this.jFrame = new JFrame();
         fontInfo = new FontInfo();
         getGraphicsEnvironmentInfo();
         createBackgroundPanel();
@@ -21,7 +23,7 @@ public class StartMenu extends JPanel{
         createStartGameButton(jFrame);
         createGameTitleLabel();
         this.add(gameTitle);
-        this.add(startGame);
+        this.add(startGameButton);
         jFrame.add(this);
 
     }
@@ -56,27 +58,23 @@ public class StartMenu extends JPanel{
     }
 
     public void createStartGameButton(JFrame jFrame){
-        startGame = new JButton();
-        startGame.setBounds(width/2-150,2*height/3, 300,70);
-        startGame.setHorizontalAlignment(JButton.CENTER);
-        startGame.setBorder(BorderFactory.createCompoundBorder(
+        startGameButton = new JButton();
+        startGameButton.setBounds(width/2-150,2*height/3, 300,70);
+        startGameButton.setHorizontalAlignment(JButton.CENTER);
+        startGameButton.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.white, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));
-        startGame.setBackground(null);
-        startGame.setForeground(Color.white);
-        startGame.setFocusPainted(false);
-        startGame.setContentAreaFilled(false);
-        startGame.setFont(fontInfo.getResizedFont(50f));
-        startGame.setText("Start Game");
+        startGameButton.setBackground(null);
+        startGameButton.setForeground(Color.white);
+        startGameButton.setFocusPainted(false);
+        startGameButton.setContentAreaFilled(false);
+        startGameButton.setFont(fontInfo.getResizedFont(50f));
+        startGameButton.setText("Start Game");
 
-        startGame.addMouseListener(new MouseListener() {
+        startGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                Menu map = new Menu(jFrame);
-                jFrame.add(map);
-                jFrame.revalidate();
-                jFrame.remove(StartMenu.this);
-                jFrame.revalidate();
+                DecoyAnimation decoyAnimation = new DecoyAnimation(jFrame, 10);
             }
 
             @Override
@@ -99,6 +97,14 @@ public class StartMenu extends JPanel{
 
             }
         });
+    }
+
+    public void LoadMenu(JFrame jFrame){
+        Menu map = new Menu(jFrame);
+        jFrame.add(map);
+        jFrame.revalidate();
+        jFrame.remove(StartMenu.this);
+        jFrame.revalidate();
     }
 
     public void addCustomWindowCloseButton(JFrame jFrame){
