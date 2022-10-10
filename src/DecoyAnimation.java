@@ -14,9 +14,7 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     int height;
     int width;
 
-    Image mark;
-
-    int loadingBarPosX, loadingBarPosY, og, loadingBarWidth;
+    int loadingBarPosX, loadingBarPosY, loadingBarWidth;
     Timer timer;
     long animationStartTime;
     int loadingDotPosX;
@@ -25,7 +23,7 @@ public class DecoyAnimation extends JPanel implements ActionListener{
 
     int loadingDotMaxX; //maximum x postion of the dot, will return to initial position
 
-    int loadingDotCurrentX; //current dot postion, will be used by paint/repaint
+    int loadingDotCurrentX; //current dot x postion, will be used by paint/repaint
     int seconds_passed;
     DecoyAnimation(JFrame jFrame, int seconds_passed){
         this.jFrame = jFrame;
