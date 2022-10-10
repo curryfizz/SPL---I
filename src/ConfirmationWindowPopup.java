@@ -3,17 +3,17 @@ package src;
 import javax.swing.*;
 import java.awt.*;
 
-public class exitWindowPopup extends JOptionPane {
+public class ConfirmationWindowPopup extends JOptionPane {
 
     private UIManager uiManager;
     private FontInfo fontInfo;
-    exitWindowPopup(FontInfo fontInfo){
+    ConfirmationWindowPopup(FontInfo fontInfo){
         uiManager = new UIManager();
         this.fontInfo = fontInfo;
         createPopup();
     }
 
-    private void createPopup(){
+    private void createPopup(){ //did you change the static shit of JOptionPane!?
         uiManager.put("OptionPane.background", Color.decode("#14171C"));
         uiManager.put("OptionPane.messageForeground", Color.white);
         uiManager.put("OptionPane.messageFont", fontInfo.getResizedFont(25f));

@@ -15,9 +15,9 @@ public class closeWindowMouseEvents implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        exitWindowPopup exitWindowPopup = new exitWindowPopup(fontInfo);
+        ConfirmationWindowPopup exitWindowPopup = new ConfirmationWindowPopup(fontInfo);
         jFrame.add(exitWindowPopup);
-        int choice = exitWindowPopup.showConfirmDialog(jFrame,"Do you want to exit?","QUIT",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
+        int choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Do you want to exit?","Exit",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
         if(choice==JOptionPane.YES_OPTION){
             System.exit(0);
         }

@@ -3,7 +3,7 @@ package src;
 import javax.swing.*;
 import java.awt.*;
 
-public class Menu extends JPanel{
+public class Map extends JPanel{
 
     DeviceScreenInformation deviceScreenInformation;
     FontInfo fontInfo;
@@ -11,7 +11,7 @@ public class Menu extends JPanel{
     JLabel backgroundLabel;
     int width;
     int height;
-    public Menu(JFrame window){
+    public Map(JFrame window){
         this.window = window;
         deviceScreenInformation = new DeviceScreenInformation();
         fontInfo = new FontInfo();

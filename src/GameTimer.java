@@ -6,44 +6,48 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GameTimer extends JLabel{
-    UI ui;
+    JFrame jFrame;
     JPanel backGroundPanel;
+    DeviceScreenInformation deviceScreenInformation;
+    FontInfo fontInfo;
     Timer timer;
-
-    Font font;
-//    JLabel counterLabel;
     int second;
     int minute;
 
-    public GameTimer(UI ui) {
-        this.ui = ui;
-        this.backGroundPanel = ui.bgPanel;
-        this.font = ui.eastSeaDokdo;
+    public GameTimer(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
+        this.jFrame = jFrame;
+        this.backGroundPanel = backGroundPanel;
+        this.deviceScreenInformation = deviceScreenInformation;
+        this.fontInfo = fontInfo;
 
 //        backGroundPanel.setLayout(null);
 //        backGroundPanel.setBounds(0, 0, 80, 60);
 //        backGroundPanel.setBackground(new Color(150, 150, 150));
 
-        createCounterLabel();
-
-        backGroundPanel.add(this);
-        backGroundPanel.add(backGroundPanel);
-
-        second = 0;
+        second = 10;
         minute = 0;
+
+        SetupTimerLabel();
+        backGroundPanel.add(this);
+
         simpleTimer();
         timer.start(); // kinda like background operation hoye jay
 
     }
 
-    public void createCounterLabel(){
+    public void SetupTimerLabel(){
 //        counterLabel = new JLabel();
         this.setBounds(5,5, 100, 50);
-        this.setFont(font);
-        this.setText("00:00");
+        this.setBackground(Color.gray);
+        this.setForeground(Color.black);
+        this.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.white, 2),
+                BorderFactory.createEmptyBorder(0,20,0,20)));
+        this.setOpaque(true);
+        this.setFont(fontInfo.getResizedFont(29f));
+        drawTimer();
 
         backGroundPanel.add(this);
-        backGroundPanel.add(backGroundPanel);
     }
 
     public void simpleTimer() {
@@ -53,30 +57,44 @@ public class GameTimer extends JLabel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                second ++;
-                if (second >= 60)
+                if (second <=0)
                 {
-                    minute ++;
-                    second -= 60;
+                    if(minute <=0 ){
+                        timeOver();
+                        return;
+                    }
+                    minute --;
+                    second = 60;
                 }
-                //drawTimer();
+                second --;
+                drawTimer();
             }
 
         }); // updates every 1 second
     }
 
-    public String drawTimer() {
+    public void drawTimer() {
         if(minute<10 && second<10) {
-            return ("0" + minute + ":" + "0" + second);
+            setText ("0" + minute + ":" + "0" + second);
         }
-        else if (minute<10 && second>=10) {
-            return ("0" + minute + ":" + second);
+        else if (minute<10) {
+            setText ("0" + minute + ":" + second);
         }
-        else if (minute>=10 && second<10) {
-            return ( minute + ":" + "0" + second);
+        else if (second<10) {
+            setText ( minute + ":" + "0" + second);
         }
         else {
-            return (minute + ":" + second);
+            setText (minute + ":" + second);
+        }
+    }
+
+    private void timeOver(){ //the popup glitches idk why orz
+        timer.stop();
+        ConfirmationWindowPopup timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
+        jFrame.add(timeUpWindowPopup);
+        int choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Oh no! Your Time is Up","Time Up",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
+        if(choice==JOptionPane.OK_OPTION){
+            System.exit(0);
         }
     }
 }
