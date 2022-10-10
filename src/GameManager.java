@@ -15,7 +15,7 @@ public class GameManager {
 
     public GameManager(){
 //        GameTimer gameTimer = new GameTimer(ui);
-//        animationTest = new AnimationTest();
+//        animationTest = new AnimationTest(10);
 
         JFrame jFrame = new JFrame();
         jFrame = new JFrame();
@@ -23,7 +23,9 @@ public class GameManager {
 //        jFrame.setBackground(Color.decode("#14171C"));
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        jFrame.add(animationTest);
         StartMenu startMenu = new StartMenu(jFrame);
+//        jFrame.add
 //        jFrame.add(startMenu.closeButton);
         jFrame.pack();
         jFrame.setVisible(true);

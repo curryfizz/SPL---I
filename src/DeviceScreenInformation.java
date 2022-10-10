@@ -32,7 +32,6 @@ public class DeviceScreenInformation {
 
     public Font getResizedFont(Float size){
         Font eastSeaDokdoResized = eastSeaDokdo.deriveFont(size);
-
         return eastSeaDokdoResized;
     }
 

@@ -7,14 +7,17 @@ public class Menu extends JPanel{
 
     DeviceScreenInformation deviceScreenInformation;
 
+    JFrame window;
     JLabel backgroundLabel;
     int width;
     int height;
     public Menu(JFrame window){
+        this.window = window;
         deviceScreenInformation = new DeviceScreenInformation();
         width = deviceScreenInformation.screenWidth;
         height = deviceScreenInformation.screenHeight;
         createBackground();
+        addCloseButton();
         createMapBackground();
     }
 
@@ -39,6 +42,12 @@ public class Menu extends JPanel{
         image = image.getScaledInstance(deviceScreenInformation.screenWidth, deviceScreenInformation.screenHeight, Image.SCALE_DEFAULT);
         imageIcon = new ImageIcon(image);
         return imageIcon;
+    }
+
+    public void addCloseButton(){
+        CloseButton closeButton = new CloseButton(deviceScreenInformation, "X", window);
+        closeButton.setTextColor(Color.black);
+        this.add(closeButton);
     }
 
 

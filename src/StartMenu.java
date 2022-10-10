@@ -4,88 +4,49 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-
-import static java.awt.SystemColor.menu;
-import static java.awt.SystemColor.text;
 
 public class StartMenu extends JPanel{
     JLabel gameTitle;
 
     JButton startGame;
     DeviceScreenInformation deviceScreenInformation;
-    JButton closeButton;
+//    JButton closeButton;
+
+    CloseButton closeButton;
     int width;
     int height;
     public StartMenu(JFrame jFrame){
-        deviceScreenInformation = new DeviceScreenInformation();
-        width = deviceScreenInformation.screenWidth;
-        height = deviceScreenInformation.screenHeight;
-        createBackground();
-        createButton(jFrame);
+        getGraphicsEnvironmentInfo();
+        createBackgroundPanel();
+        addCustomWindowCloseButton(jFrame);
         createStartGameButton(jFrame);
-        createGameTitle();
+        createGameTitleLabel();
         this.add(gameTitle);
         this.add(startGame);
         jFrame.add(this);
 
     }
 
+    private void getGraphicsEnvironmentInfo(){
+        deviceScreenInformation = new DeviceScreenInformation();
+        getScreenDimensions();
+    }
 
-
-    public void createButton(JFrame jFrame){
-        closeButton = new JButton();
-        closeButton.setBounds(width-50,5, 50,50);
-        closeButton.setBorder(null);
-        closeButton.setBackground(null);
-        closeButton.setForeground(Color.white);
-        closeButton.setFocusPainted(false);
-        closeButton.setContentAreaFilled(false);
-        closeButton.setFont(deviceScreenInformation.getResizedFont(50f));
-        closeButton.setText("X");
-        closeButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                exitWindowPopup exitWindowPopup = new exitWindowPopup(deviceScreenInformation);
-                jFrame.add(exitWindowPopup);
-                int choice = exitWindowPopup.showConfirmDialog(jFrame,"Do you want to exit?","QUIT",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
-                if(choice==JOptionPane.YES_OPTION){
-                    System.exit(0);
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        this.add(closeButton);
+    private void getScreenDimensions(){
+        width = deviceScreenInformation.screenWidth;
+        height = deviceScreenInformation.screenHeight;
     }
 
 
-    public void createBackground(){
+
+    public void createBackgroundPanel(){
         this.setLayout(null);
         this.setPreferredSize(new Dimension(width,height));
         this.setBackground(Color.decode("#14171C"));
         this.setForeground(Color.decode("#C64C1D"));
     }
 
-    public void createGameTitle(){
+    public void createGameTitleLabel(){
         gameTitle = new JLabel();
         gameTitle.setBounds(0,height/2,width,100);
         gameTitle.setFont(deviceScreenInformation.getResizedFont(100f));
@@ -139,5 +100,10 @@ public class StartMenu extends JPanel{
 
             }
         });
+    }
+
+    public void addCustomWindowCloseButton(JFrame jFrame){
+        closeButton = new CloseButton(deviceScreenInformation,"X",jFrame);
+        this.add(closeButton);
     }
 }

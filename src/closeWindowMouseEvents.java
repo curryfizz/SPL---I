@@ -6,14 +6,21 @@ import java.awt.event.MouseListener;
 
 public class closeWindowMouseEvents implements MouseListener {
 
-    JFrame mainFrame;
-    closeWindowMouseEvents(JFrame mainFrame){
-        this.mainFrame = mainFrame;
+    DeviceScreenInformation deviceScreenInformation;
+
+    JFrame jFrame;
+    closeWindowMouseEvents(DeviceScreenInformation deviceScreenInformation, JFrame jFrame){//devicescreeninfo is bad here only needed for font :(
+        this.deviceScreenInformation = deviceScreenInformation;
+        this.jFrame = jFrame;
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-//        exitWindowPopup exitWindowPopup = new exitWindowPopup();
-
+        exitWindowPopup exitWindowPopup = new exitWindowPopup(deviceScreenInformation);
+        jFrame.add(exitWindowPopup);
+        int choice = exitWindowPopup.showConfirmDialog(jFrame,"Do you want to exit?","QUIT",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
+        if(choice==JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
     }
 
     @Override
