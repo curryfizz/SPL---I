@@ -4,55 +4,34 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 
-public class AnimationTest extends JPanel implements ActionListener{
+public class DecoyAnimation extends JPanel implements ActionListener{
     Font eastSeaDokdo ;
-//    JFrame jFrame;
+    JFrame jFrame;
     GraphicsEnvironment ge;
-
     JLabel loadingText;
     int height;
     int width;
+
     Image mark;
-
     int xVelocity = 1;
+
     int getxVelocity = 1;
-
     int x, y , og,xr,xy;
-
     Timer timer;
-
     long start;
-
     int dotx;
-
     int seconds;
-    AnimationTest(int seconds_passed){
-
+    DecoyAnimation(JFrame jFrame, int seconds_passed){
+        this.jFrame = jFrame;
         ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         importFont();
 
         height = ge.getMaximumWindowBounds().height;
         width = ge.getMaximumWindowBounds().width;
-//        jFrame = new JFrame();
-//        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-////        jFrame.setBackground(Color.decode("#14171C"));
-//        jFrame.setUndecorated(true);
         setPreferredSize(new Dimension(width,height));
         setBackground(Color.decode("#14171C"));
-//        jFrame.add(this);
-//        jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        JButton jButton = new JButton();
-//        jButton.setText("X");
-//        this.add(jButton);
-//        jButton.setBorder(null);
-//        jButton.setForeground(Color.white);
-//        jButton.setBackground(null);
-//        jButton.setFont(eastSeaDokdo);
-//        jButton.setBounds(1000,600, 50,50);
         x = width/3;
         xr=1;
         xy=1;
@@ -95,14 +74,11 @@ public class AnimationTest extends JPanel implements ActionListener{
 //
 //            }
 //        });
-//        jFrame.pack();
-//        jFrame.setUndecorated(true);
-//        jFrame.setVisible(true);
         timer = new Timer(15, this);
         timer.start();
         start = System.nanoTime();
 
-
+        jFrame.add(this);
     }
 
     public void paint(Graphics g){
