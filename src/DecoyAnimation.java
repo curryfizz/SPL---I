@@ -47,33 +47,6 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         loadingText.setBackground(null);
         loadingText.setForeground(Color.white);
         add(loadingText);
-//        jButton.addMouseListener(new MouseListener() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-////                jFrame.dispose();
-//                System.exit(0);
-//            }
-//
-//            @Override
-//            public void mousePressed(MouseEvent e) {
-//
-//            }
-//
-//            @Override
-//            public void mouseReleased(MouseEvent e) {
-//
-//            }
-//
-//            @Override
-//            public void mouseEntered(MouseEvent e) {
-//
-//            }
-//
-//            @Override
-//            public void mouseExited(MouseEvent e) {
-//
-//            }
-//        });
         timer = new Timer(15, this);
         timer.start();
         start = System.nanoTime();

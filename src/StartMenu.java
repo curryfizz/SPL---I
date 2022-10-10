@@ -75,6 +75,9 @@ public class StartMenu extends JPanel{
             @Override
             public void mouseClicked(MouseEvent e) {
                 DecoyAnimation decoyAnimation = new DecoyAnimation(jFrame, 10);
+                jFrame.revalidate();
+                jFrame.remove(StartMenu.this);
+                jFrame.revalidate();
             }
 
             @Override

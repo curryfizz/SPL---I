@@ -5,13 +5,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GameTimer {
+public class GameTimer extends JLabel{
     UI ui;
     JPanel backGroundPanel;
     Timer timer;
 
     Font font;
-    JLabel counterLabel;
+//    JLabel counterLabel;
     int second;
     int minute;
 
@@ -26,7 +26,7 @@ public class GameTimer {
 
         createCounterLabel();
 
-        backGroundPanel.add(counterLabel);
+        backGroundPanel.add(this);
         backGroundPanel.add(backGroundPanel);
 
         second = 0;
@@ -37,12 +37,12 @@ public class GameTimer {
     }
 
     public void createCounterLabel(){
-        counterLabel = new JLabel();
-        counterLabel.setBounds(5,5, 100, 50);
-        counterLabel.setFont(font);
-        counterLabel.setText("00:00");
+//        counterLabel = new JLabel();
+        this.setBounds(5,5, 100, 50);
+        this.setFont(font);
+        this.setText("00:00");
 
-        backGroundPanel.add(counterLabel);
+        backGroundPanel.add(this);
         backGroundPanel.add(backGroundPanel);
     }
 
