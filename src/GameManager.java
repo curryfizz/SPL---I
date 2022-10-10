@@ -24,7 +24,7 @@ public class GameManager {
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        jFrame.add(animationTest);
-        StartMenu startMenu = new StartMenu(jFrame);
+//        StartMenu startMenu = new StartMenu(jFrame);
 //        jFrame.add
 //        jFrame.add(startMenu.closeButton);
         jFrame.pack();
