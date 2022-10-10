@@ -4,18 +4,22 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StartButton extends JButton {
+    DeviceScreenInformation deviceScreenInformation;
+    FontInfo fontInfo;
 
-    StartButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame){
+    StartButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo){
+        this.deviceScreenInformation = deviceScreenInformation;
+        this.fontInfo = fontInfo;
         setDefaultPosition(deviceScreenInformation);
         removeBackground();
         addBorder();
         removeFocusPaint();
         removeContentArea();
-        assignFont(deviceScreenInformation.getResizedFont(50f));
+        assignFont(fontInfo.getResizedFont(50f));
         addButtonText(text);
         setDefaultTextColor();
         setAlignment();
-        assignFont(deviceScreenInformation.getResizedFont(50f));
+        assignFont(fontInfo.getResizedFont(50f));
 
     }
 
@@ -66,7 +70,7 @@ public class StartButton extends JButton {
         setText(text);
     }
 
-    private void addCloseActions(DeviceScreenInformation deviceScreenInformation, JFrame jFrame){
-        addMouseListener(new closeWindowMouseEvents(deviceScreenInformation,jFrame));
+    private void addCloseActions(DeviceScreenInformation deviceScreenInformation, JFrame jFrame, FontInfo fontInfo){
+        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame));
     }
 }

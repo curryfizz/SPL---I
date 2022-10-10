@@ -5,17 +5,21 @@ import java.awt.*;
 
 public class CloseButton extends JButton {
 
-    //too many one line method
-    CloseButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame){
+    //too many one line methods
+    DeviceScreenInformation deviceScreenInformation;
+    FontInfo fontInfo;
+    CloseButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo){
+        this.deviceScreenInformation = deviceScreenInformation;
+        this.fontInfo = fontInfo;
         setDefaultPosition(deviceScreenInformation);
         removeBackground();
         removeBorder();
         removeFocusPaint();
         removeContentArea();
-        assignFont(deviceScreenInformation.getResizedFont(50f));
+        assignFont(fontInfo.getResizedFont(50f));
         addExitText(text);
         setDefaultTextColor();
-        addCloseActions(deviceScreenInformation,jFrame);
+        addCloseActions(fontInfo,jFrame);
     }
 
     public void setPosition(int Posx, int Posy, int width, int height){
@@ -57,7 +61,7 @@ public class CloseButton extends JButton {
         setForeground(Color.white);
     }
 
-    private void addCloseActions(DeviceScreenInformation deviceScreenInformation, JFrame jFrame){
-        addMouseListener(new closeWindowMouseEvents(deviceScreenInformation,jFrame));
+    private void addCloseActions(FontInfo fontInfo, JFrame jFrame){
+        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame));
     }
 }

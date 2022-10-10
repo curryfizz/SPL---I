@@ -6,18 +6,18 @@ import java.awt.*;
 public class exitWindowPopup extends JOptionPane {
 
     private UIManager uiManager;
-    private DeviceScreenInformation deviceScreenInformation;
-    exitWindowPopup(DeviceScreenInformation deviceScreenInformation){
+    private FontInfo fontInfo;
+    exitWindowPopup(FontInfo fontInfo){
         uiManager = new UIManager();
-        this.deviceScreenInformation = deviceScreenInformation;
+        this.fontInfo = fontInfo;
         createPopup();
     }
 
     private void createPopup(){
         uiManager.put("OptionPane.background", Color.decode("#14171C"));
         uiManager.put("OptionPane.messageForeground", Color.white);
-        uiManager.put("OptionPane.messageFont", deviceScreenInformation.getResizedFont(25f));
-        uiManager.put("OptionPane.buttonFont", deviceScreenInformation.getResizedFont(20f));
+        uiManager.put("OptionPane.messageFont", fontInfo.getResizedFont(25f));
+        uiManager.put("OptionPane.buttonFont", fontInfo.getResizedFont(20f));
         uiManager.put("Panel.background", Color.decode("#14171C"));
         uiManager.put("Button.background", Color.decode("#14171C"));
         uiManager.put("Button.foreground", Color.white);

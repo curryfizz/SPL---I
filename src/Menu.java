@@ -6,7 +6,7 @@ import java.awt.*;
 public class Menu extends JPanel{
 
     DeviceScreenInformation deviceScreenInformation;
-
+    FontInfo fontInfo;
     JFrame window;
     JLabel backgroundLabel;
     int width;
@@ -14,6 +14,7 @@ public class Menu extends JPanel{
     public Menu(JFrame window){
         this.window = window;
         deviceScreenInformation = new DeviceScreenInformation();
+        fontInfo = new FontInfo();
         width = deviceScreenInformation.screenWidth;
         height = deviceScreenInformation.screenHeight;
         createBackground();
@@ -45,7 +46,7 @@ public class Menu extends JPanel{
     }
 
     public void addCloseButton(){
-        CloseButton closeButton = new CloseButton(deviceScreenInformation, "X", window);
+        CloseButton closeButton = new CloseButton(deviceScreenInformation, "X", window, fontInfo);
         closeButton.setTextColor(Color.black);
         this.add(closeButton);
     }

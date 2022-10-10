@@ -10,7 +10,6 @@ public class GameManager {
     AnimationTest animationTest;
     public static void main(String[] args) throws InterruptedException{
         new GameManager();
-
     }
 
     public GameManager(){
@@ -18,17 +17,13 @@ public class GameManager {
 //        animationTest = new AnimationTest(10);
 
         JFrame jFrame = new JFrame();
-        jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        jFrame.setBackground(Color.decode("#14171C"));
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        jFrame.add(animationTest);
         StartMenu startMenu = new StartMenu(jFrame);
-//        jFrame.add
-//        jFrame.add(startMenu.closeButton);
         jFrame.pack();
         jFrame.setVisible(true);
-
     }
 }

@@ -7,15 +7,14 @@ import java.awt.event.MouseListener;
 
 public class StartMenu extends JPanel{
     JLabel gameTitle;
-
     JButton startGame;
     DeviceScreenInformation deviceScreenInformation;
-//    JButton closeButton;
-
+    FontInfo fontInfo;
     CloseButton closeButton;
     int width;
     int height;
     public StartMenu(JFrame jFrame){
+        fontInfo = new FontInfo();
         getGraphicsEnvironmentInfo();
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
@@ -49,7 +48,7 @@ public class StartMenu extends JPanel{
     public void createGameTitleLabel(){
         gameTitle = new JLabel();
         gameTitle.setBounds(0,height/2,width,100);
-        gameTitle.setFont(deviceScreenInformation.getResizedFont(100f));
+        gameTitle.setFont(fontInfo.getResizedFont(100f));
         gameTitle.setText("LOST TREASURES");
         gameTitle.setHorizontalAlignment(JLabel.CENTER);
         gameTitle.setForeground(Color.white);
@@ -67,7 +66,7 @@ public class StartMenu extends JPanel{
         startGame.setForeground(Color.white);
         startGame.setFocusPainted(false);
         startGame.setContentAreaFilled(false);
-        startGame.setFont(deviceScreenInformation.getResizedFont(50f));
+        startGame.setFont(fontInfo.getResizedFont(50f));
         startGame.setText("Start Game");
 
         startGame.addMouseListener(new MouseListener() {
@@ -103,7 +102,7 @@ public class StartMenu extends JPanel{
     }
 
     public void addCustomWindowCloseButton(JFrame jFrame){
-        closeButton = new CloseButton(deviceScreenInformation,"X",jFrame);
+        closeButton = new CloseButton(deviceScreenInformation,"X",jFrame, fontInfo);
         this.add(closeButton);
     }
 }
