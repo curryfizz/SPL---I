@@ -15,14 +15,18 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     int width;
 
     Image mark;
-    int xVelocity = 1;
 
-    int getxVelocity = 1;
-    int x, y , og,xr,xy;
+    int loadingBarPosX, loadingBarPosY, og, loadingBarWidth;
     Timer timer;
-    long start;
-    int dotx;
-    int seconds;
+    long animationStartTime;
+    int loadingDotPosX;
+
+    int loadingDotPosY;
+
+    int loadingDotMaxX; //maximum x postion of the dot, will return to initial position
+
+    int loadingDotCurrentX; //current dot postion, will be used by paint/repaint
+    int seconds_passed;
     DecoyAnimation(JFrame jFrame, int seconds_passed){
         this.jFrame = jFrame;
         ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -32,24 +36,24 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         width = ge.getMaximumWindowBounds().width;
         setPreferredSize(new Dimension(width,height));
         setBackground(Color.decode("#14171C"));
-        x = width/3;
-        xr=1;
-        xy=1;
-        og  = x;
-        y = height/2 + 50;
-        seconds = seconds_passed;
-        dotx = width/2 +50;
+        loadingBarPosX = width/3;
+        loadingBarWidth =1;
+        loadingBarPosY = height/2 + 50;
+        loadingDotPosY = height/2+200;
+        loadingDotPosX = width/2 +50;
+        loadingDotCurrentX = loadingDotPosX;
+        loadingDotMaxX = loadingDotCurrentX +20;
+        this.seconds_passed = seconds_passed;
         loadingText =  new JLabel("Loading");
         loadingText.setFont(eastSeaDokdo);
         setLayout(null);
         loadingText.setBounds(width/2 - 50,height/2+100,200,50);
-
         loadingText.setBackground(null);
         loadingText.setForeground(Color.white);
         add(loadingText);
-        timer = new Timer(15, this);
+        timer = new Timer(30, this);
         timer.start();
-        start = System.nanoTime();
+        animationStartTime = System.nanoTime();
 
         jFrame.add(this);
     }
@@ -58,8 +62,8 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         super.paint(g); //paint background
         Graphics2D g2d = (Graphics2D)g;
         g2d.setColor(Color.white);
-        g2d.fillOval(dotx, height/2+200, 10,10);
-        g2d.fillRect(og,y+10,xr,20);
+        g2d.fillOval(loadingDotCurrentX, loadingDotPosY, 10,10);
+        g2d.fillRect(loadingBarPosX, loadingBarPosY +10, loadingBarWidth,20);
 
     }
 
@@ -81,18 +85,20 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if((System.nanoTime() - start)/1000000000 == seconds  ){
+        if((System.nanoTime() - animationStartTime)/1000000000 == seconds_passed){
             System.exit(0);
         }
-        if(x>=2*og){
-            x=og;
-//            xVelocity*=-1;
+
+        if(loadingBarWidth <500){
+            loadingBarWidth = loadingBarWidth +2;
         }
-        if(xr<500){
-            xr = xr+2;
+
+        if (loadingDotCurrentX > loadingDotMaxX){
+            loadingDotCurrentX = loadingDotPosX;
+        }else{
+            loadingDotCurrentX += 6;
         }
-        x = x+xVelocity;
-//        xr = xr+xVelocity;
+
 
         repaint();
     }
