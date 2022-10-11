@@ -17,10 +17,10 @@ public class DormRoom extends JPanel {
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
         createBackgroundPanel();
-        addCustomWindowCloseButton(jFrame);
+        this.add(new CloseButton(deviceScreenInformation,"x",jFrame,fontInfo));
         GameTimer gameTimer = new GameTimer(jFrame,this, deviceScreenInformation, fontInfo);
-
         jFrame.add(this);
+//        addCustomWindowCloseButton(jFrame);
     }
 
     public void createBackgroundPanel(){
@@ -32,7 +32,9 @@ public class DormRoom extends JPanel {
     }
 
     public void addCustomWindowCloseButton(JFrame jFrame){
+
         closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
         this.add(closeButton);
+        jFrame.repaint();
     }
 }

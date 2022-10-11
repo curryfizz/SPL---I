@@ -45,9 +45,9 @@ public class GameTimer extends JLabel{
                 BorderFactory.createEmptyBorder(0,20,0,20)));
         this.setOpaque(true);
         this.setFont(fontInfo.getResizedFont(29f));
+        backGroundPanel.add(this);
         drawTimer();
 
-        backGroundPanel.add(this);
     }
 
     public void simpleTimer() {
@@ -68,6 +68,9 @@ public class GameTimer extends JLabel{
                 }
                 second --;
                 drawTimer();
+                backGroundPanel.repaint();
+                jFrame.repaint();
+
             }
 
         }); // updates every 1 second
@@ -86,15 +89,20 @@ public class GameTimer extends JLabel{
         else {
             setText (minute + ":" + second);
         }
+        backGroundPanel.repaint();
     }
 
     private void timeOver(){ //the popup glitches idk why orz
+        JOptionPane jOptionPane = new JOptionPane();
+        jOptionPane.setBackground(Color.black);
+        backGroundPanel.add(jOptionPane);
         timer.stop();
-        ConfirmationWindowPopup timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
-        jFrame.add(timeUpWindowPopup);
-        int choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Oh no! Your Time is Up","Time Up",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
-        if(choice==JOptionPane.OK_OPTION){
+        int choice = jOptionPane.showConfirmDialog(jFrame,"Oh no! Your Time is Up","Time Up",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
+        if(choice==jOptionPane.OK_OPTION){
             System.exit(0);
+
         }
+        jFrame.repaint();
+        backGroundPanel.repaint();
     }
 }

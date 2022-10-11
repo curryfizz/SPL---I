@@ -21,6 +21,7 @@ public class closeWindowMouseEvents implements MouseListener {
         if(choice==JOptionPane.YES_OPTION){
             System.exit(0);
         }
+        jFrame.repaint();
     }
 
     @Override
