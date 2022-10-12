@@ -1,5 +1,4 @@
 package src;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -23,12 +22,13 @@ public class ObjectHidingButton extends JButton {
 
     public void createInvisibleButton(){
         setBackground(new Color(0,0,0,0));
-        setBackground(Color.magenta);
+        setBackground(new Color(255,0,0,50));
         setBounds(positionX,positionY,buttonWidth,buttonHeight);
         setFocusPainted(false);
-//        setContentAreaFilled(false);
+//      setContentAreaFilled(false);
         setBorderPainted(false);
         addMouseListener(new SceneObjectEvents(toggleLabel));
+
     }
-    
+
 }
