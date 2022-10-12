@@ -68,7 +68,7 @@ public class GameTimer extends JLabel{
                 }
                 second --;
                 drawTimer();
-                backGroundPanel.repaint();
+//                backGroundPanel.repaint();
                 jFrame.repaint();
 
             }
@@ -89,7 +89,7 @@ public class GameTimer extends JLabel{
         else {
             setText (minute + ":" + second);
         }
-        backGroundPanel.repaint();
+//        backGroundPanel.repaint();
     }
 
     private void timeOver(){ //the popup glitches idk why orz
@@ -102,7 +102,7 @@ public class GameTimer extends JLabel{
             System.exit(0);
 
         }
-        jFrame.repaint();
-        backGroundPanel.repaint();
+//        jFrame.repaint();
+//        backGroundPanel.repaint();
     }
 }

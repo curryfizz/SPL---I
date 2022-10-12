@@ -35,6 +35,6 @@ public class DormRoom extends JPanel {
 
         closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
         this.add(closeButton);
-        jFrame.repaint();
+//        jFrame.repaint();
     }
 }
