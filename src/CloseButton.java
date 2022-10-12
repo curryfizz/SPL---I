@@ -22,6 +22,8 @@ public class CloseButton extends JButton {
         addCloseActions(fontInfo,jFrame);
     }
 
+
+
     public void setPosition(int Posx, int Posy, int width, int height){
         setBounds(Posx,Posy,width,height);
     }

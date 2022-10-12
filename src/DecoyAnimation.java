@@ -32,12 +32,12 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         loadingBarPosX = deviceInfo.screenWidth/3;
         loadingBarWidth =1;
         loadingBarPosY = deviceInfo.screenHeight/2 + 50;
-        loadingDotPosY = deviceInfo.screenHeight/2+200;
-        loadingDotPosX = deviceInfo.screenWidth/2 +50;
+        loadingDotPosY = deviceInfo.screenHeight/2+120;
+        loadingDotPosX = deviceInfo.screenWidth/2 +65;
         loadingDotCurrentX = loadingDotPosX;
-        loadingDotMaxX = loadingDotCurrentX +20;
+        loadingDotMaxX = loadingDotCurrentX +50;
 
-        timer = new Timer(100, this);
+        timer = new Timer(70, this);
         timer.start();
         animationStartTime = System.nanoTime();
 
@@ -59,6 +59,7 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         g2d.setColor(Color.white);
         g2d.fillOval(loadingDotCurrentX, loadingDotPosY, 10,10);
         g2d.fillRect(loadingBarPosX, loadingBarPosY +10, loadingBarWidth,20);
+
     }
 
     @Override
@@ -70,13 +71,13 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         }
 
         if(loadingBarWidth <500){
-            loadingBarWidth = loadingBarWidth +2;
+            loadingBarWidth = loadingBarWidth +10;
         }
 
         if (loadingDotCurrentX > loadingDotMaxX){
             loadingDotCurrentX = loadingDotPosX;
         }else{
-            loadingDotCurrentX += 6;
+            loadingDotCurrentX += 2;
         }
         repaint();
     }
