@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class DormRoom extends JPanel {
+public class DormRoom extends JPanel implements IScene {
     JFrame jFrame;
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
@@ -79,4 +79,8 @@ public class DormRoom extends JPanel {
         this.revalidate();
     }
 
+    @Override
+    public void callSelf() {
+        new DormRoom(jFrame,deviceInfo,fontInfo);
+    }
 }

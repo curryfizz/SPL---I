@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Map extends JPanel{
+public class Map extends JPanel implements IScene{
 
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
@@ -25,6 +25,7 @@ public class Map extends JPanel{
         addCloseButton();
         addElementaryButton();
         createMapBackground();
+        window.add(this);
     }
 
 
@@ -101,11 +102,15 @@ public class Map extends JPanel{
 
     public void StartDormScene(){
         System.out.println("Entered Dorm Scene");
-        DormRoom dormRoomScene = new DormRoom(window, new DeviceScreenInformation(), new FontInfo());
+        DecoyAnimation decoyAnimation = new DecoyAnimation(new DormRoom(window,deviceInfo,fontInfo),window,deviceInfo,fontInfo,5);
         window.remove(this);
         window.revalidate();
         window.repaint();
 
     }
 
+    @Override
+    public void callSelf() {
+        new Map(window);
+    }
 }

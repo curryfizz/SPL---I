@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DecoyAnimation extends JPanel implements ActionListener{
+    IScene iScene;
     JFrame jFrame;
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
@@ -18,12 +19,12 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     int loadingDotMaxX; //maximum x position of the dot, will return to initial position
     int loadingDotCurrentX; //current dot position, will be used by paint/repaint
     int animationDuration;
-    DecoyAnimation(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo, int animationDuration){
+    DecoyAnimation(IScene iScene,JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo, int animationDuration){
         this.jFrame = jFrame;
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
         this.animationDuration = animationDuration;
-
+        this.iScene = iScene;
         setPreferredSize(new Dimension(deviceInfo.screenWidth,deviceInfo.screenHeight));
         setBackground(Color.decode("#14171C"));
         setLayout(null);
@@ -83,9 +84,11 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     }
 
     public void LoadMenu(){
+
+        iScene.callSelf();
+//        Map map = new Map(jFrame);
         jFrame.remove(this);
-        Map map = new Map(jFrame);
-        jFrame.add(map);
+//        jFrame.add(map);
         jFrame.revalidate();
         jFrame.revalidate();
     }

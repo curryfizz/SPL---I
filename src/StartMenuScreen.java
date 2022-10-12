@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class StartMenuScreen extends JPanel{
+public class StartMenuScreen extends JPanel implements IScene{
     JFrame jFrame;
     JLabel gameTitle;
     JButton startGameButton;
@@ -74,8 +74,8 @@ public class StartMenuScreen extends JPanel{
             @Override
             public void mouseReleased(MouseEvent e) {
                 startGameButton.setBackground(null);
-                if(isHovering)
-                    StartLoadScreen();
+//                if(isHovering)
+//                    StartLoadScreen();
             }
 
             @Override
@@ -94,7 +94,7 @@ public class StartMenuScreen extends JPanel{
 
     public void StartLoadScreen(){
         jFrame.remove(this);
-        DecoyAnimation decoyAnimation = new DecoyAnimation(jFrame, deviceInfo,fontInfo,1);
+        DecoyAnimation decoyAnimation = new DecoyAnimation(new Map(jFrame),jFrame, deviceInfo,fontInfo,1);
         jFrame.revalidate();
         jFrame.repaint();
     }
@@ -102,5 +102,10 @@ public class StartMenuScreen extends JPanel{
     public void addCustomWindowCloseButton(JFrame jFrame){
         closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
         this.add(closeButton);
+    }
+
+    @Override
+    public void callSelf() {
+        new StartMenuScreen(jFrame,deviceInfo,fontInfo);
     }
 }
