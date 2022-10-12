@@ -23,6 +23,11 @@ public class SE {
         clip.start();
     }
 
+    public void loop(URL name)
+    {
+        clip.loop(clip.LOOP_CONTINUOUSLY);
+    }
+
     public  void  stop(URL name){
         clip.stop();
     }
