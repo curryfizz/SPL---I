@@ -5,14 +5,14 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class StartMenu extends JPanel{
+public class StartMenuScreen extends JPanel{
     JFrame jFrame;
     JLabel gameTitle;
     JButton startGameButton;
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
     CloseButton closeButton;
-    public StartMenu(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
+    public StartMenuScreen(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
         this.jFrame = jFrame;
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
@@ -46,7 +46,7 @@ public class StartMenu extends JPanel{
     }
 
     public void createStartGameButton(JFrame jFrame){
-        startGameButton = new JButton();
+        startGameButton = new JButton("Start Game");
         startGameButton.setBounds(deviceInfo.screenWidth/2-150,2*deviceInfo.screenHeight/3, 300,70);
         startGameButton.setHorizontalAlignment(JButton.CENTER);
         startGameButton.setBorder(BorderFactory.createCompoundBorder(
@@ -56,39 +56,44 @@ public class StartMenu extends JPanel{
         startGameButton.setForeground(Color.white);
         startGameButton.setFocusPainted(false);
         startGameButton.setContentAreaFilled(false);
+        startGameButton.setOpaque(true);
         startGameButton.setFont(fontInfo.getResizedFont(50f));
-        startGameButton.setText("Start Game");
+
 
         startGameButton.addMouseListener(new MouseListener() {
+            boolean isHovering = false;
             @Override
             public void mouseClicked(MouseEvent e) {
                 StartLoadScreen();
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
-
+                startGameButton.setBackground(new Color(50,70,120)); //hoyna
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                startGameButton.setBackground(null);
+                if(isHovering)
+                    StartLoadScreen();
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-
+                isHovering = true;
+                startGameButton.setBackground(new Color(0,40,80));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-
+                isHovering = false;
+                startGameButton.setBackground(null);
             }
         });
     }
 
     public void StartLoadScreen(){
-        DecoyAnimation decoyAnimation = new DecoyAnimation(jFrame, deviceInfo,fontInfo,5);
+        DecoyAnimation decoyAnimation = new DecoyAnimation(jFrame, deviceInfo,fontInfo,1);
         jFrame.remove(this);
         jFrame.revalidate();
         jFrame.repaint();

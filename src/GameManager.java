@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class GameManager {
 
-//    UI ui = new UI(this);
+    UI ui = new UI(this);
     public static void main(String[] args) throws InterruptedException{
         new GameManager();
     }
@@ -16,8 +16,7 @@ public class GameManager {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        StartMenu startMenu = new StartMenu(jFrame, new DeviceScreenInformation(), new FontInfo());
-//        DormRoom dormRoomScene = new DormRoom(jFrame, new DeviceScreenInformation(), new FontInfo());
+        StartMenuScreen startMenu = new StartMenuScreen(jFrame, new DeviceScreenInformation(), new FontInfo());
         jFrame.pack();
         jFrame.setVisible(true);
     }
