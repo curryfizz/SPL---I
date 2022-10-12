@@ -37,7 +37,7 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         loadingDotCurrentX = loadingDotPosX;
         loadingDotMaxX = loadingDotCurrentX +20;
 
-        timer = new Timer(30, this);
+        timer = new Timer(100, this);
         timer.start();
         animationStartTime = System.nanoTime();
 
@@ -59,7 +59,6 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         g2d.setColor(Color.white);
         g2d.fillOval(loadingDotCurrentX, loadingDotPosY, 10,10);
         g2d.fillRect(loadingBarPosX, loadingBarPosY +10, loadingBarWidth,20);
-
     }
 
     @Override

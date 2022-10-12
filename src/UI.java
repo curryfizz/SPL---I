@@ -1,15 +1,8 @@
 package src;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
 public class UI {
     GameManager gm;
@@ -21,7 +14,7 @@ public class UI {
     public JLabel bgLabel = new JLabel();
 
     JButton button;
-    StartMenu startMenu;
+    StartMenuScreen startMenu;
 
     GraphicsDevice gd;
     public UI(GameManager gm){

@@ -16,16 +16,10 @@ public class LGameManager {
 
 
     LUI lui = new LUI(this);
-    public  static  void  main(String[] args)
-    {
-
-        new LGameManager();
-
-
-
-
-
-    }
+//    public  static  void  main(String[] args)
+//    {
+//        new LGameManager();
+//    }
     public  LGameManager(){
 
         currentMusic = fieldMusic;
@@ -49,8 +43,5 @@ public class LGameManager {
     {
         music.stop(url);
     }
-
-
-
 
 }

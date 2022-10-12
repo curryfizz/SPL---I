@@ -7,20 +7,23 @@ import java.awt.event.MouseListener;
 
 public class DormRoom extends JPanel {
     JFrame jFrame;
-    JLabel gameTitle;
-    JButton startGameButton;
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
     CloseButton closeButton;
     public DormRoom(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
+        System.out.println("Entered dorm room class");
         this.jFrame = jFrame;
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
+
         GameTimer gameTimer = new GameTimer(jFrame,this, deviceScreenInformation, fontInfo);
 
         jFrame.add(this);
+        jFrame.repaint();
+        jFrame.revalidate();
+        System.out.println("Dorm class constructor end ;-;");
     }
 
     public void createBackgroundPanel(){
