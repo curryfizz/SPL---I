@@ -38,7 +38,7 @@ public class LUI {
         maxBounds = ge.getMaximumWindowBounds();
         this.Lgm = Lgm;
         createMainField();
-        createBackground(1,"LevelOneMain.png");
+        createBackground(1,"images/LevelOneMain.png");
 
         generateScreen();
         window.setVisible(true);
@@ -220,28 +220,28 @@ public class LUI {
     public  void generateScreen()
     {
 
-        createButton("01.png",308,450,65,84);
-        createButton("02.png",1190,520,18,30);
-        createButton("03.png",1242,440,78,54);
-        createButton("04.png",1130,750,60,26);
-        createButton("05.png",330,740,43,32);
-        createButton("06.png",410,689,69,13);
-        createButton("07.png",1104,712,68,22);
-        createButton("08.png",860,410,25,12);
-        createButton("09.png",484,390,50,32);
-        createButton("10.png",544,440,68,24);
-        createButton("11.png",94,750,158,24);
-        createButton("12.png",744,555,98,60);
-        createButton("13.png",523,610,34,68);
-        createButton("14.png",184,470,80,80);
-        createButton("15.png",1034,440,28,20);
-        createButton("16.png",894,524,28,19);
-        createButton("17.png",1204,730,98,43);
-        createButton("18.png",724,50,160,20);
-        createButton("19.png",924,524,30,19);
-        createButton("20.png",1368,760,48,14);
-        createButton("21.png",934,485,40,24);
-        createButton("22.png",494,435,18,14);
+        createButton("images/01.png",308,450,65,84);
+        createButton("images/02.png",1190,520,18,30);
+        createButton("images/03.png",1242,440,78,54);
+        createButton("images/04.png",1130,750,60,26);
+        createButton("images/05.png",330,740,43,32);
+        createButton("images/06.png",410,689,69,13);
+        createButton("images/07.png",1104,712,68,22);
+        createButton("images/08.png",860,410,25,12);
+        createButton("images/09.png",484,390,50,32);
+        createButton("images/10.png",544,440,68,24);
+        createButton("images/11.png",94,750,158,24);
+        createButton("images/12.png",744,555,98,60);
+        createButton("images/13.png",523,610,34,68);
+        createButton("images/14.png",184,470,80,80);
+        createButton("images/15.png",1034,440,28,20);
+        createButton("images/16.png",894,524,28,19);
+        createButton("images/17.png",1204,730,98,43);
+        createButton("images/18.png",724,50,160,20);
+        createButton("images/19.png",924,524,30,19);
+        createButton("images/20.png",1368,760,48,14);
+        createButton("images/21.png",934,485,40,24);
+        createButton("images/22.png",494,435,18,14);
 
 
 

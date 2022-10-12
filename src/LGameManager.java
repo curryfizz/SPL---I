@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class LGameManager {
 
     //sound
-    public URL fieldMusic = getClass().getClassLoader().getResource("bgmusic.wav");
+    public URL fieldMusic = getClass().getClassLoader().getResource("images/bgmusic.wav");
     public URL currentMusic;
     music music = new music();
     SE se = new SE();
