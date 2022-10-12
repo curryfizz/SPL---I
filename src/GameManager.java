@@ -16,7 +16,7 @@ public class GameManager {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        StartMenu startMenu = new StartMenu(jFrame, new DeviceScreenInformation(), new FontInfo());
+        StartMenu startMenu = new StartMenu(jFrame, new DeviceScreenInformation(), new FontInfo());
 //        DormRoom dormRoomScene = new DormRoom(jFrame, new DeviceScreenInformation(), new FontInfo());
         jFrame.pack();
         jFrame.setVisible(true);
