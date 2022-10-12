@@ -20,6 +20,8 @@ public class CloseButton extends JButton {
         addExitText(text);
         setDefaultTextColor();
         addCloseActions(fontInfo,jFrame);
+        jFrame.repaint();
+        jFrame.revalidate();
     }
 
 

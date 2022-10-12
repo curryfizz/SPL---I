@@ -83,10 +83,10 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     }
 
     public void LoadMenu(){
+        jFrame.remove(this);
         Map map = new Map(jFrame);
         jFrame.add(map);
         jFrame.revalidate();
-        jFrame.remove(this);
         jFrame.revalidate();
     }
 

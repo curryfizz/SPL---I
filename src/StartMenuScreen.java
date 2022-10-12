@@ -93,8 +93,8 @@ public class StartMenuScreen extends JPanel{
     }
 
     public void StartLoadScreen(){
-        DecoyAnimation decoyAnimation = new DecoyAnimation(jFrame, deviceInfo,fontInfo,1);
         jFrame.remove(this);
+        DecoyAnimation decoyAnimation = new DecoyAnimation(jFrame, deviceInfo,fontInfo,1);
         jFrame.revalidate();
         jFrame.repaint();
     }

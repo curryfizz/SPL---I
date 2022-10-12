@@ -2,6 +2,8 @@ package src;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -10,20 +12,56 @@ public class DormRoom extends JPanel {
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
     CloseButton closeButton;
+    int score = 0;
     public DormRoom(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
-        System.out.println("Entered dorm room class");
+        jFrame.revalidate();
+        jFrame.repaint();
         this.jFrame = jFrame;
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
 
-        GameTimer gameTimer = new GameTimer(jFrame,this, deviceScreenInformation, fontInfo);
+        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceScreenInformation, fontInfo);
+        TextBox textBox = new TextBox(jFrame, this, deviceScreenInformation, fontInfo);
+        ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceScreenInformation, fontInfo);
 
+        JButton DummyButton = new JButton("Object");
+        DummyButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                score += 100;
+                scoreBoard.setText(Integer.toString(score));
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        this.add(DummyButton);
+        DummyButton.setBackground(Color.pink);
+        DummyButton.setOpaque(true);
+        DummyButton.setVisible(true);
+        DummyButton.setBounds(900,400, 100, 100);
         jFrame.add(this);
         jFrame.repaint();
         jFrame.revalidate();
-        System.out.println("Dorm class constructor end ;-;");
     }
 
     public void createBackgroundPanel(){
@@ -37,5 +75,8 @@ public class DormRoom extends JPanel {
     public void addCustomWindowCloseButton(JFrame jFrame){
         closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
         this.add(closeButton);
+        this.repaint();
+        this.revalidate();
     }
+
 }

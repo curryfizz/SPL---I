@@ -15,6 +15,8 @@ public class Map extends JPanel{
     int height;
     public Map(JFrame window){
         this.window = window;
+        window.revalidate();
+        window.repaint();
         deviceInfo = new DeviceScreenInformation();
         fontInfo = new FontInfo();
         width = deviceInfo.screenWidth;
@@ -23,7 +25,6 @@ public class Map extends JPanel{
         addCloseButton();
         addElementaryButton();
         createMapBackground();
-
     }
 
 
@@ -63,12 +64,13 @@ public class Map extends JPanel{
         DormButton.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.white, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));
-        DormButton.setBackground(Color.pink);
+        DormButton.setBackground(Color.gray);
         DormButton.setForeground(Color.white);
         DormButton.setFocusPainted(false);
         DormButton.setOpaque(true);
         DormButton.setContentAreaFilled(false);
         DormButton.setFont(fontInfo.getResizedFont(50f));
+        this.setVisible(true);
         this.add(DormButton);
         DormButton.addMouseListener(new MouseListener() {
             @Override
@@ -103,6 +105,7 @@ public class Map extends JPanel{
         window.remove(this);
         window.revalidate();
         window.repaint();
+
     }
 
 }
