@@ -94,7 +94,8 @@ public class StartMenuScreen extends JPanel implements IScene{
 
     public void StartLoadScreen(){
         jFrame.remove(this);
-        DecoyAnimation decoyAnimation = new DecoyAnimation(new Map(jFrame),jFrame, deviceInfo,fontInfo,1);
+//        DecoyAnimation decoyAnimation = new DecoyAnimation(new Map(jFrame, deviceInfo,fontInfo),jFrame, deviceInfo,fontInfo,7);
+        DecoyAnimation decoyAnimation = new DecoyAnimation(new DormRoom(jFrame, deviceInfo,fontInfo),jFrame, deviceInfo,fontInfo,7);
         jFrame.revalidate();
         jFrame.repaint();
     }
@@ -106,6 +107,11 @@ public class StartMenuScreen extends JPanel implements IScene{
 
     @Override
     public void callSelf() {
-        new StartMenuScreen(jFrame,deviceInfo,fontInfo);
+//        new StartMenuScreenT(jFrame,deviceInfo,fontInfo);
+    }
+
+    @Override
+    public void startTimer() {
+
     }
 }
