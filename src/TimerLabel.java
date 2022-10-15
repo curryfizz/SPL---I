@@ -34,7 +34,7 @@ public class TimerLabel extends JLabel implements Runnable{
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
 
-        StartTimer();
+//        StartTimer();
     }
 
     public void SetupTimerLabel(){

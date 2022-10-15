@@ -34,6 +34,10 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
 
     }
 
+    public void getNextScene(JPanel nextScene){
+        this.nextScene = nextScene;
+    }
+
     private void buildScene(){
         setPreferredSize(new Dimension(deviceInfo.screenWidth,deviceInfo.screenHeight));
         setBackground(Color.decode("#14171C"));
@@ -77,7 +81,6 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(animationRunTime + " " + animationDuration);
         animationRunTime = (System.currentTimeMillis()-animationStartTime)/1000;
         if(animationRunTime > animationDuration){
             jFrame.remove(this);

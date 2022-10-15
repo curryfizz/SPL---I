@@ -1,4 +1,7 @@
-package src;
+package shelved_classes;
+
+import src.GameManager;
+import src.StartMenuScreenT;
 
 import javax.swing.*;
 import java.awt.*;
@@ -150,7 +153,7 @@ public class UI {
         locationButton.setFocusPainted(false);
         locationButton.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.decode("#55a38b"),2)));
         ImageIcon outOfFocus = menuImages("images/Level images/Levelbackground.png");
-        locationButton.addMouseListener(new MenuMouseEvents(label,getDefaultImage(), outOfFocus));
+//        locationButton.addMouseListener(new MenuMouseEvents(label,getDefaultImage(), outOfFocus));
         return locationButton;
     }
     public void createMenuButtons(){

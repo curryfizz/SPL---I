@@ -1,11 +1,18 @@
-package src;
+package shelved_classes;
+
+import shelved_classes.DecoyAnimation;
+import shelved_classes.IScene;
+import src.CloseButton;
+import src.DeviceScreenInformation;
+import src.DormRoom;
+import src.FontInfo;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class StartMenuScreen extends JPanel implements IScene{
+public class StartMenuScreen extends JPanel implements IScene {
     JFrame jFrame;
     JLabel gameTitle;
     JButton startGameButton;

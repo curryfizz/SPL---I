@@ -1,4 +1,6 @@
-package src;
+package shelved_classes;
+import src.ObjectHidingButton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

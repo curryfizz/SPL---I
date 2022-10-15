@@ -10,7 +10,7 @@ public class CloseButton extends JButton {
     FontInfo fontInfo;
 
     ConfirmationWindowPopup exitConfirmation;
-    CloseButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo){
+    public CloseButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo){
         this.deviceScreenInformation = deviceScreenInformation;
         this.fontInfo = fontInfo;
         setDefaultPosition(deviceScreenInformation);

@@ -31,13 +31,16 @@ public class GameManager {
 
         MapT mapT = new MapT(jFrame,deviceScreenInformation,fontInfo);
 
+        DormRoomSceneT dormRoomSceneT = new DormRoomSceneT(jFrame,deviceScreenInformation,fontInfo);
+        Thread dormthread = new Thread(dormRoomSceneT);
         LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,4,mapT);
         Thread loadScreen = new Thread(loadingAnimationT);
         Thread GameMap = new Thread(mapT);
-
+        loadingAnimationT.getNextScene(mapT);
         GameMap.start();
         loadScreen.start();
         startScreen.start();
+        dormthread.start();
 
         startMenu.add(startGameButton);
         jFrame.add(startMenu);
@@ -79,42 +82,26 @@ public class GameManager {
 
 
 
+
         StartGameButton startGameButton1 = new StartGameButton(deviceScreenInformation,fontInfo);
-//        mapT.add(startGameButton1);
 
         LoadingAnimationT loadingAnimationT1 = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,4,startMenu);
         Thread loadingAnimation2 = new Thread(loadingAnimationT1);
         loadingAnimation2.start();
-        startGameButton1.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                jFrame.remove(mapT);
-                jFrame.add(loadingAnimationT1);
-                loadingAnimationT1.initializeTimer();
-                jFrame.revalidate();
-                jFrame.repaint();
-            }
 
-            @Override
-            public void mousePressed(MouseEvent e) {
+        MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(fontInfo,450,50, "Academic Building 2", mapT);
+//        mapLevelButtonsAC2.setEnabled(false);
+        mapT.add(mapLevelButtonsAC2);
 
-            }
+        MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(fontInfo,699,145, "Dormitory", mapT);
+        mapT.add(mapLevelButtonsDorm);
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
 
-            }
+        MapLevelButtons mapLevelButtonsCDS = new MapLevelButtons(fontInfo,979,300, "CDS", mapT);
+        mapT.add(mapLevelButtonsCDS);
 
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
+        MapLevelButtons mapLevelButtonLibrary = new MapLevelButtons(fontInfo,580,300, "Library", mapT);
+        mapT.add(mapLevelButtonLibrary);
 
 
 

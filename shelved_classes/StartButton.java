@@ -1,4 +1,7 @@
-package src;
+package shelved_classes;
+
+import src.DeviceScreenInformation;
+import src.FontInfo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,7 +73,7 @@ public class StartButton extends JButton {
         setText(text);
     }
 
-    private void addCloseActions(DeviceScreenInformation deviceScreenInformation, JFrame jFrame, FontInfo fontInfo){
-        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame));
-    }
+//    private void addCloseActions(DeviceScreenInformation deviceScreenInformation, JFrame jFrame, FontInfo fontInfo){
+//        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame,exi));
+//    }
 }

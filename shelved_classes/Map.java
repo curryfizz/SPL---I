@@ -1,11 +1,16 @@
-package src;
+package shelved_classes;
+
+
+import src.CloseButton;
+import src.DeviceScreenInformation;
+import src.FontInfo;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Map extends JPanel implements IScene{
+public class Map extends JPanel implements IScene {
 
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;

@@ -1,4 +1,8 @@
-package src;
+package shelved_classes;
+
+import shelved_classes.IScene;
+import src.DeviceScreenInformation;
+import src.FontInfo;
 
 import javax.swing.*;
 import java.awt.*;

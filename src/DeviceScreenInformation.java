@@ -6,8 +6,8 @@ import java.io.File;
 public class DeviceScreenInformation {
 
     GraphicsEnvironment graphicsEnvironment;
-    Integer screenHeight;
-    Integer screenWidth;
+    public Integer screenHeight;
+    public Integer screenWidth;
 
     DeviceScreenInformation(){
         graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();

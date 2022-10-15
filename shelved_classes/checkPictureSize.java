@@ -1,4 +1,6 @@
-package src;
+package shelved_classes;
+
+import src.GameManager;
 
 import javax.swing.*;
 import java.awt.*;
