@@ -11,6 +11,8 @@ public class DormRoom extends JPanel implements IScene {
     JFrame jFrame;
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
+
+    ScoreBoard scoreBoard;
     CloseButton closeButton;
     int score = 0;
     public DormRoom(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
@@ -22,9 +24,9 @@ public class DormRoom extends JPanel implements IScene {
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
 
-        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceScreenInformation, fontInfo);
-        TextBox textBox = new TextBox(jFrame, this, deviceScreenInformation, fontInfo);
-        ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceScreenInformation, fontInfo);
+//        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceScreenInformation, fontInfo);
+//        TextBox textBox = new TextBox(jFrame, this, deviceScreenInformation, fontInfo);
+//        ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceScreenInformation, fontInfo);
 
         JButton DummyButton = new JButton("Object");
         DummyButton.addMouseListener(new MouseListener() {
@@ -54,7 +56,7 @@ public class DormRoom extends JPanel implements IScene {
 
             }
         });
-        this.add(DummyButton);
+//        this.add(DummyButton);
         DummyButton.setBackground(Color.pink);
         DummyButton.setOpaque(true);
         DummyButton.setVisible(true);
@@ -75,12 +77,20 @@ public class DormRoom extends JPanel implements IScene {
     public void addCustomWindowCloseButton(JFrame jFrame){
         closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
         this.add(closeButton);
-        this.repaint();
         this.revalidate();
+        this.repaint();
     }
 
     @Override
     public void callSelf() {
         new DormRoom(jFrame,deviceInfo,fontInfo);
+    }
+
+    @Override
+    public void startTimer() {
+        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
+        TextBox textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
+        scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
+
     }
 }

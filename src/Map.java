@@ -9,23 +9,28 @@ public class Map extends JPanel implements IScene{
 
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
-    JFrame window;
+
+
+    CloseButton closeButton;
+    JFrame jFrame;
+
+    JButton DormButton;
     JLabel backgroundLabel;
     int width;
     int height;
-    public Map(JFrame window){
-        this.window = window;
-        window.revalidate();
-        window.repaint();
-        deviceInfo = new DeviceScreenInformation();
-        fontInfo = new FontInfo();
+    public Map(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
+        this.jFrame = jFrame;
+//        jFrame.revalidate();
+//        jFrame.repaint();
+        this.deviceInfo = deviceScreenInformation;
+        this.fontInfo =fontInfo;
         width = deviceInfo.screenWidth;
         height = deviceInfo.screenHeight;
         createBackground();
+        createMapBackground();
         addCloseButton();
         addElementaryButton();
-        createMapBackground();
-        window.add(this);
+        jFrame.add(this);
     }
 
 
@@ -53,13 +58,13 @@ public class Map extends JPanel implements IScene{
     }
 
     public void addCloseButton(){
-        CloseButton closeButton = new CloseButton(deviceInfo, "X", window, fontInfo);
+        closeButton = new CloseButton(deviceInfo, "X", jFrame, fontInfo);
         closeButton.setTextColor(Color.black);
         this.add(closeButton);
     }
 
     private void addElementaryButton(){
-        JButton DormButton = new JButton("Dorm Scene");
+        DormButton = new JButton("Dorm Scene");
         DormButton.setBounds(deviceInfo.screenWidth/2-150,2*deviceInfo.screenHeight/3, 300,70);
         DormButton.setHorizontalAlignment(JButton.CENTER);
         DormButton.setBorder(BorderFactory.createCompoundBorder(
@@ -68,10 +73,9 @@ public class Map extends JPanel implements IScene{
         DormButton.setBackground(Color.gray);
         DormButton.setForeground(Color.white);
         DormButton.setFocusPainted(false);
-        DormButton.setOpaque(true);
-        DormButton.setContentAreaFilled(false);
+        DormButton.setContentAreaFilled(true);
         DormButton.setFont(fontInfo.getResizedFont(50f));
-        this.setVisible(true);
+//        this.setVisible(true);
         this.add(DormButton);
         DormButton.addMouseListener(new MouseListener() {
             @Override
@@ -102,22 +106,36 @@ public class Map extends JPanel implements IScene{
 
     public void StartDormScene(){
         System.out.println("Entered Dorm Scene");
-        this.setVisible(false);
-        this.repaint();
-        this.revalidate();
-        this.remove(backgroundLabel);
-        backgroundLabel.setVisible(false);
-        window.remove(this);
-        window.repaint();
-        window.revalidate();
-//        DecoyAnimation decoyAnimation = new DecoyAnimation(new DormRoom(window,deviceInfo,fontInfo),window,deviceInfo,fontInfo,5);
-//        new DormRoom(window,deviceInfo,fontInfo);
-        window.revalidate();
-        window.repaint();
+        DecoyAnimation decoyAnimation = new DecoyAnimation(new Map(jFrame,deviceInfo,fontInfo),jFrame, deviceInfo,fontInfo,7);
+//        this.setVisible(false);
+
+//        DormButton.setOpaque(false);
+//        DormButton.setVisible(false);
+//        this.remove(closeButton);
+//        repaint();
+//        closeButton.setOpaque(false);
+//        closeButton.setVisible(false);
+//        this.remove(closeButton);
+//        repaint();
+
+//        backgroundLabel.setVisible(false);
+//        DecoyAnimation decoyAnimation = new DecoyAnimation(new DormRoom(jFrame,deviceInfo,fontInfo),jFrame,deviceInfo,fontInfo,7);
+//        jFrame.removeAll();
+//        this.remove(backgroundLabel);
+//        jFrame.repaint();
+        jFrame.remove(this);
+        jFrame.revalidate();
+        jFrame.repaint();
+
     }
 
     @Override
     public void callSelf() {
-        new Map(window);
+        new Map(jFrame,deviceInfo,fontInfo);
+    }
+
+    @Override
+    public void startTimer() {
+
     }
 }

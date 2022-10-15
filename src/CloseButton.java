@@ -8,6 +8,8 @@ public class CloseButton extends JButton {
     //too many one line methods
     DeviceScreenInformation deviceScreenInformation;
     FontInfo fontInfo;
+
+    ConfirmationWindowPopup exitConfirmation;
     CloseButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo){
         this.deviceScreenInformation = deviceScreenInformation;
         this.fontInfo = fontInfo;
@@ -19,9 +21,11 @@ public class CloseButton extends JButton {
         assignFont(fontInfo.getResizedFont(50f));
         addExitText(text);
         setDefaultTextColor();
-        addCloseActions(fontInfo,jFrame);
-        jFrame.repaint();
+        exitConfirmation = new ConfirmationWindowPopup(fontInfo);
+        addCloseActions(fontInfo,jFrame,exitConfirmation);
         jFrame.revalidate();
+        jFrame.repaint();
+
     }
 
 
@@ -65,7 +69,7 @@ public class CloseButton extends JButton {
         setForeground(Color.white);
     }
 
-    private void addCloseActions(FontInfo fontInfo, JFrame jFrame){
-        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame));
+    private void addCloseActions(FontInfo fontInfo, JFrame jFrame, ConfirmationWindowPopup exitConfirmation){
+        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame, exitConfirmation));
     }
 }

@@ -5,9 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DecoyAnimation extends JPanel implements ActionListener{
-    IScene iScene;
+public class LoadingAnimationT extends JPanel implements ActionListener,Runnable {
     JFrame jFrame;
+
+    JPanel nextScene;
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
     Timer timer;
@@ -19,17 +20,35 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     int loadingDotMaxX; //maximum x position of the dot, will return to initial position
     int loadingDotCurrentX; //current dot position, will be used by paint/repaint
     int animationDuration;
-    DecoyAnimation(IScene iScene,JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo, int animationDuration){
+
+    long animationRunTime;
+    LoadingAnimationT(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo, int animationDuration, JPanel nextScene){
         this.jFrame = jFrame;
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
         this.animationDuration = animationDuration;
-        this.iScene = iScene;
+        this.nextScene = nextScene;
+
+//        timer.start();
+//        animationStartTime = System.nanoTime();
+
+    }
+
+    private void buildScene(){
         setPreferredSize(new Dimension(deviceInfo.screenWidth,deviceInfo.screenHeight));
         setBackground(Color.decode("#14171C"));
         setLayout(null);
         SetLoadingText();
+    }
 
+    public void initializeTimer(){
+        timer = new Timer(70,this);
+        timer.start();
+        loadingBarWidth=1;
+        animationStartTime = System.currentTimeMillis();
+        animationRunTime=0;
+    }
+    private void initializeAnimationParameters(){
         loadingBarPosX = deviceInfo.screenWidth/3;
         loadingBarWidth =1;
         loadingBarPosY = deviceInfo.screenHeight/2 + 50;
@@ -37,14 +56,7 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         loadingDotPosX = deviceInfo.screenWidth/2 +65;
         loadingDotCurrentX = loadingDotPosX;
         loadingDotMaxX = loadingDotCurrentX +50;
-
-        timer = new Timer(70, this);
-        timer.start();
-        animationStartTime = System.nanoTime();
-
-        jFrame.add(this);
     }
-
     private void SetLoadingText(){
         loadingText =  new JLabel("Loading");
         loadingText.setFont(fontInfo.getResizedFont(50f));
@@ -65,10 +77,17 @@ public class DecoyAnimation extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println(animationRunTime + " " + animationDuration);
+        animationRunTime = (System.currentTimeMillis()-animationStartTime)/1000;
+        if(animationRunTime > animationDuration){
+            jFrame.remove(this);
+            jFrame.add(nextScene);
+            jFrame.revalidate();
+            jFrame.repaint();
 
-        if((System.nanoTime() - animationStartTime)/1000000000 == animationDuration){
+            timer.stop();
 //            LoadMenu(this.jFrame);
-            LoadMenu();
+//            LoadMenu();
         }
 
         if(loadingBarWidth <500){
@@ -80,18 +99,26 @@ public class DecoyAnimation extends JPanel implements ActionListener{
         }else{
             loadingDotCurrentX += 2;
         }
+
         repaint();
     }
 
     public void LoadMenu(){
 
-        iScene.callSelf();
-        iScene.startTimer();
 //        Map map = new Map(jFrame);
         jFrame.remove(this);
 //        jFrame.add(map);
         jFrame.revalidate();
         jFrame.repaint();
+    }
+
+
+    @Override
+    public void run() {
+
+        buildScene();
+        initializeAnimationParameters();
+//        initializeTimer();
     }
 
 }

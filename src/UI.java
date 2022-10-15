@@ -14,7 +14,7 @@ public class UI {
     public JLabel bgLabel = new JLabel();
 
     JButton button;
-    StartMenuScreen startMenu;
+    StartMenuScreenT startMenu;
 
     GraphicsDevice gd;
     public UI(GameManager gm){
@@ -28,7 +28,7 @@ public class UI {
 //        window.add(startMenu.startMenuPanel);
 //        createStartButton();
         createMenuBackground();
-//        createMenuButtons();
+        createMenuButtons();
         window.setVisible(true);
         gd.setFullScreenWindow(window);
     }
@@ -137,7 +137,6 @@ public class UI {
         JLabel label = new JLabel();
         label.setBounds(0,0,maxBounds.width,maxBounds.height);
         label.setIcon(image);
-
         return label;
     }
 

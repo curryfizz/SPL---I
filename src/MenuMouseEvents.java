@@ -6,18 +6,31 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MenuMouseEvents implements MouseListener {
-    Timer timer = new Timer(50,null);
-    JLabel label;
-    ImageIcon imageDefault;
-    ImageIcon imageHover;
-    MenuMouseEvents(JLabel label, ImageIcon imageDefault, ImageIcon imageHover){
-        this.imageDefault = imageDefault;
-        this.imageHover = imageHover;
-        this.label = label;
+    MapT mapT;
+    String buttonInfo;
+    MenuMouseEvents(MapT mapT, String text){
+        buttonInfo = text;
+        this.mapT = mapT;
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        if(buttonInfo.equals("Dormitory")){
+            mapT.remove(mapT.padLockDorm);
+            mapT.revalidate();
+            mapT.repaint();
+        }else if(buttonInfo.equals("Academic Building 2")){
+            mapT.remove(mapT.padLockAC2);
+            mapT.revalidate();
+            mapT.repaint();
+        }else if(buttonInfo.equals("Library")){
+            mapT.remove(mapT.padLockLibrary);
+            mapT.revalidate();
+            mapT.repaint();
+        }else if(buttonInfo.equals("CDS")){
+            mapT.remove(mapT.padLockCDS);
+            mapT.revalidate();
+            mapT.repaint();
+        }
     }
 
     @Override
@@ -32,13 +45,11 @@ public class MenuMouseEvents implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        label.setIcon(imageHover);
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        label.setIcon(imageDefault);
-
     }
 
 
