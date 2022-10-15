@@ -1,5 +1,4 @@
-package shelved_classes;
-import src.ObjectHidingButton;
+package src;
 
 import javax.swing.*;
 import java.awt.*;

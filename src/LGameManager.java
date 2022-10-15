@@ -1,11 +1,10 @@
-package shelved_classes;
-
-import src.MusicPlayer;
+package src;
 
 import java.net.URL;
 
 
 public class LGameManager {
+
 
     //sound
     public URL fieldMusic = getClass().getClassLoader().getResource("images/bgmusic.wav");
@@ -22,6 +21,7 @@ public class LGameManager {
 //        music.playMusic(currentMusic);
         lui = new LUI(this);
         MusicPlayer.playMusic(fieldMusic);
+
     }
 
 
