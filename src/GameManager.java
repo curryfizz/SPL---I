@@ -37,7 +37,7 @@ public class GameManager {
         LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,4,mapT);
         Thread loadScreen = new Thread(loadingAnimationT);
         Thread GameMap = new Thread(mapT);
-        loadingAnimationT.getNextScene(mapT);
+        loadingAnimationT.getNextScene(dormRoomSceneT);
         GameMap.start();
         loadScreen.start();
         startScreen.start();
