@@ -97,7 +97,7 @@ public class TimerLabel extends JLabel implements Runnable{
         backGroundPanel.revalidate();
         jFrame.repaint();
         jFrame.revalidate();
-        int choice = ConfirmationWindowPopup.showConfirmDialog(backGroundPanel,"Oh no! Your Time is Up","Time Up",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);
+        int choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Oh no! Your Time is Up","Time Up",JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
         if(choice==JOptionPane.OK_OPTION){
             System.exit(0);
         }

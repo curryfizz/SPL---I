@@ -9,11 +9,12 @@ import java.util.ArrayList;
 
 public class LUI {
 
-     LGameManager Lgm;
+//     LGameManager Lgm;
 
     Rectangle maxBounds;
     GraphicsEnvironment ge;
-    JFrame window ,textbx ;
+    JFrame window;
+//    JFrame textbx ;
 
     public  JPanel bgPanel[] = new JPanel[10];
     public  JLabel bgLabel[] = new JLabel[10];
@@ -36,7 +37,7 @@ public class LUI {
 
         ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         maxBounds = ge.getMaximumWindowBounds();
-        this.Lgm = Lgm;
+//        this.Lgm = Lgm;
         createMainField();
         createBackground(1,"images/LevelOneMain.png");
 
@@ -47,7 +48,7 @@ public class LUI {
 
     public void  createMainField(){
         window = new JFrame();
-        textbx = new JFrame();
+//        textbx = new JFrame();
 
         window.setSize(maxBounds.width, maxBounds.height);
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);

@@ -1,8 +1,6 @@
 package src;
 
-import java.awt.*;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 
 public class LGameManager {
@@ -10,39 +8,32 @@ public class LGameManager {
     //sound
     public URL fieldMusic = getClass().getClassLoader().getResource("images/bgmusic.wav");
     public URL currentMusic;
-    music music = new music();
-    SE se = new SE();
-
-
-
-    LUI lui = new LUI(this);
+    MusicPlayer MusicPlayer = new MusicPlayer();
+//    SE se = new SE();
+    LUI lui;
     public  static  void  main(String[] args)
     {
         new LGameManager();
    }
     public  LGameManager(){
-
-        currentMusic = fieldMusic;
-        playMusic(currentMusic);
+//        currentMusic = fieldMusic;
+//        music.playMusic(currentMusic);
+        lui = new LUI(this);
+        MusicPlayer.playMusic(fieldMusic);
     }
 
 
 
 
-    public  void playSE(URL url)
-    {
-        se.setFile(url);
-        se.play(url);
-    }
-    public  void playMusic(URL url)
-    {
-        music.setFile(url);
-        music.play(url);
-        music.loop(url);
-    }
+//    public  void playSE(URL url)
+//    {
+//        se.setFile(url);
+//        se.play(url);
+//    }
+
     public void stopMusic(URL url)
     {
-        music.stop(url);
+        MusicPlayer.stop(url);
     }
 
 

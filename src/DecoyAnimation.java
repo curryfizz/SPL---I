@@ -81,6 +81,8 @@ public class DecoyAnimation extends JPanel implements ActionListener{
             loadingDotCurrentX += 2;
         }
         repaint();
+        jFrame.repaint();
+        jFrame.revalidate();
     }
 
     public void LoadMenu(){
@@ -91,6 +93,7 @@ public class DecoyAnimation extends JPanel implements ActionListener{
 //        jFrame.add(map);
         jFrame.revalidate();
         jFrame.revalidate();
+        jFrame.repaint();
     }
 
 }

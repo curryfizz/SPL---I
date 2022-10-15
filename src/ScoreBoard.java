@@ -27,7 +27,7 @@ public class ScoreBoard extends JLabel{
         this.setOpaque(true);
         this.setFont(fontInfo.getResizedFont(29f));
 
-        this.setText("Idk ;-;");
+        this.setText(" 0000");
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         backGroundPanel.add(this);

@@ -102,11 +102,18 @@ public class Map extends JPanel implements IScene{
 
     public void StartDormScene(){
         System.out.println("Entered Dorm Scene");
-        DecoyAnimation decoyAnimation = new DecoyAnimation(new DormRoom(window,deviceInfo,fontInfo),window,deviceInfo,fontInfo,5);
+        this.setVisible(false);
+        this.repaint();
+        this.revalidate();
+        this.remove(backgroundLabel);
+        backgroundLabel.setVisible(false);
         window.remove(this);
+        window.repaint();
+        window.revalidate();
+//        DecoyAnimation decoyAnimation = new DecoyAnimation(new DormRoom(window,deviceInfo,fontInfo),window,deviceInfo,fontInfo,5);
+//        new DormRoom(window,deviceInfo,fontInfo);
         window.revalidate();
         window.repaint();
-
     }
 
     @Override
