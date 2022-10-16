@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class DormRoomScene extends JPanel{
     JFrame window;
@@ -18,6 +20,7 @@ public class DormRoomScene extends JPanel{
     public ArrayList<JLabel> imagelist = new ArrayList<>();
     public ArrayList<ObjectHidingButton> buttonlist = new ArrayList<>(); //all the buttons for the objects are in this
     public ArrayList<String> Textlist = new ArrayList<>(); //all the names of the objects are in this
+
     public  DormRoomScene(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
         this.window = jFrame;
         this.deviceInfo = deviceInfo;
@@ -26,32 +29,37 @@ public class DormRoomScene extends JPanel{
 
 //        createMainField();
         createBackground("images/LevelOneMain.png");
-        DormThings();
+        TimerLabel timerLabel = new TimerLabel(window, this, deviceInfo, fontInfo);
+        TextBox textBox = new TextBox(window, this, deviceInfo, fontInfo);
+        ScoreBoard scoreBoard = new ScoreBoard(window, this, deviceInfo, fontInfo);
         generateScreen();
 
 
         window.add(this);
+        timerLabel.StartTimer();
         window.repaint();
         window.revalidate();
 
+
+
+        addCustomWindowCloseButton(window);
         URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
         MusicPlayer MusicPlayer = new MusicPlayer();
         MusicPlayer.playMusic(music);
     }
 
     private void DormThings() {
-        addCustomWindowCloseButton(window);
 
-        TimerLabel timerLabel = new TimerLabel(window, this, deviceInfo, fontInfo);
-        TextBox textBox = new TextBox(window, this, deviceInfo, fontInfo);
-        ScoreBoard scoreBoard = new ScoreBoard(window, this, deviceInfo, fontInfo);
+//        TimerLabel timerLabel = new TimerLabel(window, this, deviceInfo, fontInfo);
+//        TextBox textBox = new TextBox(window, this, deviceInfo, fontInfo);
+//        ScoreBoard scoreBoard = new ScoreBoard(window, this, deviceInfo, fontInfo);
 
         JButton DummyButton = new JButton("Object");
         DummyButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 score += 100;
-                scoreBoard.setText(" 0"+Integer.toString(score));
+//                scoreBoard.setText(" 0"+Integer.toString(score));
             }
 
             @Override
@@ -79,6 +87,7 @@ public class DormRoomScene extends JPanel{
         DummyButton.setOpaque(true);
         DummyButton.setVisible(true);
         DummyButton.setBounds(900,400, 100, 100);
+        addCustomWindowCloseButton(window);
     }
 
     //    public void  createMainField(){
@@ -150,7 +159,7 @@ public class DormRoomScene extends JPanel{
     }
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
         createObject(image);
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1));
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), this);
         this.add(objectHidingButton);
         buttonlist.add(objectHidingButton);
     }

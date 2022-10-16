@@ -1,10 +1,7 @@
 package shelved_classes;
 
-import shelved_classes.DecoyAnimation;
-import shelved_classes.IScene;
 import src.CloseButton;
 import src.DeviceScreenInformation;
-import src.DormRoom;
 import src.FontInfo;
 
 import javax.swing.*;

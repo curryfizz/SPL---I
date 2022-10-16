@@ -18,7 +18,7 @@ public class TextBox extends JLabel {
     }
 
     public void SetupTextBoxLabel(){
-        this.setBounds(deviceInfo.screenWidth/25,deviceInfo.screenHeight*2/3, deviceInfo.screenWidth*23/25, deviceInfo.screenHeight/3 -50);
+        this.setBounds(0,deviceInfo.screenHeight-50, deviceInfo.screenWidth, 100);
         this.setBackground(Color.darkGray);
         this.setForeground(Color.white);
         this.setBorder(BorderFactory.createCompoundBorder(
@@ -27,7 +27,7 @@ public class TextBox extends JLabel {
         this.setOpaque(true);
         this.setFont(fontInfo.getResizedFont(29f));
 
-        this.setText("Idk man");
+//        this.setText("Idk man");
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         backGroundPanel.add(this);
