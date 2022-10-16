@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 public class GameManager {
 
+
 //    UI ui = new UI(this);
     public static void main(String[] args) throws InterruptedException{
         new GameManager();

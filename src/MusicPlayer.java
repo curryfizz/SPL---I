@@ -3,9 +3,13 @@ package src;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.swing.*;
 import java.net.URL;
 
 public class MusicPlayer {
+
+    JSlider slider= new JSlider();
+
     Clip clip;
     public void  setFile(URL name){
         try {
@@ -32,10 +36,11 @@ public class MusicPlayer {
         clip.stop();
     }
 
-    public  void playMusic(URL url)
-    {
+    public  void playMusic(URL url) {
         this.setFile(url);
         this.play(url);
         this.loop(url);
     }
+
+
 }

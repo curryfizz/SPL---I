@@ -1,5 +1,4 @@
-package shelved_classes;
-import src.ObjectHidingButton;
+package src;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class LUI {
@@ -16,6 +16,7 @@ public class LUI {
     Rectangle maxBounds;
     GraphicsEnvironment ge;
     JFrame window;
+    JSlider slider;
 //    JFrame textbx ;
 
     public  JPanel bgPanel[] = new JPanel[10];
@@ -29,6 +30,18 @@ public class LUI {
 
     public  JComponent obj[]=new  JComponent[10];
 
+
+    public URL fieldMusic = getClass().getClassLoader().getResource("images/bgmusic.wav");
+    public URL currentMusic;
+    src.MusicPlayer MusicPlayer = new MusicPlayer();
+
+
+
+
+    public void stopMusic(URL url)
+    {
+        MusicPlayer.stop(url);
+    }
 
     int objX = 0;
 
@@ -44,6 +57,10 @@ public class LUI {
         createBackground(1,"images/LevelOneMain.png");
 
         generateScreen();
+
+        slider= new JSlider();
+        window.add(slider);
+        MusicPlayer.playMusic(fieldMusic);
         window.setVisible(true);
     }
 
@@ -96,6 +113,8 @@ public class LUI {
 
     public  void createBackground(int bgnum, String bgfilename) {
         bgPanel[bgnum] = new JPanel();
+        bgPanel[bgnum].add(MusicPlayer.slider);
+
 
 
         bgPanel[bgnum].setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
@@ -229,54 +248,58 @@ public class LUI {
     public  void generateScreen()
     {
 
-        createButton("images/01.png",308,450,65,84);
-        createText("Cornflakes Box");
-        createButton("images/02.png",1190,520,18,30);
-        createText("CocaCola Can");
-        createButton("images/03.png",1242,440,78,54);
-        createText("ShoulderBag");
-        createButton("images/04.png",1130,750,60,26);
-        createText("HeadPhone");
-        createButton("images/05.png",330,740,43,32);
-        createText("Phone");
-        createButton("images/06.png",410,689,69,13);
-        createText("Phone");
-        createButton("images/07.png",1104,712,68,22);
-        createText("Sunglasses");
-        createButton("images/08.png",860,410,25,12);
-        createText("Garbage");
-        createButton("images/09.png",484,390,50,32);
-        createText("Toilet Paper");
-        createButton("images/10.png",544,440,68,24);
-        createText("Food");
-        createButton("images/11.png",94,750,158,24);
-        createText("Cloth");
-        createButton("images/12.png",744,555,98,60);
-        createText("BagPack");
-        createButton("images/13.png",523,610,34,68);
-        createText("Scarf");
-        createButton("images/14.png",184,470,80,80);
-        createText("Pizza Box");
-        createButton("images/15.png",1034,440,28,20);
-        createText("Folded Clothes");
-        createButton("images/16.png",894,524,28,19);
-        createText("Chips Packet");
-        createButton("images/17.png",1204,730,98,43);
-        createText("Unfolded Cloth");
-        createButton("images/18.png",724,50,160,20);
-        createText("Quilt");
-        createButton("images/19.png",924,524,30,19);
-        createText("Book");
-        createButton("images/20.png",1368,760,48,14);
-        createText("FoodPlate");
-        createButton("images/21.png",934,485,40,24);
-        createText("Shoes");
-        createButton("images/22.png",494,435,18,14);
-        createText("TeaCup");
 
+        window.add(MusicPlayer.slider);
 
-
-        bgPanel[1].add(bgLabel[1]);
+//        createButton("images/01.png",308,450,65,84);
+//        createText("Cornflakes Box");
+//        createButton("images/02.png",1190,520,18,30);
+//        createText("CocaCola Can");
+//        createButton("images/03.png",1242,440,78,54);
+//        createText("ShoulderBag");
+//        createButton("images/04.png",1130,750,60,26);
+//        createText("HeadPhone");
+//        createButton("images/05.png",330,740,43,32);
+//        createText("Phone");
+//        createButton("images/06.png",410,689,69,13);
+//        createText("Phone");
+//        createButton("images/07.png",1104,712,68,22);
+//        createText("Sunglasses");
+//        createButton("images/08.png",860,410,25,12);
+//        createText("Garbage");
+//        createButton("images/09.png",484,390,50,32);
+//        createText("Toilet Paper");
+//        createButton("images/10.png",544,440,68,24);
+//        createText("Food");
+//        createButton("images/11.png",94,750,158,24);
+//        createText("Cloth");
+//        createButton("images/12.png",744,555,98,60);
+//        createText("BagPack");
+//        createButton("images/13.png",523,610,34,68);
+//        createText("Scarf");
+//        createButton("images/14.png",184,470,80,80);
+//        createText("Pizza Box");
+//        createButton("images/15.png",1034,440,28,20);
+//        createText("Folded Clothes");
+//        createButton("images/16.png",894,524,28,19);
+//        createText("Chips Packet");
+//        createButton("images/17.png",1204,730,98,43);
+//        createText("Unfolded Cloth");
+//        createButton("images/18.png",724,50,160,20);
+//        createText("Quilt");
+//        createButton("images/19.png",924,524,30,19);
+//        createText("Book");
+//        createButton("images/20.png",1368,760,48,14);
+//        createText("FoodPlate");
+//        createButton("images/21.png",934,485,40,24);
+//        createText("Shoes");
+//        createButton("images/22.png",494,435,18,14);
+//        createText("TeaCup");
+//
+//
+//
+//
+//        bgPanel[1].add(bgLabel[1]);
 
     }
 
