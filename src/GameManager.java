@@ -39,6 +39,7 @@ public class GameManager {
         Thread GameMap = new Thread(mapT);
         loadingAnimationT.getNextScene(dormRoomSceneT);
         GameMap.start();
+
         loadScreen.start();
         startScreen.start();
         dormthread.start();
