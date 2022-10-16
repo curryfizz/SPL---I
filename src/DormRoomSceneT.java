@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class DormRoomSceneT extends JPanel implements Runnable{
 
@@ -13,18 +14,16 @@ public class DormRoomSceneT extends JPanel implements Runnable{
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
     Rectangle maxBounds;
-    URL music;
-
-    TimerLabel timerLabel;
-    MusicPlayer MusicPlayer;
-
-    JButton beginGameButton;
-    int score = 0;
+    public int score = 0;
     CloseButton closeButton;
     JLabel backgroundLabel;
+    TimerLabel timerLabel;
+    TextBox textBox;
+    ScoreBoard scoreBoard;
     public ArrayList<JLabel> imagelist = new ArrayList<>();
     public ArrayList<ObjectHidingButton> buttonlist = new ArrayList<>(); //all the buttons for the objects are in this
     public ArrayList<String> Textlist = new ArrayList<>(); //all the names of the objects are in this
+    public ArrayList<Integer> RandObjIndices = new ArrayList<>();
 
     public  DormRoomSceneT(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
         this.jFrame = jFrame;
@@ -32,76 +31,26 @@ public class DormRoomSceneT extends JPanel implements Runnable{
         this.fontInfo = fontInfo;
         maxBounds = deviceInfo.graphicsEnvironment.getMaximumWindowBounds();
 
-//        createMainField();
-//        createBackground("images/LevelOneMain.png");
-//        DormThings();
-//        generateScreen();
-//
-//
-//        this.jFrame.add(this);
-//        this.jFrame.repaint();
-//        this.jFrame.revalidate();
-
+        RandObjIndices.add(1);
+        RandObjIndices.add(2);
+        RandObjIndices.add(3);
+        RandObjIndices.add(4);
+        RandObjIndices.add(5);
 
     }
-    public void addBeginGameButton(){
-        beginGameButton = new JButton("Begin Game");
-        beginGameButton.setLocation(deviceInfo.screenWidth/2-200, deviceInfo.screenHeight/2 );
-        beginGameButton.setSize(400,100);
-        beginGameButton.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.white, 2),
-                BorderFactory.createEmptyBorder(0,20,0,20)));
-        beginGameButton.setBackground(Color.decode("#14171C"));
-        beginGameButton.setForeground(Color.white);
-        beginGameButton.setFocusPainted(false);
-        beginGameButton.setContentAreaFilled(false);
-        beginGameButton.setOpaque(true);
-        beginGameButton.setFont(fontInfo.getResizedFont(30f));
-        beginGameButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                remove(beginGameButton);
-                repaint();
-                revalidate();
-                startLevel();
-            }
 
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        this.add(beginGameButton);
-        repaint();
-        revalidate();
+    public void CreateItemLabels(){
+        ItemLabel Item1 = new ItemLabel(this, fontInfo,deviceInfo.screenWidth/10, deviceInfo.screenHeight-25, Textlist.get(RandObjIndices.get(0)));
     }
+
     private void DormThings() {
         addCustomWindowCloseButton();
         TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
         TextBox textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
         ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
 
-//        this.add(DummyButton);
-//        DummyButton.setBackground(Color.pink);
-//        DummyButton.setOpaque(true);
-//        DummyButton.setVisible(true);
-//        DummyButton.setBounds(900,400, 100, 100);
     }
+
 
     public  void createBackground(String bgfilename) {
         this.setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
@@ -166,7 +115,22 @@ public class DormRoomSceneT extends JPanel implements Runnable{
     }
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
         createObject(image);
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1));
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), this){
+            @Override
+            public void addSceneEventsListener(ObjectHidingButton button){
+                addMouseListener(new SceneObjectEvents(associatedLabel, scenePanel){
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        imageLabel.setVisible(false);
+                        score += 100;
+                        scoreBoard.setText(" 0"+Integer.toString(score));
+                        scoreBoard.repaint();
+                        repaint();
+                        setEnabled(false);
+                    }
+                });
+            }
+        };
         this.add(objectHidingButton);
         buttonlist.add(objectHidingButton);
     }
@@ -174,7 +138,7 @@ public class DormRoomSceneT extends JPanel implements Runnable{
         JLabel objectLabel = new JLabel();
         objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height);
 
-        ImageIcon  obj1icon= new ImageIcon(getClass().getClassLoader().getResource(image));
+        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
         Image image1 = obj1icon.getImage();
         image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-100, Image.SCALE_DEFAULT);
         obj1icon = new ImageIcon(image1);
@@ -195,29 +159,21 @@ public class DormRoomSceneT extends JPanel implements Runnable{
     }
 
 
-
     public void buildScene(){
         createBackground("images/LevelOneMain.png");
 //        DormThings();
-        addCustomWindowCloseButton();
-        addBeginGameButton();
         generateScreen();
-//        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
+        CreateItemLabels();
+        addCustomWindowCloseButton();
         timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
-        TextBox textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
-        ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
-        music = getClass().getClassLoader().getResource("images/bgmusic.wav");
-        MusicPlayer = new MusicPlayer();
-
-//        MusicPlayer.playMusic(music);
-    }
-
-    public void startLevel() {
-
+        textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
+        scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
+        this.repaint();
+        URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
+        MusicPlayer MusicPlayer = new MusicPlayer();
         MusicPlayer.playMusic(music);
-        timerLabel.StartTimer();
-
     }
+
     @Override
     public void run() {
         buildScene();

@@ -18,7 +18,7 @@ public class ScoreBoard extends JLabel{
     }
 
     public void SetupScoreBoard(){
-        this.setBounds(150,10, 200, 60);
+        this.setBounds(120,5, 200, 45);
         this.setBackground(Color.darkGray);
         this.setForeground(Color.white);
         this.setBorder(BorderFactory.createCompoundBorder(

@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 public class GameManager {
 
+
 //    UI ui = new UI(this);
     public static void main(String[] args) throws InterruptedException{
         new GameManager();
@@ -38,6 +39,7 @@ public class GameManager {
         Thread GameMap = new Thread(mapT);
         loadingAnimationT.getNextScene(dormRoomSceneT);
         GameMap.start();
+
         loadScreen.start();
         startScreen.start();
         dormthread.start();
