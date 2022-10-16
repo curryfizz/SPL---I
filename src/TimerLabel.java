@@ -26,7 +26,7 @@ public class TimerLabel extends JLabel implements Runnable{
 //        backGroundPanel.setBounds(0, 0, 80, 60);
 //        backGroundPanel.setBackground(new Color(150, 150, 150));
 
-        second = 10;
+        second = 60;
         minute = 0;
 
         SetupTimerLabel();
@@ -57,6 +57,7 @@ public class TimerLabel extends JLabel implements Runnable{
     public void StartTimer() {
         TimerThread = new Thread(this);
         StartTimeMili = System.currentTimeMillis();
+
         TimerThread.start(); // starts run method in another thread
     }
 

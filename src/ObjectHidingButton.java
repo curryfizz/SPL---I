@@ -22,12 +22,14 @@ public class ObjectHidingButton extends JButton {
 
 
     public void createInvisibleButton(){
+
         repaint();
         setBackground(new Color(0,0,0,0));
+        setBackground(Color.magenta);
         repaint();
         setBounds(positionX,positionY,buttonWidth,buttonHeight);
         setFocusPainted(false);
-        setContentAreaFilled(false);
+//        setContentAreaFilled(false);
         setBorderPainted(false);
         addMouseListener(new SceneObjectEvents(associatedLabel));
 

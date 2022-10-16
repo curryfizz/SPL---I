@@ -21,6 +21,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     int loadingDotCurrentX; //current dot position, will be used by paint/repaint
     int animationDuration;
 
+    boolean timerStopped;
     long animationRunTime;
     LoadingAnimationT(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo, int animationDuration, JPanel nextScene){
         this.jFrame = jFrame;
@@ -46,6 +47,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     }
 
     public void initializeTimer(){
+        timerStopped=false;
         timer = new Timer(70,this);
         timer.start();
         loadingBarWidth=1;
@@ -79,16 +81,30 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
 
     }
 
+    public boolean isrunning(){
+        if(timerStopped){
+            return false;
+        }else{
+            return true;
+        }
+
+//        return false;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         animationRunTime = (System.currentTimeMillis()-animationStartTime)/1000;
         if(animationRunTime > animationDuration){
+            timerStopped=true;
+            timer.stop();
             jFrame.remove(this);
+
+            if(nextScene instanceof DormRoomSceneT){
+//                    ((DormRoomSceneT) nextScene).startLevel();
+
+            }
             jFrame.add(nextScene);
             jFrame.revalidate();
             jFrame.repaint();
-
-            timer.stop();
 //            LoadMenu(this.jFrame);
 //            LoadMenu();
         }

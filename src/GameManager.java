@@ -33,20 +33,20 @@ public class GameManager {
 
         DormRoomSceneT dormRoomSceneT = new DormRoomSceneT(jFrame,deviceScreenInformation,fontInfo);
         Thread dormthread = new Thread(dormRoomSceneT);
-        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,4,mapT);
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,1,mapT);
         Thread loadScreen = new Thread(loadingAnimationT);
         Thread GameMap = new Thread(mapT);
-        loadingAnimationT.getNextScene(mapT);
+        loadingAnimationT.getNextScene(dormRoomSceneT);
         GameMap.start();
         loadScreen.start();
         startScreen.start();
         dormthread.start();
-
         startMenu.add(startGameButton);
         jFrame.add(startMenu);
 //        jFrame.add(loadingAnimationT);
 
 
+//        timer.start();
 
         startGameButton.addMouseListener(new MouseListener() {
             @Override
@@ -54,6 +54,7 @@ public class GameManager {
                 jFrame.remove(startMenu);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
+
                 jFrame.revalidate();
                 jFrame.repaint();
 
@@ -105,6 +106,42 @@ public class GameManager {
 
 
 
+
+        mapLevelButtonsDorm.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jFrame.remove(mapT);
+                loadingAnimationT.getNextScene(dormRoomSceneT);
+
+                jFrame.add(loadingAnimationT);
+
+                loadingAnimationT.initializeTimer();
+
+                jFrame.revalidate();
+                jFrame.repaint();
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
 
     }
 }

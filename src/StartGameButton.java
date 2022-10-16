@@ -13,7 +13,7 @@ public class StartGameButton extends JButton {
         setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.white, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));
-        setBackground(null);
+        setBackground(Color.decode("#14171C"));
         setForeground(Color.white);
         setFocusPainted(false);
         setContentAreaFilled(false);
