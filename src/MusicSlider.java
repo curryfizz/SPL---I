@@ -15,6 +15,7 @@ public class MusicSlider extends JSlider {
         this.backGroundPanel = backGroundPanel;
         this.deviceScreenInformation = deviceScreenInformation;
         this.fontInfo = fontInfo;
+        SetupMusicSlider();
     }
 
 
