@@ -8,7 +8,6 @@ import java.awt.event.MouseListener;
 public class GameManager {
 
 
-//    UI ui = new UI(this);
     public static void main(String[] args) throws InterruptedException{
         new GameManager();
     }
@@ -51,6 +50,7 @@ public class GameManager {
 //        timer.start();
 
         startGameButton.addMouseListener(new MouseListener() {
+            boolean isHovering = false;
             @Override
             public void mouseClicked(MouseEvent e) {
                 jFrame.remove(startMenu);
@@ -64,22 +64,32 @@ public class GameManager {
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                startGameButton.setBackground(new Color(200,70,120));
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                startGameButton.setBackground(null);
+                if(isHovering) {
+                    jFrame.remove(startMenu);
+                    jFrame.add(loadingAnimationT);
+                    loadingAnimationT.initializeTimer();
 
+                    jFrame.revalidate();
+                    jFrame.repaint();
+                }
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-
+                isHovering = true;
+                startGameButton.setBackground(new Color(0,40,80));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-
+                isHovering = false;
+                startGameButton.setBackground(null);
             }
         });
 
