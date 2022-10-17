@@ -3,8 +3,10 @@ package src;
 import shelved_classes.IScene;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -54,8 +56,9 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         bigItemListLabel = new JLabel();
         bigItemListLabel.setLayout(new GridLayout(1,5));
         bigItemListLabel.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
-        bigItemListLabel.setBackground(Color.darkGray);
+        bigItemListLabel.setBackground(Color.decode("#14171C"));
         bigItemListLabel.setForeground(Color.white);
+        bigItemListLabel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
         bigItemListLabel.setFont(fontInfo.getResizedFont(29f));
         bigItemListLabel.setOpaque(true);
     }
@@ -212,6 +215,60 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     }
     public void addCustomWindowCloseButton(){
         closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
+        closeButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
+                confirmationDialog.remove(confirmationDialog.jLabel);
+                confirmationDialog.jLabel.setText("Exit to map?");
+                confirmationDialog.closeButton2.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        timerLabel.endLevel();
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
         this.add(closeButton);
         this.repaint();
         this.revalidate();
@@ -220,9 +277,9 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     public void buildScene(){
         createBackground("images/LevelOneMain.png");
-        addCustomWindowCloseButton();
         timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
         scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
+        addCustomWindowCloseButton();
         this.repaint();
         generateScreen();
         instantiateItemNameLabelList();

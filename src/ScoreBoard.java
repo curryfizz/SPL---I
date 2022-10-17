@@ -21,10 +21,10 @@ public class ScoreBoard extends JLabel{
 
     public void SetupScoreBoard(){
         this.setBounds(130,5, 150, 45);
-        this.setBackground(Color.darkGray);
+        this.setBackground(Color.decode("#14171C"));
         this.setForeground(Color.decode("#FFFF9F"));
         this.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.lightGray, 2),
+                BorderFactory.createLineBorder(Color.white, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));
         this.setOpaque(true);
         this.setFont(fontInfo.getResizedFont(35f));

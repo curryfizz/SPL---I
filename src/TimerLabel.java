@@ -43,11 +43,22 @@ public class TimerLabel extends JLabel implements Runnable{
     }
 
 
-
-    public void endLevel(){
-        TimerThread.interrupt();
+    public void disableRemainingObjects(){
         if(backGroundPanel instanceof DormRoomSceneT){
 
+
+            for(int i=0; i<((DormRoomSceneT)backGroundPanel).RandObjIndices.size(); i++){
+                ((DormRoomSceneT)backGroundPanel).buttonList.get(i).setEnabled(false);
+            }
+
+        }
+    }
+    public void endLevel(){
+        TimerThread.interrupt();
+
+        if(backGroundPanel instanceof DormRoomSceneT){
+
+//            disableRemainingObjects();
             ((DormRoomSceneT)backGroundPanel).remove(((DormRoomSceneT) backGroundPanel).bigItemListLabel);
             ((DormRoomSceneT)backGroundPanel).revalidate();
             ((DormRoomSceneT)backGroundPanel).repaint();
@@ -67,8 +78,8 @@ public class TimerLabel extends JLabel implements Runnable{
     public void SetupTimerLabel(){
 //        counterLabel = new JLabel();
         this.setBounds(5,5, 120, 45);
-        this.setBackground(Color.gray);
-        this.setForeground(Color.black);
+        this.setBackground(Color.decode("#14171C"));
+        this.setForeground(Color.white);
         this.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.white, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));

@@ -20,14 +20,15 @@ public class GameManager {
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         jFrame.setVisible(true);
-        jFrame.setBackground(Color.white);
+        jFrame.setBackground(Color.decode("#14171C"));
         DeviceScreenInformation deviceScreenInformation = new DeviceScreenInformation();
         FontInfo fontInfo = new FontInfo();
-
-
-        /* Instantiate the jpanels and the jpanel's threads
-         each jPanel's thread BUILDS (only) the jpanel, so we can save time on panel building */
-
+//        ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
+//
+//
+//        /* Instantiate the jpanels and the jpanel's threads
+//         each jPanel's thread BUILDS (only) the jpanel, so we can save time on panel building */
+//
         StartGameButton startGameButton = new StartGameButton(deviceScreenInformation,fontInfo);
         StartMenuScreenT startMenu = new StartMenuScreenT(jFrame, deviceScreenInformation,fontInfo);
         Thread startMenuThread = new Thread(startMenu);
