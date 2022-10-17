@@ -54,8 +54,7 @@ public class TimerLabel extends JLabel implements Runnable{
         }
     }
     public void endLevel(){
-        TimerThread.interrupt();
-
+        isTimeOver=true;
         if(backGroundPanel instanceof DormRoomSceneT){
 
 //            disableRemainingObjects();

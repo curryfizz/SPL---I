@@ -214,62 +214,11 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         textList.add(text);
     }
     public void addCustomWindowCloseButton(){
-        closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
-        closeButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
-                confirmationDialog.remove(confirmationDialog.jLabel);
-                confirmationDialog.jLabel.setText("Exit to map?");
-                confirmationDialog.closeButton2.addMouseListener(new MouseListener() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        timerLabel.endLevel();
-                    }
+        LevelCloseButton levelCloseButton = new LevelCloseButton(deviceInfo,"X",jFrame,fontInfo,this);
+//        closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
 
-                    @Override
-                    public void mousePressed(MouseEvent e) {
-
-                    }
-
-                    @Override
-                    public void mouseReleased(MouseEvent e) {
-
-                    }
-
-                    @Override
-                    public void mouseEntered(MouseEvent e) {
-
-                    }
-
-                    @Override
-                    public void mouseExited(MouseEvent e) {
-
-                    }
-                });
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        this.add(closeButton);
+//        this.add(closeButton);
+        this.add(levelCloseButton);
         this.repaint();
         this.revalidate();
     }

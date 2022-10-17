@@ -5,14 +5,16 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class CloseButton extends JButton {
+public class LevelCloseButton extends JButton {
 
     //too many one line methods
     DeviceScreenInformation deviceScreenInformation;
     FontInfo fontInfo;
 
     ConfirmationWindowPopup exitConfirmation;
-    public CloseButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo){
+
+    JPanel jPanel;
+    public LevelCloseButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo, JPanel jPanel){
         this.deviceScreenInformation = deviceScreenInformation;
         this.fontInfo = fontInfo;
         setDefaultPosition(deviceScreenInformation);
@@ -24,13 +26,11 @@ public class CloseButton extends JButton {
         addExitText(text);
         setDefaultTextColor();
         exitConfirmation = new ConfirmationWindowPopup(fontInfo);
-
-
 //        addCloseActions(fontInfo,jFrame,exitConfirmation);
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
+                LevelToMapConfirmationDialog confirmationDialog = new LevelToMapConfirmationDialog(jFrame,fontInfo,jPanel);
             }
 
             @Override
