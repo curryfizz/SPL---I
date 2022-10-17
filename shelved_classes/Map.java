@@ -140,7 +140,7 @@ public class Map extends JPanel implements IScene {
     }
 
     @Override
-    public void startTimer() {
+    public void startScene() {
 
     }
 }

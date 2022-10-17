@@ -7,6 +7,8 @@ public class TimerLabel extends JLabel implements Runnable{
     JFrame jFrame;
     JPanel backGroundPanel;
     DeviceScreenInformation deviceScreenInformation;
+
+    ConfirmationWindowPopup timeUpWindowPopup;
     FontInfo fontInfo;
     int second;
     int minute;
@@ -24,26 +26,27 @@ public class TimerLabel extends JLabel implements Runnable{
 //        backGroundPanel.setBounds(0, 0, 80, 60);
 //        backGroundPanel.setBackground(new Color(150, 150, 150));
 
-        second = 30;
-        minute = 0;
+        second = 0;
+        minute = 1;
 
         SetupTimerLabel();
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
+        this.setHorizontalAlignment(SwingConstants.CENTER);
 
 //        StartTimer();
     }
 
     public void SetupTimerLabel(){
 //        counterLabel = new JLabel();
-        this.setBounds(5,5, 110, 45);
+        this.setBounds(5,5, 120, 45);
         this.setBackground(Color.gray);
         this.setForeground(Color.black);
         this.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.white, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));
         this.setOpaque(true);
-        this.setFont(fontInfo.getResizedFont(29f));
+        this.setFont(fontInfo.getResizedFont(35f));
 
         drawTimer();
         backGroundPanel.repaint();
@@ -88,7 +91,7 @@ public class TimerLabel extends JLabel implements Runnable{
     private void timeOver(){ //the popup glitches idk why orz
         isTimeOver = true;
 //        timer.stop();
-        ConfirmationWindowPopup timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
+        timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
         backGroundPanel.add(timeUpWindowPopup);
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
@@ -119,6 +122,9 @@ public class TimerLabel extends JLabel implements Runnable{
             if(milisecs > 1000){ //one second has passed
                 UpdateTimeVariables();
                 lastUpdatedAt = System.currentTimeMillis();
+                if(minute==0 && second==30){
+                    this.setForeground(new Color(150,0,0));
+                }
             }
         }
 

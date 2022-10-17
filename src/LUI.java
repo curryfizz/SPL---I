@@ -31,18 +31,6 @@ public class LUI {
     public  JComponent obj[]=new  JComponent[10];
 
 
-    public URL fieldMusic = getClass().getClassLoader().getResource("images/bgmusic.wav");
-    public URL currentMusic;
-    src.MusicPlayer MusicPlayer = new MusicPlayer();
-
-
-
-
-    public void stopMusic(URL url)
-    {
-        MusicPlayer.stop(url);
-    }
-
     int objX = 0;
 
     int objY = 0;
@@ -58,10 +46,6 @@ public class LUI {
 
         generateScreen();
 
-        slider= new JSlider();
-        window.add(slider);
-        MusicPlayer.playMusic(fieldMusic);
-        window.setVisible(true);
     }
 
 
@@ -113,7 +97,7 @@ public class LUI {
 
     public  void createBackground(int bgnum, String bgfilename) {
         bgPanel[bgnum] = new JPanel();
-        bgPanel[bgnum].add(MusicPlayer.slider);
+
 
 
 
@@ -236,7 +220,7 @@ public class LUI {
     {
         createObject(image);
 
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), new JPanel());
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), new JPanel(), buttonlist.size());
         //imagelist.get(imagelist.size-1)
         bgPanel[1].add(objectHidingButton);
         buttonlist.add(objectHidingButton);
@@ -249,7 +233,6 @@ public class LUI {
     {
 
 
-        window.add(MusicPlayer.slider);
 
 //        createButton("images/01.png",308,450,65,84);
 //        createText("Cornflakes Box");

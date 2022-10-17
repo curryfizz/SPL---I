@@ -43,9 +43,9 @@ public class DormRoomScene extends JPanel{
 
 
         addCustomWindowCloseButton(window);
-        URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
+       // URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
         MusicPlayer MusicPlayer = new MusicPlayer();
-        MusicPlayer.playMusic(music);
+     //   MusicPlayer.playMusic(music);
     }
 
     private void DormThings() {
@@ -159,7 +159,7 @@ public class DormRoomScene extends JPanel{
     }
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
         createObject(image);
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), this);
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), this, buttonlist.size());
         this.add(objectHidingButton);
         buttonlist.add(objectHidingButton);
     }

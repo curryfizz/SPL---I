@@ -1,5 +1,7 @@
-package shelved_classes;
+package src;
 
+import shelved_classes.DecoyAnimation;
+import shelved_classes.IScene;
 import src.CloseButton;
 import src.DeviceScreenInformation;
 import src.FontInfo;
@@ -115,7 +117,7 @@ public class StartMenuScreen extends JPanel implements IScene {
     }
 
     @Override
-    public void startTimer() {
+    public void startScene() {
 
     }
 }

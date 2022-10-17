@@ -11,6 +11,7 @@ public class MusicSlider extends JSlider {
     FontInfo fontInfo;
 
     public MusicSlider(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
+        super(-80, 6);
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
         this.deviceScreenInformation = deviceScreenInformation;
@@ -19,9 +20,12 @@ public class MusicSlider extends JSlider {
     }
 
 
+
     public void SetupMusicSlider(){
 
-        this.setBounds(500,5, 100, 50);
+
+
+        this.setBounds(500,5, 250, 50);
         this.setBackground(Color.gray);
         this.setForeground(Color.black);
         this.setBorder(BorderFactory.createCompoundBorder(

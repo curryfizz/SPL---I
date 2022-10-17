@@ -1,6 +1,5 @@
 package shelved_classes;
 
-import shelved_classes.IScene;
 import src.DeviceScreenInformation;
 import src.FontInfo;
 
@@ -90,7 +89,7 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     public void LoadMenu(){
 
         iScene.callSelf();
-        iScene.startTimer();
+        iScene.startScene();
 //        Map map = new Map(jFrame);
         jFrame.remove(this);
 //        jFrame.add(map);

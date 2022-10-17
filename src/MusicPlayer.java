@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class MusicPlayer {
 
-    JSlider slider= new JSlider();
+
 
     Clip clip;
     public void  setFile(URL name){
