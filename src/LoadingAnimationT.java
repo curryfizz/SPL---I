@@ -25,12 +25,14 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
 
     boolean timerStopped;
     long animationRunTime;
+    int increment;
     LoadingAnimationT(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo, int animationDuration, JPanel nextScene){
         this.jFrame = jFrame;
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
         this.animationDuration = animationDuration;
         this.nextScene = nextScene;
+        this.increment = 500/(animationDuration*20);
 
 //        timer.start();
 //        animationStartTime = System.nanoTime();
@@ -49,9 +51,9 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     }
 
     public void initializeTimer(){
-        timerStopped=false;
-        timer = new Timer(70,this);
+        timer = new Timer(50,this);
         timer.start();
+        timerStopped=false;
         loadingBarWidth=1;
         animationStartTime = System.currentTimeMillis();
         animationRunTime=0;
@@ -89,8 +91,6 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
         }else{
             return true;
         }
-
-//        return false;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -98,10 +98,15 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
         if(animationRunTime > animationDuration){
             timerStopped=true;
             timer.stop();
+            try {
+                Thread.sleep((long)100);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
             jFrame.remove(this);
 
             if(nextScene instanceof IScene){
-                ((IScene) nextScene).startTimer();
+                ((IScene) nextScene).startScene();
             }
             jFrame.add(nextScene);
             jFrame.revalidate();
@@ -111,7 +116,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
         }
 
         if(loadingBarWidth <500){
-            loadingBarWidth = loadingBarWidth +10;
+            loadingBarWidth = loadingBarWidth +increment;
         }
 
         if (loadingDotCurrentX > loadingDotMaxX){

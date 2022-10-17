@@ -23,6 +23,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     TimerLabel timerLabel;
     TextBox textBox;
     ScoreBoard scoreBoard;
+    URL music;
 
     int textBox_height;
     public ArrayList<JLabel> imageList = new ArrayList<>();
@@ -47,7 +48,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         bigItemListLabel.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
         bigItemListLabel.setBackground(Color.darkGray);
         bigItemListLabel.setForeground(Color.white);
-        bigItemListLabel.setFont(fontInfo.getResizedFont(24f));
+        bigItemListLabel.setFont(fontInfo.getResizedFont(29f));
         bigItemListLabel.setOpaque(true);
     }
 
@@ -129,6 +130,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
         this.add(bigItemListLabel);
         int index;
+//        bigItemListLabel.add(new JLabel());
         for(int i=0; i<RandObjIndices.size(); i++){
             index = RandObjIndices.get(i);
             bigItemListLabel.add(itemNameLabelList.get(index));
@@ -146,9 +148,10 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 //        }
 
         for(int i = 0; i < textList.size(); i++){
-            JLabel temp = new JLabel();
+            JLabel temp = new JLabel(textList.get(i), SwingConstants.CENTER);
             temp.setForeground(Color.white);
-            temp.setText(textList.get(i));
+            temp.setFont(fontInfo.getResizedFont(37f));
+//            temp.setText(textList.get(i));
             itemNameLabelList.add(temp);
         }
 
@@ -167,6 +170,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
                             imageLabel.setVisible(false);
                             score += 100;
                             scoreBoard.setText(" 0" + Integer.toString(score));
+                            scoreBoard.setHorizontalTextPosition(SwingConstants.CENTER);
                             scoreBoard.repaint();
                             repaint();
                             setEnabled(false);
@@ -215,11 +219,9 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         instantiateItemNameLabelList();
         CreateItemLabels();
         showItemNamesInTextBox();
-        bigItemListLabel.add(new JLabel("Dekhi"));
+//        bigItemListLabel.add(new JLabel("Dekhi"));
         this.repaint();
-        URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
-        MusicPlayer MusicPlayer = new MusicPlayer();
-        MusicPlayer.playMusic(music);
+        music = getClass().getClassLoader().getResource("images/bgmusic.wav");
     }
 
     @Override
@@ -234,7 +236,9 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     }
 
     @Override
-    public void startTimer() {
+    public void startScene() {
         timerLabel.StartTimer();
+        MusicPlayer musicPlayer = new MusicPlayer();
+        musicPlayer.playMusic(music);
     }
 }

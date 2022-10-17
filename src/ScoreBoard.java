@@ -10,6 +10,8 @@ public class ScoreBoard extends JLabel{
     FontInfo fontInfo;
 
     public ScoreBoard(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
+        super("0000", SwingConstants.CENTER);
+        this.setVerticalTextPosition(SwingConstants.BOTTOM); //kaj korena
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
         this.deviceInfo = deviceScreenInformation;
@@ -18,16 +20,15 @@ public class ScoreBoard extends JLabel{
     }
 
     public void SetupScoreBoard(){
-        this.setBounds(120,5, 200, 45);
+        this.setBounds(130,5, 150, 45);
         this.setBackground(Color.darkGray);
-        this.setForeground(Color.white);
+        this.setForeground(Color.decode("#FFFF9F"));
         this.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.lightGray, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));
         this.setOpaque(true);
-        this.setFont(fontInfo.getResizedFont(29f));
+        this.setFont(fontInfo.getResizedFont(35f));
 
-        this.setText(" 0000");
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         backGroundPanel.add(this);
