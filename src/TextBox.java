@@ -18,7 +18,7 @@ public class TextBox extends JLabel {
     }
 
     public void SetupTextBoxLabel(){
-        this.setBounds(0,deviceInfo.screenHeight-50, deviceInfo.screenWidth, 100);
+        this.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
         this.setBackground(Color.darkGray);
         this.setForeground(Color.white);
         this.setBorder(BorderFactory.createCompoundBorder(

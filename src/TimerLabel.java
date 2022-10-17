@@ -14,8 +14,6 @@ public class TimerLabel extends JLabel implements Runnable{
     int FPS = 60;
     Thread TimerThread;
     boolean isTimeOver = false;
-    Timer timer;
-
     public TimerLabel(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
@@ -26,11 +24,10 @@ public class TimerLabel extends JLabel implements Runnable{
 //        backGroundPanel.setBounds(0, 0, 80, 60);
 //        backGroundPanel.setBackground(new Color(150, 150, 150));
 
-        second = 60;
+        second = 30;
         minute = 0;
 
         SetupTimerLabel();
-        backGroundPanel.add(this);
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
 
@@ -39,7 +36,7 @@ public class TimerLabel extends JLabel implements Runnable{
 
     public void SetupTimerLabel(){
 //        counterLabel = new JLabel();
-        this.setBounds(5,5, 100, 50);
+        this.setBounds(5,5, 110, 45);
         this.setBackground(Color.gray);
         this.setForeground(Color.black);
         this.setBorder(BorderFactory.createCompoundBorder(
@@ -57,7 +54,6 @@ public class TimerLabel extends JLabel implements Runnable{
     public void StartTimer() {
         TimerThread = new Thread(this);
         StartTimeMili = System.currentTimeMillis();
-
         TimerThread.start(); // starts run method in another thread
     }
 
@@ -108,7 +104,7 @@ public class TimerLabel extends JLabel implements Runnable{
     @Override
     public void run() {
 
-        long lastUpdatedAt = StartTimeMili;
+        long lastUpdatedAt = System.currentTimeMillis();
         long milisecs = 0;
 
         while(!isTimeOver) {

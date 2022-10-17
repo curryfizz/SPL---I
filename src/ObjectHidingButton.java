@@ -27,10 +27,12 @@ public class ObjectHidingButton extends JButton {
 
         repaint();
         setBackground(new Color(0,0,0,0));
-        setBackground(Color.magenta);
+        setBackground(Color.pink);
         repaint();
+        setEnabled(false);
+//        setBackground(C);
         setBounds(positionX,positionY,buttonWidth,buttonHeight);
-        setFocusPainted(false);
+//        setOpaque(false);
 //        setContentAreaFilled(false);
         setBorderPainted(false);
         addSceneEventsListener(this);
@@ -41,7 +43,10 @@ public class ObjectHidingButton extends JButton {
         addMouseListener(new SceneObjectEvents(associatedLabel, scenePanel){
             @Override
             public void mouseClicked(MouseEvent e) {
+                if(isEnabled())
+                imageLabel.setOpaque(false);
                 imageLabel.setVisible(false);
+                scenePanel.repaint();
 //                this.scenePanel.score += 100;
 
             }

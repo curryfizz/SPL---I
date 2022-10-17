@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public class DormRoomSceneT extends JPanel implements Runnable{
 
@@ -14,12 +15,16 @@ public class DormRoomSceneT extends JPanel implements Runnable{
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
     Rectangle maxBounds;
+
+    JLabel jLabel;
     public int score = 0;
     CloseButton closeButton;
     JLabel backgroundLabel;
     TimerLabel timerLabel;
     TextBox textBox;
     ScoreBoard scoreBoard;
+
+    int textbox_height;
     public ArrayList<JLabel> imagelist = new ArrayList<>();
     public ArrayList<ObjectHidingButton> buttonlist = new ArrayList<>(); //all the buttons for the objects are in this
     public ArrayList<String> Textlist = new ArrayList<>(); //all the names of the objects are in this
@@ -30,12 +35,12 @@ public class DormRoomSceneT extends JPanel implements Runnable{
         this.deviceInfo = deviceInfo;
         this.fontInfo = fontInfo;
         maxBounds = deviceInfo.graphicsEnvironment.getMaximumWindowBounds();
-
         RandObjIndices.add(1);
         RandObjIndices.add(2);
         RandObjIndices.add(3);
         RandObjIndices.add(4);
         RandObjIndices.add(5);
+        textbox_height = 50;
 
     }
 
@@ -57,12 +62,19 @@ public class DormRoomSceneT extends JPanel implements Runnable{
         this.setBackground(Color.black);
         this.setLayout(null);
 
+        jLabel = new JLabel();
+        jLabel.setLayout(new GridLayout(1,5));
+        jLabel.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
+        jLabel.setBackground(Color.white);
+        jLabel.setOpaque(true);
+
+
         ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource(bgfilename));
         Image image = imageIcon.getImage();
         image = image.getScaledInstance(maxBounds.width, maxBounds.height-100, Image.SCALE_DEFAULT);
         imageIcon = new ImageIcon(image);
         backgroundLabel = new JLabel();
-        backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height);
+        backgroundLabel.setBounds(0,-textbox_height, maxBounds.width,maxBounds.height);
         backgroundLabel.setIcon(imageIcon);
     }
     public  void generateScreen() {
@@ -113,6 +125,26 @@ public class DormRoomSceneT extends JPanel implements Runnable{
 
         this.add(backgroundLabel);
     }
+
+    public void showValues(){
+        RandomGenerator randomGenerator = new RandomGenerator(buttonlist.size());
+        randomGenerator.createUnique();
+
+
+        ArrayList<JLabel> jTextAreas = new ArrayList<>();
+        JLabel dummy = new JLabel();
+        dummy.setBackground(Color.pink);
+//        dummy.setOpaque(true);
+        this.add(jLabel);
+        for(int i=0; i<randomGenerator.RandObjIndices.size(); i++){
+            int index = randomGenerator.RandObjIndices.get(i);
+            jLabel.add(new JLabel(Textlist.get(index)));
+            buttonlist.get(index).setEnabled(true);
+        }
+
+    }
+
+
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
         createObject(image);
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), this){
@@ -121,22 +153,26 @@ public class DormRoomSceneT extends JPanel implements Runnable{
                 addMouseListener(new SceneObjectEvents(associatedLabel, scenePanel){
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        imageLabel.setVisible(false);
-                        score += 100;
-                        scoreBoard.setText(" 0"+Integer.toString(score));
-                        scoreBoard.repaint();
-                        repaint();
-                        setEnabled(false);
+                        if(isEnabled()) {
+                            imageLabel.setVisible(false);
+                            score += 100;
+                            scoreBoard.setText(" 0" + Integer.toString(score));
+                            scoreBoard.repaint();
+                            repaint();
+                            setEnabled(false);
+                        }
                     }
                 });
             }
         };
+        objectHidingButton.setBackground(Color.orange);
         this.add(objectHidingButton);
         buttonlist.add(objectHidingButton);
+
     }
     public void  createObject( String image ) {
         JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height);
+        objectLabel.setBounds(0,-textbox_height,maxBounds.width,maxBounds.height);
 
         ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
         Image image1 = obj1icon.getImage();
@@ -162,13 +198,16 @@ public class DormRoomSceneT extends JPanel implements Runnable{
     public void buildScene(){
         createBackground("images/LevelOneMain.png");
 //        DormThings();
-        generateScreen();
-        CreateItemLabels();
         addCustomWindowCloseButton();
         timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
-        textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
+//        textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
         scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
         this.repaint();
+        generateScreen();
+        showValues();
+        jLabel.add(new JLabel("Dekhi"));
+        this.repaint();
+        CreateItemLabels();
         URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
         MusicPlayer MusicPlayer = new MusicPlayer();
         MusicPlayer.playMusic(music);

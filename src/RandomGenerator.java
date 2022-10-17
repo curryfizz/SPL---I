@@ -1,32 +1,18 @@
 package src;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class RandomGenerator {
     public ArrayList<Integer> RandObjIndices;
-    int TotalNumberOfObjects;
-    RandomGenerator(int TotalNumberOfObjects){
-        Random random = new Random();
-        int num;
-        this.TotalNumberOfObjects = TotalNumberOfObjects;
-        num = random.nextInt(TotalNumberOfObjects);
-        RandObjIndices.add(num);
-        num = random.nextInt(TotalNumberOfObjects-1);
-        RandObjIndices.add(num);
-        num = random.nextInt(TotalNumberOfObjects-2);
-        RandObjIndices.add(num);
-        num = random.nextInt(TotalNumberOfObjects-3);
-        RandObjIndices.add(num);
-        num = random.nextInt(TotalNumberOfObjects-4);
-        RandObjIndices.add(num);
 
-        Collections.sort(RandObjIndices);
-        make1Unique();
-        make2Unique();
-        make3Unique();
-        make4Unique();
+    ArrayList<Integer> indexes;
+    int TotalNumberOfObjects;
+    public RandomGenerator(int TotalNumberOfObjects){
+        this.TotalNumberOfObjects = TotalNumberOfObjects;
+        indexes = new ArrayList<>();
+        RandObjIndices = new ArrayList<>();
+        for(int i=0; i<TotalNumberOfObjects; i++){
+            indexes.add(i);
+        }
     }
 
     void make1Unique(){
@@ -59,5 +45,15 @@ public class RandomGenerator {
     }
     void make4Unique(){
 
+    }
+
+    public void createUnique(){
+        Random random = new Random();
+        while (RandObjIndices.size()!=6){
+            int randomIndex = random.nextInt(TotalNumberOfObjects);
+            TotalNumberOfObjects--;
+            RandObjIndices.add(indexes.get(randomIndex));
+            indexes.remove(randomIndex);
+        }
     }
 }
