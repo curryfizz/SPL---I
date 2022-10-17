@@ -220,7 +220,7 @@ public class LUI {
     {
         createObject(image);
 
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), new JPanel());
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), new JPanel(), buttonlist.size());
         //imagelist.get(imagelist.size-1)
         bgPanel[1].add(objectHidingButton);
         buttonlist.add(objectHidingButton);

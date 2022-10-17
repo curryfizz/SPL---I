@@ -11,15 +11,17 @@ public class ObjectHidingButton extends JButton {
     int buttonHeight;
     JLabel associatedLabel;
     JPanel scenePanel;
+    int myIndex;
 
-    public ObjectHidingButton(int posx, int posy, int width, int height, JLabel label, JPanel scenePanel){
+    public ObjectHidingButton(int posx, int posy, int width, int height, JLabel label, JPanel scenePanel, int myIndex){
         this.positionX = posx;
         this.positionY = posy;
         this.buttonWidth = width;
         this.buttonHeight = height;
         this.associatedLabel = label;
-        createInvisibleButton();
         this.scenePanel = scenePanel;
+        this.myIndex = myIndex;
+        createInvisibleButton();
     }
 
 
@@ -27,7 +29,7 @@ public class ObjectHidingButton extends JButton {
 
         repaint();
         setBackground(new Color(0,0,0,0));
-        setBackground(Color.pink);
+//        setBackground(Color.pink);
         repaint();
         setEnabled(false);
 //        setBackground(C);

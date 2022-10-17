@@ -131,7 +131,7 @@ public class MapT extends JPanel implements Runnable{
     public void createBackgroundPanel(){
         this.setLayout(null);
         this.setPreferredSize(new Dimension(deviceInfo.screenWidth, deviceInfo.screenHeight));
-        this.setBackground(Color.CYAN);
+        this.setBackground(Color.black);
         this.setForeground(Color.decode("#C64C1D"));
     }
 

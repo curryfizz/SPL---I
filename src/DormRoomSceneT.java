@@ -1,22 +1,22 @@
 package src;
 
+import shelved_classes.IScene;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Random;
 
-public class DormRoomSceneT extends JPanel implements Runnable{
+public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     JFrame jFrame;
     DeviceScreenInformation deviceInfo;
     FontInfo fontInfo;
     Rectangle maxBounds;
 
-    JLabel jLabel;
+    JLabel bigItemListLabel;
     public int score = 0;
     CloseButton closeButton;
     JLabel backgroundLabel;
@@ -24,37 +24,40 @@ public class DormRoomSceneT extends JPanel implements Runnable{
     TextBox textBox;
     ScoreBoard scoreBoard;
 
-    int textbox_height;
-    public ArrayList<JLabel> imagelist = new ArrayList<>();
-    public ArrayList<ObjectHidingButton> buttonlist = new ArrayList<>(); //all the buttons for the objects are in this
-    public ArrayList<String> Textlist = new ArrayList<>(); //all the names of the objects are in this
-    public ArrayList<Integer> RandObjIndices = new ArrayList<>();
+    int textBox_height;
+    public ArrayList<JLabel> imageList = new ArrayList<>();
+    public ArrayList<ObjectHidingButton> buttonList = new ArrayList<>(); //all the buttons for the objects are in this
+    public ArrayList<String> textList = new ArrayList<>(); //all the names of the objects are in this\
+    ArrayList<JLabel> itemNameLabelList = new ArrayList<>(); //the labels containing item names that were randomly chosen
+    public ArrayList<Integer> RandObjIndices;
 
     public  DormRoomSceneT(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
         this.jFrame = jFrame;
         this.deviceInfo = deviceInfo;
         this.fontInfo = fontInfo;
         maxBounds = deviceInfo.graphicsEnvironment.getMaximumWindowBounds();
-        RandObjIndices.add(1);
-        RandObjIndices.add(2);
-        RandObjIndices.add(3);
-        RandObjIndices.add(4);
-        RandObjIndices.add(5);
-        textbox_height = 50;
+        textBox_height = 50;
 
     }
 
     public void CreateItemLabels(){
-        ItemLabel Item1 = new ItemLabel(this, fontInfo,deviceInfo.screenWidth/10, deviceInfo.screenHeight-25, Textlist.get(RandObjIndices.get(0)));
+//        ItemLabel Item1 = new ItemLabel(this, fontInfo,deviceInfo.screenWidth/10, deviceInfo.screenHeight-25, textList.get(randObjIndices.get(0)));
+        bigItemListLabel = new JLabel();
+        bigItemListLabel.setLayout(new GridLayout(1,5));
+        bigItemListLabel.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
+        bigItemListLabel.setBackground(Color.darkGray);
+        bigItemListLabel.setForeground(Color.white);
+        bigItemListLabel.setFont(fontInfo.getResizedFont(24f));
+        bigItemListLabel.setOpaque(true);
     }
 
-    private void DormThings() {
-        addCustomWindowCloseButton();
-        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
-        TextBox textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
-        ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
-
-    }
+//    private void DormThings() {
+//        addCustomWindowCloseButton();
+//        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
+//        TextBox textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
+//        ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
+//
+//    }
 
 
     public  void createBackground(String bgfilename) {
@@ -62,84 +65,91 @@ public class DormRoomSceneT extends JPanel implements Runnable{
         this.setBackground(Color.black);
         this.setLayout(null);
 
-        jLabel = new JLabel();
-        jLabel.setLayout(new GridLayout(1,5));
-        jLabel.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
-        jLabel.setBackground(Color.white);
-        jLabel.setOpaque(true);
-
-
-        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource(bgfilename));
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(bgfilename)));
         Image image = imageIcon.getImage();
         image = image.getScaledInstance(maxBounds.width, maxBounds.height-100, Image.SCALE_DEFAULT);
         imageIcon = new ImageIcon(image);
         backgroundLabel = new JLabel();
-        backgroundLabel.setBounds(0,-textbox_height, maxBounds.width,maxBounds.height);
+        backgroundLabel.setBounds(0,-textBox_height, maxBounds.width,maxBounds.height);
         backgroundLabel.setIcon(imageIcon);
     }
     public  void generateScreen() {
-        createButton("images/01.png",308,450,65,84);
+        createButton("images/01.png",308,450 - 50,65,84);
         createText("Cornflakes Box");
-        createButton("images/02.png",1190,520,18,30);
+        createButton("images/02.png",1190,520 - 50,18,30);
         createText("CocaCola Can");
-        createButton("images/03.png",1242,440,78,54);
+        createButton("images/03.png",1242,440 - 50,78,54);
         createText("ShoulderBag");
-        createButton("images/04.png",1130,750,60,26);
+        createButton("images/04.png",1130,750 - 50,60,26);
         createText("HeadPhone");
-        createButton("images/05.png",330,740,43,32);
+        createButton("images/05.png",330,740 - 50,43,32);
         createText("Phone");
-        createButton("images/06.png",410,689,69,13);
+        createButton("images/06.png",410,689 - 50,69,13);
         createText("Phone");
-        createButton("images/07.png",1104,712,68,22);
+        createButton("images/07.png",1104,712 - 50,68,22);
         createText("Sunglasses");
-        createButton("images/08.png",860,410,25,12);
+        createButton("images/08.png",860,410 - 50,25,12);
         createText("Garbage");
-        createButton("images/09.png",484,390,50,32);
+        createButton("images/09.png",484,390 - 50,50,32);
         createText("Toilet Paper");
-        createButton("images/10.png",544,440,68,24);
+        createButton("images/10.png",544,440 - 50,68,24);
         createText("Food");
-        createButton("images/11.png",94,750,158,24);
+        createButton("images/11.png",94,750 - 50,158,24);
         createText("Cloth");
-        createButton("images/12.png",744,555,98,60);
+        createButton("images/12.png",744,555 - 50,98,60);
         createText("BagPack");
-        createButton("images/13.png",523,610,34,68);
+        createButton("images/13.png",523,610 - 50,34,68);
         createText("Scarf");
-        createButton("images/14.png",184,470,80,80);
+        createButton("images/14.png",184,470 - 50,80,80);
         createText("Pizza Box");
-        createButton("images/15.png",1034,440,28,20);
+        createButton("images/15.png",1034,440 - 50,28,20);
         createText("Folded Clothes");
-        createButton("images/16.png",894,524,28,19);
+        createButton("images/16.png",894,524 - 50,28,19);
         createText("Chips Packet");
-        createButton("images/17.png",1204,730,98,43);
+        createButton("images/17.png",1204,730 - 50,98,43);
         createText("Unfolded Cloth");
-        createButton("images/18.png",724,50,160,20);
+        createButton("images/18.png",724,50 - 50,160,20);
         createText("Quilt");
-        createButton("images/19.png",924,524,30,19);
+        createButton("images/19.png",924,524 - 50,30,19);
         createText("Book");
-        createButton("images/20.png",1368,760,48,14);
+        createButton("images/20.png",1368,760 - 50,48,14);
         createText("FoodPlate");
-        createButton("images/21.png",934,485,40,24);
+        createButton("images/21.png",934,485 - 50,40,24);
         createText("Shoes");
-        createButton("images/22.png",494,435,18,14);
+        createButton("images/22.png",494,435 - 50,18,14);
         createText("TeaCup");
 
         this.add(backgroundLabel);
     }
 
-    public void showValues(){
-        RandomGenerator randomGenerator = new RandomGenerator(buttonlist.size());
+    public void showItemNamesInTextBox(){
+        RandomGenerator randomGenerator = new RandomGenerator(buttonList.size());
         randomGenerator.createUnique();
+        this.RandObjIndices = randomGenerator.RandObjIndices;
 
+        this.add(bigItemListLabel);
+        int index;
+        for(int i=0; i<RandObjIndices.size(); i++){
+            index = RandObjIndices.get(i);
+            bigItemListLabel.add(itemNameLabelList.get(index));
+            buttonList.get(index).setEnabled(true);
+        }
 
-        ArrayList<JLabel> jTextAreas = new ArrayList<>();
-        JLabel dummy = new JLabel();
-        dummy.setBackground(Color.pink);
-//        dummy.setOpaque(true);
-        this.add(jLabel);
-        for(int i=0; i<randomGenerator.RandObjIndices.size(); i++){
-            int index = randomGenerator.RandObjIndices.get(i);
-            jLabel.add(new JLabel(Textlist.get(index)));
-            buttonlist.get(index).setEnabled(true);
+    }
+
+    private void instantiateItemNameLabelList() {
+//        for(int i = 0; i < (RandObjIndices.size()); i++){
+//            JLabel temp = new JLabel();
+//            temp.setForeground(Color.white);
+//            temp.setText(textList.get(RandObjIndices.get(i)));
+//            itemNameLabelList.add(temp);
+//        }
+
+        for(int i = 0; i < textList.size(); i++){
+            JLabel temp = new JLabel();
+            temp.setForeground(Color.white);
+            temp.setText(textList.get(i));
+            itemNameLabelList.add(temp);
         }
 
     }
@@ -147,7 +157,7 @@ public class DormRoomSceneT extends JPanel implements Runnable{
 
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
         createObject(image);
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), this){
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size()){
             @Override
             public void addSceneEventsListener(ObjectHidingButton button){
                 addMouseListener(new SceneObjectEvents(associatedLabel, scenePanel){
@@ -160,19 +170,19 @@ public class DormRoomSceneT extends JPanel implements Runnable{
                             scoreBoard.repaint();
                             repaint();
                             setEnabled(false);
+                            itemNameLabelList.get(myIndex).setVisible(false);
                         }
                     }
                 });
             }
         };
-        objectHidingButton.setBackground(Color.orange);
+//        objectHidingButton.setBackground(Color.orange);
         this.add(objectHidingButton);
-        buttonlist.add(objectHidingButton);
-
+        buttonList.add(objectHidingButton);
     }
     public void  createObject( String image ) {
         JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(0,-textbox_height,maxBounds.width,maxBounds.height);
+        objectLabel.setBounds(0,-textBox_height,maxBounds.width,maxBounds.height);
 
         ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
         Image image1 = obj1icon.getImage();
@@ -180,12 +190,12 @@ public class DormRoomSceneT extends JPanel implements Runnable{
         obj1icon = new ImageIcon(image1);
 
         objectLabel.setIcon(obj1icon);
-        imagelist.add(objectLabel);
+        imageList.add(objectLabel);
         this.add(objectLabel);
 
     }
     public void createText (String text) {
-        Textlist.add(text);
+        textList.add(text);
     }
     public void addCustomWindowCloseButton(){
         closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
@@ -197,17 +207,16 @@ public class DormRoomSceneT extends JPanel implements Runnable{
 
     public void buildScene(){
         createBackground("images/LevelOneMain.png");
-//        DormThings();
         addCustomWindowCloseButton();
         timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
-//        textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
         scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
         this.repaint();
         generateScreen();
-        showValues();
-        jLabel.add(new JLabel("Dekhi"));
-        this.repaint();
+        instantiateItemNameLabelList();
         CreateItemLabels();
+        showItemNamesInTextBox();
+        bigItemListLabel.add(new JLabel("Dekhi"));
+        this.repaint();
         URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
         MusicPlayer MusicPlayer = new MusicPlayer();
         MusicPlayer.playMusic(music);
@@ -217,5 +226,15 @@ public class DormRoomSceneT extends JPanel implements Runnable{
     public void run() {
         buildScene();
 
+    }
+
+    @Override
+    public void callSelf() {
+
+    }
+
+    @Override
+    public void startTimer() {
+        timerLabel.StartTimer();
     }
 }

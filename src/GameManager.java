@@ -93,10 +93,6 @@ public class GameManager {
             }
         });
 
-//        LoadingAnimationT loadingAnimationT_dorm = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,4,dormRoomSceneT);
-//        Thread loadingThread_dorm = new Thread(loadingAnimationT_dorm);
-//        loadingThread_dorm.start();
-
         /* Add map buttons **/
 
         MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(fontInfo,450,50, "Academic Building 2", mapT);

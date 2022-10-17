@@ -159,7 +159,7 @@ public class DormRoomScene extends JPanel{
     }
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
         createObject(image);
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), this);
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), this, buttonlist.size());
         this.add(objectHidingButton);
         buttonlist.add(objectHidingButton);
     }

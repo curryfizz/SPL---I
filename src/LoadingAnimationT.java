@@ -1,5 +1,7 @@
 package src;
 
+import shelved_classes.IScene;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -98,10 +100,9 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
             timer.stop();
             jFrame.remove(this);
 
-//            if(nextScene instanceof DormRoomSceneT){
-////                    ((DormRoomSceneT) nextScene).startLevel();
-//
-//            }
+            if(nextScene instanceof IScene){
+                ((IScene) nextScene).startTimer();
+            }
             jFrame.add(nextScene);
             jFrame.revalidate();
             jFrame.repaint();
