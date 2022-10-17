@@ -35,7 +35,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
 
     }
 
-    public void getNextScene(JPanel nextScene){
+    public void changeNextScene(JPanel nextScene){
         this.nextScene = nextScene;
     }
 
@@ -98,10 +98,10 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
             timer.stop();
             jFrame.remove(this);
 
-            if(nextScene instanceof DormRoomSceneT){
-//                    ((DormRoomSceneT) nextScene).startLevel();
-
-            }
+//            if(nextScene instanceof DormRoomSceneT){
+////                    ((DormRoomSceneT) nextScene).startLevel();
+//
+//            }
             jFrame.add(nextScene);
             jFrame.revalidate();
             jFrame.repaint();
