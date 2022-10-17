@@ -7,12 +7,19 @@ public class TimerLabel extends JLabel implements Runnable{
     JFrame jFrame;
     JPanel backGroundPanel;
     DeviceScreenInformation deviceScreenInformation;
+
+    ConfirmationWindowPopup timeUpWindowPopup;
     FontInfo fontInfo;
     int second;
     int minute;
     long StartTimeMili;
     int FPS = 60;
     Thread TimerThread;
+
+    LoadingAnimationT loadingAnimationT;
+
+    JPanel nextScene;
+    int choice;
     boolean isTimeOver = false;
     public TimerLabel(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
         this.jFrame = jFrame;
@@ -24,26 +31,60 @@ public class TimerLabel extends JLabel implements Runnable{
 //        backGroundPanel.setBounds(0, 0, 80, 60);
 //        backGroundPanel.setBackground(new Color(150, 150, 150));
 
-        second = 30;
+        second = 10;
         minute = 0;
 
         SetupTimerLabel();
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
+        this.setHorizontalAlignment(SwingConstants.CENTER);
 
 //        StartTimer();
     }
 
+
+    public void disableRemainingObjects(){
+        if(backGroundPanel instanceof DormRoomSceneT){
+
+
+            for(int i=0; i<((DormRoomSceneT)backGroundPanel).RandObjIndices.size(); i++){
+                ((DormRoomSceneT)backGroundPanel).buttonList.get(i).setEnabled(false);
+            }
+
+        }
+    }
+    public void endLevel(){
+        TimerThread.interrupt();
+
+        if(backGroundPanel instanceof DormRoomSceneT){
+
+//            disableRemainingObjects();
+            ((DormRoomSceneT)backGroundPanel).remove(((DormRoomSceneT) backGroundPanel).bigItemListLabel);
+            ((DormRoomSceneT)backGroundPanel).revalidate();
+            ((DormRoomSceneT)backGroundPanel).repaint();
+            ((DormRoomSceneT)backGroundPanel).showItemNamesInTextBox();
+            ((DormRoomSceneT)backGroundPanel).revalidate();
+            ((DormRoomSceneT)backGroundPanel).repaint();
+
+        }
+
+        jFrame.remove(backGroundPanel);
+        loadingAnimationT.changeNextScene(nextScene);
+        jFrame.add(loadingAnimationT);
+        loadingAnimationT.initializeTimer();
+        jFrame.revalidate();
+        jFrame.repaint();
+    }
     public void SetupTimerLabel(){
 //        counterLabel = new JLabel();
-        this.setBounds(5,5, 110, 45);
-        this.setBackground(Color.gray);
-        this.setForeground(Color.black);
+        this.setBounds(5,5, 120, 45);
+        this.setBackground(Color.decode("#14171C"));
+        this.setForeground(Color.white);
         this.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.white, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));
         this.setOpaque(true);
-        this.setFont(fontInfo.getResizedFont(29f));
+        this.setFont(fontInfo.getResizedFont(35f));
 
         drawTimer();
         backGroundPanel.repaint();
@@ -86,17 +127,18 @@ public class TimerLabel extends JLabel implements Runnable{
     }
 
     private void timeOver(){ //the popup glitches idk why orz
+
         isTimeOver = true;
 //        timer.stop();
-        ConfirmationWindowPopup timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
+        timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
         backGroundPanel.add(timeUpWindowPopup);
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         jFrame.repaint();
         jFrame.revalidate();
-        int choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Oh no! Your Time is Up","Time Up",JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+        choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Oh no! Your Time is Up","Time Up",JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
         if(choice==JOptionPane.OK_OPTION){
-            System.exit(0);
+            endLevel();
         }
 
     }
@@ -119,6 +161,9 @@ public class TimerLabel extends JLabel implements Runnable{
             if(milisecs > 1000){ //one second has passed
                 UpdateTimeVariables();
                 lastUpdatedAt = System.currentTimeMillis();
+                if(minute==0 && second==30){
+                    this.setForeground(new Color(200,0,0));
+                }
             }
         }
 

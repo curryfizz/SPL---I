@@ -117,7 +117,7 @@ public class StartMenuScreen extends JPanel implements IScene {
     }
 
     @Override
-    public void startTimer() {
+    public void startScene() {
 
     }
 }

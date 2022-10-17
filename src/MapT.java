@@ -60,8 +60,8 @@ public class MapT extends JPanel implements Runnable{
         this.add(padLockLibrary);
         padLockCDS=addPadLock(padLockCDS, 1050,350, 50);
         this.add(padLockCDS);
+        this.add(createTranslucentSideBar((int)deviceInfo.screenWidth/5));
         createMapBackground();
-        createTranslucentSideBar((int)deviceInfo.screenWidth/5);
     }
 
 
@@ -131,7 +131,7 @@ public class MapT extends JPanel implements Runnable{
     public void createBackgroundPanel(){
         this.setLayout(null);
         this.setPreferredSize(new Dimension(deviceInfo.screenWidth, deviceInfo.screenHeight));
-        this.setBackground(Color.CYAN);
+        this.setBackground(Color.black);
         this.setForeground(Color.decode("#C64C1D"));
     }
 
@@ -150,6 +150,7 @@ public class MapT extends JPanel implements Runnable{
     }
     public void addCustomWindowCloseButton(JFrame jFrame){
         closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
+
         this.add(closeButton);
     }
 

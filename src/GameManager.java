@@ -13,41 +13,42 @@ public class GameManager {
     }
 
     public GameManager(){
-//        GameTimer gameTimer = new GameTimer(ui);
-//
+
+        /* Set up the frame*/
         JFrame jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         jFrame.setVisible(true);
-        jFrame.setBackground(Color.white);
+        jFrame.setBackground(Color.decode("#14171C"));
         DeviceScreenInformation deviceScreenInformation = new DeviceScreenInformation();
         FontInfo fontInfo = new FontInfo();
-
-
+//        ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
+//
+//
+//        /* Instantiate the jpanels and the jpanel's threads
+//         each jPanel's thread BUILDS (only) the jpanel, so we can save time on panel building */
+//
         StartGameButton startGameButton = new StartGameButton(deviceScreenInformation,fontInfo);
         StartMenuScreenT startMenu = new StartMenuScreenT(jFrame, deviceScreenInformation,fontInfo);
-        Thread startScreen = new Thread(startMenu);
+        Thread startMenuThread = new Thread(startMenu);
 
         MapT mapT = new MapT(jFrame,deviceScreenInformation,fontInfo);
+        Thread mapThread = new Thread(mapT);
 
         DormRoomSceneT dormRoomSceneT = new DormRoomSceneT(jFrame,deviceScreenInformation,fontInfo);
-        Thread dormthread = new Thread(dormRoomSceneT);
-        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,1,mapT);
-        Thread loadScreen = new Thread(loadingAnimationT);
-        Thread GameMap = new Thread(mapT);
-        loadingAnimationT.getNextScene(dormRoomSceneT);
-        GameMap.start();
+        Thread dormRoomThread = new Thread(dormRoomSceneT);
 
-        loadScreen.start();
-        startScreen.start();
-        dormthread.start();
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,1,mapT);
+        Thread loadingThread_map = new Thread(loadingAnimationT);
+
+        mapThread.start();
+        loadingThread_map.start();
+        startMenuThread.start();
+        dormRoomThread.start();
+
         startMenu.add(startGameButton);
         jFrame.add(startMenu);
-//        jFrame.add(loadingAnimationT);
-
-
-//        timer.start();
 
         startGameButton.addMouseListener(new MouseListener() {
             boolean isHovering = false;
@@ -64,7 +65,7 @@ public class GameManager {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                startGameButton.setBackground(new Color(200,70,120));
+                startGameButton.setBackground(new Color(100,70,120));
             }
 
             @Override
@@ -93,40 +94,27 @@ public class GameManager {
             }
         });
 
-
-
-
-        StartGameButton startGameButton1 = new StartGameButton(deviceScreenInformation,fontInfo);
-
-        LoadingAnimationT loadingAnimationT1 = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,4,startMenu);
-        Thread loadingAnimation2 = new Thread(loadingAnimationT1);
-        loadingAnimation2.start();
+        /* Add map buttons **/
 
         MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(fontInfo,450,50, "Academic Building 2", mapT);
-//        mapLevelButtonsAC2.setEnabled(false);
         mapT.add(mapLevelButtonsAC2);
-
         MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(fontInfo,699,145, "Dormitory", mapT);
         mapT.add(mapLevelButtonsDorm);
-
-
         MapLevelButtons mapLevelButtonsCDS = new MapLevelButtons(fontInfo,979,300, "CDS", mapT);
         mapT.add(mapLevelButtonsCDS);
-
         MapLevelButtons mapLevelButtonLibrary = new MapLevelButtons(fontInfo,580,300, "Library", mapT);
         mapT.add(mapLevelButtonLibrary);
 
 
 
-
+        boolean checkTimer = false;
         mapLevelButtonsDorm.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 jFrame.remove(mapT);
-                loadingAnimationT.getNextScene(dormRoomSceneT);
-
+                loadingAnimationT.changeNextScene(dormRoomSceneT);
+                dormRoomSceneT.prepareEndOfLevel(loadingAnimationT,mapT);
                 jFrame.add(loadingAnimationT);
-
                 loadingAnimationT.initializeTimer();
 
                 jFrame.revalidate();
@@ -154,6 +142,10 @@ public class GameManager {
 
             }
         });
+
+
+
+
 
     }
 }

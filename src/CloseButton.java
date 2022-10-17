@@ -2,6 +2,8 @@ package src;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class CloseButton extends JButton {
 
@@ -22,7 +24,33 @@ public class CloseButton extends JButton {
         addExitText(text);
         setDefaultTextColor();
         exitConfirmation = new ConfirmationWindowPopup(fontInfo);
-        addCloseActions(fontInfo,jFrame,exitConfirmation);
+//        addCloseActions(fontInfo,jFrame,exitConfirmation);
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
         jFrame.revalidate();
         jFrame.repaint();
 
@@ -69,7 +97,7 @@ public class CloseButton extends JButton {
         setForeground(Color.white);
     }
 
-    private void addCloseActions(FontInfo fontInfo, JFrame jFrame, ConfirmationWindowPopup exitConfirmation){
-        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame, exitConfirmation));
-    }
+//    private void addCloseActions(FontInfo fontInfo, JFrame jFrame, ConfirmationWindowPopup exitConfirmation){
+//        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame, exitConfirmation));
+//    }
 }
