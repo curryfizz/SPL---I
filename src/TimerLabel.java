@@ -15,6 +15,11 @@ public class TimerLabel extends JLabel implements Runnable{
     long StartTimeMili;
     int FPS = 60;
     Thread TimerThread;
+
+    LoadingAnimationT loadingAnimationT;
+
+    JPanel nextScene;
+    int choice;
     boolean isTimeOver = false;
     public TimerLabel(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
         this.jFrame = jFrame;
@@ -26,8 +31,8 @@ public class TimerLabel extends JLabel implements Runnable{
 //        backGroundPanel.setBounds(0, 0, 80, 60);
 //        backGroundPanel.setBackground(new Color(150, 150, 150));
 
-        second = 0;
-        minute = 1;
+        second = 10;
+        minute = 0;
 
         SetupTimerLabel();
         backGroundPanel.repaint();
@@ -37,6 +42,28 @@ public class TimerLabel extends JLabel implements Runnable{
 //        StartTimer();
     }
 
+
+
+    public void endLevel(){
+        TimerThread.interrupt();
+        if(backGroundPanel instanceof DormRoomSceneT){
+
+            ((DormRoomSceneT)backGroundPanel).remove(((DormRoomSceneT) backGroundPanel).bigItemListLabel);
+            ((DormRoomSceneT)backGroundPanel).revalidate();
+            ((DormRoomSceneT)backGroundPanel).repaint();
+            ((DormRoomSceneT)backGroundPanel).showItemNamesInTextBox();
+            ((DormRoomSceneT)backGroundPanel).revalidate();
+            ((DormRoomSceneT)backGroundPanel).repaint();
+
+        }
+
+        jFrame.remove(backGroundPanel);
+        loadingAnimationT.changeNextScene(nextScene);
+        jFrame.add(loadingAnimationT);
+        loadingAnimationT.initializeTimer();
+        jFrame.revalidate();
+        jFrame.repaint();
+    }
     public void SetupTimerLabel(){
 //        counterLabel = new JLabel();
         this.setBounds(5,5, 120, 45);
@@ -89,6 +116,7 @@ public class TimerLabel extends JLabel implements Runnable{
     }
 
     private void timeOver(){ //the popup glitches idk why orz
+
         isTimeOver = true;
 //        timer.stop();
         timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
@@ -97,9 +125,9 @@ public class TimerLabel extends JLabel implements Runnable{
         backGroundPanel.revalidate();
         jFrame.repaint();
         jFrame.revalidate();
-        int choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Oh no! Your Time is Up","Time Up",JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
+        choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Oh no! Your Time is Up","Time Up",JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE);
         if(choice==JOptionPane.OK_OPTION){
-            System.exit(0);
+            endLevel();
         }
 
     }
@@ -123,7 +151,7 @@ public class TimerLabel extends JLabel implements Runnable{
                 UpdateTimeVariables();
                 lastUpdatedAt = System.currentTimeMillis();
                 if(minute==0 && second==30){
-                    this.setForeground(new Color(150,0,0));
+                    this.setForeground(new Color(200,0,0));
                 }
             }
         }

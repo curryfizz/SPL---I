@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
@@ -16,6 +17,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     FontInfo fontInfo;
     Rectangle maxBounds;
 
+    boolean isTimerOver;
     JLabel bigItemListLabel;
     public int score = 0;
     CloseButton closeButton;
@@ -32,6 +34,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     ArrayList<JLabel> itemNameLabelList = new ArrayList<>(); //the labels containing item names that were randomly chosen
     public ArrayList<Integer> RandObjIndices;
 
+    RandomGenerator randomGenerator;
     public  DormRoomSceneT(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
         this.jFrame = jFrame;
         this.deviceInfo = deviceInfo;
@@ -39,6 +42,11 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         maxBounds = deviceInfo.graphicsEnvironment.getMaximumWindowBounds();
         textBox_height = 50;
 
+    }
+
+    public void prepareEndOfLevel(LoadingAnimationT loadingAnimationT, JPanel nextScene){
+        timerLabel.loadingAnimationT = loadingAnimationT;
+        timerLabel.nextScene = nextScene;
     }
 
     public void CreateItemLabels(){
@@ -124,7 +132,8 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     }
 
     public void showItemNamesInTextBox(){
-        RandomGenerator randomGenerator = new RandomGenerator(buttonList.size());
+        CreateItemLabels();
+        randomGenerator = new RandomGenerator(buttonList.size());
         randomGenerator.createUnique();
         this.RandObjIndices = randomGenerator.RandObjIndices;
 
@@ -217,9 +226,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         this.repaint();
         generateScreen();
         instantiateItemNameLabelList();
-        CreateItemLabels();
         showItemNamesInTextBox();
-//        bigItemListLabel.add(new JLabel("Dekhi"));
         this.repaint();
         music = getClass().getClassLoader().getResource("images/bgmusic.wav");
     }
@@ -237,6 +244,9 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     @Override
     public void startScene() {
+        timerLabel.isTimeOver = false;
+        timerLabel.second = 10;
+        timerLabel.minute = 0;
         timerLabel.StartTimer();
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);

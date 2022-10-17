@@ -106,13 +106,13 @@ public class GameManager {
 
 
 
-
+        boolean checkTimer = false;
         mapLevelButtonsDorm.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 jFrame.remove(mapT);
                 loadingAnimationT.changeNextScene(dormRoomSceneT);
-
+                dormRoomSceneT.prepareEndOfLevel(loadingAnimationT,mapT);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
 
@@ -141,6 +141,7 @@ public class GameManager {
 
             }
         });
+
 
 
 
