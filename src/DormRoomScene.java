@@ -43,9 +43,9 @@ public class DormRoomScene extends JPanel{
 
 
         addCustomWindowCloseButton(window);
-        URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
+       // URL music = getClass().getClassLoader().getResource("images/bgmusic.wav");
         MusicPlayer MusicPlayer = new MusicPlayer();
-        MusicPlayer.playMusic(music);
+     //   MusicPlayer.playMusic(music);
     }
 
     private void DormThings() {
