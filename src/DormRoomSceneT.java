@@ -28,7 +28,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     TextBox textBox;
     ScoreBoard scoreBoard;
     URL music;
-
+    int offset;
     int textBox_height;
     public ArrayList<JLabel> imageList = new ArrayList<>();
     public ArrayList<ObjectHidingButton> buttonList = new ArrayList<>(); //all the buttons for the objects are in this
@@ -52,7 +52,6 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     }
 
     public void CreateItemLabels(){
-//        ItemLabel Item1 = new ItemLabel(this, fontInfo,deviceInfo.screenWidth/10, deviceInfo.screenHeight-25, textList.get(randObjIndices.get(0)));
         bigItemListLabel = new JLabel();
         bigItemListLabel.setLayout(new GridLayout(1,5));
         bigItemListLabel.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
@@ -86,49 +85,74 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         backgroundLabel.setIcon(imageIcon);
     }
     public  void generateScreen() {
-        createButton("images/01.png",308,450 - 50,65,84);
+        offset = -25;
+        System.out.println(deviceInfo.screenWidth + " " + deviceInfo.screenHeight);
+
+        createButton("images/01.png",deviceInfo.screenWidth*308/1536,deviceInfo.screenHeight*425/864,
+                deviceInfo.screenWidth*68/1536,deviceInfo.screenHeight*88/864);
         createText("Cornflakes Box");
-        createButton("images/02.png",1190,520 - 50,18,30);
+        createButton("images/02.png",deviceInfo.screenWidth*1188/1536,deviceInfo.screenHeight*492/864,
+                deviceInfo.screenWidth*18/1536,deviceInfo.screenHeight*33/864);
         createText("CocaCola Can");
-        createButton("images/03.png",1242,440 - 50,78,54);
-        createText("ShoulderBag");
-        createButton("images/04.png",1130,750 - 50,60,26);
+        createButton("images/03.png",deviceInfo.screenWidth*1235/1536,deviceInfo.screenHeight*407/864,
+                deviceInfo.screenWidth*86/1536,deviceInfo.screenHeight*55/864);
+        createText("Shoulder Bag");
+        createButton("images/04.png",deviceInfo.screenWidth*1130/1536,deviceInfo.screenHeight*740/864,
+                deviceInfo.screenWidth*67/1536,deviceInfo.screenHeight*26/864);
         createText("HeadPhone");
-        createButton("images/05.png",330,740 - 50,43,32);
+        createButton("images/05.png",deviceInfo.screenWidth*325/1536,deviceInfo.screenHeight*728/864,
+                deviceInfo.screenWidth*43/1536,deviceInfo.screenHeight*32/864);
         createText("Phone");
-        createButton("images/06.png",410,689 - 50,69,13);
-        createText("Phone");
-        createButton("images/07.png",1104,712 - 50,68,22);
+        createButton("images/06.png",deviceInfo.screenWidth*419/1536,deviceInfo.screenHeight*671/864,
+                deviceInfo.screenWidth*60/1536,deviceInfo.screenHeight*16/864);
+        createText("Calculator");
+        createButton("images/07.png",deviceInfo.screenWidth*1102/1536,deviceInfo.screenHeight*703/864,
+                deviceInfo.screenWidth*70/1536,deviceInfo.screenHeight*22/864);
         createText("Sunglasses");
-        createButton("images/08.png",860,410 - 50,25,12);
+        createButton("images/08.png",deviceInfo.screenWidth*855/1536,deviceInfo.screenHeight*380/864,
+                deviceInfo.screenWidth*30/1536,deviceInfo.screenHeight*12/864);
         createText("Garbage");
-        createButton("images/09.png",484,390 - 50,50,32);
+        createButton("images/09.png",deviceInfo.screenWidth*484/1536,deviceInfo.screenHeight*365/864,
+                deviceInfo.screenWidth*50/1536,deviceInfo.screenHeight*32/864);
         createText("Toilet Paper");
-        createButton("images/10.png",544,440 - 50,68,24);
+        createButton("images/10.png",deviceInfo.screenWidth*544/1536,deviceInfo.screenHeight*415/864,
+                deviceInfo.screenWidth*68/1536,deviceInfo.screenHeight*24/864);
         createText("Food");
-        createButton("images/11.png",94,750 - 50,158,24);
-        createText("Cloth");
-        createButton("images/12.png",744,555 - 50,98,60);
-        createText("BagPack");
-        createButton("images/13.png",523,610 - 50,34,68);
-        createText("Scarf");
-        createButton("images/14.png",184,470 - 50,80,80);
+        createButton("images/11.png",deviceInfo.screenWidth*95/1536,deviceInfo.screenHeight*737/864,
+                deviceInfo.screenWidth*168/1536,deviceInfo.screenHeight*27/864);
+        createText("Blanket");
+        createButton("images/12.png",deviceInfo.screenWidth*740/1536,deviceInfo.screenHeight*535/864,
+                deviceInfo.screenWidth*110/1536,deviceInfo.screenHeight*75/864);
+        createText("BackPack");
+        createButton("images/13.png",deviceInfo.screenWidth*515/1536,deviceInfo.screenHeight*600/864,
+                deviceInfo.screenWidth*42/1536,deviceInfo.screenHeight*70/864);
+        createText("Cloth Pile");
+        createButton("images/14.png",deviceInfo.screenWidth*190/1536,deviceInfo.screenHeight*430/864,
+                deviceInfo.screenWidth*85/1536,deviceInfo.screenHeight*95/864);
         createText("Pizza Box");
-        createButton("images/15.png",1034,440 - 50,28,20);
+        createButton("images/15.png",deviceInfo.screenWidth*1033/1536,deviceInfo.screenHeight*412/864,
+                deviceInfo.screenWidth*32/1536,deviceInfo.screenHeight*18/864);
         createText("Folded Clothes");
-        createButton("images/16.png",894,524 - 50,28,19);
+        createButton("images/16.png",deviceInfo.screenWidth*894/1536,deviceInfo.screenHeight*495/864,
+                deviceInfo.screenWidth*28/1536,deviceInfo.screenHeight*19/864);
         createText("Chips Packet");
-        createButton("images/17.png",1204,730 - 50,98,43);
+        createButton("images/17.png",deviceInfo.screenWidth*1204/1536,deviceInfo.screenHeight*725/864,
+                deviceInfo.screenWidth*110/1536,deviceInfo.screenHeight*43/864);
         createText("Unfolded Cloth");
-        createButton("images/18.png",724,50 - 50,160,20);
+        createButton("images/18.png",deviceInfo.screenWidth*722/1536,deviceInfo.screenHeight*0/864,
+                deviceInfo.screenWidth*165/1536,deviceInfo.screenHeight*23/864);
         createText("Quilt");
-        createButton("images/19.png",924,524 - 50,30,19);
+        createButton("images/19.png",deviceInfo.screenWidth*924/1536,deviceInfo.screenHeight*500/864,
+                deviceInfo.screenWidth*43/1536,deviceInfo.screenHeight*20/864);
         createText("Book");
-        createButton("images/20.png",1368,760 - 50,48,14);
+        createButton("images/20.png",deviceInfo.screenWidth*1365/1536,deviceInfo.screenHeight*752/864,
+                deviceInfo.screenWidth*70/1536,deviceInfo.screenHeight*15/864);
         createText("FoodPlate");
-        createButton("images/21.png",934,485 - 50,40,24);
+        createButton("images/21.png",deviceInfo.screenWidth*934/1536,deviceInfo.screenHeight*455/864,
+                deviceInfo.screenWidth*40/1536,deviceInfo.screenHeight*24/864);
         createText("Shoes");
-        createButton("images/22.png",494,435 - 50,18,14);
+        createButton("images/22.png",deviceInfo.screenWidth*489/1536,deviceInfo.screenHeight*405/864,
+                deviceInfo.screenWidth*26/1536,deviceInfo.screenHeight*14/864);
         createText("TeaCup");
 
         this.add(backgroundLabel);
@@ -152,12 +176,6 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     }
 
     private void instantiateItemNameLabelList() {
-//        for(int i = 0; i < (RandObjIndices.size()); i++){
-//            JLabel temp = new JLabel();
-//            temp.setForeground(Color.white);
-//            temp.setText(textList.get(RandObjIndices.get(i)));
-//            itemNameLabelList.add(temp);
-//        }
 
         for(int i = 0; i < textList.size(); i++){
             JLabel temp = new JLabel(textList.get(i), SwingConstants.CENTER);
@@ -169,9 +187,38 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     }
 
+    public void  createObject( String image ) {
+        JLabel objectLabel = new JLabel();
+        objectLabel.setBounds(0,-textBox_height,maxBounds.width,maxBounds.height);
+
+        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+        Image image1 = obj1icon.getImage();
+        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-100, Image.SCALE_DEFAULT);
+        obj1icon = new ImageIcon(image1);
+
+        objectLabel.setIcon(obj1icon);
+        imageList.add(objectLabel);
+        this.add(objectLabel);
+
+    }
+
+    public JLabel createObject1(String image){
+        JLabel objectLabel = new JLabel();
+        objectLabel.setBounds(0,-textBox_height,maxBounds.width,maxBounds.height);
+
+        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+        Image image1 = obj1icon.getImage();
+        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-100, Image.SCALE_DEFAULT);
+        obj1icon = new ImageIcon(image1);
+
+        objectLabel.setIcon(obj1icon);
+        imageList.add(objectLabel);
+        return objectLabel;
+
+    }
 
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
-        createObject(image);
+        JLabel objectLabel = createObject1(image);
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size()){
             @Override
             public void addSceneEventsListener(ObjectHidingButton button){
@@ -192,23 +239,9 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
                 });
             }
         };
-//        objectHidingButton.setBackground(Color.orange);
         this.add(objectHidingButton);
-        buttonList.add(objectHidingButton);
-    }
-    public void  createObject( String image ) {
-        JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(0,-textBox_height,maxBounds.width,maxBounds.height);
-
-        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-        Image image1 = obj1icon.getImage();
-        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-100, Image.SCALE_DEFAULT);
-        obj1icon = new ImageIcon(image1);
-
-        objectLabel.setIcon(obj1icon);
-        imageList.add(objectLabel);
         this.add(objectLabel);
-
+        buttonList.add(objectHidingButton);
     }
     public void createText (String text) {
         textList.add(text);
@@ -303,7 +336,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     public void startScene() {
         timerLabel.isTimeOver = false;
         timerLabel.second = 10;
-        timerLabel.minute = 0;
+        timerLabel.minute = 2;
         timerLabel.StartTimer();
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);

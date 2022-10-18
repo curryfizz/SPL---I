@@ -106,7 +106,7 @@ public class ConfirmationDialog extends JDialog {
         });
         add(closeButton2);
         setVisible(true);
-        jFrame.add(this);
+//        jFrame.add(this);
     }
 
     public static String convertToMultiline(String orig)

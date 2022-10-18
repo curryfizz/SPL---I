@@ -40,10 +40,10 @@ public class GameManager {
         Thread dormRoomThread = new Thread(dormRoomSceneT);
 
         LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,1,mapT);
-        Thread loadingThread_map = new Thread(loadingAnimationT);
+        Thread loadingThread = new Thread(loadingAnimationT);
 
         mapThread.start();
-        loadingThread_map.start();
+        loadingThread.start();
         startMenuThread.start();
         dormRoomThread.start();
 
