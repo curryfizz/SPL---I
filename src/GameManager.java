@@ -133,6 +133,8 @@ public class GameManager {
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
 
+                mapT.dormText.setVisible(false);
+                mapLevelButtonsDorm.setBackground(Color.BLACK);
                 jFrame.revalidate();
                 jFrame.repaint();
 
@@ -150,12 +152,16 @@ public class GameManager {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                mapLevelButtonsDorm.setBackground(Color.PINK);
+                mapT.dormText.setVisible(true);
 
+                mapT.revalidate();
+                mapT.repaint();
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-
+                mapLevelButtonsDorm.setBackground(Color.BLACK);
             }
         });
 

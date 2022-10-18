@@ -26,14 +26,31 @@ public class MapT extends JPanel implements Runnable{
     JLabel padLockCDS;
     ImageIcon padLock;
     CloseButton closeButton;
+    JLabel dormText;
 
     public MapT(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
 
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
         this.jFrame = jFrame;
+        addDormText();
 
 
+    }
+    public void addDormText(){
+        dormText = new JLabel(
+                "<html>Mom packed a special Surprise for me?<br/>Let's go back to my room and see what it is.</html>",
+                SwingConstants.CENTER);
+        dormText.setLayout(null);
+        dormText.setBounds(1300, 200, deviceInfo.screenWidth/5 -100, 500);
+        dormText.setBackground(Color.decode("#14171C"));
+        dormText.setForeground(Color.white);
+//                text.setOpaque(true);
+        dormText.setFont(fontInfo.getResizedFont(32f));
+
+        dormText.setVisible(false);
+        add(dormText);
+        repaint();
     }
 
     public JLabel addPadLock(JLabel label, int posX, int posY, int side){
