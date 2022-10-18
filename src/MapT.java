@@ -52,8 +52,8 @@ public class MapT extends JPanel implements Runnable{
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
         padLock = getScaledImage("images/Level images/level_locked.png", 50,50);
-        padLockDorm=addPadLock(padLockDorm, 770,195, 50);
-        this.add(padLockDorm);
+//        padLockDorm=addPadLock(padLockDorm, 770,195, 50);
+//        this.add(padLockDorm);
         padLockAC2=addPadLock(padLockAC2, 530,120, 50);
         this.add(padLockAC2);
         padLockLibrary=addPadLock(padLockLibrary, 650,350, 50);
