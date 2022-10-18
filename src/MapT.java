@@ -190,4 +190,8 @@ public class MapT extends JPanel implements Runnable{
     public void run() {
         buildScene();
     }
+
+    /*TODO:
+    Fix score bullshit
+     */
 }

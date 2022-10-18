@@ -349,4 +349,13 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);
     }
+
+    /*TODO:
+    make text box, score, timer appear after pop up is gone
+    make timer start after pop up is gone
+    disable buttons while pop up is there
+    make popup more noticible
+    make sure popup is gone properly and buttons behind can be accessed (otherwise instead of set visible, try remove)
+
+     */
 }
