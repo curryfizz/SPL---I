@@ -21,14 +21,14 @@ public class LevelToMapConfirmationDialog extends JDialog {
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
-        jLabel.setPreferredSize(new Dimension(140,90));
+        jLabel.setPreferredSize(new Dimension(170,90));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
-        jLabel.setText(convertToMultiline("Exit to Menu"));
-        jLabel.setFont(fontInfo.getResizedFont(28f));
+        jLabel.setText(convertToMultiline("Exit to Map?\n Progress will not be saved :( "));
+        jLabel.setFont(fontInfo.getResizedFont(26f));
         add(jLabel);
-        jLabel.setHorizontalAlignment(JLabel.CENTER);
-        setSize(160,180);
+        jLabel.setHorizontalTextPosition(JLabel.CENTER);
+        setSize(200,180);
         setLocationRelativeTo(jFrame);
         setResizable(false);
         closeButton = new JButton();
@@ -84,6 +84,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
         closeButton2.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 dispose();
             }
 
@@ -109,7 +110,6 @@ public class LevelToMapConfirmationDialog extends JDialog {
         });
         add(closeButton2);
         setVisible(true);
-        jFrame.add(this);
     }
 
     public static String convertToMultiline(String orig)

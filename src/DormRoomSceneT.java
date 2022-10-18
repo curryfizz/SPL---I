@@ -28,6 +28,8 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     TextBox textBox;
     ScoreBoard scoreBoard;
     URL music;
+
+    int imagesFound;
     int offset;
     int textBox_height;
     public ArrayList<JLabel> imageList = new ArrayList<>();
@@ -228,12 +230,21 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
                         if(isEnabled()) {
                             imageLabel.setVisible(false);
                             score += 100;
+                            imagesFound+=1;
                             scoreBoard.setText(" 0" + Integer.toString(score));
                             scoreBoard.setHorizontalTextPosition(SwingConstants.CENTER);
                             scoreBoard.repaint();
                             repaint();
                             setEnabled(false);
                             itemNameLabelList.get(myIndex).setVisible(false);
+                            if(imagesFound == 6){
+                                if(scenePanel instanceof DormRoomSceneT){
+                                    ((DormRoomSceneT)scenePanel).timerLabel.isTimeOver = true;
+
+                                }
+                                LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,fontInfo,scenePanel);
+
+                            }
                         }
                     }
                 });
@@ -263,6 +274,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
         addCustomWindowCloseButton();
         this.repaint();
+        imagesFound=0;
         generateScreen();
         instantiateItemNameLabelList();
         showItemNamesInTextBox();
