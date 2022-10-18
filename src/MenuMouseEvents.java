@@ -15,21 +15,21 @@ public class MenuMouseEvents implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(buttonInfo.equals("Dormitory")){
-            mapT.remove(mapT.padLockDorm);
-            mapT.revalidate();
-            mapT.repaint();
+//            mapT.remove(mapT.padLockDorm);
+//            mapT.revalidate();
+//            mapT.repaint();
         }else if(buttonInfo.equals("Academic Building 2")){
-            mapT.remove(mapT.padLockAC2);
-            mapT.revalidate();
-            mapT.repaint();
+//            mapT.remove(mapT.padLockAC2);
+//            mapT.revalidate();
+//            mapT.repaint();
         }else if(buttonInfo.equals("Library")){
-            mapT.remove(mapT.padLockLibrary);
-            mapT.revalidate();
-            mapT.repaint();
+//            mapT.remove(mapT.padLockLibrary);
+//            mapT.revalidate();
+//            mapT.repaint();
         }else if(buttonInfo.equals("CDS")){
-            mapT.remove(mapT.padLockCDS);
-            mapT.revalidate();
-            mapT.repaint();
+//            mapT.remove(mapT.padLockCDS);
+//            mapT.revalidate();
+//            mapT.repaint();
         }
     }
 

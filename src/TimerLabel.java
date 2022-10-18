@@ -16,6 +16,7 @@ public class TimerLabel extends JLabel implements Runnable{
     int FPS = 60;
     Thread TimerThread;
 
+    int score;
     LoadingAnimationT loadingAnimationT;
 
     JPanel nextScene;
@@ -33,6 +34,7 @@ public class TimerLabel extends JLabel implements Runnable{
 
 //        second = 10;
 //        minute = 2;
+        score=0;
 
         SetupTimerLabel();
         backGroundPanel.repaint();
@@ -71,6 +73,11 @@ public class TimerLabel extends JLabel implements Runnable{
 
         jFrame.remove(backGroundPanel);
         loadingAnimationT.changeNextScene(nextScene);
+        if(loadingAnimationT.nextScene instanceof MapT){
+            ((MapT) loadingAnimationT.nextScene).score += score;
+            ((MapT) loadingAnimationT.nextScene).updateScore();
+
+        }
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
         jFrame.revalidate();
@@ -130,6 +137,7 @@ public class TimerLabel extends JLabel implements Runnable{
     private void timeOver(){ //the popup glitches idk why orz
 
         isTimeOver = true;
+        score = 0;
 //        timer.stop();
         timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
         backGroundPanel.add(timeUpWindowPopup);

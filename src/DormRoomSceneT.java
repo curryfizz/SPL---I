@@ -29,6 +29,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     ScoreBoard scoreBoard;
     URL music;
 
+    boolean levelFinished;
     int imagesFound;
     int offset;
     int textBox_height;
@@ -43,6 +44,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         this.jFrame = jFrame;
         this.deviceInfo = deviceInfo;
         this.fontInfo = fontInfo;
+        levelFinished = false;
         maxBounds = deviceInfo.graphicsEnvironment.getMaximumWindowBounds();
         textBox_height = 50;
 
@@ -240,9 +242,16 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
                             if(imagesFound == 6){
                                 if(scenePanel instanceof DormRoomSceneT){
                                     ((DormRoomSceneT)scenePanel).timerLabel.isTimeOver = true;
+                                    ((DormRoomSceneT)scenePanel).timerLabel.score = score;
+
 
                                 }
+
                                 LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,fontInfo,scenePanel);
+                                scenePanel.revalidate();
+                                scenePanel.repaint();
+                                jFrame.revalidate();
+                                jFrame.repaint();
 
                             }
                         }
