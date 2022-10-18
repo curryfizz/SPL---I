@@ -1,6 +1,8 @@
 package src;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 public class PlayerScoreBoard extends JLabel{
@@ -20,12 +22,10 @@ public class PlayerScoreBoard extends JLabel{
     }
 
     public void SetupScoreBoard(){
-        this.setBounds(5,5, 250, 50);
+        this.setBounds(0,0, 250, 50);
         this.setBackground(Color.decode("#14171C"));
-        this.setForeground(Color.decode("#FFFF9F"));
-        this.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.white, 2),
-                BorderFactory.createEmptyBorder(0,20,0,20)));
+        this.setForeground(Color.decode("#FFD700"));
+        setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),5), BorderFactory.createLineBorder(Color.decode("#FFD700"),2)));
         this.setOpaque(true);
         this.setFont(fontInfo.getResizedFont(35f));
 

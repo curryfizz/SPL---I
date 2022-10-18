@@ -30,7 +30,7 @@ public class CloseButton extends JButton {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
+                ExitWindowConfirmationDialog exitWindowConfirmationDialog = new ExitWindowConfirmationDialog(jFrame,fontInfo);
             }
 
             @Override
