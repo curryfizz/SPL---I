@@ -16,6 +16,10 @@ public class MapT extends JPanel implements Runnable{
     ImageIcon outOfFocus;
     JLabel backgroundLabel;
 
+    PlayerScoreBoard playerScoreBoard;
+
+    int score;
+
     JLabel padLockAC2;
     JLabel padLockDorm;
     JLabel padLockLibrary;
@@ -24,6 +28,7 @@ public class MapT extends JPanel implements Runnable{
     CloseButton closeButton;
 
     public MapT(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
+
         this.deviceInfo = deviceScreenInformation;
         this.fontInfo = fontInfo;
         this.jFrame = jFrame;
@@ -48,10 +53,14 @@ public class MapT extends JPanel implements Runnable{
 
     }
 
+    public void updateScore(){
+        playerScoreBoard.setText("Current Score: " + score);
+    }
     public void buildScene(){
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
         padLock = getScaledImage("images/Level images/level_locked.png", 50,50);
+        playerScoreBoard = new PlayerScoreBoard(jFrame, this,deviceInfo,fontInfo);
 //        padLockDorm=addPadLock(padLockDorm, 770,195, 50);
 //        this.add(padLockDorm);
         padLockAC2=addPadLock(padLockAC2, 530,120, 50);
@@ -135,10 +144,7 @@ public class MapT extends JPanel implements Runnable{
         this.setForeground(Color.decode("#C64C1D"));
     }
 
-    public void addStartGameButton(){
-//        startGameButton = new StartGameButton(jdeviceInfo,fontInfo);
-//        this.add(startGameButton);
-    }
+
     public void createGameTitleLabel(){
         gameTitle = new JLabel();
         gameTitle.setBounds(0,deviceInfo.screenHeight/2,deviceInfo.screenWidth,100);

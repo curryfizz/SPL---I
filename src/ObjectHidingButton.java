@@ -36,8 +36,8 @@ public class ObjectHidingButton extends JButton {
         setFocusPainted(false);
         setBorderPainted(false);
 
-//        setEnabled(false); // plz uncomment me
-        setEnabled(true);// debugging
+        setEnabled(false); // plz uncomment me
+//        setEnabled(true);// debugging
 
 //        setBackground(C);
         setBounds(positionX,positionY,buttonWidth,buttonHeight);

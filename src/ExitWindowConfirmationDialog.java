@@ -6,13 +6,13 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ConfirmationDialog extends JDialog {
+public class ExitWindowConfirmationDialog extends JDialog {
 
     JLabel jLabel;
     JButton closeButton;
 
     JButton closeButton2;
-    public ConfirmationDialog(JFrame jFrame, FontInfo fontInfo){
+    public ExitWindowConfirmationDialog(JFrame jFrame, FontInfo fontInfo){
 
         setModal(true);
         setUndecorated(true);
