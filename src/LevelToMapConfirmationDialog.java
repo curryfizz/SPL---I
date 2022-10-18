@@ -6,13 +6,13 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ConfirmationDialog extends JDialog {
+public class LevelToMapConfirmationDialog extends JDialog {
 
     JLabel jLabel;
     JButton closeButton;
 
     JButton closeButton2;
-    public ConfirmationDialog(JFrame jFrame, FontInfo fontInfo){
+    public LevelToMapConfirmationDialog(JFrame jFrame, FontInfo fontInfo, JPanel jPanel){
 
         setModal(true);
         setUndecorated(true);
@@ -24,7 +24,7 @@ public class ConfirmationDialog extends JDialog {
         jLabel.setPreferredSize(new Dimension(140,90));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
-        jLabel.setText(convertToMultiline("Do you want to exit?"));
+        jLabel.setText(convertToMultiline("Exit to Menu"));
         jLabel.setFont(fontInfo.getResizedFont(28f));
         add(jLabel);
         jLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -44,8 +44,10 @@ public class ConfirmationDialog extends JDialog {
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
-                System.exit(0);
+                if(jPanel instanceof DormRoomSceneT){
+                    ((DormRoomSceneT)jPanel).timerLabel.endLevel();
+                    dispose();
+                }
             }
 
             @Override
@@ -107,7 +109,7 @@ public class ConfirmationDialog extends JDialog {
         });
         add(closeButton2);
         setVisible(true);
-//        jFrame.add(this);
+        jFrame.add(this);
     }
 
     public static String convertToMultiline(String orig)
