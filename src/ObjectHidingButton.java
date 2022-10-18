@@ -29,6 +29,7 @@ public class ObjectHidingButton extends JButton {
 
         repaint();
         setBackground(new Color(0,0,0,0));
+//        setBackground(null);
         setBackground(Color.pink);
 //        setVisible(false);
         repaint();
