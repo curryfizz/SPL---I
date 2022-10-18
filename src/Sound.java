@@ -7,14 +7,13 @@ import java.net.URL;
 public class Sound {
     Clip clip;
     float PreviousVolume = 0;
-    float currentVolume = 0;
+    float currentVolume = -17;
     boolean mute =false;
     FloatControl fc;
     public  void setFile(URL url){
 
         try {
-            AudioInputStream sound;
-            sound = AudioSystem.getAudioInputStream(url);
+            AudioInputStream sound = AudioSystem.getAudioInputStream(url);
             clip= AudioSystem.getClip();
             clip.open(sound);
             fc = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
@@ -48,6 +47,7 @@ public class Sound {
 
     public void volumeUp(){
 currentVolume +=1.0f;
+System.out.println("current Volume: " + currentVolume);
 if(currentVolume >6.0f)
 {
     currentVolume= 6.0f;
