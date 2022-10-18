@@ -16,6 +16,8 @@ public class MessageFromMomT extends JPanel implements Runnable {
     JLabel Bubble2;
     JLabel Text1;
     JLabel Text2;
+    LoadingAnimationT loadingAnimationT;
+    JPanel nextScene;
     int taps = 0;
 
     public  MessageFromMomT(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
@@ -105,6 +107,20 @@ public class MessageFromMomT extends JPanel implements Runnable {
         repaint();
     }
 
+    public void PrepareForTheEnd(LoadingAnimationT loadingAnimationT, JPanel nextScene) {
+        this.loadingAnimationT = loadingAnimationT;
+        this.nextScene = nextScene;
+    }
+    public void EndScene(){
+        jFrame.remove(this);
+        loadingAnimationT.changeNextScene(nextScene);
+        jFrame.add(loadingAnimationT);
+        loadingAnimationT.initializeTimer();
+
+        jFrame.revalidate();
+        jFrame.repaint();
+    }
+
     private void addListener() {
         addMouseListener(new MouseListener() {
             @Override
@@ -123,6 +139,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
                     revalidate();
                 }else {
                     // next scene
+                    EndScene();
                 }
 
             }
@@ -176,7 +193,6 @@ public class MessageFromMomT extends JPanel implements Runnable {
         this.add(backgroundLabel);
         repaint();
         revalidate();
-        jFrame.add(this);
     }
 
     @Override
