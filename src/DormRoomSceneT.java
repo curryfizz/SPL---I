@@ -8,9 +8,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
@@ -173,9 +171,15 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         for(int i=0; i<RandObjIndices.size(); i++){
             index = RandObjIndices.get(i);
             bigItemListLabel.add(itemNameLabelList.get(index));
-            buttonList.get(index).setEnabled(true);
+//            buttonList.get(index).setEnabled(true);
         }
 
+    }
+
+    public void enableObjectButtons(){
+        for(int i=0; i<6; i++){
+            buttonList.get(RandObjIndices.get(i)).setEnabled(true);
+        }
     }
 
     private void instantiateItemNameLabelList() {
@@ -290,9 +294,17 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
 
     public void buildScene(){
+        MessNotification();
         createBackground("images/LevelOneMain.png");
         timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
+        timerLabel.setVisible(false);
+        revalidate();
+        repaint();
         scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
+
+        scoreBoard.setVisible(false);
+        revalidate();
+        repaint();
         addCustomWindowCloseButton();
         this.repaint();
         imagesFound=0;
@@ -314,7 +326,12 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         messNotification.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                enableObjectButtons();
+                resetVariables();
                 messNotification.setVisible(false);
+                revalidate();
+                repaint();
+//                messNotification.setVisible(false);
             }
 
             @Override
@@ -342,7 +359,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     @Override
     public void run() {
-        MessNotification();
+
         buildScene();
 
     }
@@ -354,6 +371,18 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     @Override
     public void startScene() {
+        bigItemListLabel.setVisible(false);
+        messNotification.setVisible(true);
+        timerLabel.setVisible(false);
+        scoreBoard.setVisible(false);
+        cleanScreen();
+
+//        this.remove(messNotification);
+
+    }
+
+
+    public void cleanScreen(){
         timerLabel.isTimeOver = false;
         timerLabel.second = 60;
         timerLabel.minute = 0;
@@ -361,6 +390,29 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         scoreBoard.setText("0000");
         imagesFound = 0;
         score=0;
+
+    }
+
+    public void resetVariables(){
+
+        timerLabel.setForeground(Color.white);
+        timerLabel.isTimeOver = false;
+        timerLabel.second = 60;
+        timerLabel.minute = 0;
+        timerLabel.score=0;
+
+        timerLabel.setVisible(true);
+        revalidate();
+        repaint();
+        scoreBoard.setVisible(true);
+        revalidate();
+        repaint();
+
+        bigItemListLabel.setVisible(true);
+        revalidate();
+        repaint();
+
+
         timerLabel.StartTimer();
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);

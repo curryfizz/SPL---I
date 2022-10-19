@@ -48,7 +48,6 @@ public class TimerLabel extends JLabel implements Runnable{
     public void disableRemainingObjects(){
         if(backGroundPanel instanceof DormRoomSceneT){
 
-
             for(int i=0; i<((DormRoomSceneT)backGroundPanel).RandObjIndices.size(); i++){
                 ((DormRoomSceneT)backGroundPanel).buttonList.get(i).setEnabled(false);
             }
