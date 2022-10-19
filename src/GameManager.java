@@ -34,8 +34,10 @@ public class GameManager {
 //        Thread messageFromMomThread = new Thread(messageFromMomT);
 //
 //        messageFromMomThread.start();
-
+//
 //        jFrame.add(messageFromMomT);
+//        jFrame.repaint();
+//        jFrame.revalidate();
 
 
 
@@ -52,9 +54,11 @@ public class GameManager {
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame, deviceScreenInformation, fontInfo);
         Thread messageMomThread = new Thread(messageFromMomT);
 
-        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,1,mapT);
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,1,messageFromMomT);
         Thread loadingThread = new Thread(loadingAnimationT);
 
+        messageFromMomT.PrepareForTheEnd(loadingAnimationT, mapT);
+        messageMomThread.start();
         mapThread.start();
         loadingThread.start();
         startMenuThread.start();
@@ -129,6 +133,8 @@ public class GameManager {
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
 
+                mapT.dormText.setVisible(false);
+                mapLevelButtonsDorm.setBackground(Color.BLACK);
                 jFrame.revalidate();
                 jFrame.repaint();
 
@@ -146,12 +152,16 @@ public class GameManager {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                mapLevelButtonsDorm.setBackground(Color.PINK);
+                mapT.dormText.setVisible(true);
 
+                mapT.revalidate();
+                mapT.repaint();
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-
+                mapLevelButtonsDorm.setBackground(Color.BLACK);
             }
         });
 

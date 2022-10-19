@@ -38,7 +38,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     public ArrayList<String> textList = new ArrayList<>(); //all the names of the objects are in this\
     ArrayList<JLabel> itemNameLabelList = new ArrayList<>(); //the labels containing item names that were randomly chosen
     public ArrayList<Integer> RandObjIndices;
-
+    JButton messNotification;
     RandomGenerator randomGenerator;
     public  DormRoomSceneT(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
         this.jFrame = jFrame;
@@ -303,8 +303,46 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         music = getClass().getClassLoader().getResource("images/bgmusic.wav");
     }
 
+    public void MessNotification(){
+        messNotification = new JButton("<html>Oh No, The room looks like it got ransaked?! Where is my present?</html>");
+        messNotification.setBounds(500,100,500,200);
+        messNotification.setBackground(Color.gray);
+        messNotification.setForeground(Color.white);
+        messNotification.setFont(fontInfo.getResizedFont(42f));
+        messNotification.setFocusPainted(false);
+        messNotification.setBorderPainted(false);
+        messNotification.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                messNotification.setVisible(false);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        this.add(messNotification);
+    }
+
     @Override
     public void run() {
+        MessNotification();
         buildScene();
 
     }
@@ -327,4 +365,13 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);
     }
+
+    /*TODO:
+    make text box, score, timer appear after pop up is gone
+    make timer start after pop up is gone
+    disable buttons while pop up is there
+    make popup more noticible
+    make sure popup is gone properly and buttons behind can be accessed (otherwise instead of set visible, try remove)
+
+     */
 }
