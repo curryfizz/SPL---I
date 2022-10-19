@@ -38,6 +38,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     public ArrayList<Integer> RandObjIndices;
     JButton messNotification;
     RandomGenerator randomGenerator;
+    boolean tapped = false;
     public  DormRoomSceneT(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
         this.jFrame = jFrame;
         this.deviceInfo = deviceInfo;
@@ -316,22 +317,27 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     }
 
     public void MessNotification(){
-        messNotification = new JButton("<html>Oh No, The room looks like it got ransaked?! Where is my present?</html>");
-        messNotification.setBounds(500,100,500,200);
-        messNotification.setBackground(Color.gray);
-        messNotification.setForeground(Color.white);
-        messNotification.setFont(fontInfo.getResizedFont(42f));
+        messNotification = new JButton("<html>Oh No, The room looks like it got ransaked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>");
+
+        messNotification.setFont(fontInfo.getResizedFont(34f));
         messNotification.setFocusPainted(false);
-        messNotification.setBorderPainted(false);
-        messNotification.addMouseListener(new MouseListener() {
+        messNotification.setEnabled(false);
+        messNotification.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
+        messNotification.setBackground(Color.decode("#14171C"));
+        messNotification.setForeground(Color.white);
+        messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
+        messNotification.setOpaque(true);
+        this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                resetVariables();
-                enableObjectButtons();
-                messNotification.setVisible(false);
-                revalidate();
-                repaint();
-//                messNotification.setVisible(false);
+                if(!tapped) {
+                    resetVariables();
+                    enableObjectButtons();
+                    messNotification.setVisible(false);
+                    revalidate();
+                    repaint();
+                    tapped = true;
+                }
             }
 
             @Override

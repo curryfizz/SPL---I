@@ -76,7 +76,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
 
     private void createText1(){
         Text1 = new JLabel(
-                "<html>Assalamualaikum Dear<br/>Did you reach safely?<br/>Hope your class are going well.</html>",
+                "<html>Assalamualaikum Dear<br/>Did you reach safely?<br/>Hope your classes are going well.</html>",
                 SwingConstants.CENTER);
         Text1.setLayout(null);
         Text1.setBounds(400, 50, 400, 300);
