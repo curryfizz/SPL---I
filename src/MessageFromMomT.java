@@ -76,7 +76,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
 
     private void createText1(){
         Text1 = new JLabel(
-                "<html>Assalamualaikum Dear<br/>Did you reach safely?<br/>Hope your classs are going well.</html>",
+                "<html>Assalamualaikum Dear<br/>Did you reach safely?<br/>Hope your class are going well.</html>",
                 SwingConstants.CENTER);
         Text1.setLayout(null);
         Text1.setBounds(400, 50, 400, 300);
@@ -92,7 +92,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
     }
     private void createText2(){
         Text2 = new JLabel(
-                "<html>Oh I forgot to mention<br/>I packed a special surpise present for you in your bag<br/>Tell me if you like it.</html>",
+                "<html>Oh I forgot to mention<br/>I packed a special present for you in your bag<br/>Tell me if you like it.</html>",
                 SwingConstants.CENTER);
         Text2.setLayout(null);
         Text2.setBounds(1050, 10, 400, 300);

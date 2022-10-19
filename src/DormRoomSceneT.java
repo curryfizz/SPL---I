@@ -326,8 +326,8 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         messNotification.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                enableObjectButtons();
                 resetVariables();
+                enableObjectButtons();
                 messNotification.setVisible(false);
                 revalidate();
                 repaint();
@@ -371,7 +371,6 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     @Override
     public void startScene() {
-        bigItemListLabel.setVisible(false);
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
@@ -395,10 +394,9 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     public void resetVariables(){
 
-        timerLabel.setForeground(Color.white);
         timerLabel.isTimeOver = false;
-        timerLabel.second = 60;
-        timerLabel.minute = 0;
+        timerLabel.second = 30;
+        timerLabel.minute = 2;
         timerLabel.score=0;
 
         timerLabel.setVisible(true);
@@ -407,12 +405,6 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         scoreBoard.setVisible(true);
         revalidate();
         repaint();
-
-        bigItemListLabel.setVisible(true);
-        revalidate();
-        repaint();
-
-
         timerLabel.StartTimer();
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);
