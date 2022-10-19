@@ -167,7 +167,6 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         randomGenerator = new RandomGenerator(buttonList.size());
         randomGenerator.createUnique();
         this.RandObjIndices = randomGenerator.RandObjIndices;
-
         this.add(bigItemListLabel);
         int index;
 //        bigItemListLabel.add(new JLabel());
@@ -190,6 +189,19 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         }
 
     }
+
+
+    public void resetItemNameLabelList() {
+
+        for(int i = 0; i < textList.size(); i++){
+            itemNameLabelList.get(i).setVisible(true);
+            imageList.get(i).setVisible(true);
+
+        }
+
+    }
+
+
 
     public void  createObject( String image ) {
         JLabel objectLabel = new JLabel();
@@ -246,7 +258,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
 
                                 }
-
+                                imagesFound=0;
                                 LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,fontInfo,scenePanel);
                                 scenePanel.revalidate();
                                 scenePanel.repaint();
@@ -305,8 +317,12 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     @Override
     public void startScene() {
         timerLabel.isTimeOver = false;
-        timerLabel.second = 10;
-        timerLabel.minute = 2;
+        timerLabel.second = 60;
+        timerLabel.minute = 0;
+        timerLabel.score=0;
+        scoreBoard.setText("0000");
+        imagesFound = 0;
+        score=0;
         timerLabel.StartTimer();
         MusicPlayer musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);

@@ -60,7 +60,7 @@ public class TimerLabel extends JLabel implements Runnable{
     public void endLevel(){
         isTimeOver=true;
         if(backGroundPanel instanceof DormRoomSceneT){
-
+            ((DormRoomSceneT)backGroundPanel).resetItemNameLabelList();
 //            disableRemainingObjects();
             ((DormRoomSceneT)backGroundPanel).remove(((DormRoomSceneT) backGroundPanel).bigItemListLabel);
             ((DormRoomSceneT)backGroundPanel).revalidate();
@@ -101,6 +101,7 @@ public class TimerLabel extends JLabel implements Runnable{
     }
 
     public void StartTimer() {
+
         TimerThread = new Thread(this);
         StartTimeMili = System.currentTimeMillis();
         TimerThread.start(); // starts run method in another thread

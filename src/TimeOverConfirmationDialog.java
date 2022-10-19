@@ -23,7 +23,7 @@ public class TimeOverConfirmationDialog extends JDialog {
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
-        jLabel.setPreferredSize(new Dimension(140,90));
+        jLabel.setPreferredSize(new Dimension(280,90));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Oh no! Your Time is Up"));
@@ -35,7 +35,7 @@ public class TimeOverConfirmationDialog extends JDialog {
         setResizable(false);
         closeButton = new JButton();
         closeButton.setBackground(Color.decode("#14171C"));
-        closeButton.setPreferredSize(new Dimension(110,30));
+        closeButton.setPreferredSize(new Dimension(180,40));
         closeButton.setFocusPainted(false);
         closeButton.setHorizontalAlignment(JButton.CENTER);
         closeButton.setBorder(new LineBorder(Color.white,2));

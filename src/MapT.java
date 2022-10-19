@@ -20,6 +20,7 @@ public class MapT extends JPanel implements Runnable{
 
     int score;
 
+    int dormSceneScore;
     JLabel padLockAC2;
     JLabel padLockDorm;
     JLabel padLockLibrary;

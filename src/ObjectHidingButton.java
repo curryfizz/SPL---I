@@ -28,8 +28,10 @@ public class ObjectHidingButton extends JButton {
     public void createInvisibleButton(){
 
         repaint();
-        setBackground(new Color(0,0,0,0));
-        setBackground(Color.pink);
+//        setBackground(new Color(0,0,0,0));
+//        setBackground(Color.pink);
+        setOpaque(false);
+        setContentAreaFilled(false);
 //        setVisible(false);
         repaint();
 
@@ -41,8 +43,6 @@ public class ObjectHidingButton extends JButton {
 
 //        setBackground(C);
         setBounds(positionX,positionY,buttonWidth,buttonHeight);
-//        setOpaque(false);
-//        setContentAreaFilled(false);
 
 
         addSceneEventsListener(this);
