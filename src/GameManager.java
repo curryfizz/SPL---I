@@ -70,7 +70,15 @@ public class GameManager {
 
         jFrame.add(startMenu);
 
-
+        /*
+        TODO:
+        - score scaling
+        - hint function
+        - gif during click
+        - new levels
+        - plot
+        - fix lame text boxes
+        * */
 
 
 
