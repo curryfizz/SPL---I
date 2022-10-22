@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.*;
 
-public class DormRoomSceneT extends JPanel implements Runnable, IScene {
+public class DormRoomSceneT extends IScene implements Runnable{
 
     JFrame jFrame;
 //    DeviceInformation deviceInfo;
@@ -47,10 +47,10 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     }
 
-    public void prepareEndOfLevel(LoadingAnimationT loadingAnimationT, JPanel nextScene){
-        timerLabel.loadingAnimationT = loadingAnimationT;
-        timerLabel.nextScene = nextScene;
-    }
+//    public void prepareEndOfLevel(LoadingAnimationT loadingAnimationT, JPanel nextScene){
+//        timerLabel.loadingAnimationT = loadingAnimationT;
+//        timerLabel.nextScene = nextScene;
+//    }
 
     public void CreateItemLabels(){
         BigItemListAtBottomOfScreen = new JLabel();
@@ -382,6 +382,12 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
 //        this.remove(messNotification);
 
+    }
+
+    @Override
+    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, JPanel mapT) {
+        timerLabel.loadingAnimationT = loadingAnimationT;
+        timerLabel.nextScene = mapT;
     }
 
 

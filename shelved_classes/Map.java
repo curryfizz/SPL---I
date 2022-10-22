@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Map extends JPanel implements IScene {
+public class Map extends JPanel {
 
     DeviceInformation deviceInfo;
     FontInfo fontInfo;
@@ -112,7 +112,7 @@ public class Map extends JPanel implements IScene {
 
     public void StartDormScene(){
         System.out.println("Entered Dorm Scene");
-        DecoyAnimation decoyAnimation = new DecoyAnimation(new Map(jFrame,deviceInfo,fontInfo),jFrame, deviceInfo,fontInfo,7);
+//        DecoyAnimation decoyAnimation = new DecoyAnimation(new Map(jFrame,deviceInfo,fontInfo),jFrame, deviceInfo,fontInfo,7);
 //        this.setVisible(false);
 
 //        DormButton.setOpaque(false);
@@ -135,13 +135,4 @@ public class Map extends JPanel implements IScene {
 
     }
 
-    @Override
-    public void callSelf() {
-        new Map(jFrame,deviceInfo,fontInfo);
-    }
-
-    @Override
-    public void startScene() {
-
-    }
 }

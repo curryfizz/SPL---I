@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class DormRoom extends JPanel implements IScene {
+public class DormRoom extends JPanel  {
     JFrame jFrame;
     DeviceInformation deviceInfo;
     FontInfo fontInfo;
@@ -81,16 +81,16 @@ public class DormRoom extends JPanel implements IScene {
         this.repaint();
     }
 
-    @Override
-    public void callSelf() {
-        new DormRoom(jFrame,deviceInfo,fontInfo);
-    }
-
-    @Override
-    public void startScene() {
-        TimerLabel timerLabel = new TimerLabel(jFrame, this);
-        TextBox textBox = new TextBox(jFrame, this);
-        scoreBoard = new ScoreBoard(jFrame, this);
-
-    }
+//    @Override
+//    public void callSelf() {
+//        new DormRoom(jFrame,deviceInfo,fontInfo);
+//    }
+//
+//    @Override
+//    public void startScene() {
+//        TimerLabel timerLabel = new TimerLabel(jFrame, this);
+//        TextBox textBox = new TextBox(jFrame, this);
+//        scoreBoard = new ScoreBoard(jFrame, this);
+//
+//    }
 }

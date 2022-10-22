@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class StartMenuScreen extends JPanel implements IScene {
+public class StartMenuScreen extends JPanel {
     JFrame jFrame;
     JLabel gameTitle;
     JButton startGameButton;
@@ -105,13 +105,5 @@ public class StartMenuScreen extends JPanel implements IScene {
         this.add(closeButton);
     }
 
-    @Override
-    public void callSelf() {
-//        new StartMenuScreenT(jFrame,deviceInfo,fontInfo);
-    }
 
-    @Override
-    public void startScene() {
-
-    }
 }

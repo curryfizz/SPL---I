@@ -57,6 +57,7 @@ public class GameManager {
         LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,1,messageFromMomT);
         Thread loadingThread = new Thread(loadingAnimationT);
 
+        mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT);
         startMenu.PrepareForSceneTransition(loadingAnimationT, mapT);
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
 
@@ -68,12 +69,6 @@ public class GameManager {
 
 
         jFrame.add(startMenu);
-
-
-
-        /* Add map buttons **/
-
-
 
 
 

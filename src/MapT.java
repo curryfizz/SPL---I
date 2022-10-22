@@ -30,7 +30,7 @@ public class MapT extends JPanel implements Runnable{
     CloseButton closeButton;
     JLabel dormText;
     private LoadingAnimationT loadingAnimationT;
-    private JPanel dormRoomSceneT;
+    private IScene dormRoomSceneT;
 
     public MapT(JFrame jFrame){
 
@@ -75,6 +75,7 @@ public class MapT extends JPanel implements Runnable{
         playerScoreBoard.setText("Current Score: " + score);
     }
     public void buildScene(){
+        doMapButtonThings();
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
         padLock = getScaledImage("images/Level images/level_locked.png", 50,50);
@@ -89,35 +90,32 @@ public class MapT extends JPanel implements Runnable{
         this.add(padLockCDS);
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
-        doMapButtonThings();
     }
-    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, JPanel dormSceneT) {
+    public void AddAllScenes(LoadingAnimationT loadingAnimationT, IScene dormSceneT) {
         this.loadingAnimationT = loadingAnimationT;
         this.dormRoomSceneT = dormSceneT;
     }
 
     private void doMapButtonThings() {
         MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(450,50, "Academic Building 2", this);
-        this.add(mapLevelButtonsAC2);
+//        this.add(mapLevelButtonsAC2);
         MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(699,145, "Dormitory", this);
-        this.add(mapLevelButtonsDorm);
+//        this.add(mapLevelButtonsDorm);
         MapLevelButtons mapLevelButtonsCDS = new MapLevelButtons(979,300, "CDS", this);
-        this.add(mapLevelButtonsCDS);
+//        this.add(mapLevelButtonsCDS);
         MapLevelButtons mapLevelButtonLibrary = new MapLevelButtons(580,300, "Library", this);
-        this.add(mapLevelButtonLibrary);
-
-
+//        this.add(mapLevelButtonLibrary);
 
         mapLevelButtonsDorm.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                jFrame.remove(this);
+                jFrame.remove(mapLevelButtonsDorm.mapT);
                 loadingAnimationT.changeNextScene(dormRoomSceneT);
-                dormRoomSceneT.PrepareForSceneTransition(loadingAnimationT,mapT);
+                dormRoomSceneT.PrepareForSceneTransition(loadingAnimationT,mapLevelButtonLibrary.mapT);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
 
-                mapT.dormText.setVisible(false);
+                mapLevelButtonsDorm.mapT.dormText.setVisible(false);
                 mapLevelButtonsDorm.setBackground(Color.BLACK);
                 jFrame.revalidate();
                 jFrame.repaint();
@@ -137,10 +135,10 @@ public class MapT extends JPanel implements Runnable{
             @Override
             public void mouseEntered(MouseEvent e) {
                 mapLevelButtonsDorm.setBackground(Color.PINK);
-                mapT.dormText.setVisible(true);
+                mapLevelButtonsDorm.mapT.dormText.setVisible(true);
 
-                mapT.revalidate();
-                mapT.repaint();
+                mapLevelButtonsDorm.mapT.revalidate();
+                mapLevelButtonsDorm.mapT.repaint();
             }
 
             @Override
