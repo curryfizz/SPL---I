@@ -7,14 +7,14 @@ public class MusicSlider extends JSlider {
 
     JFrame jFrame;
     JPanel backGroundPanel;
-    DeviceScreenInformation deviceScreenInformation;
+    DeviceInformation deviceInformation;
     FontInfo fontInfo;
 
-    public MusicSlider(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
+    public MusicSlider(JFrame jFrame, JPanel backGroundPanel, DeviceInformation deviceInformation, FontInfo fontInfo) {
         super(-80, 6);
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-        this.deviceScreenInformation = deviceScreenInformation;
+        this.deviceInformation = deviceInformation;
         this.fontInfo = fontInfo;
         SetupMusicSlider();
     }

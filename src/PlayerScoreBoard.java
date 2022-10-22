@@ -1,22 +1,20 @@
 package src;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
 import java.awt.*;
 
 public class PlayerScoreBoard extends JLabel{
     JFrame jFrame;
     JPanel backGroundPanel;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
 
-    public PlayerScoreBoard(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
+    public PlayerScoreBoard(JFrame jFrame, JPanel backGroundPanel, DeviceInformation deviceInformation, FontInfo fontInfo) {
         super("Current Score: 0", SwingConstants.CENTER);
         this.setVerticalTextPosition(SwingConstants.BOTTOM); //kaj korena
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         SetupScoreBoard();
     }

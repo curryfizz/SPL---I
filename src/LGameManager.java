@@ -53,11 +53,11 @@ public class LGameManager {
 
 
 
-        DeviceScreenInformation deviceScreenInformation = new DeviceScreenInformation();
+        DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
-        DormRoomScene dormRoomScene = new DormRoomScene(jFrame,deviceScreenInformation,fontInfo);
+        DormRoomScene dormRoomScene = new DormRoomScene(jFrame, deviceInformation,fontInfo);
 
-        MusicSlider musicSlider = new MusicSlider(jFrame,dormRoomScene, deviceScreenInformation,fontInfo);
+        MusicSlider musicSlider = new MusicSlider(jFrame,dormRoomScene, deviceInformation,fontInfo);
 
         jFrame.add(volumeUpB);
 

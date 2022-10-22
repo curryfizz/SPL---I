@@ -2,12 +2,10 @@ package src;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class StartGameButton extends JButton {
 
-    public StartGameButton(DeviceScreenInformation deviceInfo, FontInfo fontInfo){
+    public StartGameButton(DeviceInformation deviceInfo, FontInfo fontInfo){
         setBounds(deviceInfo.screenWidth/2-150,2*deviceInfo.screenHeight/3, 300,70);
         setHorizontalAlignment(JButton.CENTER);
         setBorder(BorderFactory.createCompoundBorder(

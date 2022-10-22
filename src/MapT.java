@@ -8,7 +8,7 @@ public class MapT extends JPanel implements Runnable{
     JFrame jFrame;
     JLabel gameTitle;
     StartGameButton startGameButton;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
 
     ImageIcon inFocus;
@@ -29,9 +29,9 @@ public class MapT extends JPanel implements Runnable{
     CloseButton closeButton;
     JLabel dormText;
 
-    public MapT(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
+    public MapT(JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo){
 
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         this.jFrame = jFrame;
         addDormText();

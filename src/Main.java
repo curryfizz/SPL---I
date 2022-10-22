@@ -6,7 +6,6 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URI;
 import java.net.URL;
 
 public class Main {
@@ -40,7 +39,7 @@ public class Main {
             }
         });
         JPanel dummy = new JPanel();
-        dummy.setBounds(new DeviceScreenInformation().graphicsEnvironment.getMaximumWindowBounds());
+        dummy.setBounds(new DeviceInformation().graphicsEnvironment.getMaximumWindowBounds());
         dummy.setBackground(Color.BLACK);
         dummy.add(slider);
         window.add(dummy);

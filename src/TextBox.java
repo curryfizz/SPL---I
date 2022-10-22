@@ -6,13 +6,13 @@ import java.awt.*;
 public class TextBox extends JLabel {
     JFrame jFrame;
     JPanel backGroundPanel;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
 
-    public TextBox(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
+    public TextBox(JFrame jFrame, JPanel backGroundPanel, DeviceInformation deviceInformation, FontInfo fontInfo) {
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         SetupTextBoxLabel();
     }

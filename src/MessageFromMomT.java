@@ -9,7 +9,7 @@ import java.util.Objects;
 public class MessageFromMomT extends JPanel implements Runnable {
 
     JFrame jFrame;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
     JLabel backgroundLabel;
     JLabel Bubble1;
@@ -20,7 +20,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
     JPanel nextScene;
     int taps = 0;
 
-    public  MessageFromMomT(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
+    public  MessageFromMomT(JFrame jFrame, DeviceInformation deviceInfo, FontInfo fontInfo){
         this.jFrame = jFrame;
         this.deviceInfo = deviceInfo;
         this.fontInfo = fontInfo;

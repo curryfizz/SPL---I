@@ -9,17 +9,17 @@ import java.awt.event.MouseListener;
 
 public class DormRoom extends JPanel implements IScene {
     JFrame jFrame;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
 
     ScoreBoard scoreBoard;
     CloseButton closeButton;
     int score = 0;
-    public DormRoom(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
+    public DormRoom(JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo){
         jFrame.revalidate();
         jFrame.repaint();
         this.jFrame = jFrame;
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);

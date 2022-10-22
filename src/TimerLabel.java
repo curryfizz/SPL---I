@@ -6,7 +6,7 @@ import java.awt.*;
 public class TimerLabel extends JLabel implements Runnable{
     JFrame jFrame;
     JPanel backGroundPanel;
-    DeviceScreenInformation deviceScreenInformation;
+    DeviceInformation deviceInformation;
 
     ConfirmationWindowPopup timeUpWindowPopup;
     FontInfo fontInfo;
@@ -22,10 +22,10 @@ public class TimerLabel extends JLabel implements Runnable{
     JPanel nextScene;
     int choice;
     boolean isTimeOver = false;
-    public TimerLabel(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
+    public TimerLabel(JFrame jFrame, JPanel backGroundPanel, DeviceInformation deviceInformation, FontInfo fontInfo) {
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-        this.deviceScreenInformation = deviceScreenInformation;
+        this.deviceInformation = deviceInformation;
         this.fontInfo = fontInfo;
 
 //        backGroundPanel.setLayout(null);
@@ -62,7 +62,7 @@ public class TimerLabel extends JLabel implements Runnable{
         if(backGroundPanel instanceof DormRoomSceneT){
             ((DormRoomSceneT)backGroundPanel).resetItemNameLabelList();
 //            disableRemainingObjects();
-            ((DormRoomSceneT)backGroundPanel).remove(((DormRoomSceneT) backGroundPanel).bigItemListLabel);
+            ((DormRoomSceneT)backGroundPanel).remove(((DormRoomSceneT) backGroundPanel).BigItemListAtBottomOfScreen);
             ((DormRoomSceneT)backGroundPanel).revalidate();
             ((DormRoomSceneT)backGroundPanel).repaint();
             ((DormRoomSceneT)backGroundPanel).showItemNamesInTextBox();

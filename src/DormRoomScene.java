@@ -4,14 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class DormRoomScene extends JPanel{
     JFrame window;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
     Rectangle maxBounds;
     int score = 0;
@@ -21,7 +18,7 @@ public class DormRoomScene extends JPanel{
     public ArrayList<ObjectHidingButton> buttonlist = new ArrayList<>(); //all the buttons for the objects are in this
     public ArrayList<String> Textlist = new ArrayList<>(); //all the names of the objects are in this
 
-    public  DormRoomScene(JFrame jFrame, DeviceScreenInformation deviceInfo, FontInfo fontInfo){
+    public  DormRoomScene(JFrame jFrame, DeviceInformation deviceInfo, FontInfo fontInfo){
         this.window = jFrame;
         this.deviceInfo = deviceInfo;
         this.fontInfo = fontInfo;

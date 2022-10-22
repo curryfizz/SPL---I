@@ -8,16 +8,16 @@ import java.awt.event.MouseListener;
 public class LevelCloseButton extends JButton {
 
     //too many one line methods
-    DeviceScreenInformation deviceScreenInformation;
+    DeviceInformation deviceInformation;
     FontInfo fontInfo;
 
     ConfirmationWindowPopup exitConfirmation;
 
     JPanel jPanel;
-    public LevelCloseButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo, JPanel jPanel){
-        this.deviceScreenInformation = deviceScreenInformation;
+    public LevelCloseButton(DeviceInformation deviceInformation, String text, JFrame jFrame, FontInfo fontInfo, JPanel jPanel){
+        this.deviceInformation = deviceInformation;
         this.fontInfo = fontInfo;
-        setDefaultPosition(deviceScreenInformation);
+        setDefaultPosition(deviceInformation);
         removeBackground();
         removeBorder();
         removeFocusPaint();
@@ -64,8 +64,8 @@ public class LevelCloseButton extends JButton {
         setBounds(Posx,Posy,width,height);
     }
 
-    private void setDefaultPosition(DeviceScreenInformation deviceScreenInformation){
-        setBounds(deviceScreenInformation.screenWidth-50, 5, 50,50);
+    private void setDefaultPosition(DeviceInformation deviceInformation){
+        setBounds(deviceInformation.screenWidth-50, 5, 50,50);
     }
     private void removeBackground(){
         setBackground(null);

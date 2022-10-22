@@ -13,6 +13,9 @@ public class GameManager {
     }
 
     public GameManager(){
+        LibrarySceneT l = new LibrarySceneT();
+        DeviceInformation deviceInformation = new DeviceInformation();
+        FontInfo fontInfo = new FontInfo();
 
         /* Set up the frame*/
         JFrame jFrame = new JFrame();
@@ -21,8 +24,7 @@ public class GameManager {
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         jFrame.setVisible(true);
         jFrame.setBackground(Color.decode("#14171C"));
-        DeviceScreenInformation deviceScreenInformation = new DeviceScreenInformation();
-        FontInfo fontInfo = new FontInfo();
+
 //        ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
 //
 //
@@ -41,20 +43,20 @@ public class GameManager {
 
 
 
-        StartGameButton startGameButton = new StartGameButton(deviceScreenInformation,fontInfo);
-        StartMenuScreenT startMenu = new StartMenuScreenT(jFrame, deviceScreenInformation,fontInfo);
+        StartGameButton startGameButton = new StartGameButton(deviceInformation,fontInfo);
+        StartMenuScreenT startMenu = new StartMenuScreenT(jFrame, deviceInformation,fontInfo);
         Thread startMenuThread = new Thread(startMenu);
 
-        MapT mapT = new MapT(jFrame,deviceScreenInformation,fontInfo);
+        MapT mapT = new MapT(jFrame, deviceInformation,fontInfo);
         Thread mapThread = new Thread(mapT);
 
-        DormRoomSceneT dormRoomSceneT = new DormRoomSceneT(jFrame,deviceScreenInformation,fontInfo);
+        DormRoomSceneT dormRoomSceneT = new DormRoomSceneT(jFrame, deviceInformation,fontInfo);
         Thread dormRoomThread = new Thread(dormRoomSceneT);
 
-        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame, deviceScreenInformation, fontInfo);
+        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame, deviceInformation, fontInfo);
         Thread messageMomThread = new Thread(messageFromMomT);
 
-        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,deviceScreenInformation,fontInfo,1,messageFromMomT);
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame, deviceInformation,fontInfo,1,messageFromMomT);
         Thread loadingThread = new Thread(loadingAnimationT);
 
         messageFromMomT.PrepareForTheEnd(loadingAnimationT, mapT);
@@ -168,6 +170,6 @@ public class GameManager {
 
 
 
-//
+
     }
 }

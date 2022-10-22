@@ -1,19 +1,19 @@
 package shelved_classes;
 
-import src.DeviceScreenInformation;
+import src.DeviceInformation;
 import src.FontInfo;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class StartButton extends JButton {
-    DeviceScreenInformation deviceScreenInformation;
+    DeviceInformation deviceInformation;
     FontInfo fontInfo;
 
-    StartButton(DeviceScreenInformation deviceScreenInformation, String text, JFrame jFrame, FontInfo fontInfo){
-        this.deviceScreenInformation = deviceScreenInformation;
+    StartButton(DeviceInformation deviceInformation, String text, JFrame jFrame, FontInfo fontInfo){
+        this.deviceInformation = deviceInformation;
         this.fontInfo = fontInfo;
-        setDefaultPosition(deviceScreenInformation);
+        setDefaultPosition(deviceInformation);
         removeBackground();
         addBorder();
         removeFocusPaint();
@@ -30,8 +30,8 @@ public class StartButton extends JButton {
         setBounds(Posx,Posy,width,height);
     }
 
-    private void setDefaultPosition(DeviceScreenInformation deviceScreenInformation){
-        setBounds(deviceScreenInformation.screenWidth/2 - 150, 2*deviceScreenInformation.screenHeight/3, 300,70);
+    private void setDefaultPosition(DeviceInformation deviceInformation){
+        setBounds(deviceInformation.screenWidth/2 - 150, 2* deviceInformation.screenHeight/3, 300,70);
     }
 
     private void removeBackground(){

@@ -11,7 +11,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     JFrame jFrame;
 
     JPanel nextScene;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
     Timer timer;
     JLabel loadingText;
@@ -26,9 +26,9 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     boolean timerStopped;
     long animationRunTime;
     int increment;
-    LoadingAnimationT(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo, int animationDuration, JPanel nextScene){
+    LoadingAnimationT(JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo, int animationDuration, JPanel nextScene){
         this.jFrame = jFrame;
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         this.animationDuration = animationDuration;
         this.nextScene = nextScene;

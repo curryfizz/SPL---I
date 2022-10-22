@@ -2,7 +2,7 @@ package shelved_classes;
 
 
 import src.CloseButton;
-import src.DeviceScreenInformation;
+import src.DeviceInformation;
 import src.FontInfo;
 
 import javax.swing.*;
@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
 
 public class Map extends JPanel implements IScene {
 
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
 
 
@@ -23,11 +23,11 @@ public class Map extends JPanel implements IScene {
     JLabel backgroundLabel;
     int width;
     int height;
-    public Map(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
+    public Map(JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo){
         this.jFrame = jFrame;
 //        jFrame.revalidate();
 //        jFrame.repaint();
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo =fontInfo;
         width = deviceInfo.screenWidth;
         height = deviceInfo.screenHeight;

@@ -2,19 +2,17 @@ package src;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class StartMenuScreenT extends JPanel implements Runnable{
     JFrame jFrame;
     JLabel gameTitle;
     StartGameButton startGameButton;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
     CloseButton closeButton;
 
-    public StartMenuScreenT(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
-        this.deviceInfo = deviceScreenInformation;
+    public StartMenuScreenT(JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo){
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         this.jFrame = jFrame;
 

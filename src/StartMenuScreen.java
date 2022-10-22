@@ -1,10 +1,6 @@
 package src;
 
-import shelved_classes.DecoyAnimation;
 import shelved_classes.IScene;
-import src.CloseButton;
-import src.DeviceScreenInformation;
-import src.FontInfo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,12 +11,12 @@ public class StartMenuScreen extends JPanel implements IScene {
     JFrame jFrame;
     JLabel gameTitle;
     JButton startGameButton;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
     CloseButton closeButton;
-    public StartMenuScreen(JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo){
+    public StartMenuScreen(JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo){
         this.jFrame = jFrame;
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);

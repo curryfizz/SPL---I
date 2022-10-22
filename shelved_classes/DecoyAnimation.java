@@ -1,6 +1,6 @@
 package shelved_classes;
 
-import src.DeviceScreenInformation;
+import src.DeviceInformation;
 import src.FontInfo;
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class DecoyAnimation extends JPanel implements ActionListener{
     IScene iScene;
     JFrame jFrame;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
     Timer timer;
     JLabel loadingText;
@@ -22,9 +22,9 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     int loadingDotMaxX; //maximum x position of the dot, will return to initial position
     int loadingDotCurrentX; //current dot position, will be used by paint/repaint
     int animationDuration;
-    DecoyAnimation(IScene iScene,JFrame jFrame, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo, int animationDuration){
+    DecoyAnimation(IScene iScene, JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo, int animationDuration){
         this.jFrame = jFrame;
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         this.animationDuration = animationDuration;
         this.iScene = iScene;

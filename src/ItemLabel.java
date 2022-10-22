@@ -6,7 +6,7 @@ import java.awt.*;
 public class ItemLabel extends JLabel {
     JFrame jFrame;
     JPanel backGroundPanel;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
     int x;
     int y;

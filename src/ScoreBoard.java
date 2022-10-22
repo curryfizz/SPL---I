@@ -6,15 +6,15 @@ import java.awt.*;
 public class ScoreBoard extends JLabel{
     JFrame jFrame;
     JPanel backGroundPanel;
-    DeviceScreenInformation deviceInfo;
+    DeviceInformation deviceInfo;
     FontInfo fontInfo;
 
-    public ScoreBoard(JFrame jFrame, JPanel backGroundPanel, DeviceScreenInformation deviceScreenInformation, FontInfo fontInfo) {
+    public ScoreBoard(JFrame jFrame, JPanel backGroundPanel, DeviceInformation deviceInformation, FontInfo fontInfo) {
         super("0000", SwingConstants.CENTER);
         this.setVerticalTextPosition(SwingConstants.BOTTOM); //kaj korena
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-        this.deviceInfo = deviceScreenInformation;
+        this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         SetupScoreBoard();
     }
