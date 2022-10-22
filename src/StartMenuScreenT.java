@@ -2,6 +2,8 @@ package src;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class StartMenuScreenT extends JPanel implements Runnable{
     JFrame jFrame;
@@ -10,13 +12,20 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 //    DeviceInformation deviceInfo;
 //    FontInfo fontInfo;
     CloseButton closeButton;
+    LoadingAnimationT loadingAnimationT;
+    JPanel nextScene;
 
     public StartMenuScreenT(JFrame jFrame){
 //        this.deviceInfo = deviceInformation;
 //        this.fontInfo = fontInfo;
         this.jFrame = jFrame;
+        this.startGameButton = new StartGameButton(this);
+        this.add(startGameButton);
+    }
 
-
+    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, JPanel nextScene) {
+        this.loadingAnimationT = loadingAnimationT;
+        this.nextScene = nextScene;
     }
 
 
@@ -26,10 +35,56 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         addCustomWindowCloseButton(jFrame);
         createGameTitleLabel();
         this.add(gameTitle);
+        doButtonThings();
 
 //        this.add(startGameButton);
     }
 
+    private void doButtonThings() {
+        startGameButton.addMouseListener(new MouseListener() {
+            boolean isHovering = false;
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jFrame.remove(startGameButton.startMenu);
+                jFrame.add(loadingAnimationT);
+                loadingAnimationT.initializeTimer();
+
+                jFrame.revalidate();
+                jFrame.repaint();
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                startGameButton.setBackground(new Color(100,70,120));
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                startGameButton.setBackground(null);
+                if(isHovering) {
+                    jFrame.remove(startGameButton.startMenu);
+                    jFrame.add(loadingAnimationT);
+                    loadingAnimationT.initializeTimer();
+
+                    jFrame.revalidate();
+                    jFrame.repaint();
+                }
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                isHovering = true;
+                startGameButton.setBackground(new Color(0,40,80));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                isHovering = false;
+                startGameButton.setBackground(null);
+            }
+        });
+    }
 
 
     public void createBackgroundPanel(){

@@ -2,6 +2,7 @@ package shelved_classes;
 
 import src.DeviceInformation;
 import src.FontInfo;
+import src.IScene;
 
 import javax.swing.*;
 import java.awt.*;

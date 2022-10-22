@@ -2,6 +2,8 @@ package src;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Objects;
 
 public class MapT extends JPanel implements Runnable{
@@ -9,8 +11,6 @@ public class MapT extends JPanel implements Runnable{
     JFrame jFrame;
     JLabel gameTitle;
     StartGameButton startGameButton;
-//    DeviceInformation deviceInfo;
-//    FontInfo fontInfo;
 
     ImageIcon inFocus;
     
@@ -29,14 +29,13 @@ public class MapT extends JPanel implements Runnable{
     ImageIcon padLock;
     CloseButton closeButton;
     JLabel dormText;
+    private LoadingAnimationT loadingAnimationT;
+    private JPanel dormRoomSceneT;
 
     public MapT(JFrame jFrame){
 
-//        this.deviceInfo = deviceInformation;
-//        this.fontInfo = fontInfo;
         this.jFrame = jFrame;
         addDormText();
-
 
     }
     public void addDormText(){
@@ -90,9 +89,66 @@ public class MapT extends JPanel implements Runnable{
         this.add(padLockCDS);
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
+        doMapButtonThings();
+    }
+    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, JPanel dormSceneT) {
+        this.loadingAnimationT = loadingAnimationT;
+        this.dormRoomSceneT = dormSceneT;
     }
 
+    private void doMapButtonThings() {
+        MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(450,50, "Academic Building 2", this);
+        this.add(mapLevelButtonsAC2);
+        MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(699,145, "Dormitory", this);
+        this.add(mapLevelButtonsDorm);
+        MapLevelButtons mapLevelButtonsCDS = new MapLevelButtons(979,300, "CDS", this);
+        this.add(mapLevelButtonsCDS);
+        MapLevelButtons mapLevelButtonLibrary = new MapLevelButtons(580,300, "Library", this);
+        this.add(mapLevelButtonLibrary);
 
+
+
+        mapLevelButtonsDorm.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jFrame.remove(this);
+                loadingAnimationT.changeNextScene(dormRoomSceneT);
+                dormRoomSceneT.PrepareForSceneTransition(loadingAnimationT,mapT);
+                jFrame.add(loadingAnimationT);
+                loadingAnimationT.initializeTimer();
+
+                mapT.dormText.setVisible(false);
+                mapLevelButtonsDorm.setBackground(Color.BLACK);
+                jFrame.revalidate();
+                jFrame.repaint();
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                mapLevelButtonsDorm.setBackground(Color.PINK);
+                mapT.dormText.setVisible(true);
+
+                mapT.revalidate();
+                mapT.repaint();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                mapLevelButtonsDorm.setBackground(Color.BLACK);
+            }
+        });
+    }
 
 
 //    public ImageIcon generateImage(String link){

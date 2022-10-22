@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StartGameButton extends JButton {
+    JPanel startMenu;
 
-    public StartGameButton(){
+    public StartGameButton(JPanel startMenu){
+        this.startMenu = startMenu;
         setBounds(DeviceInformation.screenWidth /2-150,2* DeviceInformation.screenHeight /3, 300,70);
         setHorizontalAlignment(JButton.CENTER);
         setBorder(BorderFactory.createCompoundBorder(

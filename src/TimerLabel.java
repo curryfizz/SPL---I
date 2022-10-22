@@ -6,10 +6,8 @@ import java.awt.*;
 public class TimerLabel extends JLabel implements Runnable{
     JFrame jFrame;
     JPanel backGroundPanel;
-//    DeviceInformation deviceInformation;
 
     ConfirmationWindowPopup timeUpWindowPopup;
-//    FontInfo fontInfo;
     int second;
     int minute;
     long StartTimeMili;

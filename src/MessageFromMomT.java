@@ -107,7 +107,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         repaint();
     }
 
-    public void PrepareForTheEnd(LoadingAnimationT loadingAnimationT, JPanel nextScene) {
+    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, JPanel nextScene) {
         this.loadingAnimationT = loadingAnimationT;
         this.nextScene = nextScene;
     }
