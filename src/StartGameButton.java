@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class StartGameButton extends JButton {
 
-    public StartGameButton(DeviceInformation deviceInfo, FontInfo fontInfo){
-        setBounds(deviceInfo.screenWidth/2-150,2*deviceInfo.screenHeight/3, 300,70);
+    public StartGameButton(){
+        setBounds(DeviceInformation.screenWidth /2-150,2* DeviceInformation.screenHeight /3, 300,70);
         setHorizontalAlignment(JButton.CENTER);
         setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.white, 2),
@@ -17,7 +17,7 @@ public class StartGameButton extends JButton {
         setContentAreaFilled(false);
         setText("Start Game");
         setOpaque(true);
-        setFont(fontInfo.getResizedFont(50f));
+        setFont(FontInfo.getResizedFont(50f));
 
     }
 

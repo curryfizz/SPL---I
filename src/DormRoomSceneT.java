@@ -12,8 +12,8 @@ import java.util.*;
 public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
     JFrame jFrame;
-    DeviceInformation deviceInfo;
-    FontInfo fontInfo;
+//    DeviceInformation deviceInfo;
+//    FontInfo fontInfo;
     Rectangle maxBounds;
 
     boolean isTimerOver;
@@ -38,12 +38,12 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     JButton messNotification;
     RandomGenerator randomGenerator;
     boolean tapped = false;
-    public  DormRoomSceneT(JFrame jFrame, DeviceInformation deviceInfo, FontInfo fontInfo){
+    public  DormRoomSceneT(JFrame jFrame){
         this.jFrame = jFrame;
-        this.deviceInfo = deviceInfo;
-        this.fontInfo = fontInfo;
+//        this.deviceInfo = deviceInfo;
+//        this.fontInfo = fontInfo;
         levelFinished = false;
-        maxBounds = deviceInfo.graphicsEnvironment.getMaximumWindowBounds();
+        maxBounds = DeviceInformation.graphicsEnvironment.getMaximumWindowBounds();
         textBox_height = 50;
         this.setLayout(null);
 
@@ -57,11 +57,11 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     public void CreateItemLabels(){
         BigItemListAtBottomOfScreen = new JLabel();
         BigItemListAtBottomOfScreen.setLayout(new GridLayout(1,5));
-        BigItemListAtBottomOfScreen.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
+        BigItemListAtBottomOfScreen.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
         BigItemListAtBottomOfScreen.setBackground(Color.decode("#14171C"));
         BigItemListAtBottomOfScreen.setForeground(Color.white);
         BigItemListAtBottomOfScreen.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
-        BigItemListAtBottomOfScreen.setFont(fontInfo.getResizedFont(29f));
+        BigItemListAtBottomOfScreen.setFont(FontInfo.getResizedFont(29f));
         BigItemListAtBottomOfScreen.setOpaque(true);
     }
 
@@ -89,73 +89,73 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     }
     public  void generateScreen() {
         offset = -25;
-        System.out.println(deviceInfo.screenWidth + " " + deviceInfo.screenHeight);
+        System.out.println(DeviceInformation.screenWidth + " " + DeviceInformation.screenHeight);
 
-        createButton("images/01.png",deviceInfo.screenWidth*308/1536,deviceInfo.screenHeight*410/864,
-                deviceInfo.screenWidth*68/1536,deviceInfo.screenHeight*90/864);
+        createButton("images/01.png", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *410/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *90/864);
         createText("Cornflakes Box");
-        createButton("images/02.png",deviceInfo.screenWidth*1188/1536,deviceInfo.screenHeight*473/864,
-                deviceInfo.screenWidth*18/1536,deviceInfo.screenHeight*37/864);
+        createButton("images/02.png", DeviceInformation.screenWidth *1188/1536, DeviceInformation.screenHeight *473/864,
+                DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *37/864);
         createText("CocaCola Can");
-        createButton("images/03.png",deviceInfo.screenWidth*1235/1536,deviceInfo.screenHeight*385/864,
-                deviceInfo.screenWidth*86/1536,deviceInfo.screenHeight*65/864);
+        createButton("images/03.png", DeviceInformation.screenWidth *1235/1536, DeviceInformation.screenHeight *385/864,
+                DeviceInformation.screenWidth *86/1536, DeviceInformation.screenHeight *65/864);
         createText("Shoulder Bag");
-        createButton("images/04.png",deviceInfo.screenWidth*1130/1536,deviceInfo.screenHeight*740/864,
-                deviceInfo.screenWidth*67/1536,deviceInfo.screenHeight*26/864);
+        createButton("images/04.png", DeviceInformation.screenWidth *1130/1536, DeviceInformation.screenHeight *740/864,
+                DeviceInformation.screenWidth *67/1536, DeviceInformation.screenHeight *26/864);
         createText("HeadPhone");
-        createButton("images/05.png",deviceInfo.screenWidth*325/1536,deviceInfo.screenHeight*728/864,
-                deviceInfo.screenWidth*43/1536,deviceInfo.screenHeight*32/864);
+        createButton("images/05.png", DeviceInformation.screenWidth *325/1536, DeviceInformation.screenHeight *728/864,
+                DeviceInformation.screenWidth *43/1536, DeviceInformation.screenHeight *32/864);
         createText("Phone");
-        createButton("images/06.png",deviceInfo.screenWidth*419/1536,deviceInfo.screenHeight*667/864,
-                deviceInfo.screenWidth*60/1536,deviceInfo.screenHeight*16/864);
+        createButton("images/06.png", DeviceInformation.screenWidth *419/1536, DeviceInformation.screenHeight *667/864,
+                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *16/864);
         createText("Calculator");
-        createButton("images/07.png",deviceInfo.screenWidth*1102/1536,deviceInfo.screenHeight*703/864,
-                deviceInfo.screenWidth*70/1536,deviceInfo.screenHeight*22/864);
+        createButton("images/07.png", DeviceInformation.screenWidth *1102/1536, DeviceInformation.screenHeight *703/864,
+                DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *22/864);
         createText("Sunglasses");
-        createButton("images/08.png",deviceInfo.screenWidth*850/1536,deviceInfo.screenHeight*352/864,
-                deviceInfo.screenWidth*40/1536,deviceInfo.screenHeight*15/864);
+        createButton("images/08.png", DeviceInformation.screenWidth *850/1536, DeviceInformation.screenHeight *352/864,
+                DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *15/864);
         createText("Garbage");
-        createButton("images/09.png",deviceInfo.screenWidth*482/1536,deviceInfo.screenHeight*328/864,
-                deviceInfo.screenWidth*40/1536,deviceInfo.screenHeight*48/864);
+        createButton("images/09.png", DeviceInformation.screenWidth *482/1536, DeviceInformation.screenHeight *328/864,
+                DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *48/864);
         createText("Toilet Paper");
-        createButton("images/10.png",deviceInfo.screenWidth*542/1536,deviceInfo.screenHeight*390/864,
-                deviceInfo.screenWidth*72/1536,deviceInfo.screenHeight*26/864);
+        createButton("images/10.png", DeviceInformation.screenWidth *542/1536, DeviceInformation.screenHeight *390/864,
+                DeviceInformation.screenWidth *72/1536, DeviceInformation.screenHeight *26/864);
         createText("Food");
-        createButton("images/11.png",deviceInfo.screenWidth*95/1536,deviceInfo.screenHeight*737/864,
-                deviceInfo.screenWidth*168/1536,deviceInfo.screenHeight*27/864);
+        createButton("images/11.png", DeviceInformation.screenWidth *95/1536, DeviceInformation.screenHeight *737/864,
+                DeviceInformation.screenWidth *168/1536, DeviceInformation.screenHeight *27/864);
         createText("Blanket");
-        createButton("images/12.png",deviceInfo.screenWidth*740/1536,deviceInfo.screenHeight*510/864,
-                deviceInfo.screenWidth*90/1536,deviceInfo.screenHeight*90/864);
+        createButton("images/12.png", DeviceInformation.screenWidth *740/1536, DeviceInformation.screenHeight *510/864,
+                DeviceInformation.screenWidth *90/1536, DeviceInformation.screenHeight *90/864);
         createText("BackPack");
-        createButton("images/13.png",deviceInfo.screenWidth*515/1536,deviceInfo.screenHeight*585/864,
-                deviceInfo.screenWidth*42/1536,deviceInfo.screenHeight*80/864);
+        createButton("images/13.png", DeviceInformation.screenWidth *515/1536, DeviceInformation.screenHeight *585/864,
+                DeviceInformation.screenWidth *42/1536, DeviceInformation.screenHeight *80/864);
         createText("Cloth Pile");
-        createButton("images/14.png",deviceInfo.screenWidth*190/1536,deviceInfo.screenHeight*410/864,
-                deviceInfo.screenWidth*85/1536,deviceInfo.screenHeight*103/864);
+        createButton("images/14.png", DeviceInformation.screenWidth *190/1536, DeviceInformation.screenHeight *410/864,
+                DeviceInformation.screenWidth *85/1536, DeviceInformation.screenHeight *103/864);
         createText("Pizza Box");
-        createButton("images/15.png",deviceInfo.screenWidth*1033/1536,deviceInfo.screenHeight*393/864,
-                deviceInfo.screenWidth*32/1536,deviceInfo.screenHeight*17/864);
+        createButton("images/15.png", DeviceInformation.screenWidth *1033/1536, DeviceInformation.screenHeight *393/864,
+                DeviceInformation.screenWidth *32/1536, DeviceInformation.screenHeight *17/864);
         createText("Folded Clothes");
-        createButton("images/16.png",deviceInfo.screenWidth*894/1536,deviceInfo.screenHeight*482/864,
-                deviceInfo.screenWidth*28/1536,deviceInfo.screenHeight*23/864);
+        createButton("images/16.png", DeviceInformation.screenWidth *894/1536, DeviceInformation.screenHeight *482/864,
+                DeviceInformation.screenWidth *28/1536, DeviceInformation.screenHeight *23/864);
         createText("Chips Packet");
-        createButton("images/17.png",deviceInfo.screenWidth*1204/1536,deviceInfo.screenHeight*725/864,
-                deviceInfo.screenWidth*110/1536,deviceInfo.screenHeight*43/864);
+        createButton("images/17.png", DeviceInformation.screenWidth *1204/1536, DeviceInformation.screenHeight *725/864,
+                DeviceInformation.screenWidth *110/1536, DeviceInformation.screenHeight *43/864);
         createText("Unfolded Cloth");
-        createButton("images/18.png",deviceInfo.screenWidth*722/1536,deviceInfo.screenHeight*0/864,
-                deviceInfo.screenWidth*165/1536,deviceInfo.screenHeight*23/864);
+        createButton("images/18.png", DeviceInformation.screenWidth *722/1536, 0 /864,
+                DeviceInformation.screenWidth *165/1536, DeviceInformation.screenHeight *23/864);
         createText("Quilt");
-        createButton("images/19.png",deviceInfo.screenWidth*924/1536,deviceInfo.screenHeight*480/864,
-                deviceInfo.screenWidth*43/1536,deviceInfo.screenHeight*20/864);
+        createButton("images/19.png", DeviceInformation.screenWidth *924/1536, DeviceInformation.screenHeight *480/864,
+                DeviceInformation.screenWidth *43/1536, DeviceInformation.screenHeight *20/864);
         createText("Book");
-        createButton("images/20.png",deviceInfo.screenWidth*1365/1536,deviceInfo.screenHeight*746/864,
-                deviceInfo.screenWidth*70/1536,deviceInfo.screenHeight*19/864);
+        createButton("images/20.png", DeviceInformation.screenWidth *1365/1536, DeviceInformation.screenHeight *746/864,
+                DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *19/864);
         createText("FoodPlate");
-        createButton("images/21.png",deviceInfo.screenWidth*934/1536,deviceInfo.screenHeight*436/864,
-                deviceInfo.screenWidth*44/1536,deviceInfo.screenHeight*33/864);
+        createButton("images/21.png", DeviceInformation.screenWidth *934/1536, DeviceInformation.screenHeight *436/864,
+                DeviceInformation.screenWidth *44/1536, DeviceInformation.screenHeight *33/864);
         createText("Shoes");
-        createButton("images/22.png",deviceInfo.screenWidth*489/1536,deviceInfo.screenHeight*380/864,
-                deviceInfo.screenWidth*26/1536,deviceInfo.screenHeight*20/864);
+        createButton("images/22.png", DeviceInformation.screenWidth *489/1536, DeviceInformation.screenHeight *380/864,
+                DeviceInformation.screenWidth *26/1536, DeviceInformation.screenHeight *20/864);
         createText("TeaCup");
 
         this.add(backgroundLabel);
@@ -188,7 +188,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         for(int i = 0; i < textList.size(); i++){
             JLabel temp = new JLabel(textList.get(i), SwingConstants.CENTER);
             temp.setForeground(Color.white);
-            temp.setFont(fontInfo.getResizedFont(37f));
+            temp.setFont(FontInfo.getResizedFont(37f));
 //            temp.setText(textList.get(i));
             itemNameLabelList.add(temp);
         }
@@ -250,7 +250,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
                             imageLabel.setVisible(false);
                             score += 100;
                             imagesFound+=1;
-                            scoreBoard.setText(" 0" + Integer.toString(score));
+                            scoreBoard.setText(" 0" + score);
                             scoreBoard.setHorizontalTextPosition(SwingConstants.CENTER);
                             scoreBoard.repaint();
                             repaint();
@@ -264,7 +264,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
 
                                 }
                                 imagesFound=0;
-                                LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,fontInfo,scenePanel);
+                                LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,scenePanel);
                                 scenePanel.revalidate();
                                 scenePanel.repaint();
                                 jFrame.revalidate();
@@ -284,7 +284,7 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
         textList.add(text);
     }
     public void addCustomWindowCloseButton(){
-        LevelCloseButton levelCloseButton = new LevelCloseButton(deviceInfo,"X",jFrame,fontInfo,this);
+        LevelCloseButton levelCloseButton = new LevelCloseButton("X",jFrame,this);
 //        closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
 
 //        this.add(closeButton);
@@ -297,11 +297,11 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     public void buildScene(){
         MessNotification();
         createBackground("images/LevelOneMain.png");
-        timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
+        timerLabel = new TimerLabel(jFrame, this);
         timerLabel.setVisible(false);
         revalidate();
         repaint();
-        scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
+        scoreBoard = new ScoreBoard(jFrame, this);
 
         scoreBoard.setVisible(false);
         revalidate();
@@ -319,10 +319,10 @@ public class DormRoomSceneT extends JPanel implements Runnable, IScene {
     public void MessNotification(){
         messNotification = new JButton("<html>Oh No, The room looks like it got ransaked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>");
 
-        messNotification.setFont(fontInfo.getResizedFont(34f));
+        messNotification.setFont(FontInfo.getResizedFont(34f));
         messNotification.setFocusPainted(false);
         messNotification.setEnabled(false);
-        messNotification.setBounds(0,deviceInfo.screenHeight-100, deviceInfo.screenWidth, 100);
+        messNotification.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
         messNotification.setBackground(Color.decode("#14171C"));
         messNotification.setForeground(Color.white);
         messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));

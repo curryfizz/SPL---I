@@ -6,10 +6,10 @@ import java.awt.*;
 public class TimerLabel extends JLabel implements Runnable{
     JFrame jFrame;
     JPanel backGroundPanel;
-    DeviceInformation deviceInformation;
+//    DeviceInformation deviceInformation;
 
     ConfirmationWindowPopup timeUpWindowPopup;
-    FontInfo fontInfo;
+//    FontInfo fontInfo;
     int second;
     int minute;
     long StartTimeMili;
@@ -22,11 +22,11 @@ public class TimerLabel extends JLabel implements Runnable{
     JPanel nextScene;
     int choice;
     boolean isTimeOver = false;
-    public TimerLabel(JFrame jFrame, JPanel backGroundPanel, DeviceInformation deviceInformation, FontInfo fontInfo) {
+    public TimerLabel(JFrame jFrame, JPanel backGroundPanel) {
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-        this.deviceInformation = deviceInformation;
-        this.fontInfo = fontInfo;
+//        this.deviceInformation = deviceInformation;
+//        this.fontInfo = fontInfo;
 
 //        backGroundPanel.setLayout(null);
 //        backGroundPanel.setBounds(0, 0, 80, 60);
@@ -92,7 +92,7 @@ public class TimerLabel extends JLabel implements Runnable{
                 BorderFactory.createLineBorder(Color.white, 2),
                 BorderFactory.createEmptyBorder(0,20,0,20)));
         this.setOpaque(true);
-        this.setFont(fontInfo.getResizedFont(35f));
+        this.setFont(FontInfo.getResizedFont(35f));
 
         drawTimer();
         backGroundPanel.repaint();
@@ -140,13 +140,13 @@ public class TimerLabel extends JLabel implements Runnable{
         isTimeOver = true;
         score = 0;
 //        timer.stop();
-        timeUpWindowPopup = new ConfirmationWindowPopup(fontInfo);
+        timeUpWindowPopup = new ConfirmationWindowPopup();
         backGroundPanel.add(timeUpWindowPopup);
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         jFrame.repaint();
         jFrame.revalidate();
-        TimeOverConfirmationDialog timeOverConfirmationDialog = new TimeOverConfirmationDialog(jFrame, fontInfo, backGroundPanel);
+        TimeOverConfirmationDialog timeOverConfirmationDialog = new TimeOverConfirmationDialog(jFrame, backGroundPanel);
 
     }
 

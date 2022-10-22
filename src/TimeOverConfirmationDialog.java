@@ -14,7 +14,7 @@ public class TimeOverConfirmationDialog extends JDialog {
     JButton closeButton2;
 
 
-    public TimeOverConfirmationDialog(JFrame jFrame, FontInfo fontInfo, JPanel jPanel){
+    public TimeOverConfirmationDialog(JFrame jFrame, JPanel jPanel){
 
         setModal(true);
         setUndecorated(true);
@@ -27,7 +27,7 @@ public class TimeOverConfirmationDialog extends JDialog {
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Oh no! Your Time is Up"));
-        jLabel.setFont(fontInfo.getResizedFont(28f));
+        jLabel.setFont(FontInfo.getResizedFont(28f));
         add(jLabel);
         jLabel.setHorizontalAlignment(JLabel.CENTER);
         setSize(300,150);
@@ -40,7 +40,7 @@ public class TimeOverConfirmationDialog extends JDialog {
         closeButton.setHorizontalAlignment(JButton.CENTER);
         closeButton.setBorder(new LineBorder(Color.white,2));
         closeButton.setForeground(Color.white);
-        closeButton.setFont(fontInfo.getResizedFont(25f));
+        closeButton.setFont(FontInfo.getResizedFont(25f));
         closeButton.setOpaque(true);
         closeButton.setText("Exit to Menu");
         closeButton.addMouseListener(new MouseListener() {

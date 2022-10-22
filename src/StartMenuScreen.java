@@ -103,7 +103,7 @@ public class StartMenuScreen extends JPanel implements IScene {
     }
 
     public void addCustomWindowCloseButton(JFrame jFrame){
-        closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
+        closeButton = new CloseButton("X",jFrame);
         this.add(closeButton);
     }
 

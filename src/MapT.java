@@ -2,14 +2,15 @@ package src;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class MapT extends JPanel implements Runnable{
 
     JFrame jFrame;
     JLabel gameTitle;
     StartGameButton startGameButton;
-    DeviceInformation deviceInfo;
-    FontInfo fontInfo;
+//    DeviceInformation deviceInfo;
+//    FontInfo fontInfo;
 
     ImageIcon inFocus;
     
@@ -29,10 +30,10 @@ public class MapT extends JPanel implements Runnable{
     CloseButton closeButton;
     JLabel dormText;
 
-    public MapT(JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo){
+    public MapT(JFrame jFrame){
 
-        this.deviceInfo = deviceInformation;
-        this.fontInfo = fontInfo;
+//        this.deviceInfo = deviceInformation;
+//        this.fontInfo = fontInfo;
         this.jFrame = jFrame;
         addDormText();
 
@@ -43,11 +44,11 @@ public class MapT extends JPanel implements Runnable{
                 "<html>Mom packed a special Surprise for me?<br/>Let's go back to my room and see what it is.</html>",
                 SwingConstants.CENTER);
         dormText.setLayout(null);
-        dormText.setBounds(1300, 200, deviceInfo.screenWidth/5 -100, 500);
+        dormText.setBounds(1300, 200, DeviceInformation.screenWidth /5 -100, 500);
         dormText.setBackground(Color.decode("#14171C"));
         dormText.setForeground(Color.white);
 //                text.setOpaque(true);
-        dormText.setFont(fontInfo.getResizedFont(32f));
+        dormText.setFont(FontInfo.getResizedFont(32f));
 
         dormText.setVisible(false);
         add(dormText);
@@ -63,7 +64,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public ImageIcon getScaledImage(String text, int width, int height){
-        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource(text));
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(text)));
         Image image = imageIcon.getImage();
         image = image.getScaledInstance(width,height,Image.SCALE_AREA_AVERAGING);
         imageIcon = new ImageIcon(image);
@@ -78,7 +79,7 @@ public class MapT extends JPanel implements Runnable{
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
         padLock = getScaledImage("images/Level images/level_locked.png", 50,50);
-        playerScoreBoard = new PlayerScoreBoard(jFrame, this,deviceInfo,fontInfo);
+        playerScoreBoard = new PlayerScoreBoard(jFrame, this);
 //        padLockDorm=addPadLock(padLockDorm, 770,195, 50);
 //        this.add(padLockDorm);
         padLockAC2=addPadLock(padLockAC2, 530,120, 50);
@@ -87,7 +88,7 @@ public class MapT extends JPanel implements Runnable{
         this.add(padLockLibrary);
         padLockCDS=addPadLock(padLockCDS, 1050,350, 50);
         this.add(padLockCDS);
-        this.add(createTranslucentSideBar((int)deviceInfo.screenWidth/5));
+        this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
     }
 
@@ -143,22 +144,22 @@ public class MapT extends JPanel implements Runnable{
 //    }
     public void createMapBackground(){
         backgroundLabel = new JLabel();
-        backgroundLabel.setBounds(0,0, deviceInfo.screenWidth, deviceInfo.screenHeight);
+        backgroundLabel.setBounds(0,0, DeviceInformation.screenWidth, DeviceInformation.screenHeight);
         backgroundLabel.setIcon(getDefaultImage());
         this.add(backgroundLabel);
     }
 
     public ImageIcon getDefaultImage(){
-        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/Level images/LevelbackgroundColored.png"));
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Level images/LevelbackgroundColored.png")));
         Image image = imageIcon.getImage();
-        image = image.getScaledInstance(deviceInfo.screenWidth, deviceInfo.screenHeight, Image.SCALE_DEFAULT);
+        image = image.getScaledInstance(DeviceInformation.screenWidth, DeviceInformation.screenHeight, Image.SCALE_DEFAULT);
         imageIcon = new ImageIcon(image);
         return imageIcon;
     }
 
     public void createBackgroundPanel(){
         this.setLayout(null);
-        this.setPreferredSize(new Dimension(deviceInfo.screenWidth, deviceInfo.screenHeight));
+        this.setPreferredSize(new Dimension(DeviceInformation.screenWidth, DeviceInformation.screenHeight));
         this.setBackground(Color.black);
         this.setForeground(Color.decode("#C64C1D"));
     }
@@ -174,14 +175,14 @@ public class MapT extends JPanel implements Runnable{
 //        gameTitle.setBackground(new Color(0,0,0,0));
 //    }
     public void addCustomWindowCloseButton(JFrame jFrame){
-        closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
+        closeButton = new CloseButton("X",jFrame);
 
         this.add(closeButton);
     }
 
     public JLabel createTranslucentSideBar(int widthOfSideBar){
         JLabel jLabel = new JLabel();
-        jLabel.setBounds(deviceInfo.screenWidth-widthOfSideBar, 0, widthOfSideBar, deviceInfo.screenHeight);
+        jLabel.setBounds(DeviceInformation.screenWidth -widthOfSideBar, 0, widthOfSideBar, DeviceInformation.screenHeight);
         jLabel.setBackground(new Color(0,0,0,130));
         jLabel.setOpaque(true);
         return jLabel;

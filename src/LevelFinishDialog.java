@@ -12,7 +12,7 @@ public class LevelFinishDialog extends JDialog {
     JButton exitToMapButton;
 
     JButton closeButton2;
-    public LevelFinishDialog(JFrame jFrame, FontInfo fontInfo, JPanel jPanel){
+    public LevelFinishDialog(JFrame jFrame, JPanel jPanel){
 
         setModal(true);
         setUndecorated(true);
@@ -25,7 +25,7 @@ public class LevelFinishDialog extends JDialog {
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Congratulations!\nYou've cleared this level successfully!"));
-        jLabel.setFont(fontInfo.getResizedFont(28f));
+        jLabel.setFont(FontInfo.getResizedFont(28f));
         add(jLabel);
         jLabel.setHorizontalAlignment(JLabel.CENTER);
         setSize(300,200);
@@ -38,7 +38,7 @@ public class LevelFinishDialog extends JDialog {
         exitToMapButton.setHorizontalAlignment(JButton.CENTER);
         exitToMapButton.setBorder(new LineBorder(Color.white,2));
         exitToMapButton.setForeground(Color.white);
-        exitToMapButton.setFont(fontInfo.getResizedFont(25f));
+        exitToMapButton.setFont(FontInfo.getResizedFont(25f));
         exitToMapButton.setOpaque(true);
         exitToMapButton.setText("Exit to Map!");
         exitToMapButton.addMouseListener(new MouseListener() {

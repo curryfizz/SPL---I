@@ -43,20 +43,20 @@ public class GameManager {
 
 
 
-        StartGameButton startGameButton = new StartGameButton(deviceInformation,fontInfo);
-        StartMenuScreenT startMenu = new StartMenuScreenT(jFrame, deviceInformation,fontInfo);
+        StartGameButton startGameButton = new StartGameButton();
+        StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
         Thread startMenuThread = new Thread(startMenu);
 
-        MapT mapT = new MapT(jFrame, deviceInformation,fontInfo);
+        MapT mapT = new MapT(jFrame);
         Thread mapThread = new Thread(mapT);
 
-        DormRoomSceneT dormRoomSceneT = new DormRoomSceneT(jFrame, deviceInformation,fontInfo);
+        DormRoomSceneT dormRoomSceneT = new DormRoomSceneT(jFrame);
         Thread dormRoomThread = new Thread(dormRoomSceneT);
 
-        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame, deviceInformation, fontInfo);
+        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
         Thread messageMomThread = new Thread(messageFromMomT);
 
-        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame, deviceInformation,fontInfo,1,messageFromMomT);
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,1,messageFromMomT);
         Thread loadingThread = new Thread(loadingAnimationT);
 
         messageFromMomT.PrepareForTheEnd(loadingAnimationT, mapT);
@@ -115,13 +115,13 @@ public class GameManager {
 
         /* Add map buttons **/
 
-        MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(fontInfo,450,50, "Academic Building 2", mapT);
+        MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(450,50, "Academic Building 2", mapT);
         mapT.add(mapLevelButtonsAC2);
-        MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(fontInfo,699,145, "Dormitory", mapT);
+        MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(699,145, "Dormitory", mapT);
         mapT.add(mapLevelButtonsDorm);
-        MapLevelButtons mapLevelButtonsCDS = new MapLevelButtons(fontInfo,979,300, "CDS", mapT);
+        MapLevelButtons mapLevelButtonsCDS = new MapLevelButtons(979,300, "CDS", mapT);
         mapT.add(mapLevelButtonsCDS);
-        MapLevelButtons mapLevelButtonLibrary = new MapLevelButtons(fontInfo,580,300, "Library", mapT);
+        MapLevelButtons mapLevelButtonLibrary = new MapLevelButtons(580,300, "Library", mapT);
         mapT.add(mapLevelButtonLibrary);
 
 

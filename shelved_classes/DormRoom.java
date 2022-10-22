@@ -75,7 +75,7 @@ public class DormRoom extends JPanel implements IScene {
     }
 
     public void addCustomWindowCloseButton(JFrame jFrame){
-        closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
+        closeButton = new CloseButton("X",jFrame);
         this.add(closeButton);
         this.revalidate();
         this.repaint();
@@ -88,9 +88,9 @@ public class DormRoom extends JPanel implements IScene {
 
     @Override
     public void startScene() {
-        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
-        TextBox textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
-        scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
+        TimerLabel timerLabel = new TimerLabel(jFrame, this);
+        TextBox textBox = new TextBox(jFrame, this);
+        scoreBoard = new ScoreBoard(jFrame, this);
 
     }
 }

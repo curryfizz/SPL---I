@@ -26,9 +26,9 @@ public class DormRoomScene extends JPanel{
 
 //        createMainField();
         createBackground("images/LevelOneMain.png");
-        TimerLabel timerLabel = new TimerLabel(window, this, deviceInfo, fontInfo);
-        TextBox textBox = new TextBox(window, this, deviceInfo, fontInfo);
-        ScoreBoard scoreBoard = new ScoreBoard(window, this, deviceInfo, fontInfo);
+        TimerLabel timerLabel = new TimerLabel(window, this);
+        TextBox textBox = new TextBox(window, this);
+        ScoreBoard scoreBoard = new ScoreBoard(window, this);
         generateScreen();
 
 
@@ -178,7 +178,7 @@ public class DormRoomScene extends JPanel{
         Textlist.add(text);
     }
     public void addCustomWindowCloseButton(JFrame jFrame){
-        closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
+        closeButton = new CloseButton("X",jFrame);
         this.add(closeButton);
         this.repaint();
         this.revalidate();

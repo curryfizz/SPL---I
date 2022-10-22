@@ -11,8 +11,8 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     JFrame jFrame;
 
     JPanel nextScene;
-    DeviceInformation deviceInfo;
-    FontInfo fontInfo;
+//    DeviceInformation deviceInfo;
+//    FontInfo fontInfo;
     Timer timer;
     JLabel loadingText;
     long animationStartTime;
@@ -26,10 +26,10 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     boolean timerStopped;
     long animationRunTime;
     int increment;
-    LoadingAnimationT(JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo, int animationDuration, JPanel nextScene){
+    LoadingAnimationT(JFrame jFrame, int animationDuration, JPanel nextScene){
         this.jFrame = jFrame;
-        this.deviceInfo = deviceInformation;
-        this.fontInfo = fontInfo;
+//        this.deviceInfo = deviceInformation;
+//        this.fontInfo = fontInfo;
         this.animationDuration = animationDuration;
         this.nextScene = nextScene;
         this.increment = 500/(animationDuration*20);
@@ -44,7 +44,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     }
 
     private void buildScene(){
-        setPreferredSize(new Dimension(deviceInfo.screenWidth,deviceInfo.screenHeight));
+        setPreferredSize(new Dimension(DeviceInformation.screenWidth, DeviceInformation.screenHeight));
         setBackground(Color.decode("#14171C"));
         setLayout(null);
         SetLoadingText();
@@ -59,18 +59,18 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
         animationRunTime=0;
     }
     private void initializeAnimationParameters(){
-        loadingBarPosX = deviceInfo.screenWidth/3;
+        loadingBarPosX = DeviceInformation.screenWidth /3;
         loadingBarWidth =1;
-        loadingBarPosY = deviceInfo.screenHeight/2 + 50;
-        loadingDotPosY = deviceInfo.screenHeight/2+120;
-        loadingDotPosX = deviceInfo.screenWidth/2 +65;
+        loadingBarPosY = DeviceInformation.screenHeight /2 + 50;
+        loadingDotPosY = DeviceInformation.screenHeight /2+120;
+        loadingDotPosX = DeviceInformation.screenWidth /2 +65;
         loadingDotCurrentX = loadingDotPosX;
         loadingDotMaxX = loadingDotCurrentX +50;
     }
     private void SetLoadingText(){
         loadingText =  new JLabel("Loading");
-        loadingText.setFont(fontInfo.getResizedFont(50f));
-        loadingText.setBounds(deviceInfo.screenWidth/2 - 50,deviceInfo.screenHeight/2+100,200,50);
+        loadingText.setFont(FontInfo.getResizedFont(50f));
+        loadingText.setBounds(DeviceInformation.screenWidth /2 - 50, DeviceInformation.screenHeight /2+100,200,50);
         loadingText.setBackground(null);
         loadingText.setForeground(Color.white);
         add(loadingText);
@@ -86,11 +86,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     }
 
     public boolean isrunning(){
-        if(timerStopped){
-            return false;
-        }else{
-            return true;
-        }
+        return !timerStopped;
     }
     @Override
     public void actionPerformed(ActionEvent e) {

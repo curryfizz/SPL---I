@@ -6,16 +6,16 @@ import java.awt.*;
 public class PlayerScoreBoard extends JLabel{
     JFrame jFrame;
     JPanel backGroundPanel;
-    DeviceInformation deviceInfo;
-    FontInfo fontInfo;
+//    DeviceInformation deviceInfo;
+//    FontInfo fontInfo;
 
-    public PlayerScoreBoard(JFrame jFrame, JPanel backGroundPanel, DeviceInformation deviceInformation, FontInfo fontInfo) {
+    public PlayerScoreBoard(JFrame jFrame, JPanel backGroundPanel) {
         super("Current Score: 0", SwingConstants.CENTER);
         this.setVerticalTextPosition(SwingConstants.BOTTOM); //kaj korena
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-        this.deviceInfo = deviceInformation;
-        this.fontInfo = fontInfo;
+//        this.deviceInfo = deviceInformation;
+//        this.fontInfo = fontInfo;
         SetupScoreBoard();
     }
 
@@ -25,7 +25,7 @@ public class PlayerScoreBoard extends JLabel{
         this.setForeground(Color.decode("#FFD700"));
         setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),5), BorderFactory.createLineBorder(Color.decode("#FFD700"),2)));
         this.setOpaque(true);
-        this.setFont(fontInfo.getResizedFont(35f));
+        this.setFont(FontInfo.getResizedFont(35f));
 
         backGroundPanel.repaint();
         backGroundPanel.revalidate();

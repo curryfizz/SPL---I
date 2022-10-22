@@ -8,29 +8,27 @@ import java.awt.event.MouseListener;
 public class LevelCloseButton extends JButton {
 
     //too many one line methods
-    DeviceInformation deviceInformation;
-    FontInfo fontInfo;
 
     ConfirmationWindowPopup exitConfirmation;
 
     JPanel jPanel;
-    public LevelCloseButton(DeviceInformation deviceInformation, String text, JFrame jFrame, FontInfo fontInfo, JPanel jPanel){
-        this.deviceInformation = deviceInformation;
-        this.fontInfo = fontInfo;
-        setDefaultPosition(deviceInformation);
+    public LevelCloseButton(String text, JFrame jFrame, JPanel jPanel){
+//        this.deviceInformation = deviceInformation;
+//        this.fontInfo = fontInfo;
+        setDefaultPosition();
         removeBackground();
         removeBorder();
         removeFocusPaint();
         removeContentArea();
-        assignFont(fontInfo.getResizedFont(50f));
+        assignFont(FontInfo.getResizedFont(50f));
         addExitText(text);
         setDefaultTextColor();
-        exitConfirmation = new ConfirmationWindowPopup(fontInfo);
+        exitConfirmation = new ConfirmationWindowPopup();
 //        addCloseActions(fontInfo,jFrame,exitConfirmation);
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                LevelToMapConfirmationDialog confirmationDialog = new LevelToMapConfirmationDialog(jFrame,fontInfo,jPanel);
+                LevelToMapConfirmationDialog confirmationDialog = new LevelToMapConfirmationDialog(jFrame,jPanel);
             }
 
             @Override
@@ -64,8 +62,8 @@ public class LevelCloseButton extends JButton {
         setBounds(Posx,Posy,width,height);
     }
 
-    private void setDefaultPosition(DeviceInformation deviceInformation){
-        setBounds(deviceInformation.screenWidth-50, 5, 50,50);
+    private void setDefaultPosition(){
+        setBounds(DeviceInformation.screenWidth -50, 5, 50,50);
     }
     private void removeBackground(){
         setBackground(null);

@@ -5,7 +5,7 @@ import java.io.File;
 
 public class FontInfo {
 //    GraphicsEnvironment graphicsEnvironment;
-    Font eastSeaDokdo;
+    static Font eastSeaDokdo;
     FontInfo(){
 //        graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         importFont();
@@ -23,7 +23,7 @@ public class FontInfo {
     }
 
 
-    public Font getResizedFont(Float size){
+    public static Font getResizedFont(Float size){
         Font eastSeaDokdoResized = eastSeaDokdo.deriveFont(size);
         return eastSeaDokdoResized;
     }

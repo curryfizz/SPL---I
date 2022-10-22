@@ -63,7 +63,7 @@ public class Map extends JPanel implements IScene {
     }
 
     public void addCloseButton(){
-        closeButton = new CloseButton(deviceInfo, "X", jFrame, fontInfo);
+        closeButton = new CloseButton( "X", jFrame);
         closeButton.setTextColor(Color.black);
         this.add(closeButton);
     }

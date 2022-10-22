@@ -12,7 +12,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
     JButton closeButton;
 
     JButton closeButton2;
-    public LevelToMapConfirmationDialog(JFrame jFrame, FontInfo fontInfo, JPanel jPanel){
+    public LevelToMapConfirmationDialog(JFrame jFrame, JPanel jPanel){
 
         setModal(true);
         setUndecorated(true);
@@ -25,7 +25,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Exit to Map?\n Progress will not be saved :( "));
-        jLabel.setFont(fontInfo.getResizedFont(26f));
+        jLabel.setFont(FontInfo.getResizedFont(26f));
         add(jLabel);
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
         setSize(200,180);
@@ -38,7 +38,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
         closeButton.setHorizontalAlignment(JButton.CENTER);
         closeButton.setBorder(new LineBorder(Color.white,2));
         closeButton.setForeground(Color.white);
-        closeButton.setFont(fontInfo.getResizedFont(25f));
+        closeButton.setFont(FontInfo.getResizedFont(25f));
         closeButton.setOpaque(true);
         closeButton.setText("Yes");
         closeButton.addMouseListener(new MouseListener() {
@@ -72,7 +72,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
         });
         add(closeButton);
         closeButton2 = new JButton();
-        closeButton2.setFont(fontInfo.getResizedFont(25f));
+        closeButton2.setFont(FontInfo.getResizedFont(25f));
         closeButton2.setBackground(Color.decode("#14171C"));
         closeButton2.setPreferredSize(new Dimension(110,30));
         closeButton2.setFocusPainted(false);
