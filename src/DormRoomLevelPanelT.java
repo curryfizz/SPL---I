@@ -8,7 +8,6 @@ import java.net.URL;
 import java.util.*;
 
 public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
-
     JFrame jFrame;
     Rectangle maxBounds;
 
@@ -282,7 +281,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         jFrame.remove(this);
 
         loadingAnimationT.changeNextScene(mapT);
-        ((MapT) loadingAnimationT.nextScene).score += score; // won't give compile time casting error bc I JUST CHANGED IT TO MAPT
+        ((MapT) loadingAnimationT.nextScene).score += scoreBoard.score; // won't give compile time casting error bc I JUST CHANGED IT TO MAPT
         ((MapT) loadingAnimationT.nextScene).updateScore();
 
         jFrame.add(loadingAnimationT);
@@ -310,6 +309,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
         JLabel objectLabel = createObject1(image);
+
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size()){
             @Override
             public void addSceneEventsListener(ObjectHidingButton button){
@@ -318,19 +318,16 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
                     public void mouseClicked(MouseEvent e) {
                         if(isEnabled()) {
                             imageLabel.setVisible(false);
-                            score += 100;
                             imagesFound+=1;
-                            scoreBoard.setText(" 0" + score);
-                            scoreBoard.setHorizontalTextPosition(SwingConstants.CENTER);
-                            scoreBoard.repaint();
-                            repaint();
+
+                            scoreBoard.setScore((int) (timerLabel.elapsedTime/2.0), 0);
+                            scoreBoard.refreshScore();
+
                             setEnabled(false);
                             ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
                             if(imagesFound == 6){
-                                if(scenePanel instanceof DormRoomLevelPanelT){
+                                if(scenePanel instanceof ALevelPanel){
                                     ((DormRoomLevelPanelT)scenePanel).timerLabel.isTimeOver = true;
-                                    ((DormRoomLevelPanelT)scenePanel).timerLabel.score = score;
-
 
                                 }
                                 imagesFound=0;
@@ -377,7 +374,8 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         timerLabel.isTimeOver = false;
         timerLabel.second = 30;
         timerLabel.minute = 2;
-        timerLabel.score=0;
+        timerLabel.elapsedTime = 0;
+        scoreBoard.score=0;
         scoreBoard.setText("0000");
         imagesFound = 0;
         score=0;
@@ -387,7 +385,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     public void resetVariables(){
 
         timerLabel.isTimeOver = false;
-        timerLabel.score=0;
+        scoreBoard.score=0;
 
         timerLabel.setVisible(false);
 //        revalidate();

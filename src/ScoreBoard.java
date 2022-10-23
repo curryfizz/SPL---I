@@ -4,19 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ScoreBoard extends JLabel{
+    public Integer score;
+    int baseScore;
+    int comboBonus;
     JFrame jFrame;
     JPanel backGroundPanel;
-//    DeviceInformation deviceInfo;
-//    FontInfo fontInfo;
 
     public ScoreBoard(JFrame jFrame, JPanel backGroundPanel) {
-        super("0000", SwingConstants.CENTER);
-        this.setVerticalTextPosition(SwingConstants.BOTTOM); //kaj korena
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-//        this.deviceInfo = deviceInformation;
-//        this.fontInfo = fontInfo;
         SetupScoreBoard();
+        score = 0;
+        baseScore = 100;
+        comboBonus = 10;
+        refreshScore();
     }
 
     public void SetupScoreBoard(){
@@ -32,6 +33,20 @@ public class ScoreBoard extends JLabel{
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         backGroundPanel.add(this);
+    }
+    public void setScore(int deduction, int combo){
+        score += baseScore - deduction + combo*comboBonus;
+    }
+
+    public void refreshScore(){
+        if(score < 1000)
+            this.setText(" 0" + score);
+        else
+            this.setText(score.toString());
+
+        this.setHorizontalTextPosition(SwingConstants.CENTER);
+        this.repaint();
+        backGroundPanel.repaint();
     }
 
 

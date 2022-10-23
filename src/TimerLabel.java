@@ -14,7 +14,8 @@ public class TimerLabel extends JLabel implements Runnable{
     int FPS = 60;
     Thread TimerThread;
 
-    int score;
+    int elapsedTime = 0;
+
 //    int choice;
     boolean isTimeOver = false;
     public TimerLabel(JFrame jFrame, ALevelPanel backGroundPanel) {
@@ -27,7 +28,6 @@ public class TimerLabel extends JLabel implements Runnable{
 
 //        second = 10;
 //        minute = 2;
-        score=0;
 
         SetupTimerLabel();
 //        backGroundPanel.repaint();
@@ -93,6 +93,8 @@ public class TimerLabel extends JLabel implements Runnable{
             second = 60;
         }
         second --;
+        elapsedTime ++;
+        System.out.println(elapsedTime);
     }
 
     public void drawTimer() {
@@ -113,7 +115,6 @@ public class TimerLabel extends JLabel implements Runnable{
     private void timeOver(){ //the popup glitches idk why orz
 
         isTimeOver = true;
-        score = 0;
 //        timer.stop();
         timeUpWindowPopup = new ConfirmationWindowPopup();
         backGroundPanel.add(timeUpWindowPopup);
