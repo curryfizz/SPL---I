@@ -2,7 +2,7 @@ package shelved_classes;
 
 import src.DeviceInformation;
 import src.FontInfo;
-import src.IScene;
+import src.ALevelPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DecoyAnimation extends JPanel implements ActionListener{
-    IScene iScene;
+    ALevelPanel aLevelPanel;
     JFrame jFrame;
     DeviceInformation deviceInfo;
     FontInfo fontInfo;
@@ -23,12 +23,12 @@ public class DecoyAnimation extends JPanel implements ActionListener{
     int loadingDotMaxX; //maximum x position of the dot, will return to initial position
     int loadingDotCurrentX; //current dot position, will be used by paint/repaint
     int animationDuration;
-    DecoyAnimation(IScene iScene, JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo, int animationDuration){
+    DecoyAnimation(ALevelPanel aLevelPanel, JFrame jFrame, DeviceInformation deviceInformation, FontInfo fontInfo, int animationDuration){
         this.jFrame = jFrame;
         this.deviceInfo = deviceInformation;
         this.fontInfo = fontInfo;
         this.animationDuration = animationDuration;
-        this.iScene = iScene;
+        this.aLevelPanel = aLevelPanel;
         setPreferredSize(new Dimension(deviceInfo.screenWidth,deviceInfo.screenHeight));
         setBackground(Color.decode("#14171C"));
         setLayout(null);
@@ -89,8 +89,8 @@ public class DecoyAnimation extends JPanel implements ActionListener{
 
     public void LoadMenu(){
 
-        iScene.callSelf();
-        iScene.startScene();
+//        aLevelPanel.callSelf();
+        aLevelPanel.startScene();
 //        Map map = new Map(jFrame);
         jFrame.remove(this);
 //        jFrame.add(map);

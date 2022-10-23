@@ -30,7 +30,7 @@ public class MapT extends JPanel implements Runnable{
     CloseButton closeButton;
     JLabel dormText;
     private LoadingAnimationT loadingAnimationT;
-    private IScene dormRoomSceneT;
+    private ALevelPanel dormRoomSceneT;
 
     public MapT(JFrame jFrame){
 
@@ -91,7 +91,7 @@ public class MapT extends JPanel implements Runnable{
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
     }
-    public void AddAllScenes(LoadingAnimationT loadingAnimationT, IScene dormSceneT) {
+    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT) {
         this.loadingAnimationT = loadingAnimationT;
         this.dormRoomSceneT = dormSceneT;
     }

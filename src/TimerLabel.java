@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class TimerLabel extends JLabel implements Runnable{
     JFrame jFrame;
-    JPanel backGroundPanel;
+    ALevelPanel backGroundPanel;
 
     ConfirmationWindowPopup timeUpWindowPopup;
     int second;
@@ -15,16 +15,11 @@ public class TimerLabel extends JLabel implements Runnable{
     Thread TimerThread;
 
     int score;
-    LoadingAnimationT loadingAnimationT;
-
-    JPanel nextScene;
-    int choice;
+//    int choice;
     boolean isTimeOver = false;
-    public TimerLabel(JFrame jFrame, JPanel backGroundPanel) {
+    public TimerLabel(JFrame jFrame, ALevelPanel backGroundPanel) {
         this.jFrame = jFrame;
         this.backGroundPanel = backGroundPanel;
-//        this.deviceInformation = deviceInformation;
-//        this.fontInfo = fontInfo;
 
 //        backGroundPanel.setLayout(null);
 //        backGroundPanel.setBounds(0, 0, 80, 60);
@@ -35,51 +30,31 @@ public class TimerLabel extends JLabel implements Runnable{
         score=0;
 
         SetupTimerLabel();
-        backGroundPanel.repaint();
-        backGroundPanel.revalidate();
+//        backGroundPanel.repaint();
+//        backGroundPanel.revalidate();
         this.setHorizontalAlignment(SwingConstants.CENTER);
 
 //        StartTimer();
     }
 
 
-    public void disableRemainingObjects(){
-        if(backGroundPanel instanceof DormRoomSceneT){
-
-
-            for(int i=0; i<((DormRoomSceneT)backGroundPanel).RandObjIndices.size(); i++){
-                ((DormRoomSceneT)backGroundPanel).buttonList.get(i).setEnabled(false);
-            }
-
-        }
-    }
+//    public void disableRemainingObjects(){
+//        if(backGroundPanel instanceof DormRoomSceneT){
+//
+//
+//            for(int i=0; i<((DormRoomSceneT)backGroundPanel).RandObjIndices.size(); i++){
+//                ((DormRoomSceneT)backGroundPanel).buttonList.get(i).setEnabled(false);
+//            }
+//
+//        }
+//    }
 
 
     public void endLevel(){
         isTimeOver=true;
-        if(backGroundPanel instanceof DormRoomSceneT){
-            ((DormRoomSceneT)backGroundPanel).resetItemNameLabelList();
-//            disableRemainingObjects();
-            ((DormRoomSceneT)backGroundPanel).remove(((DormRoomSceneT) backGroundPanel).BigItemListAtBottomOfScreen);
-            ((DormRoomSceneT)backGroundPanel).revalidate();
-            ((DormRoomSceneT)backGroundPanel).repaint();
-            ((DormRoomSceneT)backGroundPanel).showItemNamesInTextBox();
-            ((DormRoomSceneT)backGroundPanel).revalidate();
-            ((DormRoomSceneT)backGroundPanel).repaint();
+        backGroundPanel.EndLevel();
 
-        }
 
-        jFrame.remove(backGroundPanel);
-        loadingAnimationT.changeNextScene(nextScene);
-        if(loadingAnimationT.nextScene instanceof MapT){
-            ((MapT) loadingAnimationT.nextScene).score += score;
-            ((MapT) loadingAnimationT.nextScene).updateScore();
-
-        }
-        jFrame.add(loadingAnimationT);
-        loadingAnimationT.initializeTimer();
-        jFrame.revalidate();
-        jFrame.repaint();
     }
     public void SetupTimerLabel(){
 //        counterLabel = new JLabel();
@@ -96,9 +71,11 @@ public class TimerLabel extends JLabel implements Runnable{
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         backGroundPanel.add(this);
+        backGroundPanel.revalidate();
+        backGroundPanel.repaint();
     }
 
-    public void StartTimer() {
+    public void StartTimer() { //starts outside the class
 
         TimerThread = new Thread(this);
         StartTimeMili = System.currentTimeMillis();
@@ -157,10 +134,7 @@ public class TimerLabel extends JLabel implements Runnable{
         while(!isTimeOver) {
             milisecs = System.currentTimeMillis() - lastUpdatedAt;
             drawTimer();
-//            backGroundPanel.repaint();
-//            backGroundPanel.revalidate();
             jFrame.repaint();
-//            jFrame.revalidate();
             this.repaint();
 
             if(milisecs > 1000){ //one second has passed

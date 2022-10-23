@@ -99,8 +99,8 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
             }
             jFrame.remove(this);
 
-            if(nextScene instanceof IScene){
-                ((IScene) nextScene).startScene();
+            if(nextScene instanceof ALevelPanel){
+                ((ALevelPanel) nextScene).startScene();
             }
             jFrame.add(nextScene);
             jFrame.revalidate();

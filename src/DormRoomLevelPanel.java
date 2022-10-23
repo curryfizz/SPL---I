@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-public class DormRoomScene extends JPanel{
+public class DormRoomLevelPanel extends ALevelPanel {
     JFrame window;
     DeviceInformation deviceInfo;
     FontInfo fontInfo;
@@ -18,7 +18,7 @@ public class DormRoomScene extends JPanel{
     public ArrayList<ObjectHidingButton> buttonlist = new ArrayList<>(); //all the buttons for the objects are in this
     public ArrayList<String> Textlist = new ArrayList<>(); //all the names of the objects are in this
 
-    public  DormRoomScene(JFrame jFrame, DeviceInformation deviceInfo, FontInfo fontInfo){
+    public DormRoomLevelPanel(JFrame jFrame, DeviceInformation deviceInfo, FontInfo fontInfo){
         this.window = jFrame;
         this.deviceInfo = deviceInfo;
         this.fontInfo = fontInfo;
@@ -183,4 +183,20 @@ public class DormRoomScene extends JPanel{
         this.repaint();
         this.revalidate();
     }
+
+    @Override
+    public void startScene() {
+
+    }
+
+    @Override
+    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, MapT mapT) {
+
+    }
+
+    @Override
+    public void EndLevel() {
+
+    }
+
 }

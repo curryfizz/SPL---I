@@ -44,8 +44,8 @@ public class LevelFinishDialog extends JDialog {
         exitToMapButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(jPanel instanceof DormRoomSceneT){
-                    ((DormRoomSceneT)jPanel).timerLabel.endLevel();
+                if(jPanel instanceof DormRoomLevelPanelT){
+                    ((DormRoomLevelPanelT)jPanel).timerLabel.endLevel();
                     dispose();
                 }
                 dispose();

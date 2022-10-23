@@ -7,39 +7,36 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.*;
 
-public class DormRoomSceneT extends IScene implements Runnable{
+public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     JFrame jFrame;
-//    DeviceInformation deviceInfo;
-//    FontInfo fontInfo;
     Rectangle maxBounds;
 
     boolean isTimerOver;
-    JLabel BigItemListAtBottomOfScreen;
     public int score = 0;
     CloseButton closeButton;
     JLabel backgroundLabel;
-    TimerLabel timerLabel;
-    TextBox textBox;
-    ScoreBoard scoreBoard;
+    JLabel BigItemListAtBottomOfScreen;
+    LoadingAnimationT loadingAnimationT;
+    MapT mapT;
     URL music;
+    MusicPlayer musicPlayer;
 
     boolean levelFinished;
     int imagesFound;
-    int offset;
     int textBox_height;
-    public ArrayList<JLabel> imageList = new ArrayList<>();
+    public ArrayList<JLabel> imageList = new ArrayList<>(); // array of images of items we may need to find
     public ArrayList<ObjectHidingButton> buttonList = new ArrayList<>(); //all the buttons for the objects are in this
     public ArrayList<String> textList = new ArrayList<>(); //all the names of the objects are in this\
-    ArrayList<JLabel> itemNameLabelList = new ArrayList<>(); //the labels containing Strings of 'item names' that were randomly chosen
-    public ArrayList<Integer> RandObjIndices;
-    JButton messNotification;
+    ArrayList<JLabel> ListOfAllItemNamesAsLabels = new ArrayList<>(); //the labels containing Strings of 'item names' that were randomly chosen
+    public ArrayList<Integer> RandObjIndices; //an array of 6 integers, instantiated randomly.
+                                            // Each integer indicates the index of the Object in the imageList
+                                            // that The player has to find in this round.
+    JButton messNotification; // notification that someone messed up your dorm room
     RandomGenerator randomGenerator;
     boolean tapped = false;
-    public  DormRoomSceneT(JFrame jFrame){
+    public DormRoomLevelPanelT(JFrame jFrame){
         this.jFrame = jFrame;
-//        this.deviceInfo = deviceInfo;
-//        this.fontInfo = fontInfo;
         levelFinished = false;
         maxBounds = DeviceInformation.graphicsEnvironment.getMaximumWindowBounds();
         textBox_height = 50;
@@ -47,30 +44,84 @@ public class DormRoomSceneT extends IScene implements Runnable{
 
     }
 
-//    public void prepareEndOfLevel(LoadingAnimationT loadingAnimationT, JPanel nextScene){
-//        timerLabel.loadingAnimationT = loadingAnimationT;
-//        timerLabel.nextScene = nextScene;
-//    }
-
-    public void CreateItemLabels(){
-        BigItemListAtBottomOfScreen = new JLabel();
-        BigItemListAtBottomOfScreen.setLayout(new GridLayout(1,5));
-        BigItemListAtBottomOfScreen.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
-        BigItemListAtBottomOfScreen.setBackground(Color.decode("#14171C"));
-        BigItemListAtBottomOfScreen.setForeground(Color.white);
-        BigItemListAtBottomOfScreen.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
-        BigItemListAtBottomOfScreen.setFont(FontInfo.getResizedFont(29f));
-        BigItemListAtBottomOfScreen.setOpaque(true);
+    @Override
+    public void run() {
+        buildScene();
     }
 
-//    private void DormThings() {
-//        addCustomWindowCloseButton();
-//        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
-//        TextBox textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
-//        ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
-//
-//    }
+    public void buildScene(){
+        MessNotification();
+        createBackground("images/LevelOneMain.png");
 
+        timerLabel = new TimerLabel(jFrame, this);
+        timerLabel.setVisible(false);
+        revalidate();
+        repaint();
+
+        scoreBoard = new ScoreBoard(jFrame, this);
+        scoreBoard.setVisible(false);
+        revalidate();
+        repaint();
+
+        addCustomWindowCloseButton();
+        repaint();
+
+        imagesFound=0;
+        generateScreenWithAllObjectsAndButtons();
+
+
+        repaint();
+        music = getClass().getClassLoader().getResource("images/bgmusic.wav");
+    }
+
+    public void MessNotification(){
+        messNotification = new JButton("<html>Oh No, The room looks like it got ransacked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>");
+
+        messNotification.setFont(FontInfo.getResizedFont(34f));
+        messNotification.setFocusPainted(false);
+        messNotification.setEnabled(false);
+        messNotification.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
+        messNotification.setBackground(Color.decode("#14171C"));
+        messNotification.setForeground(Color.white);
+        messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
+        messNotification.setOpaque(true);
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(!tapped) {
+                    timerLabel.setVisible(true);
+                    scoreBoard.setVisible(true);
+                    revalidate();
+                    repaint();
+                    enableObjectButtons();
+                    messNotification.setVisible(false);
+                    timerLabel.StartTimer();
+                    tapped = true;
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        this.add(messNotification);
+    }
 
     public  void createBackground(String bgfilename) {
         this.setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
@@ -85,10 +136,15 @@ public class DormRoomSceneT extends IScene implements Runnable{
         backgroundLabel.setBounds(0,-textBox_height, maxBounds.width,maxBounds.height);
         backgroundLabel.setIcon(imageIcon);
     }
-    public  void generateScreen() {
-        offset = -25;
-        System.out.println(DeviceInformation.screenWidth + " " + DeviceInformation.screenHeight);
 
+    public void addCustomWindowCloseButton(){
+        LevelCloseButton levelCloseButton = new LevelCloseButton("X",jFrame,this);
+        this.add(levelCloseButton);
+        this.repaint();
+        this.revalidate();
+    }
+
+    public  void generateScreenWithAllObjectsAndButtons() {
         createButton("images/01.png", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *410/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *90/864);
         createText("Cornflakes Box");
@@ -158,9 +214,32 @@ public class DormRoomSceneT extends IScene implements Runnable{
 
         this.add(backgroundLabel);
     }
+    private void CreateAListWithAllItemNamesAsLabels() {
 
-    public void showItemNamesInTextBox(){
-        CreateItemLabels();
+        for(int i = 0; i < textList.size(); i++){
+            JLabel temp = new JLabel(textList.get(i), SwingConstants.CENTER);
+            temp.setForeground(Color.white);
+            temp.setFont(FontInfo.getResizedFont(37f));
+//            temp.setText(textList.get(i));
+            ListOfAllItemNamesAsLabels.add(temp);
+        }
+
+    }
+
+    public void CreateTheBigItemListTextBoxAtTheBottomOfScreen(){
+        BigItemListAtBottomOfScreen = new JLabel();
+        BigItemListAtBottomOfScreen.setLayout(new GridLayout(1,5));
+        BigItemListAtBottomOfScreen.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
+        BigItemListAtBottomOfScreen.setBackground(Color.decode("#14171C"));
+        BigItemListAtBottomOfScreen.setForeground(Color.white);
+        BigItemListAtBottomOfScreen.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
+        BigItemListAtBottomOfScreen.setFont(FontInfo.getResizedFont(29f));
+        BigItemListAtBottomOfScreen.setOpaque(true);
+    }
+
+    public void MakeRandomItemListAtBottomOfScreen(){
+        CreateAListWithAllItemNamesAsLabels();
+        CreateTheBigItemListTextBoxAtTheBottomOfScreen();
         randomGenerator = new RandomGenerator(buttonList.size());
         randomGenerator.createUnique();
         this.RandObjIndices = randomGenerator.RandObjIndices;
@@ -169,7 +248,7 @@ public class DormRoomSceneT extends IScene implements Runnable{
 //        bigItemListLabel.add(new JLabel());
         for(int i=0; i<RandObjIndices.size(); i++){
             index = RandObjIndices.get(i);
-            BigItemListAtBottomOfScreen.add(itemNameLabelList.get(index));
+            BigItemListAtBottomOfScreen.add(ListOfAllItemNamesAsLabels.get(index));
 //            buttonList.get(index).setEnabled(true);
         }
 
@@ -181,45 +260,38 @@ public class DormRoomSceneT extends IScene implements Runnable{
         }
     }
 
-    private void instantiateItemNameLabelList() {
-
-        for(int i = 0; i < textList.size(); i++){
-            JLabel temp = new JLabel(textList.get(i), SwingConstants.CENTER);
-            temp.setForeground(Color.white);
-            temp.setFont(FontInfo.getResizedFont(37f));
-//            temp.setText(textList.get(i));
-            itemNameLabelList.add(temp);
-        }
-
-    }
 
 
     public void resetItemNameLabelList() {
 
         for(int i = 0; i < textList.size(); i++){
-            itemNameLabelList.get(i).setVisible(true);
+            ListOfAllItemNamesAsLabels.get(i).setVisible(true);
             imageList.get(i).setVisible(true);
 
         }
 
     }
 
+    @Override
+    public void EndLevel() {
+        resetItemNameLabelList();
+        remove(BigItemListAtBottomOfScreen);
+        revalidate();
+        repaint();
 
+        jFrame.remove(this);
 
-//    public void  createObject( String image ) {
-//        JLabel objectLabel = new JLabel();
-//        objectLabel.setBounds(0,-textBox_height,maxBounds.width,maxBounds.height);
-//
-//        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-//        Image image1 = obj1icon.getImage();
-//        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-100, Image.SCALE_DEFAULT);
-//        obj1icon = new ImageIcon(image1);
-//
-//        objectLabel.setIcon(obj1icon);
-//        imageList.add(objectLabel);
-//        this.add(objectLabel);
-//
-//    }
+        loadingAnimationT.changeNextScene(mapT);
+        ((MapT) loadingAnimationT.nextScene).score += score; // won't give compile time casting error bc I JUST CHANGED IT TO MAPT
+        ((MapT) loadingAnimationT.nextScene).updateScore();
+
+        jFrame.add(loadingAnimationT);
+        loadingAnimationT.initializeTimer();
+        jFrame.revalidate();
+        jFrame.repaint();
+        musicPlayer.stop(music);
+    }
+
 
     public JLabel createObject1(String image){
         JLabel objectLabel = new JLabel();
@@ -253,11 +325,11 @@ public class DormRoomSceneT extends IScene implements Runnable{
                             scoreBoard.repaint();
                             repaint();
                             setEnabled(false);
-                            itemNameLabelList.get(myIndex).setVisible(false);
+                            ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
                             if(imagesFound == 6){
-                                if(scenePanel instanceof DormRoomSceneT){
-                                    ((DormRoomSceneT)scenePanel).timerLabel.isTimeOver = true;
-                                    ((DormRoomSceneT)scenePanel).timerLabel.score = score;
+                                if(scenePanel instanceof DormRoomLevelPanelT){
+                                    ((DormRoomLevelPanelT)scenePanel).timerLabel.isTimeOver = true;
+                                    ((DormRoomLevelPanelT)scenePanel).timerLabel.score = score;
 
 
                                 }
@@ -281,120 +353,30 @@ public class DormRoomSceneT extends IScene implements Runnable{
     public void createText (String text) {
         textList.add(text);
     }
-    public void addCustomWindowCloseButton(){
-        LevelCloseButton levelCloseButton = new LevelCloseButton("X",jFrame,this);
-//        closeButton = new CloseButton(deviceInfo,"X",jFrame, fontInfo);
 
-//        this.add(closeButton);
-        this.add(levelCloseButton);
-        this.repaint();
-        this.revalidate();
-    }
-
-
-    public void buildScene(){
-        MessNotification();
-        createBackground("images/LevelOneMain.png");
-        timerLabel = new TimerLabel(jFrame, this);
-        timerLabel.setVisible(false);
-        revalidate();
-        repaint();
-        scoreBoard = new ScoreBoard(jFrame, this);
-
-        scoreBoard.setVisible(false);
-        revalidate();
-        repaint();
-        addCustomWindowCloseButton();
-        this.repaint();
-        imagesFound=0;
-        generateScreen();
-        instantiateItemNameLabelList();
-        showItemNamesInTextBox();
-        this.repaint();
-        music = getClass().getClassLoader().getResource("images/bgmusic.wav");
-    }
-
-    public void MessNotification(){
-        messNotification = new JButton("<html>Oh No, The room looks like it got ransaked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>");
-
-        messNotification.setFont(FontInfo.getResizedFont(34f));
-        messNotification.setFocusPainted(false);
-        messNotification.setEnabled(false);
-        messNotification.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
-        messNotification.setBackground(Color.decode("#14171C"));
-        messNotification.setForeground(Color.white);
-        messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
-        messNotification.setOpaque(true);
-        this.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if(!tapped) {
-                    resetVariables();
-                    enableObjectButtons();
-                    messNotification.setVisible(false);
-                    revalidate();
-                    repaint();
-                    tapped = true;
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        this.add(messNotification);
-    }
-
-    @Override
-    public void run() {
-
-        buildScene();
-
-    }
-
-    @Override
-    public void callSelf() {
-
-    }
 
     @Override
     public void startScene() {
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
-        cleanScreen();
-
-//        this.remove(messNotification);
-
+        MakeRandomItemListAtBottomOfScreen();
+        tapped = false;
+        resetVariables();
+        ResetTimerAndScore();
     }
 
     @Override
-    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, JPanel mapT) {
-        timerLabel.loadingAnimationT = loadingAnimationT;
-        timerLabel.nextScene = mapT;
+    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, MapT mapT) {
+        this.loadingAnimationT = loadingAnimationT;
+        this.mapT = mapT;
     }
 
 
-    public void cleanScreen(){
+    public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
-        timerLabel.second = 60;
-        timerLabel.minute = 0;
+        timerLabel.second = 30;
+        timerLabel.minute = 2;
         timerLabel.score=0;
         scoreBoard.setText("0000");
         imagesFound = 0;
@@ -405,28 +387,70 @@ public class DormRoomSceneT extends IScene implements Runnable{
     public void resetVariables(){
 
         timerLabel.isTimeOver = false;
-        timerLabel.second = 30;
-        timerLabel.minute = 2;
         timerLabel.score=0;
-        tapped = false;
 
-        timerLabel.setVisible(true);
-        revalidate();
-        repaint();
-        scoreBoard.setVisible(true);
-        revalidate();
-        repaint();
-        timerLabel.StartTimer();
-        MusicPlayer musicPlayer = new MusicPlayer();
+        timerLabel.setVisible(false);
+//        revalidate();
+//        repaint();
+        scoreBoard.setVisible(false);
+//        revalidate();
+//        repaint();
+
+        musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);
     }
 
-    /*TODO:
+    /**TODO:
     make text box, score, timer appear after pop up is gone
     make timer start after pop up is gone
     disable buttons while pop up is there
     make popup more noticible
     make sure popup is gone properly and buttons behind can be accessed (otherwise instead of set visible, try remove)
-
      */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /** unneeded functions */
+
+
+//    private void DormThings() {
+//        addCustomWindowCloseButton();
+//        TimerLabel timerLabel = new TimerLabel(jFrame, this, deviceInfo, fontInfo);
+//        TextBox textBox = new TextBox(jFrame, this, deviceInfo, fontInfo);
+//        ScoreBoard scoreBoard = new ScoreBoard(jFrame, this, deviceInfo, fontInfo);
+//
+//    }
+//    public void  createObject( String image ) {
+//        JLabel objectLabel = new JLabel();
+//        objectLabel.setBounds(0,-textBox_height,maxBounds.width,maxBounds.height);
+//
+//        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+//        Image image1 = obj1icon.getImage();
+//        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-100, Image.SCALE_DEFAULT);
+//        obj1icon = new ImageIcon(image1);
+//
+//        objectLabel.setIcon(obj1icon);
+//        imageList.add(objectLabel);
+//        this.add(objectLabel);
+//
+//    }
+//    public void prepareEndOfLevel(LoadingAnimationT loadingAnimationT, JPanel nextScene){
+//        timerLabel.loadingAnimationT = loadingAnimationT;
+//        timerLabel.nextScene = nextScene;
+//    }
+
+
+
+
 }

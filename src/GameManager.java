@@ -48,7 +48,7 @@ public class GameManager {
         MapT mapT = new MapT(jFrame);
         Thread mapThread = new Thread(mapT);
 
-        DormRoomSceneT dormRoomSceneT = new DormRoomSceneT(jFrame);
+        DormRoomLevelPanelT dormRoomSceneT = new DormRoomLevelPanelT(jFrame);
         Thread dormRoomThread = new Thread(dormRoomSceneT);
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
