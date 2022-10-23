@@ -99,7 +99,6 @@ public class TimerLabel extends JLabel implements Runnable{
         }
         second --;
         elapsedTime ++;
-        System.out.println(elapsedTime);
     }
 
     public void drawTimer() {

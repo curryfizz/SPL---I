@@ -334,7 +334,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
                             imageLabel.setVisible(false);
                             imagesFound+=1;
 
-                            if(timeSinceLastFind-timerLabel.elapsedTime < 10){
+                            if((timerLabel.elapsedTime - timeSinceLastFind) < 10){
                                 currentCombo++;
                             }else{
                                 currentCombo = 0;
