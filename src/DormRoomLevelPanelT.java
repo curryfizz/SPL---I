@@ -23,6 +23,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     URL music;
     MusicPlayer musicPlayer;
 
+    JLabel HintAnimationGif;
 
     boolean levelFinished;
     int imagesFound;
@@ -54,6 +55,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     public void buildScene(){
         MessNotification();
         setupShowGottenScore();
+        setupHintAnimationGif();
         createBackground("images/LevelOneMain.png");
 
         timerLabel = new TimerLabel(jFrame, this);
@@ -74,6 +76,34 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
         repaint();
         music = getClass().getClassLoader().getResource("images/bgmusic.wav");
+    }
+
+    private void setupHintAnimationGif() {
+//        JLabel objectLabel = new JLabel();
+//        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
+//
+//        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+//        Image image1 = obj1icon.getImage();
+//        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
+//        obj1icon = new ImageIcon(image1);
+//
+//        objectLabel.setIcon(obj1icon);
+//        imageList.add(objectLabel);
+
+        int sizeX = 100;
+        int sizeY = 100;
+
+        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/sparkles.gif")));
+        gif.setImage(gif.getImage().getScaledInstance(sizeX, sizeY, Image.SCALE_DEFAULT));
+        HintAnimationGif = new JLabel();
+        HintAnimationGif.setBounds(500,500, sizeX,sizeY);
+
+        HintAnimationGif.setIcon(gif);
+        HintAnimationGif.setVisible(true);
+//        HintAnimationGif.setBackground(Color.BLACK);
+//        HintAnimationGif.setOpaque(true);
+        HintAnimationGif.setVisible(false);
+        this.add(HintAnimationGif);
     }
 
     private void setupShowGottenScore() {
@@ -349,6 +379,13 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
                             ShowGottenScore.setLocation(button.getLocation());
                             ShowGottenScore.setVisible(true);
                             repaint();
+
+                            //hehe
+
+                            HintAnimationGif.setLocation(button.getLocation());
+                            HintAnimationGif.setVisible(true);
+
+                            //hehe
 
                             timerLabel.AnimateScore();
 
