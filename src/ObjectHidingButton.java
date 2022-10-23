@@ -31,14 +31,14 @@ public class ObjectHidingButton extends JButton {
 
         /* during debugging*/
 
-        setOpaque(true);
-        setBackground(Color.pink);
+//        setOpaque(true);
+//        setBackground(new Color(250, 80, 100, 50));
 
 
         /* stuff that works*/
 
-//        setOpaque(false);
-//        setContentAreaFilled(false);
+        setOpaque(false);
+        setContentAreaFilled(false);
 
         repaint();
         setFocusPainted(false);

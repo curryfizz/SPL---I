@@ -13,6 +13,8 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     boolean isTimerOver;
     public int score = 0;
+    int currentCombo = 0;
+    int timeSinceLastFind = 0;
     CloseButton closeButton;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
@@ -20,6 +22,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     MapT mapT;
     URL music;
     MusicPlayer musicPlayer;
+
 
     boolean levelFinished;
     int imagesFound;
@@ -50,6 +53,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     public void buildScene(){
         MessNotification();
+        setupShowGottenScore();
         createBackground("images/LevelOneMain.png");
 
         timerLabel = new TimerLabel(jFrame, this);
@@ -68,9 +72,19 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         imagesFound=0;
         generateScreenWithAllObjectsAndButtons();
 
-
         repaint();
         music = getClass().getClassLoader().getResource("images/bgmusic.wav");
+    }
+
+    private void setupShowGottenScore() {
+        ShowGottenScore = new JLabel("", SwingConstants.CENTER);
+        ShowGottenScore.setBounds(500,400, 50, 30);
+        ShowGottenScore.setBackground(null);
+        ShowGottenScore.setFont(FontInfo.getResizedFont(29f));
+        ShowGottenScore.setForeground(new Color(30, 120, 20));
+        ShowGottenScore.setVisible(false);
+        ShowGottenScore.setOpaque(false);
+        this.add(ShowGottenScore);
     }
 
     public void MessNotification(){
@@ -123,16 +137,16 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     }
 
     public  void createBackground(String bgfilename) {
+        this.setLayout(null);
         this.setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
         this.setBackground(Color.black);
-        this.setLayout(null);
 
         ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(bgfilename)));
         Image image = imageIcon.getImage();
-        image = image.getScaledInstance(maxBounds.width, maxBounds.height, Image.SCALE_DEFAULT);
+        image = image.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
         imageIcon = new ImageIcon(image);
         backgroundLabel = new JLabel();
-        backgroundLabel.setBounds(0,-textBox_height, maxBounds.width,maxBounds.height);
+        backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
         backgroundLabel.setIcon(imageIcon);
     }
 
@@ -144,53 +158,53 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     }
 
     public  void generateScreenWithAllObjectsAndButtons() {
-        createButton("images/01.png", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *410/864,
-                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *90/864);
+        createButton("images/01.png", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
         createText("Cornflakes Box");
-        createButton("images/02.png", DeviceInformation.screenWidth *1188/1536, DeviceInformation.screenHeight *473/864,
+        createButton("images/02.png", DeviceInformation.screenWidth *1188/1536, DeviceInformation.screenHeight *493/864,
                 DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *37/864);
         createText("CocaCola Can");
-        createButton("images/03.png", DeviceInformation.screenWidth *1235/1536, DeviceInformation.screenHeight *385/864,
+        createButton("images/03.png", DeviceInformation.screenWidth *1235/1536, DeviceInformation.screenHeight *400/864,
                 DeviceInformation.screenWidth *86/1536, DeviceInformation.screenHeight *65/864);
         createText("Shoulder Bag");
-        createButton("images/04.png", DeviceInformation.screenWidth *1130/1536, DeviceInformation.screenHeight *740/864,
+        createButton("images/04.png", DeviceInformation.screenWidth *1130/1536, DeviceInformation.screenHeight *730/864,
                 DeviceInformation.screenWidth *67/1536, DeviceInformation.screenHeight *26/864);
         createText("HeadPhone");
         createButton("images/05.png", DeviceInformation.screenWidth *325/1536, DeviceInformation.screenHeight *728/864,
                 DeviceInformation.screenWidth *43/1536, DeviceInformation.screenHeight *32/864);
         createText("Phone");
-        createButton("images/06.png", DeviceInformation.screenWidth *419/1536, DeviceInformation.screenHeight *667/864,
-                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *16/864);
+        createButton("images/06.png", DeviceInformation.screenWidth *419/1536, DeviceInformation.screenHeight *672/864,
+                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *19/864);
         createText("Calculator");
         createButton("images/07.png", DeviceInformation.screenWidth *1102/1536, DeviceInformation.screenHeight *703/864,
-                DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *22/864);
+                DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *25/864);
         createText("Sunglasses");
-        createButton("images/08.png", DeviceInformation.screenWidth *850/1536, DeviceInformation.screenHeight *352/864,
+        createButton("images/08.png", DeviceInformation.screenWidth *850/1536, DeviceInformation.screenHeight *384/864,
                 DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *15/864);
         createText("Garbage");
-        createButton("images/09.png", DeviceInformation.screenWidth *482/1536, DeviceInformation.screenHeight *328/864,
+        createButton("images/09.png", DeviceInformation.screenWidth *482/1536, DeviceInformation.screenHeight *348/864,
                 DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *48/864);
         createText("Toilet Paper");
-        createButton("images/10.png", DeviceInformation.screenWidth *542/1536, DeviceInformation.screenHeight *390/864,
+        createButton("images/10.png", DeviceInformation.screenWidth *542/1536, DeviceInformation.screenHeight *410/864,
                 DeviceInformation.screenWidth *72/1536, DeviceInformation.screenHeight *26/864);
         createText("Food");
         createButton("images/11.png", DeviceInformation.screenWidth *95/1536, DeviceInformation.screenHeight *737/864,
                 DeviceInformation.screenWidth *168/1536, DeviceInformation.screenHeight *27/864);
         createText("Blanket");
-        createButton("images/12.png", DeviceInformation.screenWidth *740/1536, DeviceInformation.screenHeight *510/864,
+        createButton("images/12.png", DeviceInformation.screenWidth *740/1536, DeviceInformation.screenHeight *520/864,
                 DeviceInformation.screenWidth *90/1536, DeviceInformation.screenHeight *90/864);
         createText("BackPack");
-        createButton("images/13.png", DeviceInformation.screenWidth *515/1536, DeviceInformation.screenHeight *585/864,
+        createButton("images/13.png", DeviceInformation.screenWidth *515/1536, DeviceInformation.screenHeight *595/864,
                 DeviceInformation.screenWidth *42/1536, DeviceInformation.screenHeight *80/864);
         createText("Cloth Pile");
-        createButton("images/14.png", DeviceInformation.screenWidth *190/1536, DeviceInformation.screenHeight *410/864,
+        createButton("images/14.png", DeviceInformation.screenWidth *190/1536, DeviceInformation.screenHeight *425/864,
                 DeviceInformation.screenWidth *85/1536, DeviceInformation.screenHeight *103/864);
         createText("Pizza Box");
-        createButton("images/15.png", DeviceInformation.screenWidth *1033/1536, DeviceInformation.screenHeight *393/864,
+        createButton("images/15.png", DeviceInformation.screenWidth *1033/1536, DeviceInformation.screenHeight *417/864,
                 DeviceInformation.screenWidth *32/1536, DeviceInformation.screenHeight *17/864);
         createText("Folded Clothes");
-        createButton("images/16.png", DeviceInformation.screenWidth *894/1536, DeviceInformation.screenHeight *482/864,
-                DeviceInformation.screenWidth *28/1536, DeviceInformation.screenHeight *23/864);
+        createButton("images/16.png", DeviceInformation.screenWidth *894/1536, DeviceInformation.screenHeight *505/864,
+                DeviceInformation.screenWidth *28/1536, DeviceInformation.screenHeight *28/864);
         createText("Chips Packet");
         createButton("images/17.png", DeviceInformation.screenWidth *1204/1536, DeviceInformation.screenHeight *725/864,
                 DeviceInformation.screenWidth *110/1536, DeviceInformation.screenHeight *43/864);
@@ -198,16 +212,16 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         createButton("images/18.png", DeviceInformation.screenWidth *722/1536, 0 /864,
                 DeviceInformation.screenWidth *165/1536, DeviceInformation.screenHeight *23/864);
         createText("Quilt");
-        createButton("images/19.png", DeviceInformation.screenWidth *924/1536, DeviceInformation.screenHeight *480/864,
+        createButton("images/19.png", DeviceInformation.screenWidth *924/1536, DeviceInformation.screenHeight *500/864,
                 DeviceInformation.screenWidth *43/1536, DeviceInformation.screenHeight *20/864);
         createText("Book");
-        createButton("images/20.png", DeviceInformation.screenWidth *1365/1536, DeviceInformation.screenHeight *746/864,
+        createButton("images/20.png", DeviceInformation.screenWidth *1365/1536, DeviceInformation.screenHeight *751/864,
                 DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *19/864);
         createText("FoodPlate");
-        createButton("images/21.png", DeviceInformation.screenWidth *934/1536, DeviceInformation.screenHeight *436/864,
+        createButton("images/21.png", DeviceInformation.screenWidth *934/1536, DeviceInformation.screenHeight *456/864,
                 DeviceInformation.screenWidth *44/1536, DeviceInformation.screenHeight *33/864);
         createText("Shoes");
-        createButton("images/22.png", DeviceInformation.screenWidth *489/1536, DeviceInformation.screenHeight *380/864,
+        createButton("images/22.png", DeviceInformation.screenWidth *489/1536, DeviceInformation.screenHeight *400/864,
                 DeviceInformation.screenWidth *26/1536, DeviceInformation.screenHeight *20/864);
         createText("TeaCup");
 
@@ -294,11 +308,11 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     public JLabel createObject1(String image){
         JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(0,-textBox_height,maxBounds.width,maxBounds.height);
+        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
 
         ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
         Image image1 = obj1icon.getImage();
-        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height, Image.SCALE_DEFAULT);
+        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
         obj1icon = new ImageIcon(image1);
 
         objectLabel.setIcon(obj1icon);
@@ -320,8 +334,23 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
                             imageLabel.setVisible(false);
                             imagesFound+=1;
 
-                            scoreBoard.setScore((int) (timerLabel.elapsedTime/2.0), 0);
+                            if(timeSinceLastFind-timerLabel.elapsedTime < 10){
+                                currentCombo++;
+                            }else{
+                                currentCombo = 0;
+                            }
+
+                            timeSinceLastFind = timerLabel.elapsedTime;
+
+                            int gottenScore = scoreBoard.setScore((int) (timerLabel.elapsedTime/2.0), currentCombo);
                             scoreBoard.refreshScore();
+
+                            ShowGottenScore.setText("+" + Integer.toString(gottenScore));
+                            ShowGottenScore.setLocation(button.getLocation());
+                            ShowGottenScore.setVisible(true);
+                            repaint();
+
+                            timerLabel.AnimateScore();
 
                             setEnabled(false);
                             ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
@@ -399,11 +428,8 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     }
 
     /**TODO:
-    make text box, score, timer appear after pop up is gone
-    make timer start after pop up is gone
     disable buttons while pop up is there
-    make popup more noticible
-    make sure popup is gone properly and buttons behind can be accessed (otherwise instead of set visible, try remove)
+     add Combo textBox
      */
 
 

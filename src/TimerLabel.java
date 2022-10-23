@@ -12,11 +12,16 @@ public class TimerLabel extends JLabel implements Runnable{
     int minute;
     long StartTimeMili;
     int FPS = 60;
-    Thread TimerThread;
 
+    boolean doingScoreAnimation = false;
+    long lastAnimated = 0;
+    int FramesDone = 0;
+
+
+    Thread TimerThread;
     int elapsedTime = 0;
 
-//    int choice;
+
     boolean isTimeOver = false;
     public TimerLabel(JFrame jFrame, ALevelPanel backGroundPanel) {
         this.jFrame = jFrame;
@@ -126,17 +131,50 @@ public class TimerLabel extends JLabel implements Runnable{
 
     }
 
+    public void AnimateScore(){
+        doingScoreAnimation = true;
+        lastAnimated = System.currentTimeMillis();
+        FramesDone = 0;
+    }
+
     @Override
     public void run() {
 
         long lastUpdatedAt = System.currentTimeMillis();
         long milisecs = 0;
 
+        Point p;
+
+        long miliFPS;
+
+
+
         while(!isTimeOver) {
             milisecs = System.currentTimeMillis() - lastUpdatedAt;
             drawTimer();
             jFrame.repaint();
             this.repaint();
+
+
+            if(doingScoreAnimation){
+                miliFPS = System.currentTimeMillis() - lastAnimated;
+                if(miliFPS > 70 && miliFPS<100){
+                    p = backGroundPanel.ShowGottenScore.getLocation();
+                    p.y -= 2;
+                    backGroundPanel.ShowGottenScore.setLocation(p);
+//                    backGroundPanel.ShowGottenScore.repaint();
+//                    backGroundPanel.repaint();
+                    miliFPS = 0;
+                    FramesDone++;
+                    lastAnimated = System.currentTimeMillis();
+                    if(FramesDone > 15){
+                        FramesDone = 0;
+                        doingScoreAnimation = false;
+                        lastAnimated = 0;
+                        backGroundPanel.ShowGottenScore.setVisible(false);
+                    }
+                }
+            }
 
             if(milisecs > 1000){ //one second has passed
                 UpdateTimeVariables();

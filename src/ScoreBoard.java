@@ -19,7 +19,6 @@ public class ScoreBoard extends JLabel{
         comboBonus = 10;
         refreshScore();
     }
-
     public void SetupScoreBoard(){
         this.setBounds(130,5, 150, 45);
         this.setBackground(Color.decode("#14171C"));
@@ -34,8 +33,10 @@ public class ScoreBoard extends JLabel{
         backGroundPanel.revalidate();
         backGroundPanel.add(this);
     }
-    public void setScore(int deduction, int combo){
-        score += baseScore - deduction + combo*comboBonus;
+    public int setScore(int deduction, int combo){
+        int toBeAdded = baseScore - deduction + combo*comboBonus;
+        score += toBeAdded;
+        return toBeAdded;
     }
 
     public void refreshScore(){

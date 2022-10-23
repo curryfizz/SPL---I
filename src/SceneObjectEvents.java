@@ -7,17 +7,14 @@ import java.awt.event.MouseListener;
 
 public class SceneObjectEvents implements MouseListener {
     JLabel imageLabel;
-
     JPanel scenePanel;
     SceneObjectEvents(JLabel imageLabel, JPanel scenePanel){
         this.imageLabel = imageLabel;
         this.scenePanel = scenePanel;
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
         imageLabel.setVisible(false);
-//        this.scenePanel.score += 100;
     }
 
     @Override
