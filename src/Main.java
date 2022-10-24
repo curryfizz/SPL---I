@@ -26,6 +26,8 @@ public class Main {
                 sound.volumeUp();
             }
         });
+
+
         window.add(volumeUpB);
         slider = new JSlider(-40,7);
         slider.addChangeListener(new ChangeListener() {

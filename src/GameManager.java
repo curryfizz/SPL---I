@@ -11,7 +11,7 @@ public class GameManager {
     }
 
     public GameManager(){
-        LibrarySceneT l = new LibrarySceneT();
+        LibrarySceneT l = new LibrarySceneT(new JFrame());
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
 
@@ -50,6 +50,10 @@ public class GameManager {
 
         DormRoomLevelPanelT dormRoomSceneT = new DormRoomLevelPanelT(jFrame);
         Thread dormRoomThread = new Thread(dormRoomSceneT);
+
+        LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
+        Thread  libraryScence = new Thread(librarySceneT);
+
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
         Thread messageMomThread = new Thread(messageFromMomT);
