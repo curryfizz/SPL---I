@@ -13,6 +13,7 @@ public class TimerLabel extends JLabel implements Runnable{
     long StartTimeMili;
     int FPS = 60;
 
+    int st_alpha = 255;
     boolean doingScoreAnimation = false;
     long lastAnimated = 0;
     int FramesDone = 0;
@@ -160,17 +161,21 @@ public class TimerLabel extends JLabel implements Runnable{
                 if(miliFPS > 70 && miliFPS<100){
                     p = backGroundPanel.ShowGottenScore.getLocation();
                     p.y -= 2;
+                    backGroundPanel.ShowGottenScore.setForeground(new Color(255,255,0,st_alpha));
+                    st_alpha*=2;
+                    st_alpha/=3;
                     backGroundPanel.ShowGottenScore.setLocation(p);
 //                    backGroundPanel.ShowGottenScore.repaint();
 //                    backGroundPanel.repaint();
                     miliFPS = 0;
                     FramesDone++;
                     lastAnimated = System.currentTimeMillis();
-                    if(FramesDone > 15){
+                    if(FramesDone > 30){
                         FramesDone = 0;
                         doingScoreAnimation = false;
                         lastAnimated = 0;
                         backGroundPanel.ShowGottenScore.setVisible(false);
+                        st_alpha=255;
                     }
                 }
             }

@@ -33,7 +33,7 @@ public class ObjectHidingButton extends JButton {
         /* during debugging*/
 
 //        setOpaque(true);
-//        setBackground(new Color(250, 80, 100, 50));
+//        setBackground(new Color(255, 0, 0, 100));
 
 
         /* stuff that works*/

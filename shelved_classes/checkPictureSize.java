@@ -56,7 +56,7 @@ public class checkPictureSize {
         window.add(bgPanel[1]);
 
 
-        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/LevelOneMain.png"));
+        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/dormImages/LevelOneMain.png"));
         Image image = imageIcon.getImage();
         //titlebar height ~ 50px -> need to make it smaller to accomodate textbox though -> check info in textbox after running
         image = image.getScaledInstance(maxBounds.width, maxBounds.height - 100, Image.SCALE_DEFAULT);
