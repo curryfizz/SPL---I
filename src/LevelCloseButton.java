@@ -23,7 +23,7 @@ public class LevelCloseButton extends JButton {
         assignFont(FontInfo.getResizedFont(50f));
         addExitText(text);
         setDefaultTextColor();
-        exitConfirmation = new ConfirmationWindowPopup();
+//        exitConfirmation = new ConfirmationWindowPopup();
 //        addCloseActions(fontInfo,jFrame,exitConfirmation);
         addMouseListener(new MouseListener() {
             @Override

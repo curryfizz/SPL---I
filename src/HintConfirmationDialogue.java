@@ -9,11 +9,14 @@ import java.awt.event.MouseListener;
 public class HintConfirmationDialogue extends JDialog {
 
     JLabel jLabel;
+    ALevelPanel backgroundPanel;
     JButton YesButton;
+    int indexOfObjectButton;
 
     JButton NoButton;
-    public HintConfirmationDialogue(JFrame jFrame, JPanel jPanel){
-
+    public HintConfirmationDialogue(JFrame jFrame, ALevelPanel jPanel, int index){
+        this.indexOfObjectButton = index;
+        this.backgroundPanel = jPanel;
         setModal(true);
         setUndecorated(true);
 
@@ -21,14 +24,14 @@ public class HintConfirmationDialogue extends JDialog {
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
-        jLabel.setPreferredSize(new Dimension(170,90));
+        jLabel.setPreferredSize(new Dimension(170,170));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
-        jLabel.setText(convertToMultiline("See Hint for this Item?\nYou will receive get points..."));
+        jLabel.setText(convertToMultiline("See Hint for this Item?\nYou will get less points and loose your combo..."));
         jLabel.setFont(FontInfo.getResizedFont(26f));
         add(jLabel);
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
-        setSize(200,180);
+        setSize(200,170+90);
         setLocationRelativeTo(jFrame);
         setResizable(false);
         YesButton = new JButton();
@@ -44,10 +47,13 @@ public class HintConfirmationDialogue extends JDialog {
         YesButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(jPanel instanceof DormRoomLevelPanelT){
-                    ((DormRoomLevelPanelT)jPanel).timerLabel.endLevel();
-                    dispose();
-                }
+                backgroundPanel.buttonList.get(indexOfObjectButton).HintWasUsed = true;
+                Point location = backgroundPanel.buttonList.get(indexOfObjectButton).getLocation();
+//                location.x -= 50;
+                location.y -= 50;
+                backgroundPanel.HintAnimationGif.setLocation(location);
+                backgroundPanel.HintAnimationGif.setVisible(true);
+                dispose();
             }
 
             @Override

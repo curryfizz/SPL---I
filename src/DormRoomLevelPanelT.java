@@ -23,16 +23,17 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     URL music;
     MusicPlayer musicPlayer;
 
-    JLabel HintAnimationGif;
+//    JLabel HintAnimationGif;
 
     boolean levelFinished;
     int imagesFound;
     int textBox_height;
-    public ArrayList<JLabel> imageList = new ArrayList<>(); // array of images of items we may need to find
-    public ArrayList<ObjectHidingButton> buttonList = new ArrayList<>(); //all the buttons for the objects are in this
-    public ArrayList<String> textList = new ArrayList<>(); //all the names of the objects are in this\
-    ArrayList<JLabel> ListOfAllItemNamesAsLabels = new ArrayList<>(); //the labels containing Strings of 'item names' that were randomly chosen
-    public ArrayList<Integer> RandObjIndices; //an array of 6 integers, instantiated randomly.
+
+//    public ArrayList<JLabel> imageList = new ArrayList<>(); // array of images of items we may need to find
+//    public ArrayList<ObjectHidingButton> buttonList = new ArrayList<>(); //all the buttons for the objects are in this
+//    public ArrayList<String> textList = new ArrayList<>(); //all the names of the objects are in this\
+//    ArrayList<JLabel> ListOfAllItemNamesAsLabels = new ArrayList<>(); //the labels containing Strings of 'item names' that were randomly chosen
+//    public ArrayList<Integer> RandObjIndices; //an array of 6 integers, instantiated randomly.
                                             // Each integer indicates the index of the Object in the imageList
                                             // that The player has to find in this round.
     JButton messNotification; // notification that someone messed up your dorm room
@@ -290,7 +291,8 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         int index;
         for(int i=0; i<RandObjIndices.size(); i++){
             index = RandObjIndices.get(i);
-//            ListOfAllItemNamesAsLabels.get(index).addMouseListener(new SceneObjectEvents(this));
+            ListOfAllItemNamesAsLabels.get(index).addMouseListener(new LabelListener(jFrame, this,
+                    ListOfAllItemNamesAsLabels.get(index), index));
             BigItemListAtBottomOfScreen.add(ListOfAllItemNamesAsLabels.get(index));
         }
 
@@ -373,7 +375,15 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
                             timeSinceLastFind = timerLabel.elapsedTime;
 
-                            int gottenScore = scoreBoard.setScore((int) (timerLabel.elapsedTime/2.0), currentCombo);
+                            int gottenScore;
+                            if(HintWasUsed){
+                                gottenScore = scoreBoard.setScore(50, 0);
+                                currentCombo = 0;
+                                HintAnimationGif.setVisible(false);
+                            }
+                            else{
+                                gottenScore = scoreBoard.setScore((int) (timerLabel.elapsedTime/2.0), currentCombo);
+                            }
                             scoreBoard.refreshScore();
 
                             ShowGottenScore.setText("+" + Integer.toString(gottenScore));
