@@ -12,6 +12,7 @@ public class ObjectHidingButton extends JButton {
     JLabel associatedLabel;
     JPanel scenePanel;
     int myIndex;
+    boolean HintWasUsed = false;
 
     public ObjectHidingButton(int posx, int posy, int width, int height, JLabel label, JPanel scenePanel, int myIndex){
         this.positionX = posx;

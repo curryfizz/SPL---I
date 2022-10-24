@@ -37,7 +37,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
                                             // that The player has to find in this round.
     JButton messNotification; // notification that someone messed up your dorm room
     RandomGenerator randomGenerator;
-    boolean tapped = false;
+    boolean InnitiallyClicked = false;
     public DormRoomLevelPanelT(JFrame jFrame){
         this.jFrame = jFrame;
         levelFinished = false;
@@ -96,7 +96,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/sparkles.gif")));
         gif.setImage(gif.getImage().getScaledInstance(sizeX, sizeY, Image.SCALE_DEFAULT));
         HintAnimationGif = new JLabel();
-        HintAnimationGif.setBounds(500,500, sizeX,sizeY);
+        HintAnimationGif.setBounds(600,500, sizeX,sizeY);
 
         HintAnimationGif.setIcon(gif);
         HintAnimationGif.setVisible(true);
@@ -131,7 +131,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(!tapped) {
+                if(!InnitiallyClicked) {
                     timerLabel.setVisible(true);
                     scoreBoard.setVisible(true);
                     revalidate();
@@ -139,7 +139,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
                     enableObjectButtons();
                     messNotification.setVisible(false);
                     timerLabel.StartTimer();
-                    tapped = true;
+                    InnitiallyClicked = true;
                 }
             }
 
@@ -288,11 +288,10 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         this.RandObjIndices = randomGenerator.RandObjIndices;
         this.add(BigItemListAtBottomOfScreen);
         int index;
-//        bigItemListLabel.add(new JLabel());
         for(int i=0; i<RandObjIndices.size(); i++){
             index = RandObjIndices.get(i);
+//            ListOfAllItemNamesAsLabels.get(index).addMouseListener(new SceneObjectEvents(this));
             BigItemListAtBottomOfScreen.add(ListOfAllItemNamesAsLabels.get(index));
-//            buttonList.get(index).setEnabled(true);
         }
 
     }
@@ -319,6 +318,8 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     public void EndLevel() {
         resetItemNameLabelList();
         remove(BigItemListAtBottomOfScreen);
+        ShowGottenScore.setVisible(false);
+//        HintAnimationGif.setVisible();
         revalidate();
         repaint();
 
@@ -380,12 +381,12 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
                             ShowGottenScore.setVisible(true);
                             repaint();
 
-                            //hehe
-
-                            HintAnimationGif.setLocation(button.getLocation());
-                            HintAnimationGif.setVisible(true);
-
-                            //hehe
+//                            //hehe
+//
+//                            HintAnimationGif.setLocation(button.getLocation());
+//                            HintAnimationGif.setVisible(true);
+//
+//                            //hehe
 
                             timerLabel.AnimateScore();
 
@@ -424,7 +425,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
         MakeRandomItemListAtBottomOfScreen();
-        tapped = false;
+        InnitiallyClicked = false;
         resetVariables();
         ResetTimerAndScore();
     }
