@@ -52,7 +52,7 @@ public class GameManager {
         Thread dormRoomThread = new Thread(dormRoomSceneT);
 
         LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
-       // Thread
+        Thread  libraryScence = new Thread(librarySceneT);
 
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
