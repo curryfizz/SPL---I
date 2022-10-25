@@ -41,7 +41,7 @@ public class GameManager {
 
 
 
-
+/*
         StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
         Thread startMenuThread = new Thread(startMenu);
 
@@ -51,15 +51,19 @@ public class GameManager {
         DormRoomLevelPanelT dormRoomSceneT = new DormRoomLevelPanelT(jFrame);
         Thread dormRoomThread = new Thread(dormRoomSceneT);
 
+
+ */
         LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
         Thread  librarySceneThread = new Thread(librarySceneT);
 
 
-        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
+      /*  MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
         Thread messageMomThread = new Thread(messageFromMomT);
 
         LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,1,messageFromMomT);
         Thread loadingThread = new Thread(loadingAnimationT);
+
+
 
         mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT,librarySceneT);
         startMenu.PrepareForSceneTransition(loadingAnimationT, mapT);
@@ -70,10 +74,12 @@ public class GameManager {
         loadingThread.start();
         startMenuThread.start();
         dormRoomThread.start();
+
+       */
         librarySceneThread.start();
 
 
-        jFrame.add(startMenu);
+        jFrame.add(librarySceneT);
 
         /*
         TODO:

@@ -152,6 +152,271 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 7.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
         createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 8.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 9.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 10.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 11.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 12.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 13.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 14.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 15.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 16.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 17.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 18.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 19.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 20.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 21.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 22.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 23.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 24.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 25.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 26.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 27.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 28.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 29.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 30.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 31.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 32.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 33.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 34.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 35.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 36.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 37.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 38.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 39.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 40.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 41.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 42.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 43.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 44.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 45.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 46.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 47.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 48.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 49.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 50.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 51.PNG", DeviceInformation.screenWidth *830/1536, DeviceInformation.screenHeight *488/864,
+                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *5/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 52.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 53.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 54.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 55.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 56.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 57.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 58.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 59.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 60.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 61.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 62.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 63.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 64.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 65.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 66.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 67.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 68.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 69.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 70.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 71.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 72.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 73.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 74.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 75.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 76.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 77.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 78.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 79.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 80.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 81.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 82.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 83.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 84.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 85.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 86.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 87.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 88.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 89.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 90.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+
+
         this.add(backgroundLabel);
     }
     public void MessNotification(){
