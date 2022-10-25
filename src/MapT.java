@@ -39,6 +39,7 @@ public class MapT extends JPanel implements Runnable{
 
         this.jFrame = jFrame;
         addDormText();
+        addlibraryText();
 
     }
     public void addDormText(){
@@ -132,7 +133,6 @@ public class MapT extends JPanel implements Runnable{
                 dormRoomSceneT.PrepareForSceneTransition(loadingAnimationT,mapLevelButtonLibrary.mapT);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
-
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
                 mapLevelButtonsDorm.setBackground(Color.BLACK);
                 jFrame.revalidate();
@@ -154,7 +154,7 @@ public class MapT extends JPanel implements Runnable{
             public void mouseEntered(MouseEvent e) {
                 mapLevelButtonsDorm.setBackground(Color.PINK);
                 mapLevelButtonsDorm.mapT.dormText.setVisible(true);
-
+                mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
                 mapLevelButtonsDorm.mapT.revalidate();
                 mapLevelButtonsDorm.mapT.repaint();
             }
@@ -175,7 +175,7 @@ public class MapT extends JPanel implements Runnable{
                 librarySceneT.PrepareForSceneTransition(loadingAnimationT, mapLevelButtonsCDS.mapT);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
-
+                mapLevelButtonsDorm.mapT.dormText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
                 mapLevelButtonLibrary.setBackground(Color.BLACK);
                 jFrame.revalidate();
@@ -195,20 +195,17 @@ public class MapT extends JPanel implements Runnable{
             @Override
             public void mouseEntered(MouseEvent e) {
 
-                mapLevelButtonsDorm.setBackground(Color.PINK);
-                mapLevelButtonsDorm.mapT.dormText.setVisible(true);
-                mapLevelButtonsDorm.mapT.revalidate();
-                mapLevelButtonsDorm.mapT.repaint();
-
                 mapLevelButtonLibrary.setBackground(Color.PINK);
+                mapLevelButtonsDorm.mapT.dormText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(true);
                 mapLevelButtonLibrary.mapT.revalidate();
+                mapLevelButtonLibrary.mapT.repaint();
 
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                mapLevelButtonsDorm.setBackground(Color.BLACK);
+                mapLevelButtonLibrary.setBackground(Color.BLACK);
             }
         });
     }
@@ -295,7 +292,6 @@ public class MapT extends JPanel implements Runnable{
 //    }
     public void addCustomWindowCloseButton(JFrame jFrame){
         closeButton = new CloseButton("X",jFrame);
-
         this.add(closeButton);
     }
 

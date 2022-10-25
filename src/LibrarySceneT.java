@@ -61,7 +61,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         MessNotification();
         setupShowGottenScore();
         setupHintAnimationGif();
-        createBackground("images/dormImages/libraryMain.png");
+        createBackground("images/libraryImages/libraryMain.png");
 
         timerLabel = new TimerLabel(jFrame, this);
         timerLabel.setVisible(false);

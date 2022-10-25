@@ -11,7 +11,7 @@ public class GameManager {
     }
 
     public GameManager(){
-        LibrarySceneT l = new LibrarySceneT(new JFrame());
+
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
 
