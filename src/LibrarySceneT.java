@@ -61,7 +61,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         MessNotification();
         setupShowGottenScore();
         setupHintAnimationGif();
-        createBackground("images/dormImages/LevelOneMain.png");
+        createBackground("images/dormImages/libraryMain.png");
 
         timerLabel = new TimerLabel(jFrame, this);
         timerLabel.setVisible(false);
@@ -80,7 +80,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         generateScreenWithAllObjectsAndButtons();
 
         repaint();
-        music = getClass().getClassLoader().getResource("images/bgmusic.wav");
+        music = getClass().getClassLoader().getResource("images/bgmusic2.wav");
     }
 
     private void setupHintAnimationGif() {

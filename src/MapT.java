@@ -29,8 +29,11 @@ public class MapT extends JPanel implements Runnable{
     ImageIcon padLock;
     CloseButton closeButton;
     JLabel dormText;
+    JLabel libraryText;
+
     private LoadingAnimationT loadingAnimationT;
     private ALevelPanel dormRoomSceneT;
+    private ALevelPanel librarySceneT;
 
     public MapT(JFrame jFrame){
 
@@ -48,9 +51,23 @@ public class MapT extends JPanel implements Runnable{
         dormText.setForeground(Color.white);
 //                text.setOpaque(true);
         dormText.setFont(FontInfo.getResizedFont(32f));
-
         dormText.setVisible(false);
         add(dormText);
+        repaint();
+    }
+
+    public void addlibraryText(){
+        libraryText = new JLabel(
+                "<html>I should check out the library ?<br/>Let's go  to my library and see if i can find this or not.</html>",
+                SwingConstants.CENTER);
+        libraryText.setLayout(null);
+        libraryText.setBounds(1300, 200, DeviceInformation.screenWidth /5 -100, 500);
+        libraryText.setBackground(Color.decode("#14171C"));
+        libraryText.setForeground(Color.white);
+//                text.setOpaque(true);
+        libraryText.setFont(FontInfo.getResizedFont(32f));
+        libraryText.setVisible(false);
+        add( libraryText);
         repaint();
     }
 
@@ -91,9 +108,10 @@ public class MapT extends JPanel implements Runnable{
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
     }
-    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT) {
+    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT) {
         this.loadingAnimationT = loadingAnimationT;
         this.dormRoomSceneT = dormSceneT;
+        this.librarySceneT = librarySceneT;
     }
 
     private void doMapButtonThings() {
@@ -139,6 +157,53 @@ public class MapT extends JPanel implements Runnable{
 
                 mapLevelButtonsDorm.mapT.revalidate();
                 mapLevelButtonsDorm.mapT.repaint();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                mapLevelButtonsDorm.setBackground(Color.BLACK);
+            }
+        });
+
+
+
+        mapLevelButtonLibrary.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jFrame.remove(mapLevelButtonLibrary.mapT);
+                loadingAnimationT.changeNextScene(librarySceneT);
+                librarySceneT.PrepareForSceneTransition(loadingAnimationT, mapLevelButtonsCDS.mapT);
+                jFrame.add(loadingAnimationT);
+                loadingAnimationT.initializeTimer();
+
+                mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
+                mapLevelButtonLibrary.setBackground(Color.BLACK);
+                jFrame.revalidate();
+                jFrame.repaint();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+                mapLevelButtonsDorm.setBackground(Color.PINK);
+                mapLevelButtonsDorm.mapT.dormText.setVisible(true);
+                mapLevelButtonsDorm.mapT.revalidate();
+                mapLevelButtonsDorm.mapT.repaint();
+
+                mapLevelButtonLibrary.setBackground(Color.PINK);
+                mapLevelButtonLibrary.mapT.libraryText.setVisible(true);
+                mapLevelButtonLibrary.mapT.revalidate();
+
             }
 
             @Override
