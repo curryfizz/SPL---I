@@ -124,73 +124,34 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     }
 
     public  void generateScreenWithAllObjectsAndButtons() {
-        createButton("images/dormImages/01.png", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+        createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
+                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", DeviceInformation.screenWidth *830/1536, DeviceInformation.screenHeight *488/864,
+                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *5/864);
+        createText("Cornflakes Box");
+
+
+
+        createButton("images/libraryImages/levelTwoWithOutlines/item 2.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
         createText("Cornflakes Box");
-        createButton("images/dormImages/02.png", DeviceInformation.screenWidth *1188/1536, DeviceInformation.screenHeight *493/864,
-                DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *37/864);
-        createText("CocaCola Can");
-        createButton("images/dormImages/03.png", DeviceInformation.screenWidth *1235/1536, DeviceInformation.screenHeight *400/864,
-                DeviceInformation.screenWidth *86/1536, DeviceInformation.screenHeight *65/864);
-        createText("Shoulder Bag");
-        createButton("images/dormImages/04.png", DeviceInformation.screenWidth *1130/1536, DeviceInformation.screenHeight *730/864,
-                DeviceInformation.screenWidth *67/1536, DeviceInformation.screenHeight *26/864);
-        createText("HeadPhone");
-        createButton("images/dormImages/05.png", DeviceInformation.screenWidth *325/1536, DeviceInformation.screenHeight *728/864,
-                DeviceInformation.screenWidth *43/1536, DeviceInformation.screenHeight *32/864);
-        createText("Phone");
-        createButton("images/dormImages/06.png", DeviceInformation.screenWidth *419/1536, DeviceInformation.screenHeight *672/864,
-                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *19/864);
-        createText("Calculator");
-        createButton("images/dormImages/07.png", DeviceInformation.screenWidth *1102/1536, DeviceInformation.screenHeight *703/864,
-                DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *25/864);
-        createText("Sunglasses");
-        createButton("images/dormImages/08.png", DeviceInformation.screenWidth *850/1536, DeviceInformation.screenHeight *384/864,
-                DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *15/864);
-        createText("Garbage");
-        createButton("images/dormImages/09.png", DeviceInformation.screenWidth *482/1536, DeviceInformation.screenHeight *348/864,
-                DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *48/864);
-        createText("Toilet Paper");
-        createButton("images/dormImages/10.png", DeviceInformation.screenWidth *542/1536, DeviceInformation.screenHeight *410/864,
-                DeviceInformation.screenWidth *72/1536, DeviceInformation.screenHeight *26/864);
-        createText("Food");
-        createButton("images/dormImages/11.png", DeviceInformation.screenWidth *95/1536, DeviceInformation.screenHeight *737/864,
-                DeviceInformation.screenWidth *168/1536, DeviceInformation.screenHeight *27/864);
-        createText("Blanket");
-        createButton("images/dormImages/12.png", DeviceInformation.screenWidth *740/1536, DeviceInformation.screenHeight *520/864,
-                DeviceInformation.screenWidth *90/1536, DeviceInformation.screenHeight *90/864);
-        createText("BackPack");
-        createButton("images/dormImages/13.png", DeviceInformation.screenWidth *515/1536, DeviceInformation.screenHeight *595/864,
-                DeviceInformation.screenWidth *42/1536, DeviceInformation.screenHeight *80/864);
-        createText("Cloth Pile");
-        createButton("images/dormImages/14.png", DeviceInformation.screenWidth *190/1536, DeviceInformation.screenHeight *425/864,
-                DeviceInformation.screenWidth *85/1536, DeviceInformation.screenHeight *103/864);
-        createText("Pizza Box");
-        createButton("images/dormImages/15.png", DeviceInformation.screenWidth *1033/1536, DeviceInformation.screenHeight *417/864,
-                DeviceInformation.screenWidth *32/1536, DeviceInformation.screenHeight *17/864);
-        createText("Folded Clothes");
-        createButton("images/dormImages/16.png", DeviceInformation.screenWidth *894/1536, DeviceInformation.screenHeight *505/864,
-                DeviceInformation.screenWidth *28/1536, DeviceInformation.screenHeight *28/864);
-        createText("Chips Packet");
-        createButton("images/dormImages/17.png", DeviceInformation.screenWidth *1204/1536, DeviceInformation.screenHeight *725/864,
-                DeviceInformation.screenWidth *110/1536, DeviceInformation.screenHeight *43/864);
-        createText("Unfolded Cloth");
-        createButton("images/dormImages/18.png", DeviceInformation.screenWidth *722/1536, 0 /864,
-                DeviceInformation.screenWidth *165/1536, DeviceInformation.screenHeight *23/864);
-        createText("Quilt");
-        createButton("images/dormImages/19.png", DeviceInformation.screenWidth *924/1536, DeviceInformation.screenHeight *500/864,
-                DeviceInformation.screenWidth *43/1536, DeviceInformation.screenHeight *20/864);
-        createText("Book");
-        createButton("images/dormImages/20.png", DeviceInformation.screenWidth *1365/1536, DeviceInformation.screenHeight *751/864,
-                DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *19/864);
-        createText("FoodPlate");
-        createButton("images/dormImages/21.png", DeviceInformation.screenWidth *934/1536, DeviceInformation.screenHeight *456/864,
-                DeviceInformation.screenWidth *44/1536, DeviceInformation.screenHeight *33/864);
-        createText("Shoes");
-        createButton("images/dormImages/22.png", DeviceInformation.screenWidth *489/1536, DeviceInformation.screenHeight *400/864,
-                DeviceInformation.screenWidth *26/1536, DeviceInformation.screenHeight *20/864);
-        createText("TeaCup");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 3.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 4.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 5.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
 
+        createButton("images/libraryImages/levelTwoWithOutlines/item 6.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
+        createButton("images/libraryImages/levelTwoWithOutlines/item 7.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
+                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
+        createText("Cornflakes Box");
         this.add(backgroundLabel);
     }
     public void MessNotification(){
@@ -481,7 +442,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 //        repaint();
 
         musicPlayer = new MusicPlayer();
-        musicPlayer.playMusic(music);
+     //   musicPlayer.playMusic(music);
     }
 
 }
