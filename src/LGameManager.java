@@ -55,21 +55,21 @@ public class LGameManager {
 
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
-        DormRoomLevelPanel dormRoomScene = new DormRoomLevelPanel(jFrame, deviceInformation,fontInfo);
+       // DormRoomLevelPanel dormRoomScene = new DormRoomLevelPanel(jFrame, deviceInformation,fontInfo);
 
-        MusicSlider musicSlider = new MusicSlider(jFrame,dormRoomScene, deviceInformation,fontInfo);
+      //  MusicSlider musicSlider = new MusicSlider(jFrame,dormRoomScene, deviceInformation,fontInfo);
 
         jFrame.add(volumeUpB);
 
        // slider = new JSlider(-80,7);
-        musicSlider.addChangeListener(new ChangeListener() {
+        slider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 sound.currentVolume = slider.getValue();
                 sound.fc.setValue(sound.currentVolume);
             }
         });
-        jFrame.add(musicSlider);
+        jFrame.add(slider);
         jFrame.pack();
         jFrame.setVisible(true);
 

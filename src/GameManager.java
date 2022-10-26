@@ -14,7 +14,7 @@ public class GameManager {
 
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
-
+        System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
         /* Set up the frame*/
         JFrame jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,7 +41,7 @@ public class GameManager {
 
 
 
-/*
+
         StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
         Thread startMenuThread = new Thread(startMenu);
 
@@ -52,12 +52,12 @@ public class GameManager {
         Thread dormRoomThread = new Thread(dormRoomSceneT);
 
 
- */
+
         LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
         Thread  librarySceneThread = new Thread(librarySceneT);
 
 
-      /*  MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
+        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
         Thread messageMomThread = new Thread(messageFromMomT);
 
         LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,1,messageFromMomT);
@@ -75,12 +75,14 @@ public class GameManager {
         startMenuThread.start();
         dormRoomThread.start();
 
-       */
-//        librarySceneThread.start();
-        librarySceneT.run();
 
-        jFrame.add(librarySceneT); //should have been menuscreen
-        librarySceneT.startScene();
+
+
+        librarySceneThread.start();
+       // librarySceneT.run();
+
+        jFrame.add(startMenu); //should have been menuscreen
+        //librarySceneT.startScene();
 
         /*
         TODO:

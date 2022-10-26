@@ -12,7 +12,7 @@ public class DeviceInformation {
     DeviceInformation(){
         graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
 //        screenHeight = graphicsEnvironment.getMaximumWindowBounds().height;
-//        screenWidth = graphicsEnvironment.getMaximumWindowBounds().width;
+//       screenWidth = graphicsEnvironment.getMaximumWindowBounds().width;
 
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         screenHeight = d.height;

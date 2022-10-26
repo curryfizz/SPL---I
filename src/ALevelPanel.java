@@ -9,6 +9,8 @@ public abstract class ALevelPanel extends JPanel {
     JLabel ShowGottenScore;
     JLabel HintAnimationGif;
 
+    Main main;
+
     public ArrayList<JLabel> imageList = new ArrayList<>(); // array of images of items we may need to find
     public ArrayList<ObjectHidingButton> buttonList = new ArrayList<>(); //all the buttons for the objects are in this
     public ArrayList<String> textList = new ArrayList<>(); //all the names of the objects are in this\
