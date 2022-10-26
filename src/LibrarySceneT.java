@@ -78,7 +78,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
         imagesFound=0;
         generateScreenWithAllObjectsAndButtons();
-
+        addEntirePanelListener();
         repaint();
         music = getClass().getClassLoader().getResource("images/bgmusic2.wav");
     }
@@ -124,30 +124,33 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     }
 
     public  void generateScreenWithAllObjectsAndButtons() {
-        createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
-        createText("Cornflakes Box");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", DeviceInformation.screenWidth *840/1536, DeviceInformation.screenHeight *488/864,
-                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *5/864);
-        createText("Cornflakes Box");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 2.PNG", DeviceInformation.screenWidth *820/1536, DeviceInformation.screenHeight *485/864,
-                DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *12/864);
-        createText("Cornflakes Box");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 3.PNG", DeviceInformation.screenWidth *528/1536, DeviceInformation.screenHeight *662/864,
-                DeviceInformation.screenWidth *25/1536, DeviceInformation.screenHeight *8/864);
-        createText("Cornflakes Box");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 4.PNG", DeviceInformation.screenWidth *10/1536, DeviceInformation.screenHeight *745/864,
-                DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *22/864);
-        createText("Cornflakes Box");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 5.PNG", DeviceInformation.screenWidth *590/1536, DeviceInformation.screenHeight *718/864,
-                DeviceInformation.screenWidth *75/1536, DeviceInformation.screenHeight *60/864);
-        createText("Cornflakes Box");
-       createButton("images/libraryImages/levelTwoWithOutlines/item 6.PNG", DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *728/864,
-                DeviceInformation.screenWidth *78/1536, DeviceInformation.screenHeight *25/864);
-        createText("Cornflakes Box");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 7.PNG", DeviceInformation.screenWidth *228/1536, DeviceInformation.screenHeight *570/864,
-                DeviceInformation.screenWidth *10/1536, DeviceInformation.screenHeight *10/864);
-        createText("Cornflakes Box");
+
+        // hoise but just comment kore rakhsi
+
+//        createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
+//                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+//        createText("Cornflakes Box");
+//        createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", DeviceInformation.screenWidth *840/1536, DeviceInformation.screenHeight *488/864,
+//                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *5/864);
+//        createText("Cornflakes Box");
+//        createButton("images/libraryImages/levelTwoWithOutlines/item 2.PNG", DeviceInformation.screenWidth *820/1536, DeviceInformation.screenHeight *485/864,
+//                DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *12/864);
+//        createText("Cornflakes Box");
+//        createButton("images/libraryImages/levelTwoWithOutlines/item 3.PNG", DeviceInformation.screenWidth *528/1536, DeviceInformation.screenHeight *662/864,
+//                DeviceInformation.screenWidth *25/1536, DeviceInformation.screenHeight *8/864);
+//        createText("Cornflakes Box");
+//        createButton("images/libraryImages/levelTwoWithOutlines/item 4.PNG", DeviceInformation.screenWidth *10/1536, DeviceInformation.screenHeight *745/864,
+//                DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *22/864);
+//        createText("Cornflakes Box");
+//        createButton("images/libraryImages/levelTwoWithOutlines/item 5.PNG", DeviceInformation.screenWidth *590/1536, DeviceInformation.screenHeight *718/864,
+//                DeviceInformation.screenWidth *75/1536, DeviceInformation.screenHeight *60/864);
+//        createText("Cornflakes Box");
+//       createButton("images/libraryImages/levelTwoWithOutlines/item 6.PNG", DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *728/864,
+//                DeviceInformation.screenWidth *78/1536, DeviceInformation.screenHeight *25/864);
+//        createText("Cornflakes Box");
+//        createButton("images/libraryImages/levelTwoWithOutlines/item 7.PNG", DeviceInformation.screenWidth *228/1536, DeviceInformation.screenHeight *570/864,
+//                DeviceInformation.screenWidth *10/1536, DeviceInformation.screenHeight *10/864);
+//        createText("Cornflakes Box");
 
 
 
@@ -439,6 +442,14 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         messNotification.setForeground(Color.white);
         messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
         messNotification.setOpaque(true);
+//        messNotification.setVisible(true);
+//        addEntirePanelListener();
+        this.add(messNotification);
+        repaint();
+        revalidate();
+    }
+
+    private void addEntirePanelListener() {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -452,6 +463,8 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
                     timerLabel.StartTimer();
                     InnitiallyClicked = true;
                 }
+                System.out.println(e.getX() + ", " + e.getY());
+
             }
 
             @Override
@@ -474,7 +487,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
             }
         });
-        this.add(messNotification);
     }
 
 
@@ -541,7 +553,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
     }
 
-    public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
+    public void  createButton(String image, int posx, int posy, int sizex,int sizey) {
         JLabel objectLabel = createObject1(image);
 
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size()){

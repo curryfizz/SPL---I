@@ -76,10 +76,11 @@ public class GameManager {
         dormRoomThread.start();
 
        */
-        librarySceneThread.start();
+//        librarySceneThread.start();
+        librarySceneT.run();
 
-
-        jFrame.add(librarySceneT);
+        jFrame.add(librarySceneT); //should have been menuscreen
+        librarySceneT.startScene();
 
         /*
         TODO:
