@@ -274,7 +274,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     public void CreateTheBigItemListTextBoxAtTheBottomOfScreen(){
         BigItemListAtBottomOfScreen = new JLabel();
         BigItemListAtBottomOfScreen.setLayout(new GridLayout(1,5));
-        BigItemListAtBottomOfScreen.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
+        BigItemListAtBottomOfScreen.setBounds(0, DeviceInformation.screenHeight -(textBox_height*2), DeviceInformation.screenWidth, textBox_height*2);
         BigItemListAtBottomOfScreen.setBackground(Color.decode("#14171C"));
         BigItemListAtBottomOfScreen.setForeground(Color.white);
         BigItemListAtBottomOfScreen.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
