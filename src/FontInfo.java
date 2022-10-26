@@ -14,7 +14,7 @@ public class FontInfo {
         try {
             eastSeaDokdo = Font.createFont(Font.TRUETYPE_FONT, new File("fonts/EastSeaDokdo-Regular.ttf"));
             eastSeaDokdo = eastSeaDokdo.deriveFont(100f);
-//            graphicsEnvironment.registerFont(eastSeaDokdo);
+            GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(eastSeaDokdo);
         }catch(Exception e){
             //filoIO errors
             //custom font will be set to Monospaced;
