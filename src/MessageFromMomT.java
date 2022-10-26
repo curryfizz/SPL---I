@@ -113,7 +113,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
     }
     public void EndScene(){
         jFrame.remove(this);
-        loadingAnimationT.changeNextScene(nextScene);
+        loadingAnimationT.changeNextScene(nextScene); //to map
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
 
