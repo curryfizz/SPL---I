@@ -420,8 +420,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createText("Cornflakes Box");
       */
 
-        // amio kori (ayesha)
-
 
         //hoy
 

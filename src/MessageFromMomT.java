@@ -11,6 +11,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
     JFrame jFrame;
 //    DeviceInformation deviceInfo;
 //    FontInfo fontInfo;
+    Font eastSea = FontInfo.getResizedFont(42f);
     JLabel backgroundLabel;
     JLabel Bubble1;
     JLabel Bubble2;
@@ -82,7 +83,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         Text1.setBounds(400, 50, 400, 300);
         Text1.setBackground(Color.BLACK);
         Text1.setForeground(Color.decode("#14171C"));
-        Text1.setFont(FontInfo.getResizedFont(42f));
+        Text1.setFont(eastSea);
 
         Text1.setVisible(false);
         this.add(Text1);
@@ -98,7 +99,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         Text2.setBounds(1050, 10, 400, 300);
         Text2.setBackground(Color.BLACK);
         Text2.setForeground(Color.decode("#14171C"));
-        Text2.setFont(FontInfo.getResizedFont(42f));
+        Text2.setFont(eastSea);
 
         Text2.setVisible(false);
         this.add(Text2);
@@ -172,7 +173,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         TapToContinue.setBounds((DeviceInformation.screenWidth /2) - 150, DeviceInformation.screenHeight -50, 300, 50);
         TapToContinue.setBackground(Color.BLACK);
         TapToContinue.setForeground(Color.decode("#14171C"));
-        TapToContinue.setFont(FontInfo.getResizedFont(42f));
+        TapToContinue.setFont(eastSea);
         this.add(TapToContinue);
         revalidate();
         repaint();

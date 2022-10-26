@@ -43,7 +43,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         this.jFrame = jFrame;
         levelFinished = false;
         maxBounds = DeviceInformation.graphicsEnvironment.getMaximumWindowBounds();
-        textBox_height = 50;
+        textBox_height = DeviceInformation.screenHeight*50/864;
         this.setLayout(null);
 
     }
