@@ -131,10 +131,14 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
                 DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
         createText("Cornflakes Box");
-//        createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", DeviceInformation.screenWidth *840/1536, DeviceInformation.screenHeight *488/864,
-//                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *5/864);
-        createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", 840,480,60,5);
-        createText("Cornflakes Box");
+
+        //eita thik kaj kore amr -lomatul
+       createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", DeviceInformation.screenWidth *840/1536, DeviceInformation.screenHeight *484/864,
+                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *9/864);
+
+
+     //   createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", 840,480,60,5);
+    //    createText("Cornflakes Box");
         createButton("images/libraryImages/levelTwoWithOutlines/item 2.PNG", DeviceInformation.screenWidth *820/1536, DeviceInformation.screenHeight *490/864,
                 DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *12/864);
         createText("Cornflakes Box");
