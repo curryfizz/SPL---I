@@ -46,8 +46,8 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         this.jFrame = jFrame;
         levelFinished = false;
         maxBounds = DeviceInformation.graphicsEnvironment.getMaximumWindowBounds();
-        textBox_height = 50;
-        this.setLayout(null);
+        textBox_height = DeviceInformation.screenHeight*50/864;
+        this.setLayout(new GridLayout());
 
     }
 
@@ -131,8 +131,9 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
                 DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
         createText("Cornflakes Box");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", DeviceInformation.screenWidth *840/1536, DeviceInformation.screenHeight *488/864,
-                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *5/864);
+//        createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", DeviceInformation.screenWidth *840/1536, DeviceInformation.screenHeight *488/864,
+//                DeviceInformation.screenWidth *60/1536, DeviceInformation.screenHeight *5/864);
+        createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", 840,480,60,5);
         createText("Cornflakes Box");
         createButton("images/libraryImages/levelTwoWithOutlines/item 2.PNG", DeviceInformation.screenWidth *820/1536, DeviceInformation.screenHeight *490/864,
                 DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *12/864);

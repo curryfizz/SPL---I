@@ -6,11 +6,13 @@ public class DeviceInformation {
 
 
     static GraphicsEnvironment graphicsEnvironment;
+    static GraphicsConfiguration graphicsConfiguration;
     public static Integer screenHeight;
     public static Integer screenWidth;
 
     DeviceInformation(){
         graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        graphicsConfiguration = graphicsEnvironment.getDefaultScreenDevice().getDefaultConfiguration();
 //        screenHeight = graphicsEnvironment.getMaximumWindowBounds().height;
 //       screenWidth = graphicsEnvironment.getMaximumWindowBounds().width;
 

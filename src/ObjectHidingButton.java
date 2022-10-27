@@ -46,8 +46,9 @@ public class ObjectHidingButton extends JButton {
         setBorderPainted(false);
         setEnabled(false);
 
-
-        setBounds(positionX,positionY,buttonWidth,buttonHeight);
+        setLocation(DeviceInformation.graphicsConfiguration.getBounds().x+positionX, DeviceInformation.graphicsConfiguration.getBounds().y+positionY);
+        setSize(buttonWidth,buttonHeight);
+//        setBounds(positionX,positionY,buttonWidth,buttonHeight);
         addSceneEventsListener(this);
 
     }
