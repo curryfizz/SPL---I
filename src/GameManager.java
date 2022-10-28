@@ -41,7 +41,7 @@ public class GameManager {
 
 
 
-
+/*
         StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
         Thread startMenuThread = new Thread(startMenu);
 
@@ -53,8 +53,6 @@ public class GameManager {
 
 
 
-        LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
-        Thread  librarySceneThread = new Thread(librarySceneT);
 
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
@@ -78,11 +76,19 @@ public class GameManager {
 
 
 
-        librarySceneThread.start();
-       // librarySceneT.run();
+ */
 
-        jFrame.add(startMenu); //should have been menuscreen
-        //librarySceneT.startScene();
+
+
+        LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
+        Thread  librarySceneThread = new Thread(librarySceneT);
+
+
+         librarySceneThread.start();
+        librarySceneT.run();
+
+        jFrame.add(librarySceneT); //should have been startmenu
+        librarySceneT.startScene();
 
         /*
         TODO:
