@@ -44,10 +44,16 @@ public class LevelToMapConfirmationDialog extends JDialog {
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 if(jPanel instanceof DormRoomLevelPanelT){
                     ((DormRoomLevelPanelT)jPanel).timerLabel.endLevel();
                     dispose();
                 }
+                if (jPanel instanceof LibrarySceneT) {
+                    ((LibrarySceneT)jPanel).timerLabel.endLevel();
+                    dispose();
+                }
+
             }
 
             @Override
@@ -71,6 +77,8 @@ public class LevelToMapConfirmationDialog extends JDialog {
             }
         });
         add(closeButton);
+
+
         closeButton2 = new JButton();
         closeButton2.setFont(FontInfo.getResizedFont(25f));
         closeButton2.setBackground(Color.decode("#14171C"));
@@ -109,7 +117,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
             }
         });
         add(closeButton2);
-        setVisible(true);
+        setVisible(false);
     }
 
     public static String convertToMultiline(String orig)

@@ -51,8 +51,6 @@ public class GameManager {
         DormRoomLevelPanelT dormRoomSceneT = new DormRoomLevelPanelT(jFrame);
         Thread dormRoomThread = new Thread(dormRoomSceneT);
 
-
-
         LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
         Thread  librarySceneThread = new Thread(librarySceneT);
 
@@ -74,14 +72,10 @@ public class GameManager {
         loadingThread.start();
         startMenuThread.start();
         dormRoomThread.start();
-
-
-
-
         librarySceneThread.start();
-       // librarySceneT.run();
+        //librarySceneT.run();
 
-        jFrame.add(startMenu); //should have been menuscreen
+        jFrame.add(startMenu); //should have been startmenu
         //librarySceneT.startScene();
 
         /*
