@@ -59,6 +59,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         setupHintAnimationGif();
         createBackground("images/dormImages/LevelOneMain.png");
 
+        addCustomWindowCloseButton();
         timerLabel = new TimerLabel(jFrame, this);
         timerLabel.setVisible(false);
         revalidate();
@@ -69,7 +70,6 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         revalidate();
         repaint();
 
-        addCustomWindowCloseButton();
         repaint();
 
         imagesFound=0;

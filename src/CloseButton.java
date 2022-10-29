@@ -11,7 +11,6 @@ public class CloseButton extends JButton {
 //    DeviceInformation deviceInformation;
 //    FontInfo fontInfo;
 
-    ConfirmationWindowPopup exitConfirmation;
     public CloseButton(String text, JFrame jFrame){
 //        this.deviceInformation = deviceInformation;
 //        this.fontInfo = fontInfo;
@@ -23,7 +22,6 @@ public class CloseButton extends JButton {
         assignFont(FontInfo.getResizedFont(50f));
         addExitText(text);
         setDefaultTextColor();
-        exitConfirmation = new ConfirmationWindowPopup();
 
 
 //        addCloseActions(fontInfo,jFrame,exitConfirmation);
