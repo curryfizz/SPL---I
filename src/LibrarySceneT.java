@@ -76,7 +76,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         imagesFound=0;
         generateScreenWithAllObjectsAndButtons();
         repaint();
-        music = getClass().getClassLoader().getResource("images/library.wav");
+        music = getClass().getClassLoader().getResource("/images/library.wav");
     }
 
     private void setupHintAnimationGif() {
@@ -562,8 +562,8 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         jFrame.remove(this);
 
         loadingAnimationT.changeNextScene(mapT);
-        ((MapT) loadingAnimationT.nextScene).score += scoreBoard.score; // won't give compile time casting error bc I JUST CHANGED IT TO MAPT
-        ((MapT) loadingAnimationT.nextScene).updateScore();
+        mapT.MaxLibraryScore = Math.max(score, mapT.MaxLibraryScore);
+        mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
@@ -636,7 +636,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 //
 //                            //hehe
 
-                            timerLabel.AnimateScore();
+                            timerLabel.AnimateScore(e.getPoint());
 
                             setEnabled(false);
                             ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
@@ -714,7 +714,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     //    repaint();
 
         musicPlayer = new MusicPlayer();
-      //  musicPlayer.playMusic(music);
+        musicPlayer.playMusic(music);
     }
 
 }

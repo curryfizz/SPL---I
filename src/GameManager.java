@@ -20,8 +20,9 @@ public class GameManager {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        jFrame.setVisible(true);
         jFrame.setBackground(Color.decode("#14171C"));
+        jFrame.pack();
+        jFrame.setVisible(true);
 
 //        ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
 //
@@ -58,7 +59,7 @@ public class GameManager {
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
         Thread messageMomThread = new Thread(messageFromMomT);
 
-        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,1,messageFromMomT);
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,2,messageFromMomT);
         Thread loadingThread = new Thread(loadingAnimationT);
 
 
@@ -80,9 +81,8 @@ public class GameManager {
 
         /*
         TODO:
-        - score scaling
-        - hint function
-        - gif during click
+        - Combo
+        - fix hint
         - new levels
         - plot
         - fix lame text boxes
