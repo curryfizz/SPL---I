@@ -9,7 +9,6 @@ public class LevelCloseButton extends JButton {
 
     //too many one line methods
 
-    ConfirmationWindowPopup exitConfirmation;
 
     JPanel jPanel;
     public LevelCloseButton(String text, JFrame jFrame, JPanel jPanel){
@@ -23,7 +22,6 @@ public class LevelCloseButton extends JButton {
         assignFont(FontInfo.getResizedFont(50f));
         addExitText(text);
         setDefaultTextColor();
-//        exitConfirmation = new ConfirmationWindowPopup();
 //        addCloseActions(fontInfo,jFrame,exitConfirmation);
         addMouseListener(new MouseListener() {
             @Override

@@ -112,7 +112,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
             }
         });
         add(closeButton2);
-        setVisible(false);
+        setVisible(true);
     }
 
     public static String convertToMultiline(String orig)
