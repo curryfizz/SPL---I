@@ -76,7 +76,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         imagesFound=0;
         generateScreenWithAllObjectsAndButtons();
         repaint();
-        music = getClass().getClassLoader().getResource("images/library.wav");
+        music = getClass().getClassLoader().getResource("/images/library.wav");
     }
 
     private void setupHintAnimationGif() {
@@ -91,10 +91,10 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 //        objectLabel.setIcon(obj1icon);
 //        imageList.add(objectLabel);
 
-        int sizeX = 300;
-        int sizeY = 100;
+        int sizeX = 200;
+        int sizeY = 200;
 
-        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/black_walking_paws.gif")));
+        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/playing_brown_cat.gif")));
         gif.setImage(gif.getImage().getScaledInstance(sizeX, sizeY, Image.SCALE_DEFAULT));
         HintAnimationGif = new JLabel();
         HintAnimationGif.setBounds(600,500, sizeX,sizeY);
@@ -562,8 +562,8 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         jFrame.remove(this);
 
         loadingAnimationT.changeNextScene(mapT);
-        ((MapT) loadingAnimationT.nextScene).score += scoreBoard.score; // won't give compile time casting error bc I JUST CHANGED IT TO MAPT
-        ((MapT) loadingAnimationT.nextScene).updateScore();
+        mapT.MaxLibraryScore = Math.max(scoreBoard.score, mapT.MaxLibraryScore);
+        mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
@@ -636,7 +636,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 //
 //                            //hehe
 
-                            timerLabel.AnimateScore();
+                            timerLabel.AnimateScore(e.getPoint());
 
                             setEnabled(false);
                             ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
@@ -714,7 +714,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     //    repaint();
 
         musicPlayer = new MusicPlayer();
-      //  musicPlayer.playMusic(music);
+        musicPlayer.playMusic(music);
     }
 
 }

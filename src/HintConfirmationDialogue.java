@@ -90,7 +90,7 @@ public class HintConfirmationDialogue extends JDialog {
         NoButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                backgroundPanel.HintAnimationGif.setVisible(false);
                 dispose();
             }
 

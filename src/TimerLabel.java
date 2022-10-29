@@ -18,7 +18,7 @@ public class TimerLabel extends JLabel implements Runnable{
     long lastAnimated = 0;
     int FramesDone = 0;
 
-
+    Point p;
     Thread TimerThread;
     int elapsedTime = 0;
 
@@ -59,8 +59,9 @@ public class TimerLabel extends JLabel implements Runnable{
     public void endLevel(){
         isTimeOver=true;
         backGroundPanel.EndLevel();
-
-
+        backGroundPanel.ShowGottenScore.setVisible(false);
+        st_alpha = 255;
+        FramesDone = 0;
     }
     public void SetupTimerLabel(){
 //        counterLabel = new JLabel();
@@ -131,9 +132,13 @@ public class TimerLabel extends JLabel implements Runnable{
 
     }
 
-    public void AnimateScore(){
+    public void AnimateScore(Point point){
+//        p = point;
+//        backGroundPanel.ShowGottenScore.setLocation(point);
         doingScoreAnimation = true;
         lastAnimated = System.currentTimeMillis();
+        backGroundPanel.ShowGottenScore.setVisible(true);
+        backGroundPanel.ShowGottenScore.setForeground(new Color(200,255,0));
         FramesDone = 0;
     }
 
@@ -143,7 +148,7 @@ public class TimerLabel extends JLabel implements Runnable{
         long lastUpdatedAt = System.currentTimeMillis();
         long milisecs = 0;
 
-        Point p;
+
 
         long miliFPS;
 
@@ -161,7 +166,7 @@ public class TimerLabel extends JLabel implements Runnable{
                 if(miliFPS > 70 && miliFPS<100){
                     p = backGroundPanel.ShowGottenScore.getLocation();
                     p.y -= 2;
-                    backGroundPanel.ShowGottenScore.setForeground(new Color(255,255,0,st_alpha));
+                    backGroundPanel.ShowGottenScore.setForeground(new Color(200,255,0,st_alpha));
                     st_alpha*=2;
                     st_alpha/=3;
                     backGroundPanel.ShowGottenScore.setLocation(p);

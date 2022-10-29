@@ -17,23 +17,38 @@ public class MusicPlayer {
             clip = AudioSystem.getClip();
             clip.open(sound);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("url resource not found bro");
         }
     }
 
     public  void play(URL name){
-        clip.setFramePosition(0);
-        clip.start();
+        try{
+            clip.setFramePosition(0);
+            clip.start();
+        }
+        catch(Exception e){
+            System.out.println("cant play music if music can't be found yo");
+        }
     }
 
     public void loop(URL name)
     {
-        clip.loop(clip.LOOP_CONTINUOUSLY);
+        try{
+            clip.loop(clip.LOOP_CONTINUOUSLY);
+        }
+        catch (Exception e){
+            System.out.println("Can't loop music if music is null broo");
+        }
     }
 
 
     public  void  stop(URL name){
-        clip.stop();
+        try{
+            clip.stop();
+        }
+        catch(Exception e){
+            System.out.println("can't stop music, cuz music is null");
+        }
     }
 
     public  void playMusic(URL url) {

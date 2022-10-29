@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Map;
 import java.util.Objects;
 
 public class MapT extends JPanel implements Runnable{
@@ -20,8 +21,8 @@ public class MapT extends JPanel implements Runnable{
     PlayerScoreBoard playerScoreBoard;
 
     int score;
-
-    int dormSceneScore;
+    int MaxDormScore =0;
+    int MaxLibraryScore =0;
     JLabel padLockAC2;
     JLabel padLockDorm;
     JLabel padLockLibrary;
@@ -90,6 +91,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void updateScore(){
+        score = MaxDormScore + MaxLibraryScore;
         playerScoreBoard.setText("Current Score: " + score);
     }
     public void buildScene(){
