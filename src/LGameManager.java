@@ -74,7 +74,7 @@ public class LGameManager {
         jFrame.setVisible(true);
 
 
-        URL soundURl = getClass().getResource("/images/bgmusic.wav");
+        URL soundURl = getClass().getResource("/background_music/bgmusic.wav");
 
         playMusic(soundURl);
     }

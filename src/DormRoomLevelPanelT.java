@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.*;
 
+
 public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     JFrame jFrame;
     Rectangle maxBounds;
@@ -76,7 +77,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         generateScreenWithAllObjectsAndButtons();
 
         repaint();
-        music = getClass().getClassLoader().getResource("images/bgmusic.wav");
+        music = getClass().getClassLoader().getResource("background_music/levelOneBackground_v2.wav");
     }
 
     private void setupHintAnimationGif() {
@@ -168,15 +169,17 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         this.add(messNotification);
     }
 
-    public  void createBackground(String bgfilename) {
+    public  void createBackground(String bgfilename){
         this.setLayout(null);
         this.setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
         this.setBackground(Color.black);
 
         ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(bgfilename)));
         Image image = imageIcon.getImage();
+
         image = image.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
         imageIcon = new ImageIcon(image);
+
         backgroundLabel = new JLabel();
         backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
         backgroundLabel.setIcon(imageIcon);

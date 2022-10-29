@@ -11,7 +11,7 @@ public class GameManager {
     }
 
     public GameManager(){
-
+        System.setProperty("sun.java2d.uiScale", "1.0");
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
         System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);

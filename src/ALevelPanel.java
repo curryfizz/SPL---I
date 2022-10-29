@@ -22,4 +22,5 @@ public abstract class ALevelPanel extends JPanel {
     public abstract void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, MapT mapT); // scene transition to mapT
     public abstract  void EndLevel();
 
+
 }
