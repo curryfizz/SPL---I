@@ -102,8 +102,8 @@ public class MapT extends JPanel implements Runnable{
 //        this.add(padLockDorm);
         padLockAC2=addPadLock(padLockAC2, 530,120, 50);
         this.add(padLockAC2);
-        padLockLibrary=addPadLock(padLockLibrary, 650,350, 50);
-        this.add(padLockLibrary);
+     //   padLockLibrary=addPadLock(padLockLibrary, 650,350, 50);
+     //   this.add(padLockLibrary);
         padLockCDS=addPadLock(padLockCDS, 1050,350, 50);
         this.add(padLockCDS);
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));

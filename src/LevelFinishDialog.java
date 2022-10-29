@@ -48,6 +48,10 @@ public class LevelFinishDialog extends JDialog {
                     ((DormRoomLevelPanelT)jPanel).timerLabel.endLevel();
                     dispose();
                 }
+                 if(jPanel instanceof LibrarySceneT){
+                    ((LibrarySceneT)jPanel).timerLabel.endLevel();
+                    dispose();
+                }
                 dispose();
             }
 

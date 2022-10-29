@@ -8,8 +8,6 @@ import java.net.URL;
 import java.util.Objects;
 
 public class LibrarySceneT extends ALevelPanel implements Runnable{
-
-
     JFrame jFrame;
     Rectangle maxBounds;
 
@@ -17,7 +15,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     public int score = 0;
     int currentCombo = 0;
     int timeSinceLastFind = 0;
-   // CloseButton closeButton;
+    CloseButton closeButton;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
     LoadingAnimationT loadingAnimationT;
@@ -42,13 +40,12 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
 
     public LibrarySceneT(JFrame jFrame){
-//        System.out.println(DeviceInformation.StaticTestVar);
         this.jFrame = jFrame;
         levelFinished = false;
         maxBounds = DeviceInformation.graphicsEnvironment.getMaximumWindowBounds();
         textBox_height = DeviceInformation.screenHeight*50/864;
-        this.setLayout(new GridLayout());
-
+       // this.setLayout(new GridLayout());
+        this.setLayout(null);
     }
 
     @Override
@@ -62,7 +59,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         setupShowGottenScore();
         setupHintAnimationGif();
         createBackground("images/libraryImages/libraryMain.png");
-
         timerLabel = new TimerLabel(jFrame, this);
         timerLabel.setVisible(false);
         revalidate();
@@ -79,9 +75,8 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
         imagesFound=0;
         generateScreenWithAllObjectsAndButtons();
-        addEntirePanelListener();
         repaint();
-        music = getClass().getClassLoader().getResource("images/bgmusic2.wav");
+        music = getClass().getClassLoader().getResource("images/library.wav");
     }
 
     private void setupHintAnimationGif() {
@@ -123,6 +118,85 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         ShowGottenScore.setOpaque(false);
         this.add(ShowGottenScore);
     }
+
+
+    public void MessNotification(){
+        messNotification = new JButton("<html>Oh No, The Library is very messy! Where is my things?<br/> Guess I'll have to look for my present (Tap to Search)</html>");
+
+        messNotification.setFont(FontInfo.getResizedFont(34f));
+        messNotification.setFocusPainted(false);
+        messNotification.setEnabled(false);
+        messNotification.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
+        messNotification.setBackground(Color.decode("#14171C"));
+        messNotification.setForeground(Color.white);
+        messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
+        messNotification.setOpaque(true);
+
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(!InnitiallyClicked) {
+                    timerLabel.setVisible(true);
+                    scoreBoard.setVisible(true);
+                    revalidate();
+                    repaint();
+                    enableObjectButtons();
+                    messNotification.setVisible(false);
+                    timerLabel.StartTimer();
+                    InnitiallyClicked = true;
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        this.add(messNotification);
+    }
+
+
+
+    public  void createBackground(String bgfilename) {
+        this.setLayout(null);
+        this.setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
+        this.setBackground(Color.black);
+
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(bgfilename)));
+        Image image = imageIcon.getImage();
+        image = image.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
+        imageIcon = new ImageIcon(image);
+        backgroundLabel = new JLabel();
+        backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
+        backgroundLabel.setIcon(imageIcon);
+    }
+
+
+
+
+    public void addCustomWindowCloseButton(){
+        LevelCloseButton levelCloseButton = new LevelCloseButton("X",jFrame,this);
+        this.add(levelCloseButton);
+        this.repaint();
+        this.revalidate();
+    }
+
+
 
     public  void generateScreenWithAllObjectsAndButtons() {
 
@@ -411,85 +485,9 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
         this.add(backgroundLabel);
     }
-    public void MessNotification(){
-        messNotification = new JButton("<html>Oh No, The room looks like it got ransacked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>");
-
-        messNotification.setFont(FontInfo.getResizedFont(34f));
-        messNotification.setFocusPainted(false);
-        messNotification.setEnabled(false);
-        messNotification.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
-        messNotification.setBackground(Color.decode("#14171C"));
-        messNotification.setForeground(Color.white);
-        messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
-        messNotification.setOpaque(true);
-//        messNotification.setVisible(true);
-//        addEntirePanelListener();
-        this.add(messNotification);
-        repaint();
-        revalidate();
-    }
-
-    private void addEntirePanelListener() {
-        this.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (!InnitiallyClicked) {
-                    timerLabel.setVisible(true);
-                    scoreBoard.setVisible(true);
-                    revalidate();
-                    repaint();
-//                    enableObjectButtons();
-                    messNotification.setVisible(false);
-                    timerLabel.StartTimer();
-                    InnitiallyClicked = true;
-                }
-                System.out.println(e.getX() + ", " + e.getY());
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-    }
 
 
-    public  void createBackground(String bgfilename) {
-        this.setLayout(null);
-        this.setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
-        this.setBackground(Color.black);
 
-        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(bgfilename)));
-        Image image = imageIcon.getImage();
-        image = image.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-        imageIcon = new ImageIcon(image);
-        backgroundLabel = new JLabel();
-        backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
-        backgroundLabel.setIcon(imageIcon);
-    }
-
-    public void addCustomWindowCloseButton(){
-        LevelCloseButton levelCloseButton = new LevelCloseButton("X",jFrame,this);
-        this.add(levelCloseButton);
-        this.repaint();
-        this.revalidate();
-    }
 
 
     private void CreateAListWithAllItemNamesAsLabels() {
@@ -507,13 +505,31 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     public void CreateTheBigItemListTextBoxAtTheBottomOfScreen(){
         BigItemListAtBottomOfScreen = new JLabel();
         BigItemListAtBottomOfScreen.setLayout(new GridLayout(1,5));
-        BigItemListAtBottomOfScreen.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
+        BigItemListAtBottomOfScreen.setBounds(0, DeviceInformation.screenHeight -(textBox_height*2), DeviceInformation.screenWidth, textBox_height*2);
         BigItemListAtBottomOfScreen.setBackground(Color.decode("#14171C"));
         BigItemListAtBottomOfScreen.setForeground(Color.white);
         BigItemListAtBottomOfScreen.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
         BigItemListAtBottomOfScreen.setFont(FontInfo.getResizedFont(29f));
         BigItemListAtBottomOfScreen.setOpaque(true);
     }
+
+    public void MakeRandomItemListAtBottomOfScreen(){
+        CreateAListWithAllItemNamesAsLabels();
+        CreateTheBigItemListTextBoxAtTheBottomOfScreen();
+        randomGenerator = new RandomGenerator(buttonList.size());
+        randomGenerator.createUnique();
+        this.RandObjIndices = randomGenerator.RandObjIndices;
+        this.add(BigItemListAtBottomOfScreen);
+        int index;
+        for(int i=0; i<RandObjIndices.size(); i++){
+            index = RandObjIndices.get(i);
+            ListOfAllItemNamesAsLabels.get(index).addMouseListener(new LabelListener(jFrame, this,
+                    ListOfAllItemNamesAsLabels.get(index), index));
+            BigItemListAtBottomOfScreen.add(ListOfAllItemNamesAsLabels.get(index));
+        }
+
+    }
+
 
     public void enableObjectButtons(){
         for(int i=0; i<6; i++){
@@ -532,6 +548,49 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         }
 
     }
+
+    @Override
+    public void EndLevel() {
+        resetItemNameLabelList();
+        remove(BigItemListAtBottomOfScreen);
+        ShowGottenScore.setVisible(false);
+        timerLabel.st_alpha=255;
+//        HintAnimationGif.setVisible();
+        revalidate();
+        repaint();
+
+        jFrame.remove(this);
+
+        loadingAnimationT.changeNextScene(mapT);
+        ((MapT) loadingAnimationT.nextScene).score += scoreBoard.score; // won't give compile time casting error bc I JUST CHANGED IT TO MAPT
+        ((MapT) loadingAnimationT.nextScene).updateScore();
+
+        jFrame.add(loadingAnimationT);
+        loadingAnimationT.initializeTimer();
+        jFrame.revalidate();
+        jFrame.repaint();
+        musicPlayer.stop(music);
+    }
+
+
+    public JLabel createObject1(String image){
+        JLabel objectLabel = new JLabel();
+        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
+
+        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+        Image image1 = obj1icon.getImage();
+        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
+        obj1icon = new ImageIcon(image1);
+
+        objectLabel.setIcon(obj1icon);
+        imageList.add(objectLabel);
+        return objectLabel;
+
+    }
+
+
+
+
 
     public void  createButton(String image, int posx, int posy, int sizex,int sizey) {
         JLabel objectLabel = createObject1(image);
@@ -583,7 +642,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
                             ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
                             if(imagesFound == 6){
                                 if(scenePanel instanceof ALevelPanel){
-                                    ((DormRoomLevelPanelT)scenePanel).timerLabel.isTimeOver = true;
+                                    ((LibrarySceneT)scenePanel).timerLabel.isTimeOver = true;
 
                                 }
                                 imagesFound=0;
@@ -608,21 +667,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     }
 
 
-    public JLabel createObject1(String image){
-        JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
-
-        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-        Image image1 = obj1icon.getImage();
-        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-        obj1icon = new ImageIcon(image1);
-
-        objectLabel.setIcon(obj1icon);
-        imageList.add(objectLabel);
-        return objectLabel;
-
-    }
-
 
 
     @Override
@@ -630,28 +674,12 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
-//        MakeRandomItemListAtBottomOfScreen();
+        MakeRandomItemListAtBottomOfScreen();
         InnitiallyClicked = false;
         resetVariables();
         ResetTimerAndScore();
     }
 
-    public void MakeRandomItemListAtBottomOfScreen(){
-        CreateAListWithAllItemNamesAsLabels();
-        CreateTheBigItemListTextBoxAtTheBottomOfScreen();
-        randomGenerator = new RandomGenerator(buttonList.size());
-        randomGenerator.createUnique();
-        this.RandObjIndices = randomGenerator.RandObjIndices;
-        this.add(BigItemListAtBottomOfScreen);
-        int index;
-        for(int i=0; i<RandObjIndices.size(); i++){
-            index = RandObjIndices.get(i);
-            ListOfAllItemNamesAsLabels.get(index).addMouseListener(new LabelListener(jFrame, this,
-                    ListOfAllItemNamesAsLabels.get(index), index));
-            BigItemListAtBottomOfScreen.add(ListOfAllItemNamesAsLabels.get(index));
-        }
-
-    }
 
 
     @Override
@@ -660,28 +688,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         this.mapT = mapT;
     }
 
-    @Override
-    public void EndLevel() {
-        resetItemNameLabelList();
-        remove(BigItemListAtBottomOfScreen);
-        ShowGottenScore.setVisible(false);
-        timerLabel.st_alpha=255;
-//        HintAnimationGif.setVisible();
-        revalidate();
-        repaint();
-
-        jFrame.remove(this);
-
-        loadingAnimationT.changeNextScene(mapT);
-        ((MapT) loadingAnimationT.nextScene).score += scoreBoard.score; // won't give compile time casting error bc I JUST CHANGED IT TO MAPT
-        ((MapT) loadingAnimationT.nextScene).updateScore();
-
-        jFrame.add(loadingAnimationT);
-        loadingAnimationT.initializeTimer();
-        jFrame.revalidate();
-        jFrame.repaint();
-        musicPlayer.stop(music);
-    }
 
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
@@ -701,14 +707,14 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         scoreBoard.score=0;
 
         timerLabel.setVisible(false);
-        revalidate();
-        repaint();
+     //   revalidate();
+     //   repaint();
         scoreBoard.setVisible(false);
-        revalidate();
-        repaint();
+    //    revalidate();
+    //    repaint();
 
         musicPlayer = new MusicPlayer();
-     //   musicPlayer.playMusic(music);
+      //  musicPlayer.playMusic(music);
     }
 
 }
