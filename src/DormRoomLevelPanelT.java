@@ -330,7 +330,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         jFrame.remove(this);
 
         loadingAnimationT.changeNextScene(mapT);
-        mapT.MaxDormScore = Math.max(score, mapT.MaxDormScore);
+        mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
         mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
@@ -382,6 +382,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
                                 gottenScore = scoreBoard.setScore(50, 0);
                                 currentCombo = 0;
                                 HintAnimationGif.setVisible(false);
+                                HintWasUsed = false;
                             }
                             else{
                                 gottenScore = scoreBoard.setScore((int) (timerLabel.elapsedTime/2.0), currentCombo);

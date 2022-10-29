@@ -91,10 +91,10 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 //        objectLabel.setIcon(obj1icon);
 //        imageList.add(objectLabel);
 
-        int sizeX = 300;
-        int sizeY = 100;
+        int sizeX = 200;
+        int sizeY = 200;
 
-        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/black_walking_paws.gif")));
+        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/playing_brown_cat.gif")));
         gif.setImage(gif.getImage().getScaledInstance(sizeX, sizeY, Image.SCALE_DEFAULT));
         HintAnimationGif = new JLabel();
         HintAnimationGif.setBounds(600,500, sizeX,sizeY);
@@ -562,7 +562,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         jFrame.remove(this);
 
         loadingAnimationT.changeNextScene(mapT);
-        mapT.MaxLibraryScore = Math.max(score, mapT.MaxLibraryScore);
+        mapT.MaxLibraryScore = Math.max(scoreBoard.score, mapT.MaxLibraryScore);
         mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
