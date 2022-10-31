@@ -20,7 +20,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     JLabel BigItemListAtBottomOfScreen;
     LoadingAnimationT loadingAnimationT;
     MapT mapT;
-    URL music;
+    URL  music = getClass().getResource("/background_music/library.wav");
     MusicPlayer musicPlayer;
 
 //    JLabel HintAnimationGif;
@@ -76,7 +76,9 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         imagesFound=0;
         generateScreenWithAllObjectsAndButtons();
         repaint();
-        music = getClass().getClassLoader().getResource("/images/library.wav");
+
+
+      //  URL soundURl = getClass().getResource("/background_music/library.wav");
     }
 
     private void setupHintAnimationGif() {
@@ -715,6 +717,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
         musicPlayer = new MusicPlayer();
         musicPlayer.playMusic(music);
+
     }
 
 }

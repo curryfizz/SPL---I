@@ -77,8 +77,12 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         generateScreenWithAllObjectsAndButtons();
 
         repaint();
-        music = getClass().getClassLoader().getResource("background_music/levelOneBackground_v2.wav");
+
+
+
+        music = getClass().getResource("/background_music/bgmusic.wav");
     }
+
 
     private void setupHintAnimationGif() {
 //        JLabel objectLabel = new JLabel();
@@ -477,8 +481,16 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 //        revalidate();
 //        repaint();
 
-        musicPlayer = new MusicPlayer();
-        musicPlayer.playMusic(music);
+        Sound sound = new Sound();
+
+
+
+
+
+
+
+            musicPlayer = new MusicPlayer();
+            musicPlayer.playMusic(music);
     }
 
     /**TODO:
