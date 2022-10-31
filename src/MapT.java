@@ -48,7 +48,7 @@ public class MapT extends JPanel implements Runnable{
                 "<html>Mom packed a special Surprise for me?<br/>Let's go back to my room and see what it is.</html>",
                 SwingConstants.CENTER);
         dormText.setLayout(null);
-        dormText.setBounds(1300, 200, DeviceInformation.screenWidth /5 -100, 500);
+        dormText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
         dormText.setBackground(Color.decode("#14171C"));
         dormText.setForeground(Color.white);
 //                text.setOpaque(true);
@@ -63,7 +63,7 @@ public class MapT extends JPanel implements Runnable{
                 "<html>I should check out the library ?<br/>Let's go  to my library and see if i can find this or not.</html>",
                 SwingConstants.CENTER);
         libraryText.setLayout(null);
-        libraryText.setBounds(1300, 200, DeviceInformation.screenWidth /5 -100, 500);
+        libraryText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
         libraryText.setBackground(Color.decode("#14171C"));
         libraryText.setForeground(Color.white);
 //                text.setOpaque(true);
