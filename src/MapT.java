@@ -106,11 +106,11 @@ public class MapT extends JPanel implements Runnable{
         playerScoreBoard = new PlayerScoreBoard(jFrame, this);
 //        padLockDorm=addPadLock(padLockDorm, 770,195, 50);
 //        this.add(padLockDorm);
-        padLockAC2=addPadLock(padLockAC2, 530,120, 50);
+        padLockAC2=addPadLock(padLockAC2, DeviceInformation.screenWidth* 500/1536,DeviceInformation.screenHeight*25/864,50);
         this.add(padLockAC2);
-        padLockLibrary=addPadLock(padLockLibrary, 650,350, 50);
+        padLockLibrary=addPadLock(padLockLibrary,DeviceInformation.screenWidth* 600/1536,DeviceInformation.screenHeight*250/864, 50);
         this.add(padLockLibrary);
-        padLockCDS=addPadLock(padLockCDS, 1050,350, 50);
+        padLockCDS=addPadLock(padLockCDS,DeviceInformation.screenWidth* 1000/1536,DeviceInformation.screenHeight*250/864, 50);
         this.add(padLockCDS);
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
@@ -121,21 +121,9 @@ public class MapT extends JPanel implements Runnable{
         this.librarySceneT = librarySceneT;
     }
 
-    /*
-         MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(DeviceInformation.screenWidth* 450/1536,DeviceInformation.screenHeight*50/864, DeviceInformation.screenWidth *30/1536, DeviceInformation.screenHeight *32/864,  "Academic Building 2", this);
-        this.add(mapLevelButtonsAC2);
-        MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(DeviceInformation.screenWidth* 699/1536,DeviceInformation.screenHeight*145/864, DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *42/864,  "Academic Building 2", this);
-       this.add(mapLevelButtonsDorm);
-        MapLevelButtons mapLevelButtonsCDS = new MapLevelButtons(DeviceInformation.screenWidth* 979/1536,DeviceInformation.screenHeight*300/864, DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *32/864,  "CDS", this);
-        MapLevelButtons mapLevelButtonLibrary =  new MapLevelButtons(DeviceInformation.screenWidth* 580/1536,DeviceInformation.screenHeight*3000/864, DeviceInformation.screenWidth *40/1536, DeviceInformation.screenHeight *42/864,  "Library", this);
 
-       this.add(mapLevelButtonsCDS);
-
-       this.add(mapLevelButtonLibrary);
-
-     */
     private void doMapButtonThings() {
-        MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(DeviceInformation.screenWidth* 450/1536,DeviceInformation.screenHeight*50/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Academic Building 2", this);
+        MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(DeviceInformation.screenWidth* 450/1536,DeviceInformation.screenHeight*80/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Academic Building 2", this);
         //        this.add(mapLevelButtonsAC2);
         MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(DeviceInformation.screenWidth* 699/1536,DeviceInformation.screenHeight*145/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Dormitory", this);
         //        this.add(mapLevelButtonsDorm);
