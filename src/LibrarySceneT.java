@@ -204,7 +204,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
 
 
-                createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
+        createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
                 DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
         createText("<html>Black and white <br/> Photo </html>");
         createButton("images/libraryImages/levelTwoWithOutlines/item 1.PNG", DeviceInformation.screenWidth *840/1536, DeviceInformation.screenHeight *484/864,
@@ -228,29 +228,18 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 7.PNG", DeviceInformation.screenWidth *228/1536, DeviceInformation.screenHeight *570/864,
                 DeviceInformation.screenWidth *10/1536, DeviceInformation.screenHeight *10/864);
         createText("Wrist Watch");
-        //need to know
-        createButton("images/libraryImages/levelTwoWithOutlines/item 8.PNG", DeviceInformation.screenWidth *790/1536, DeviceInformation.screenHeight *517/864,
-                DeviceInformation.screenWidth *26/1536, DeviceInformation.screenHeight *20/864);
-       createText("key Ring");
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 8.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 9.PNG", DeviceInformation.screenWidth *970/1536, DeviceInformation.screenHeight *458/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *35/864);
         createText("Stack of books");
         createButton("images/libraryImages/levelTwoWithOutlines/item 10.PNG", DeviceInformation.screenWidth *108/1536, DeviceInformation.screenHeight *588/864,
                 DeviceInformation.screenWidth *88/1536, DeviceInformation.screenHeight *28/864);
         createText("Soft Drinks");
-
-
-//need to know
-        createButton("images/libraryImages/levelTwoWithOutlines/item 11.PNG", DeviceInformation.screenWidth *290/1536, DeviceInformation.screenHeight *678/864,
-                DeviceInformation.screenWidth *30/1536, DeviceInformation.screenHeight *20/864);
-        createText("Cornflakes Box");
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 11.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 12.PNG", DeviceInformation.screenWidth *795/1536, DeviceInformation.screenHeight *744/864,
                 DeviceInformation.screenWidth *20/1536, DeviceInformation.screenHeight *12/864);
         createText("<html>keyring on the <br/> floor<html>");
-        //idk
-        createButton("images/libraryImages/levelTwoWithOutlines/item 13.PNG", DeviceInformation.screenWidth *1118/1536, DeviceInformation.screenHeight *510/864,
-                DeviceInformation.screenWidth *25/1536, DeviceInformation.screenHeight *8/864);
-        createText("Cornflakes Box");
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 13.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 14.PNG", DeviceInformation.screenWidth *1078/1536, DeviceInformation.screenHeight *748/864,
                 DeviceInformation.screenWidth *80/1536, DeviceInformation.screenHeight *15/864);
         createText("NotePad");
@@ -284,20 +273,14 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
                 DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *35/864);
         createText("Board");
 
-        //no idea
-        createButton("images/libraryImages/levelTwoWithOutlines/item 23.PNG", DeviceInformation.screenWidth *934/1536, DeviceInformation.screenHeight *528/864,
-                DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *25/864);
-        createText("White Black Paper");
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 23.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 24.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *437/864,
                 DeviceInformation.screenWidth *120/1536, DeviceInformation.screenHeight *95/864);
         createText("Laptop");
         createButton("images/libraryImages/levelTwoWithOutlines/item 25.PNG", DeviceInformation.screenWidth *817/1536, DeviceInformation.screenHeight *381/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *70/864);
         createText("Laptop Screen");
-        //no idea
-        createButton("images/libraryImages/levelTwoWithOutlines/item 26.PNG", DeviceInformation.screenWidth *977/1536, DeviceInformation.screenHeight *491/864,
-                DeviceInformation.screenWidth *20/1536, DeviceInformation.screenHeight *16/864);
-        createText("Cornflakes Box");
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 26.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 27.PNG", DeviceInformation.screenWidth *888/1536, DeviceInformation.screenHeight *410/864,
                 DeviceInformation.screenWidth *20/1536, DeviceInformation.screenHeight *40/864);
         createText("Coffee Cup");
@@ -317,24 +300,17 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 31.PNG", DeviceInformation.screenWidth *978/1536, DeviceInformation.screenHeight *510/864,
                 DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *15/864);
         createText("Black mouse");
-        // hoy nai
-        createButton("images/libraryImages/levelTwoWithOutlines/item 32.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
-                DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
-        createText("Cans of coke");
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 32.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 33.PNG", DeviceInformation.screenWidth *1085/1536, DeviceInformation.screenHeight *443/864,
                 DeviceInformation.screenWidth *58/1536, DeviceInformation.screenHeight *65/864);
         createText("Shoulder Bag");
-        //no idea
         createButton("images/libraryImages/levelTwoWithOutlines/item 34.PNG", DeviceInformation.screenWidth *1146/1536, DeviceInformation.screenHeight *541/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *35/864);
-        createText("treasure Box");
+        createText("Pizza Box");
         createButton("images/libraryImages/levelTwoWithOutlines/item 35.PNG", DeviceInformation.screenWidth *1023/1536, DeviceInformation.screenHeight *642/864,
                 DeviceInformation.screenWidth *128/1536, DeviceInformation.screenHeight *62/864);
         createText("letters");
-        //need to check
-        createButton("images/libraryImages/levelTwoWithOutlines/item 36.PNG", DeviceInformation.screenWidth *1158/1536, DeviceInformation.screenHeight *600/864,
-                DeviceInformation.screenWidth *55/1536, DeviceInformation.screenHeight *30/864);
-        createText("Invitation Card");
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 36.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 37.PNG", DeviceInformation.screenWidth *1276/1536, DeviceInformation.screenHeight *644/864,
                 DeviceInformation.screenWidth *38/1536, DeviceInformation.screenHeight *55/864);
         createText("Watch");
@@ -346,7 +322,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createText("PowerBank");
 
 
-        //no idea
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 40.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 40.PNG", DeviceInformation.screenWidth *1025/1536, DeviceInformation.screenHeight *495/864,
                 DeviceInformation.screenWidth *38/1536, DeviceInformation.screenHeight *15/864);
         createText("Cornflakes Box");
@@ -364,7 +340,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createText("Clean Code Book");
         createButton("images/libraryImages/levelTwoWithOutlines/item 45.PNG", DeviceInformation.screenWidth *186/1536, DeviceInformation.screenHeight *219/864,
                 DeviceInformation.screenWidth *28/1536, DeviceInformation.screenHeight *40/864);
-        createText("<html>Clean code BOOK<br/> in the shelves");
+        createText("<html>Clean code BOOK<br/> in the shelves</html>");
         createButton("images/libraryImages/levelTwoWithOutlines/item 46.PNG", DeviceInformation.screenWidth *1455/1536, DeviceInformation.screenHeight *366/864,
                 DeviceInformation.screenWidth *72/1536, DeviceInformation.screenHeight *55/864);
         createText("Linear Algebra Book");
@@ -382,15 +358,13 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 50.PNG", DeviceInformation.screenWidth *167/1536, DeviceInformation.screenHeight *618/864,
                 DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *25/864);
         createText("Open Diary");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 51.PNG", DeviceInformation.screenWidth *122/1536, DeviceInformation.screenHeight *650/864,
-                DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *25/864);
-        createText("Pen with Paper");
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 51.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 52.PNG", DeviceInformation.screenWidth *294/1536, DeviceInformation.screenHeight *618/864,
                 DeviceInformation.screenWidth *58/1536, DeviceInformation.screenHeight *25/864);
-        createText("Cornflakes Box");//janina vai
+        createText("Bag");
         createButton("images/libraryImages/levelTwoWithOutlines/item 53.PNG", DeviceInformation.screenWidth *818/1536, DeviceInformation.screenHeight *213/864,
                 DeviceInformation.screenWidth *34/1536, DeviceInformation.screenHeight *45/864);
-        createText("Java Book");
+        createText("<html>Java Book <br/> on the shelves</html>");
         createButton("images/libraryImages/levelTwoWithOutlines/item 54.PNG", DeviceInformation.screenWidth *86/1536, DeviceInformation.screenHeight *704/864,
                 DeviceInformation.screenWidth *28/1536, DeviceInformation.screenHeight *60/864);
         createText("Orange Cup");
@@ -399,7 +373,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createText("Chips Packet");
         createButton("images/libraryImages/levelTwoWithOutlines/item 56.PNG", DeviceInformation.screenWidth *82/1536, DeviceInformation.screenHeight *570/864,
                 DeviceInformation.screenWidth *24/1536, DeviceInformation.screenHeight *25/864);
-        createText("Glass");
+        createText("Brown Glass");
         createButton("images/libraryImages/levelTwoWithOutlines/item 57.PNG", DeviceInformation.screenWidth *30/1536, DeviceInformation.screenHeight *615/864,
                 DeviceInformation.screenWidth *35/1536, DeviceInformation.screenHeight *25/864);
         createText("Spectacles");
@@ -411,7 +385,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createText("Coke Bottle");
         createButton("images/libraryImages/levelTwoWithOutlines/item 60.PNG", DeviceInformation.screenWidth *0/1536, DeviceInformation.screenHeight *419/864,
                 DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *25/864);
-        createText("Database Management Book");
+        createText("<html>Database Management Book<br/> on the table </html>");
 
 
 
@@ -423,10 +397,10 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createText("Charger");
         createButton("images/libraryImages/levelTwoWithOutlines/item 64.PNG", DeviceInformation.screenWidth *382/1536, DeviceInformation.screenHeight *393/864,
                 DeviceInformation.screenWidth *55/1536, DeviceInformation.screenHeight *65/864);
-        createText("Board");
+        createText("White Board");
         createButton("images/libraryImages/levelTwoWithOutlines/item 65.PNG", DeviceInformation.screenWidth *388/1536, DeviceInformation.screenHeight *222/864,
                 DeviceInformation.screenWidth *26/1536, DeviceInformation.screenHeight *29/864);
-        createText("Automata Theory Book");
+        createText("<html>Red Automata <br/> Theory Book</html>");
         createButton("images/libraryImages/levelTwoWithOutlines/item 66.PNG", DeviceInformation.screenWidth *322/1536, DeviceInformation.screenHeight *365/864,
                 DeviceInformation.screenWidth *42/1536, DeviceInformation.screenHeight *45/864);
         createText("Tab");
@@ -438,34 +412,30 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createText("StopWatch");
         createButton("images/libraryImages/levelTwoWithOutlines/item 70.PNG", DeviceInformation.screenWidth *874/1536, DeviceInformation.screenHeight *370/864,
                 DeviceInformation.screenWidth *20/1536, DeviceInformation.screenHeight *29/864);
-        createText("Coffee cup");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 71.PNG", DeviceInformation.screenWidth *913/1536, DeviceInformation.screenHeight *218/864,
-                DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *40/864);
-        createText("Automata Theory");
+        createText("<html>Coffee cup<br/>on the table </html>");
         createButton("images/libraryImages/levelTwoWithOutlines/item 72.PNG", DeviceInformation.screenWidth *965/1536, DeviceInformation.screenHeight *235/864,
                 DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *75/864);
         createText("Calendar");
         createButton("images/libraryImages/levelTwoWithOutlines/item 74.PNG", DeviceInformation.screenWidth *1035/1536, DeviceInformation.screenHeight *213/864,
                 DeviceInformation.screenWidth *35/1536, DeviceInformation.screenHeight *42/864);
-        createText("Linear Algebra");
+        createText("<html>Linear Algebra<br/> on the shelves</html>");
         createButton("images/libraryImages/levelTwoWithOutlines/item 75.PNG", DeviceInformation.screenWidth *854/1536, DeviceInformation.screenHeight *710/864,
                 DeviceInformation.screenWidth *38/1536, DeviceInformation.screenHeight *65/864);
         createText("Noodles");
         createButton("images/libraryImages/levelTwoWithOutlines/item 77.PNG", DeviceInformation.screenWidth *1165/1536, DeviceInformation.screenHeight *586/864,
                 DeviceInformation.screenWidth *28/1536, DeviceInformation.screenHeight *25/864);
-        createText("Mug");
+        createText("Black Mug");
         createButton("images/libraryImages/levelTwoWithOutlines/item 78.PNG", DeviceInformation.screenWidth *1350/1536, DeviceInformation.screenHeight *682/864,
                 DeviceInformation.screenWidth *58/1536, DeviceInformation.screenHeight *75/864);
         createText(" Box");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 79.PNG", DeviceInformation.screenWidth *1422/1536, DeviceInformation.screenHeight *733/864,
-                DeviceInformation.screenWidth *78/1536, DeviceInformation.screenHeight *35/864);
-        createText("Cornflakes Box"); //dont know
+        createObject2("images/libraryImages/levelTwoWithOutlines/item 79.PNG");
+        //idk
         createButton("images/libraryImages/levelTwoWithOutlines/item 80.PNG", DeviceInformation.screenWidth *925/1536, DeviceInformation.screenHeight *574/864,
                 DeviceInformation.screenWidth *35/1536, DeviceInformation.screenHeight *23/864);
         createText("Cornflakes Box");
         createButton("images/libraryImages/levelTwoWithOutlines/item 81.PNG", DeviceInformation.screenWidth *929/1536, DeviceInformation.screenHeight *746/864,
                 DeviceInformation.screenWidth *78/1536, DeviceInformation.screenHeight *20/864);
-        createText("Cornflakes Box");
+        createText(" White Wrist watch");
         createButton("images/libraryImages/levelTwoWithOutlines/item 82.PNG", DeviceInformation.screenWidth *958/1536, DeviceInformation.screenHeight *588/864,
                 DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *25/864);
         createText("Diary");
@@ -493,7 +463,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 90.PNG", DeviceInformation.screenWidth *1050/1536, DeviceInformation.screenHeight *606/864,
                 DeviceInformation.screenWidth *64/1536, DeviceInformation.screenHeight *22/864);
         createText("A pair of glass");
-
 
 
         this.add(backgroundLabel);
@@ -597,7 +566,23 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
         objectLabel.setIcon(obj1icon);
         imageList.add(objectLabel);
+        objectLabel.setVisible(true);
         return objectLabel;
+
+    }
+
+    public void createObject2(String image){
+        JLabel objectLabel = new JLabel();
+        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
+
+        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+        Image image1 = obj1icon.getImage();
+        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
+        obj1icon = new ImageIcon(image1);
+
+        objectLabel.setIcon(obj1icon);
+        objectLabel.setVisible(true);
+        this.add(objectLabel);
 
     }
 
