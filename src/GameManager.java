@@ -75,6 +75,7 @@ public class GameManager {
         loadingThread.start();
         startMenuThread.start();
         dormRoomThread.start();
+        classroomThread.start();
         librarySceneThread.start();
         //librarySceneT.run();
 

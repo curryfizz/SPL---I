@@ -32,6 +32,7 @@ public class MapT extends JPanel implements Runnable{
     CloseButton closeButton;
     JLabel dormText;
     JLabel libraryText;
+    JLabel classroomText;
 
     private LoadingAnimationT loadingAnimationT;
     private ALevelPanel dormRoomSceneT;
@@ -148,17 +149,23 @@ public class MapT extends JPanel implements Runnable{
         MapLevelButtons mapLevelButtonLibrary =  new MapLevelButtons(DeviceInformation.screenWidth* 580/1536,DeviceInformation.screenHeight*300/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Library", this);
         //        this.add(mapLevelButtonLibrary);
 
+
+
         mapLevelButtonsDorm.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 jFrame.remove(mapLevelButtonsDorm.mapT);
                 loadingAnimationT.changeNextScene(dormRoomSceneT);
-                dormRoomSceneT.PrepareForSceneTransition(loadingAnimationT,mapLevelButtonLibrary.mapT);
-                librarySceneT.PrepareForSceneTransition(loadingAnimationT,mapLevelButtonsAC2.mapT);
+                dormRoomSceneT.PrepareForSceneTransition(loadingAnimationT,mapLevelButtonsAC2.mapT);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
+
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+                mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
+                mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
+
                 mapLevelButtonsDorm.setBackground(Color.BLACK);
+
                 jFrame.revalidate();
                 jFrame.repaint();
 
@@ -177,8 +184,11 @@ public class MapT extends JPanel implements Runnable{
             @Override
             public void mouseEntered(MouseEvent e) {
                 mapLevelButtonsDorm.setBackground(Color.PINK);
+
                 mapLevelButtonsDorm.mapT.dormText.setVisible(true);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
+                mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
+
                 mapLevelButtonsDorm.mapT.revalidate();
                 mapLevelButtonsDorm.mapT.repaint();
             }
@@ -190,6 +200,57 @@ public class MapT extends JPanel implements Runnable{
         });
 
 
+        mapLevelButtonsAC2.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                jFrame.remove(mapLevelButtonsAC2.mapT);
+                loadingAnimationT.changeNextScene(classroomSceneT);
+                librarySceneT.PrepareForSceneTransition(loadingAnimationT, mapLevelButtonsCDS.mapT);
+                jFrame.add(loadingAnimationT);
+                loadingAnimationT.initializeTimer();
+
+                mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+                mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
+                mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
+
+                mapLevelButtonsAC2.setBackground(Color.BLACK);
+                jFrame.revalidate();
+                jFrame.repaint();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+                mapLevelButtonsAC2.setBackground(Color.PINK);
+                mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+                mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
+                mapLevelButtonsAC2.mapT.classroomText.setVisible(true);
+
+
+                mapLevelButtonsAC2.mapT.revalidate();
+                mapLevelButtonsAC2.mapT.repaint();
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                mapLevelButtonsAC2.setBackground(Color.BLACK);
+            }
+        });
+
+
+
+
 
         mapLevelButtonLibrary.addMouseListener(new MouseListener() {
             @Override
@@ -199,8 +260,11 @@ public class MapT extends JPanel implements Runnable{
                 librarySceneT.PrepareForSceneTransition(loadingAnimationT, mapLevelButtonsCDS.mapT);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
-                mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+
+                mapLevelButtonLibrary.mapT.dormText.setVisible(false);
+                mapLevelButtonLibrary.mapT.classroomText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
+
                 mapLevelButtonLibrary.setBackground(Color.BLACK);
                 jFrame.revalidate();
                 jFrame.repaint();
@@ -220,8 +284,11 @@ public class MapT extends JPanel implements Runnable{
             public void mouseEntered(MouseEvent e) {
 
                 mapLevelButtonLibrary.setBackground(Color.PINK);
+
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+                mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(true);
+
                 mapLevelButtonLibrary.mapT.revalidate();
                 mapLevelButtonLibrary.mapT.repaint();
 
@@ -235,53 +302,6 @@ public class MapT extends JPanel implements Runnable{
     }
 
 
-//    public ImageIcon generateImage(String link){
-//        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource(link));
-//        Image image = imageIcon.getImage();
-//        image = image.getScaledInstance(deviceInfo.screenWidth, deviceInfo.screenHeight, Image.SCALE_SMOOTH);
-//        imageIcon = new ImageIcon(image);
-//        return imageIcon;
-//
-//    }
-
-//    public ImageIcon menuImages(String imageLocation){
-//        ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imageLocation));
-//        Image image = imageIcon.getImage();
-//        image = image.getScaledInstance(deviceInfo.screenWidth, deviceInfo.screenHeight, Image.SCALE_DEFAULT);
-//        imageIcon = new ImageIcon(image);
-//        return imageIcon;
-//    }
-
-//    public JLabel createCustomLabel(ImageIcon image){
-//        JLabel label = new JLabel();
-//        label.setBounds(0,0,deviceInfo.screenWidth,deviceInfo.screenHeight);
-//        label.setIcon(image);
-//        return label;
-//    }
-
-//    public JButton createLocationButton(String locationName, int posx, int posy, String imageLocation, JLabel label, JPanel panel){
-//        panel.add(createCustomLabel(menuImages(imageLocation)));
-//        JButton locationButton = new JButton(locationName);
-//        locationButton.setBackground(Color.decode("#14171C"));
-//        locationButton.setForeground(Color.white);
-//        locationButton.setFont(fontInfo.getResizedFont(29f));
-//        locationButton.setBounds(posx,posy,200,36);
-//        locationButton.setFocusPainted(false);
-//        locationButton.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.decode("#55a38b"),2)));
-//        ImageIcon outOfFocus = menuImages("images/Level images/Levelbackground.png");
-////        locationButton.addMouseListener(new MenuMouseEvents(label,getDefaultImage(), outOfFocus));
-//        return locationButton;
-//    }
-
-//    public void createMenuButtons(){
-//        add(createLocationButton("Academic Building",450,50, "images/Level images/AcademicBuildingCutOut.png", backgroundLabel,this));
-//        add(createLocationButton("Dormitory",699,145,"images/Level images/DormCutOut.png", backgroundLabel,this));
-//        add(createLocationButton("Library",580,475,"images/Level images/LibraryCutOut.png",backgroundLabel,this));
-//        add(createLocationButton("CDS",979,300,"images/Level images/CDSCutOut.png", backgroundLabel,this));
-//
-//        //hibijini
-//
-//    }
     public void createMapBackground(){
         backgroundLabel = new JLabel();
         backgroundLabel.setBounds(0,0, DeviceInformation.screenWidth, DeviceInformation.screenHeight);
@@ -304,16 +324,6 @@ public class MapT extends JPanel implements Runnable{
         this.setForeground(Color.decode("#C64C1D"));
     }
 
-
-//    public void createGameTitleLabel(){
-//        gameTitle = new JLabel();
-//        gameTitle.setBounds(0,deviceInfo.screenHeight/2,deviceInfo.screenWidth,100);
-//        gameTitle.setFont(fontInfo.getResizedFont(100f));
-//        gameTitle.setText("LOST TREASURES");
-//        gameTitle.setHorizontalAlignment(JLabel.CENTER);
-//        gameTitle.setForeground(Color.white);
-//        gameTitle.setBackground(new Color(0,0,0,0));
-//    }
     public void addCustomWindowCloseButton(JFrame jFrame){
         closeButton = new CloseButton("X",jFrame);
         this.add(closeButton);
