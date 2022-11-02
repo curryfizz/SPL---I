@@ -55,6 +55,8 @@ public class GameManager {
         LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
         Thread  librarySceneThread = new Thread(librarySceneT);
 
+        ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
+        Thread classroomThread = new Thread(classRoomSceneT);
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
         Thread messageMomThread = new Thread(messageFromMomT);
@@ -64,7 +66,7 @@ public class GameManager {
 
 
 
-        mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT,librarySceneT);
+        mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT,librarySceneT,classRoomSceneT);
         startMenu.PrepareForSceneTransition(loadingAnimationT, mapT);
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
 

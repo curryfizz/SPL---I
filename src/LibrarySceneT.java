@@ -124,7 +124,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
     public void MessNotification(){
         messNotification = new JButton("<html>Oh No, The Library is very messy! Where is my things?<br/> Guess I'll have to look for my present (Tap to Search)</html>");
-
         messNotification.setFont(FontInfo.getResizedFont(34f));
         messNotification.setFocusPainted(false);
         messNotification.setEnabled(false);
@@ -201,7 +200,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
 
     public  void generateScreenWithAllObjectsAndButtons() {
-
 
 
         createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,

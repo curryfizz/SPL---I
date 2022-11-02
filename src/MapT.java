@@ -23,6 +23,7 @@ public class MapT extends JPanel implements Runnable{
     int score;
     int MaxDormScore =0;
     int MaxLibraryScore =0;
+    int MaxClassroomScore =0;
     JLabel padLockAC2;
     JLabel padLockDorm;
     JLabel padLockLibrary;
@@ -35,6 +36,7 @@ public class MapT extends JPanel implements Runnable{
     private LoadingAnimationT loadingAnimationT;
     private ALevelPanel dormRoomSceneT;
     private ALevelPanel librarySceneT;
+    private ALevelPanel classroomSceneT;
 
     public MapT(JFrame jFrame){
 
@@ -73,6 +75,21 @@ public class MapT extends JPanel implements Runnable{
         repaint();
     }
 
+    public void addClassroomText(){
+        libraryText = new JLabel(
+                "<html>I should go back to my classroom <br/> If i can found some of my things<br/>Let's go  to my Classroom.</html>",
+                SwingConstants.CENTER);
+        libraryText.setLayout(null);
+        libraryText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
+        libraryText.setBackground(Color.decode("#14171C"));
+        libraryText.setForeground(Color.white);
+//                text.setOpaque(true);
+        libraryText.setFont(FontInfo.getResizedFont(32f));
+        libraryText.setVisible(false);
+        add( libraryText);
+        repaint();
+    }
+
     public JLabel addPadLock(JLabel label, int posX, int posY, int side){
         label =  new JLabel();
         label.setLocation(posX,posY);
@@ -91,10 +108,8 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void updateScore(){
-        score = MaxDormScore + MaxLibraryScore;
+        score = MaxDormScore + MaxLibraryScore +MaxClassroomScore;
         playerScoreBoard.setText("Current Score: " + score);
-
-
     }
 
 
@@ -115,10 +130,11 @@ public class MapT extends JPanel implements Runnable{
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
     }
-    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT) {
+    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT,ALevelPanel ClassroomSceneT) {
         this.loadingAnimationT = loadingAnimationT;
         this.dormRoomSceneT = dormSceneT;
         this.librarySceneT = librarySceneT;
+        this.classroomSceneT = ClassroomSceneT;
     }
 
 
@@ -138,6 +154,7 @@ public class MapT extends JPanel implements Runnable{
                 jFrame.remove(mapLevelButtonsDorm.mapT);
                 loadingAnimationT.changeNextScene(dormRoomSceneT);
                 dormRoomSceneT.PrepareForSceneTransition(loadingAnimationT,mapLevelButtonLibrary.mapT);
+                librarySceneT.PrepareForSceneTransition(loadingAnimationT,mapLevelButtonsAC2.mapT);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
