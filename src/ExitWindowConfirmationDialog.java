@@ -5,6 +5,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Objects;
 
 public class ExitWindowConfirmationDialog extends JDialog {
 
@@ -12,6 +13,9 @@ public class ExitWindowConfirmationDialog extends JDialog {
     JButton closeButton;
 
     JButton closeButton2;
+
+    JLabel congratulationsgif;
+
     public ExitWindowConfirmationDialog(JFrame jFrame, FontInfo fontInfo){
 
         setModal(true);
@@ -31,6 +35,7 @@ public class ExitWindowConfirmationDialog extends JDialog {
         setSize(160,180);
         setLocationRelativeTo(jFrame);
         setResizable(false);
+
         closeButton = new JButton();
         closeButton.setBackground(Color.decode("#14171C"));
         closeButton.setPreferredSize(new Dimension(110,30));

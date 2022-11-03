@@ -5,10 +5,13 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Objects;
 
 public class LevelFinishDialog extends JDialog {
 
     JLabel jLabel;
+
+    JLabel congratulationsgif;
     JButton exitToMapButton;
 
     JButton closeButton2;
@@ -22,13 +25,14 @@ public class LevelFinishDialog extends JDialog {
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
         jLabel.setPreferredSize(new Dimension(250,130));
+
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Congratulations!\nYou've cleared this level successfully!"));
         jLabel.setFont(FontInfo.getResizedFont(28f));
         add(jLabel);
         jLabel.setHorizontalAlignment(JLabel.CENTER);
-        setSize(300,200);
+        setSize(DeviceInformation.screenWidth/6,200);
         setLocationRelativeTo(jFrame);
         setResizable(false);
         exitToMapButton = new JButton();
@@ -84,5 +88,15 @@ public class LevelFinishDialog extends JDialog {
     public static String convertToMultiline(String orig)
     {
         return "<html>" + orig.replaceAll("\n", "<br>");
+    }
+
+    public void createCongratulationsgif(){
+        congratulationsgif = new JLabel();
+        congratulationsgif.setSize(100,100);
+        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/congratulations/friendsClappingGif.gif")));
+        gif.setImage(gif.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+        congratulationsgif.setIcon(gif);
+        congratulationsgif.setVisible(true);
+        add(congratulationsgif);
     }
 }

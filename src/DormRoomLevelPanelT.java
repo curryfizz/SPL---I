@@ -55,6 +55,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     }
 
     public void buildScene(){
+        createConfettiScreen();
         MessNotification();
         setupShowGottenScore();
         setupHintAnimationGif();
@@ -414,6 +415,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
                                 }
                                 imagesFound=0;
+                                congratulationsConfetti.setVisible(true);
                                 LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,scenePanel);
                                 scenePanel.revalidate();
                                 scenePanel.repaint();

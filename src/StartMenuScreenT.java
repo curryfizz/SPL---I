@@ -100,8 +100,8 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     }
     public void createGameTitleLabel(){
         gameTitle = new JLabel();
-        gameTitle.setBounds(0, DeviceInformation.screenHeight /2, DeviceInformation.screenWidth,100);
-        gameTitle.setFont(FontInfo.getResizedFont(100f));
+        gameTitle.setBounds(0, DeviceInformation.screenHeight /2, DeviceInformation.screenWidth,DeviceInformation.screenHeight/6);
+        gameTitle.setFont(FontInfo.getResizedFont((float)0.09*(DeviceInformation.screenWidth)));
         gameTitle.setText("LOST TREASURES");
         gameTitle.setHorizontalAlignment(JLabel.CENTER);
         gameTitle.setForeground(Color.white);

@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.Math.ceil;
+
 public class LoadingAnimationT extends JPanel implements ActionListener,Runnable {
     JFrame jFrame;
 
@@ -78,14 +80,11 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
         super.paint(g); //paint background
         Graphics2D g2d = (Graphics2D)g;
         g2d.setColor(Color.white);
-        g2d.fillOval(loadingDotCurrentX, loadingDotPosY, 10,10);
+        g2d.fillOval(loadingDotCurrentX, loadingDotPosY, (int)ceil(0.006*DeviceInformation.screenWidth),(int)ceil((0.011*DeviceInformation.screenHeight)));
         g2d.fillRect(loadingBarPosX, loadingBarPosY +10, loadingBarWidth,20);
 
     }
 
-    public boolean isrunning(){
-        return !timerStopped;
-    }
     @Override
     public void actionPerformed(ActionEvent e) {
         animationRunTime = (System.currentTimeMillis()-animationStartTime)/1000;
@@ -109,7 +108,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
 //            LoadMenu();
         }
 
-        if(loadingBarWidth <500){
+        if(loadingBarWidth <DeviceInformation.screenWidth*4/5){
             loadingBarWidth = loadingBarWidth +increment;
         }
 
