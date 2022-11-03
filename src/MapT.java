@@ -44,6 +44,7 @@ public class MapT extends JPanel implements Runnable{
         this.jFrame = jFrame;
         addDormText();
         addlibraryText();
+        addClassroomText();
 
     }
     public void addDormText(){
@@ -77,17 +78,17 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void addClassroomText(){
-        libraryText = new JLabel(
+        classroomText = new JLabel(
                 "<html>I should go back to my classroom <br/> If i can found some of my things<br/>Let's go  to my Classroom.</html>",
                 SwingConstants.CENTER);
-        libraryText.setLayout(null);
-        libraryText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
-        libraryText.setBackground(Color.decode("#14171C"));
-        libraryText.setForeground(Color.white);
+        classroomText.setLayout(null);
+        classroomText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
+        classroomText.setBackground(Color.decode("#14171C"));
+        classroomText.setForeground(Color.white);
 //                text.setOpaque(true);
-        libraryText.setFont(FontInfo.getResizedFont(32f));
-        libraryText.setVisible(false);
-        add( libraryText);
+        classroomText.setFont(FontInfo.getResizedFont(32f));
+        classroomText.setVisible(false);
+        add( classroomText);
         repaint();
     }
 
@@ -141,13 +142,13 @@ public class MapT extends JPanel implements Runnable{
 
     private void doMapButtonThings() {
         MapLevelButtons mapLevelButtonsAC2 = new MapLevelButtons(DeviceInformation.screenWidth* 450/1536,DeviceInformation.screenHeight*80/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Academic Building 2", this);
-        //        this.add(mapLevelButtonsAC2);
+             //   this.add(mapLevelButtonsAC2);
         MapLevelButtons mapLevelButtonsDorm = new MapLevelButtons(DeviceInformation.screenWidth* 699/1536,DeviceInformation.screenHeight*145/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Dormitory", this);
-        //        this.add(mapLevelButtonsDorm);
+              //  this.add(mapLevelButtonsDorm);
         MapLevelButtons mapLevelButtonsCDS = new MapLevelButtons(DeviceInformation.screenWidth* 979/1536,DeviceInformation.screenHeight*300/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "CDS", this);
         //        this.add(mapLevelButtonsCDS);
         MapLevelButtons mapLevelButtonLibrary =  new MapLevelButtons(DeviceInformation.screenWidth* 580/1536,DeviceInformation.screenHeight*300/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Library", this);
-        //        this.add(mapLevelButtonLibrary);
+             //   this.add(mapLevelButtonLibrary);
 
 
 
@@ -205,7 +206,7 @@ public class MapT extends JPanel implements Runnable{
             public void mouseClicked(MouseEvent e) {
                 jFrame.remove(mapLevelButtonsAC2.mapT);
                 loadingAnimationT.changeNextScene(classroomSceneT);
-                librarySceneT.PrepareForSceneTransition(loadingAnimationT, mapLevelButtonsCDS.mapT);
+                classroomSceneT.PrepareForSceneTransition(loadingAnimationT, mapLevelButtonsCDS.mapT);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
 
@@ -232,10 +233,10 @@ public class MapT extends JPanel implements Runnable{
             public void mouseEntered(MouseEvent e) {
 
                 mapLevelButtonsAC2.setBackground(Color.PINK);
+
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
                 mapLevelButtonsAC2.mapT.classroomText.setVisible(true);
-
 
                 mapLevelButtonsAC2.mapT.revalidate();
                 mapLevelButtonsAC2.mapT.repaint();
@@ -261,8 +262,8 @@ public class MapT extends JPanel implements Runnable{
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
 
-                mapLevelButtonLibrary.mapT.dormText.setVisible(false);
-                mapLevelButtonLibrary.mapT.classroomText.setVisible(false);
+                mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+               // mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
 
                 mapLevelButtonLibrary.setBackground(Color.BLACK);
