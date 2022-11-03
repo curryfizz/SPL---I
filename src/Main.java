@@ -48,13 +48,15 @@ public class Main {
         window.pack();
         window.setVisible(true);
 
-        URL soundURl = getClass().getResource("/background_music/bgmusic.wav");
+        URL soundURl = getClass().getResource("/background_music/library.wav");
 
         playMusic(soundURl);
     }
+    MusicPlayer musicPlayer= new MusicPlayer();
+
     public void playMusic(URL url)
     {
-        sound.setFile(url);
-        sound.play(url);
+       musicPlayer.setFile(url);
+        musicPlayer.play(url);
     }
 }

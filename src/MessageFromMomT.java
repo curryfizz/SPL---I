@@ -80,7 +80,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
                 "<html>Assalamualaikum Dear<br/>Did you reach safely?<br/>Hope your classes are going well.</html>",
                 SwingConstants.CENTER);
         Text1.setLayout(null);
-        Text1.setBounds(400, 50, 400, 300);
+        Text1.setBounds(DeviceInformation.screenWidth*400/1536, DeviceInformation.screenHeight*50/864, 400, 300);
         Text1.setBackground(Color.BLACK);
         Text1.setForeground(Color.decode("#14171C"));
         Text1.setFont(eastSea);
@@ -96,7 +96,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
                 "<html>Oh I forgot to mention<br/>I packed a special present for you in your bag<br/>Tell me if you like it.</html>",
                 SwingConstants.CENTER);
         Text2.setLayout(null);
-        Text2.setBounds(1050, 10, 400, 300);
+        Text2.setBounds(DeviceInformation.screenWidth*1050/1536, DeviceInformation.screenHeight*10/864, 400, 300);
         Text2.setBackground(Color.BLACK);
         Text2.setForeground(Color.decode("#14171C"));
         Text2.setFont(eastSea);
