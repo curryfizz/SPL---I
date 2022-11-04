@@ -1,5 +1,8 @@
 package src;
 
+import src.levels.ALevelPanel;
+import src.popups.HintConfirmationDialogue;
+
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -10,7 +13,7 @@ public class LabelListener implements MouseListener {
     ALevelPanel backgroundPanel;
     JLabel motherLabel;
     int indexOfObjectButton;
-    LabelListener(JFrame jFrame, ALevelPanel backgroundPanel, JLabel motherLabel, int index){
+    public LabelListener(JFrame jFrame, ALevelPanel backgroundPanel, JLabel motherLabel, int index){
         this.indexOfObjectButton = index;
         this.jFrame = jFrame;
         this.backgroundPanel = backgroundPanel;
