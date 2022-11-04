@@ -1,5 +1,15 @@
 package src;
 
+import src.levels.ClassRoomSceneT;
+import src.levels.DormRoomLevelPanelT;
+import src.levels.LibrarySceneT;
+import src.setup.DeviceInformation;
+import src.setup.FontInfo;
+import src.transitionPanels.LoadingAnimationT;
+import src.transitionPanels.MapT;
+import src.transitionPanels.MessageFromMomT;
+import src.transitionPanels.StartMenuScreenT;
+
 import javax.swing.*;
 import java.awt.*;
 

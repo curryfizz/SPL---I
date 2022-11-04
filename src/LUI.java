@@ -1,5 +1,7 @@
 package src;
 
+import src.buttons.ObjectHidingButton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
