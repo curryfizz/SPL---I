@@ -1,5 +1,8 @@
 package src;
 
+import src.setup.DeviceInformation;
+import src.setup.FontInfo;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;

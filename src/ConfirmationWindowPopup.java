@@ -1,5 +1,7 @@
 package src;
 
+import src.setup.FontInfo;
+
 import javax.swing.*;
 import java.awt.*;
 
