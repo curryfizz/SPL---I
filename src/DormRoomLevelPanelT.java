@@ -118,7 +118,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         ShowGottenScore.setBackground(null);
         ShowGottenScore.setFont(FontInfo.getResizedFont(29f));
 //        ShowGottenScore.setForeground(new Color(30, 120, 20));
-        ShowGottenScore.setForeground(Color.decode("#ffff00"));
+        ShowGottenScore.setForeground(new Color(255,0,0));
         ShowGottenScore.setVisible(false);
         ShowGottenScore.setOpaque(false);
         this.add(ShowGottenScore);
@@ -328,7 +328,6 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     public void EndLevel() {
         resetItemNameLabelList();
         remove(BigItemListAtBottomOfScreen);
-        ShowGottenScore.setVisible(false);
         timerLabel.st_alpha=255;
 //        HintAnimationGif.setVisible();
         revalidate();
@@ -466,6 +465,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         scoreBoard.setText("0000");
         imagesFound = 0;
         score=0;
+        ShowGottenScore.setVisible(false);
 
     }
 

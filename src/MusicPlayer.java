@@ -17,7 +17,7 @@ public class MusicPlayer {
             clip = AudioSystem.getClip();
             clip.open(sound);
         } catch (Exception e) {
-            System.out.println("url resource not found bro");
+            System.out.println(e.getMessage());
         }
     }
 
