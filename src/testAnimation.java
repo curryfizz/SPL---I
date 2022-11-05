@@ -105,7 +105,7 @@ public class testAnimation extends JPanel implements ActionListener {
 //    }
 //
     public void initializeTimer(){
-        timer = new Timer(30,this);
+        timer = new Timer(10,this);
         timer.start();
         timerStopped=false;
         loadingBarWidth=1;
@@ -121,7 +121,12 @@ public class testAnimation extends JPanel implements ActionListener {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.pink);
 
+        if(leftHalftransitionIn){
+            g2d.setColor(Color.green);
+        }
+
 //        int x[]={0,1920-200,400, 0};
+
 //        int y[]={0,0,1080, 1080};
 //
         int x[]={leftHalfpoint1x,leftHalfpoint2x,leftHalfpoint3x, leftHalfpoint4x};
@@ -134,7 +139,12 @@ public class testAnimation extends JPanel implements ActionListener {
 
 //        g2d.drawPolygon(x,y,4);
         g2d.fillPolygon(x,y,4);
-        g2d.setColor(Color.green);
+        if(rightHalftransitionIn){
+            g2d.setColor(Color.pink);
+        }else{
+            g2d.setColor(Color.green);
+        }
+
         g2d.fillPolygon(x2,y2,4);
 //        g2d.drawPolygon(x2,y2,4);
 

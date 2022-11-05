@@ -17,9 +17,28 @@ public class GameManager {
 
 
     public static void main(String[] args) throws InterruptedException{
-        new GameManager();
+//        new GameManager();
+        test();
     }
 
+    public static void test(){
+        System.setProperty("sun.java2d.uiScale", "1.0");
+        DeviceInformation deviceInformation = new DeviceInformation();
+        FontInfo fontInfo = new FontInfo();
+        System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
+        /* Set up the frame*/
+        JFrame jFrame = new JFrame();
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setUndecorated(true);
+        jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        jFrame.setBackground(Color.decode("#14171C"));
+        jFrame.pack();
+        jFrame.setVisible(true);
+
+        testAnimation testAnimation = new testAnimation();
+        jFrame.add(testAnimation);
+        testAnimation.initializeTimer();
+    }
     public GameManager(){
         System.setProperty("sun.java2d.uiScale", "1.0");
         DeviceInformation deviceInformation = new DeviceInformation();
