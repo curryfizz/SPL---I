@@ -131,6 +131,7 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
                     timerLabel.StartTimer();
                     InnitiallyClicked = true;
                 }
+                System.out.println(Integer.toString(e.getX()) + " " + Integer.toString(e.getY()));
             }
 
             @Override

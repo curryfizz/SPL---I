@@ -17,8 +17,8 @@ public class GameManager {
 
 
     public static void main(String[] args) throws InterruptedException{
-//        new GameManager();
-        test();
+        new GameManager();
+//        test();
     }
 
     public static void test(){
