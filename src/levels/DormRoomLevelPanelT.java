@@ -12,10 +12,14 @@ import src.setup.RandomGenerator;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -63,10 +67,15 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     @Override
     public void run() {
-        buildScene();
+
+        try {
+            buildScene();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void buildScene(){
+    public void buildScene() throws IOException {
         createConfettiScreen();
         MessNotification();
         setupShowGottenScore();
@@ -186,17 +195,18 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         this.add(messNotification);
     }
 
-    public  void createBackground(String bgfilename){
+    public  void createBackground(String bgfilename) throws IOException {
         this.setLayout(null);
         this.setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
         this.setBackground(Color.black);
 
-        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(bgfilename)));
-        Image image = imageIcon.getImage();
+        BufferedImage bufferedImage = ImageIO.read(new File(bgfilename));
+//        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(bgfilename)));
+//        Image image = bufferedImage.getImage();
 
-        image = image.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-        imageIcon = new ImageIcon(image);
-
+        Image image = bufferedImage.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
+//        imageIcon = new ImageIcon(image);
+        ImageIcon imageIcon = new ImageIcon(image);
         backgroundLabel = new JLabel();
         backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
         backgroundLabel.setIcon(imageIcon);
@@ -209,7 +219,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         this.revalidate();
     }
 
-    public  void generateScreenWithAllObjectsAndButtons() {
+    public  void generateScreenWithAllObjectsAndButtons() throws IOException {
         createButton("images/dormImages/01.png", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *428/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *85/864);
         createText("Cornflakes Box");
@@ -360,14 +370,18 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     }
 
 
-    public JLabel createObject1(String image){
+    public JLabel createObject1(String image) throws IOException{
         JLabel objectLabel = new JLabel();
         objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
 
-        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-        Image image1 = obj1icon.getImage();
-        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-        obj1icon = new ImageIcon(image1);
+        BufferedImage bufferedImage = ImageIO.read(new File(image));
+//        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+//        Image image1 = .getImage();
+
+        Image image1 = bufferedImage.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
+//        obj1icon = new ImageIcon(image1);
+//
+        ImageIcon obj1icon = new ImageIcon(image1);
 
         objectLabel.setIcon(obj1icon);
         imageList.add(objectLabel);
@@ -375,7 +389,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     }
 
-    public void  createButton(String image,int posx, int posy, int sizex,int sizey) {
+    public void  createButton(String image,int posx, int posy, int sizex,int sizey) throws IOException {
         JLabel objectLabel = createObject1(image);
 
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size()){
