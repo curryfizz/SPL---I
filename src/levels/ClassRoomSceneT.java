@@ -128,6 +128,7 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
                     repaint();
                     enableObjectButtons();
                     messNotification.setVisible(false);
+                    BigItemListAtBottomOfScreen.setVisible(true);
                     timerLabel.StartTimer();
                     InnitiallyClicked = true;
                 }
@@ -179,11 +180,11 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
 
     public  void generateScreenWithAllObjectsAndButtons() {
 
-        createButton("images/Classroom images/classroom objects/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 0.PNG", DeviceInformation.screenWidth *2/1536, DeviceInformation.screenHeight *444/864,
+                DeviceInformation.screenWidth *25/1536, DeviceInformation.screenHeight *30/864);
         createText("<html>Brown Coffee<br/> cup </html>");
-        createButton("images/Classroom images/classroom objects/item 1.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 1.PNG", DeviceInformation.screenWidth *1837/1920, DeviceInformation.screenHeight *640/1080,
+                DeviceInformation.screenWidth *10/1536, DeviceInformation.screenHeight *5/864);
         createText("Pencil");
         createButton("images/Classroom images/classroom objects/item 2.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
                 DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
@@ -419,6 +420,7 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
         randomGenerator = new RandomGenerator(buttonList.size());
         randomGenerator.createUnique();
         this.RandObjIndices = randomGenerator.RandObjIndices;
+        BigItemListAtBottomOfScreen.setVisible(false);
         this.add(BigItemListAtBottomOfScreen);
         int index;
         for(int i=0; i<RandObjIndices.size(); i++){
