@@ -72,51 +72,51 @@ public class GameManager {
 //        jFrame.revalidate();
 
 
-//        ExecutorService pl = Executors.newFixedThreadPool(2);
+        ExecutorService pl = Executors.newFixedThreadPool(2);
 
 
-//       StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
-////        Thread startMenuThread = new Thread(startMenu);
-//
-//        MapT mapT = new MapT(jFrame);
-//
-////        Thread mapThread = new Thread(mapT);
-//
-//        DormRoomLevelPanelT dormRoomSceneT = new DormRoomLevelPanelT(jFrame);
-//
-////        Thread dormRoomThread = new Thread(dormRoomSceneT);
-//
-//        LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
-////        Thread  librarySceneThread = new Thread(librarySceneT);
-//
-//        ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
-////        Thread classroomThread = new Thread(classRoomSceneT);
-//
-//        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
-////        Thread messageMomThread = new Thread(messageFromMomT);
-//
-//        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,2,messageFromMomT);
-////        Thread loadingThread = new Thread(loadingAnimationT);
-//
-//
-//
-//        mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT,librarySceneT,classRoomSceneT);
-//        startMenu.PrepareForSceneTransition(loadingAnimationT, mapT);
-//        messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
-//
-//        pl.execute(startMenu);
-//        pl.execute(mapT);
-//        pl.execute(loadingAnimationT);
-//        pl.execute(messageFromMomT);
-//        pl.execute(dormRoomSceneT);
-//        pl.execute(classRoomSceneT);
-//        pl.execute(librarySceneT);
-//
+       StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
+//        Thread startMenuThread = new Thread(startMenu);
+
+        MapT mapT = new MapT(jFrame);
+
+//        Thread mapThread = new Thread(mapT);
+
+        DormRoomLevelPanelT dormRoomSceneT = new DormRoomLevelPanelT(jFrame);
+
+//        Thread dormRoomThread = new Thread(dormRoomSceneT);
+
+        LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
+//        Thread  librarySceneThread = new Thread(librarySceneT);
 
         ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
-        classRoomSceneT.buildScene();
+//        Thread classroomThread = new Thread(classRoomSceneT);
 
-//        pl.execute(classRoomSceneT);
+        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
+//        Thread messageMomThread = new Thread(messageFromMomT);
+
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,2,messageFromMomT);
+//        Thread loadingThread = new Thread(loadingAnimationT);
+
+
+
+        mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT,librarySceneT,classRoomSceneT);
+        startMenu.PrepareForSceneTransition(loadingAnimationT, mapT);
+        messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
+
+        pl.execute(startMenu);
+        pl.execute(mapT);
+        pl.execute(loadingAnimationT);
+        pl.execute(messageFromMomT);
+        pl.execute(dormRoomSceneT);
+        pl.execute(classRoomSceneT);
+        pl.execute(librarySceneT);
+
+
+//        ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
+//        classRoomSceneT.buildScene();
+
+
 //        messageMomThread.start();
 //        mapThread.start();
 //        loadingThread.start();
@@ -126,10 +126,10 @@ public class GameManager {
 //        librarySceneThread.start();
         //librarySceneT.run();
 
-        jFrame.add(classRoomSceneT); //should be startmenu during real play
-        classRoomSceneT.startScene();
+        jFrame.add(startMenu); //should be startmenu during real play
+        //classRoomSceneT.startScene();
 
-//        pl.shutdown();
+        pl.shutdown();
         //librarySceneT.startScene();
 
         /*
