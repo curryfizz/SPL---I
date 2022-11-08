@@ -355,32 +355,29 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
 
 
 
-        createButton("images/Classroom images/classroom objects/item 51.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 51.PNG",  DeviceInformation.screenWidth *180/1920, DeviceInformation.screenHeight *642/1080,
+                DeviceInformation.screenWidth *32/1920, DeviceInformation.screenHeight *78/1080);
         createText("Red Bull Can ");
-        createButton("images/Classroom images/classroom objects/item 52.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 52.PNG",  DeviceInformation.screenWidth *129/1920, DeviceInformation.screenHeight *486/1080,
+                DeviceInformation.screenWidth *155/1920, DeviceInformation.screenHeight *140/1080);
         createText("Pizza Box");
-        createButton("images/Classroom images/classroom objects/item 53.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 53.PNG",  DeviceInformation.screenWidth *315/1920, DeviceInformation.screenHeight *475/1080,
+                DeviceInformation.screenWidth *85/1920, DeviceInformation.screenHeight *90/1080);
         createText("Shopping Bag");
-        createButton("images/Classroom images/classroom objects/item 54.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 54.PNG",  DeviceInformation.screenWidth *482/1920, DeviceInformation.screenHeight *583/1080,
+                DeviceInformation.screenWidth *75/1920, DeviceInformation.screenHeight *20/1080);
         createText("Scissors");
-        createButton("images/Classroom images/classroom objects/item 55.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
-        createText("<html>Stack of books <br/> On the table </html>");
-        createButton("images/Classroom images/classroom objects/item 56.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 55.PNG",  DeviceInformation.screenWidth *532/1920, DeviceInformation.screenHeight *596/1080,
+                DeviceInformation.screenWidth *120/1920, DeviceInformation.screenHeight *70/1080);
+        createText("Stack of books");
+        createButton("images/Classroom images/classroom objects/item 56.PNG",  DeviceInformation.screenWidth *403/1920, DeviceInformation.screenHeight *643/1080,
+                DeviceInformation.screenWidth *75/1920, DeviceInformation.screenHeight *20/1080);
         createText("Tab");
-        createButton("images/Classroom images/classroom objects/item 57.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 57.PNG",  DeviceInformation.screenWidth *664/1920, DeviceInformation.screenHeight *619/1080,
+                DeviceInformation.screenWidth *85/1920, DeviceInformation.screenHeight *40/1080);
         createText("File");
-        createButton("images/Classroom images/classroom objects/item 58.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
-        createText("<html>Black and white <br/> Photo </html>");
-        createButton("images/Classroom images/classroom objects/item 59.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 59.PNG",  DeviceInformation.screenWidth *67/1920, DeviceInformation.screenHeight *529/1080,
+                DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *50/1080);
         createText("Uno Reverse");
 
 
