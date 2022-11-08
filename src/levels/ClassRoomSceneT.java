@@ -280,78 +280,76 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
                 DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *40/1080);
         createText("<html>Black and white <br/> Photo </html>");
         createButton("images/Classroom images/classroom objects/item 30.PNG",  DeviceInformation.screenWidth *1010/1920, DeviceInformation.screenHeight *453/1080,
-                DeviceInformation.screenWidth *55/1920, DeviceInformation.screenHeight *40/1080);
+                DeviceInformation.screenWidth *75/1920, DeviceInformation.screenHeight *40/1080);
         createText("Mango Juice");
 
 
 
 
 
-        createButton("images/Classroom images/classroom objects/item 31.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 31.PNG",   DeviceInformation.screenWidth *892/1920, DeviceInformation.screenHeight *426/1080,
+                DeviceInformation.screenWidth *35/1920, DeviceInformation.screenHeight *40/1080);
         createText("Cards");
-        createButton("images/Classroom images/classroom objects/item 32.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 32.PNG",  DeviceInformation.screenWidth *741/1920, DeviceInformation.screenHeight *543/1080,
+                DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *30/1080);
         createText("Donuts");
-        createButton("images/Classroom images/classroom objects/item 33.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 33.PNG",   DeviceInformation.screenWidth *777/1920, DeviceInformation.screenHeight *485/1080,
+                DeviceInformation.screenWidth *125/1920, DeviceInformation.screenHeight *25/1080);
         createText("Open Diary");
         //need to know
-        createButton("images/Classroom images/classroom objects/item 34.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 34.PNG",   DeviceInformation.screenWidth *786/1920, DeviceInformation.screenHeight *420/1080,
+                DeviceInformation.screenWidth *30/1920, DeviceInformation.screenHeight *35/1080);
         createText("<html>Black and white <br/> Photo </html>");
-        createButton("images/Classroom images/classroom objects/item 35.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 35.PNG",   DeviceInformation.screenWidth *711/1920, DeviceInformation.screenHeight *450/1080,
+                DeviceInformation.screenWidth *35/1920, DeviceInformation.screenHeight *50/1080);
         createText("Pokemon");
-        createButton("images/Classroom images/classroom objects/item 36.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 36.PNG",   DeviceInformation.screenWidth *543/1920, DeviceInformation.screenHeight *527/1080,
+                DeviceInformation.screenWidth *60/1920, DeviceInformation.screenHeight *28/1080);
         createText("Pink Book");
-        createButton("images/Classroom images/classroom objects/item 37.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 37.PNG",   DeviceInformation.screenWidth *1011/1920, DeviceInformation.screenHeight *607/1080,
+                DeviceInformation.screenWidth *35/1920, DeviceInformation.screenHeight *30/1080);
         createText("Dice");
-        createButton("images/Classroom images/classroom objects/item 38.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 38.PNG",   DeviceInformation.screenWidth *1028/1920, DeviceInformation.screenHeight *750/1080,
+                DeviceInformation.screenWidth *75/1920, DeviceInformation.screenHeight *45/1080);
         createText("Sock");
-        createButton("images/Classroom images/classroom objects/item 39.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 39.PNG",   DeviceInformation.screenWidth *1135/1920, DeviceInformation.screenHeight *791/1080,
+                DeviceInformation.screenWidth *80/1920, DeviceInformation.screenHeight *60/1080);
         createText("Timer");
+
+
+
+
         //need to know
-        createButton("images/Classroom images/classroom objects/item 40.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 40.PNG",  DeviceInformation.screenWidth *1046/1920, DeviceInformation.screenHeight *897/1080,
+                DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *55/1080);
         createText("<html>Black and white <br/> Photo </html>");
-
-
-
-
-        createButton("images/Classroom images/classroom objects/item 41.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 41.PNG", DeviceInformation.screenWidth *132/1920, DeviceInformation.screenHeight *423/1080,
+                DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *55/1080);
         createText("Closed Paper Bag");
-        createButton("images/Classroom images/classroom objects/item 42.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 42.PNG", DeviceInformation.screenWidth *490/1920, DeviceInformation.screenHeight *428/1080,
+                DeviceInformation.screenWidth *35/1920, DeviceInformation.screenHeight *40/1080);
         createText("Mug");
         //need to know
-        createButton("images/Classroom images/classroom objects/item 43.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 43.PNG", DeviceInformation.screenWidth *417/1920, DeviceInformation.screenHeight *456/1080,
+                DeviceInformation.screenWidth *44/1920, DeviceInformation.screenHeight *60/1080);
         createText("<html>Black and white <br/> Photo </html>");
-
-
-        createButton("images/Classroom images/classroom objects/item 45.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 45.PNG", DeviceInformation.screenWidth *876/1920, DeviceInformation.screenHeight *711/1080,
+                DeviceInformation.screenWidth *125/1920, DeviceInformation.screenHeight *33/1080);
         createText("Puzzle");
-        createButton("images/Classroom images/classroom objects/item 46.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 46.PNG", DeviceInformation.screenWidth *335/1920, DeviceInformation.screenHeight *715/1080,
+                DeviceInformation.screenWidth *140/1920, DeviceInformation.screenHeight *85/1080);
         createText("Stack of Books");
-        createButton("images/Classroom images/classroom objects/item 47.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 47.PNG", DeviceInformation.screenWidth *681/1920, DeviceInformation.screenHeight *888/1080,
+                DeviceInformation.screenWidth *60/1920, DeviceInformation.screenHeight *30/1080);
         createText("Yellow Box");
-        createButton("images/Classroom images/classroom objects/item 48.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
-        createText("Uno Blue Card");
-        createButton("images/Classroom images/classroom objects/item 49.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 48.PNG", DeviceInformation.screenWidth *381/1920, DeviceInformation.screenHeight *922/1080,
+                DeviceInformation.screenWidth *90/1920, DeviceInformation.screenHeight *40/1080);
+        createText("Uno Card");
+        createButton("images/Classroom images/classroom objects/item 49.PNG", DeviceInformation.screenWidth *195/1920, DeviceInformation.screenHeight *820/1080,
+                DeviceInformation.screenWidth *155/1920, DeviceInformation.screenHeight *80/1080);
         createText("Chess Board");
-        createButton("images/Classroom images/classroom objects/item 50.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
-                DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
+        createButton("images/Classroom images/classroom objects/item 50.PNG", DeviceInformation.screenWidth *70/1920, DeviceInformation.screenHeight *730/1080,
+                DeviceInformation.screenWidth *95/1920, DeviceInformation.screenHeight *90/1080);
         createText("FootBall");
 
 
