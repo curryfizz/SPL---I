@@ -55,24 +55,9 @@ public class GameManager {
         jFrame.pack();
         jFrame.setVisible(true);
 
-//        ConfirmationDialog confirmationDialog = new ConfirmationDialog(jFrame,fontInfo);
-//
-//
-//        /* Instantiate the jpanels and the jpanel's threads
-//         each jPanel's thread BUILDS (only) the jpanel, so we can save time on panel building */
-//
 
-//        MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame, deviceScreenInformation, fontInfo);
-//        Thread messageFromMomThread = new Thread(messageFromMomT);
-//
-//        messageFromMomThread.start();
-//
-//        jFrame.add(messageFromMomT);
-//        jFrame.repaint();
-//        jFrame.revalidate();
-
-
-        ExecutorService pl = Executors.newFixedThreadPool(2);
+        //thread pool
+        ExecutorService pl = Executors.newFixedThreadPool(1);
 
 
        StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
