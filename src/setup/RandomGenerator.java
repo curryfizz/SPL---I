@@ -17,11 +17,12 @@ public class RandomGenerator {
 
     public void createUnique(){
         Random random = new Random();
+        ArrayList<Integer> indexCopy = indexes;
         while (RandObjIndices.size()!=6){
             int randomIndex = random.nextInt(TotalNumberOfObjects);
             TotalNumberOfObjects--;
-            RandObjIndices.add(indexes.get(randomIndex));
-            indexes.remove(randomIndex);
+            RandObjIndices.add(indexCopy.get(randomIndex));
+            indexCopy.remove(randomIndex);
         }
     }
 }
