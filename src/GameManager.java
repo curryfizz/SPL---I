@@ -1,5 +1,6 @@
 package src;
 
+import src.levels.CDS_LevelPanelT;
 import src.levels.ClassRoomSceneT;
 import src.levels.DormRoomLevelPanelT;
 import src.levels.LibrarySceneT;
@@ -76,6 +77,11 @@ public class GameManager {
 
         ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
 //        Thread classroomThread = new Thread(classRoomSceneT);
+
+
+        CDS_LevelPanelT cds_levelPanelT = new CDS_LevelPanelT(jFrame);
+
+
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
 //        Thread messageMomThread = new Thread(messageFromMomT);
