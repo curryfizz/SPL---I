@@ -5,6 +5,7 @@ import src.levelObjects.PlayerScoreBoard;
 import src.buttons.CloseButton;
 import src.buttons.StartGameButton;
 import src.levels.ALevelPanel;
+import src.levels.CDS_LevelPanelT;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 
@@ -31,6 +32,8 @@ public class MapT extends JPanel implements Runnable{
     public int MaxDormScore =0;
     public int MaxLibraryScore =0;
     public int MaxClassroomScore =0;
+
+    public int MaxCDS_Score =0;
     JLabel padLockAC2;
     JLabel padLockDorm;
     JLabel padLockLibrary;
@@ -41,10 +44,14 @@ public class MapT extends JPanel implements Runnable{
     JLabel libraryText;
     JLabel classroomText;
 
+    JLabel CDSText;
+
     private LoadingAnimationT loadingAnimationT;
     private ALevelPanel dormRoomSceneT;
     private ALevelPanel librarySceneT;
     private ALevelPanel classroomSceneT;
+
+    private ALevelPanel CDS_LevelPanelT;
 
     public MapT(JFrame jFrame){
 
@@ -52,7 +59,7 @@ public class MapT extends JPanel implements Runnable{
         addDormText();
         addlibraryText();
         addClassroomText();
-
+        addCDSText();
     }
     public void addDormText(){
         dormText = new JLabel(
@@ -84,6 +91,23 @@ public class MapT extends JPanel implements Runnable{
         repaint();
     }
 
+    public void addCDSText(){
+        CDSText = new JLabel(
+                "<html>I should go to Our CDS <br/> If i can found some of my things<br/>Here is the CDS.</html>",
+                SwingConstants.CENTER);
+
+        CDSText.setLayout(null);
+        CDSText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
+        CDSText.setBackground(Color.decode("#14171C"));
+        CDSText.setForeground(Color.white);
+//                text.setOpaque(true);
+        CDSText.setFont(FontInfo.getResizedFont(32f));
+        CDSText.setVisible(false);
+        add(  CDSText);
+        repaint();
+    }
+
+
     public void addClassroomText(){
         classroomText = new JLabel(
                 "<html>I should go back to my classroom <br/> If i can found some of my things<br/>Let's go  to my Classroom.</html>",
@@ -98,6 +122,7 @@ public class MapT extends JPanel implements Runnable{
         add( classroomText);
         repaint();
     }
+
 
     public JLabel addPadLock(JLabel label, int posX, int posY, int side){
         label =  new JLabel();
@@ -117,7 +142,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void updateScore(){
-        score = MaxDormScore + MaxLibraryScore +MaxClassroomScore;
+        score = MaxDormScore + MaxLibraryScore +MaxClassroomScore +MaxCDS_Score;
         playerScoreBoard.setText("Current Score: " + score);
     }
 
@@ -139,11 +164,12 @@ public class MapT extends JPanel implements Runnable{
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
     }
-    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT,ALevelPanel ClassroomSceneT) {
+    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT,ALevelPanel ClassroomSceneT,ALevelPanel CDS_LevelPanelT) {
         this.loadingAnimationT = loadingAnimationT;
         this.dormRoomSceneT = dormSceneT;
         this.librarySceneT = librarySceneT;
         this.classroomSceneT = ClassroomSceneT;
+        this.CDS_LevelPanelT = CDS_LevelPanelT;
     }
 
 
@@ -169,6 +195,7 @@ public class MapT extends JPanel implements Runnable{
                 loadingAnimationT.initializeTimer();
 
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+                mapLevelButtonsCDS.mapT.CDSText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
                 mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
 
@@ -194,6 +221,7 @@ public class MapT extends JPanel implements Runnable{
                 mapLevelButtonsDorm.setBackground(Color.PINK);
 
                 mapLevelButtonsDorm.mapT.dormText.setVisible(true);
+                mapLevelButtonsCDS.mapT.CDSText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
                 mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
 
@@ -218,6 +246,7 @@ public class MapT extends JPanel implements Runnable{
                 loadingAnimationT.initializeTimer();
 
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+                mapLevelButtonsCDS.mapT.CDSText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
                 mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
 
@@ -242,6 +271,7 @@ public class MapT extends JPanel implements Runnable{
                 mapLevelButtonsAC2.setBackground(Color.PINK);
 
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+                mapLevelButtonsCDS.mapT.CDSText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
                 mapLevelButtonsAC2.mapT.classroomText.setVisible(true);
 
@@ -270,7 +300,8 @@ public class MapT extends JPanel implements Runnable{
                 loadingAnimationT.initializeTimer();
 
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
-               // mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
+                mapLevelButtonsCDS.mapT.CDSText.setVisible(false);
+                mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
 
                 mapLevelButtonLibrary.setBackground(Color.BLACK);
@@ -294,6 +325,7 @@ public class MapT extends JPanel implements Runnable{
                 mapLevelButtonLibrary.setBackground(Color.PINK);
 
                 mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+                mapLevelButtonsCDS.mapT.CDSText.setVisible(false);
                 mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
                 mapLevelButtonLibrary.mapT.libraryText.setVisible(true);
 
@@ -307,7 +339,64 @@ public class MapT extends JPanel implements Runnable{
                 mapLevelButtonLibrary.setBackground(Color.BLACK);
             }
         });
-    }
+
+
+
+
+
+
+       mapLevelButtonsCDS.addMouseListener(new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            jFrame.remove(mapLevelButtonsCDS.mapT);
+            loadingAnimationT.changeNextScene(CDS_LevelPanelT);
+            CDS_LevelPanelT.PrepareForSceneTransition(loadingAnimationT, mapLevelButtonsDorm.mapT);
+            jFrame.add(loadingAnimationT);
+            loadingAnimationT.initializeTimer();
+
+            mapLevelButtonsCDS.mapT.CDSText.setVisible(false);
+            mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+            mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
+            mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
+
+            mapLevelButtonsCDS.setBackground(Color.BLACK);
+            jFrame.revalidate();
+            jFrame.repaint();
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+            mapLevelButtonsCDS.setBackground(Color.PINK);
+
+            mapLevelButtonsDorm.mapT.dormText.setVisible(false);
+            mapLevelButtonsCDS.mapT.CDSText.setVisible(true);
+            mapLevelButtonsAC2.mapT.classroomText.setVisible(false);
+            mapLevelButtonLibrary.mapT.libraryText.setVisible(false);
+
+            mapLevelButtonsCDS.mapT.revalidate();
+            mapLevelButtonsCDS.mapT.repaint();
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            mapLevelButtonsCDS.setBackground(Color.BLACK);
+        }
+    });
+}
+
+
 
 
     public void createMapBackground(){

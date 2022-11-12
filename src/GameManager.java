@@ -1,9 +1,6 @@
 package src;
 
-import src.levels.CDS_LevelPanelT;
-import src.levels.ClassRoomSceneT;
-import src.levels.DormRoomLevelPanelT;
-import src.levels.LibrarySceneT;
+import src.levels.*;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.transitionPanels.LoadingAnimationT;
@@ -91,7 +88,7 @@ public class GameManager {
 
 
 
-        mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT,librarySceneT,classRoomSceneT);
+        mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT,librarySceneT,classRoomSceneT,cds_levelPanelT);
         startMenu.PrepareForSceneTransition(loadingAnimationT, mapT);
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
 
@@ -102,6 +99,7 @@ public class GameManager {
         pl.execute(dormRoomSceneT);
         pl.execute(classRoomSceneT);
         pl.execute(librarySceneT);
+        pl.execute(cds_levelPanelT);
 
 
 //        ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
