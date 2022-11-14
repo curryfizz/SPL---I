@@ -43,9 +43,13 @@ public class GameManager {
         System.setProperty("sun.java2d.uiScale", "1.0");
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
+
         System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
+
         /* Set up the frame*/
         JFrame jFrame = new JFrame();
+        jFrame.setTitle("Lost Treasures");
+        jFrame.setIconImage(new ImageIcon("images/Others/logo2.png").getImage());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
