@@ -37,7 +37,8 @@ public class LGameManager {
    }
     public  LGameManager(){
         JFrame jFrame = new JFrame();
-
+        jFrame.setTitle("Lost Treasures");
+        jFrame.setName("Lost Tresures Game");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -83,8 +84,9 @@ public class LGameManager {
     }
     public void playMusic(URL url)
     {
-        sound.setFile(url);
-        sound.play(url);
+        /** someone changed the parameters to int so these don't work no more*/
+//        sound.setFile(url);
+//        sound.play(url);
     }
 }
 
