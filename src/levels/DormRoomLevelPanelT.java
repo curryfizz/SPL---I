@@ -29,6 +29,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
     Rectangle maxBounds;
     public int score = 0;
     int currentCombo = 0;
+
     int timeSinceLastFind = 0;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
@@ -79,12 +80,15 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         setupHintAnimationGif();
         createBackground("images/dormImages/LevelOneMain.png");
 
+        sound = new Sound();
+        sound.setFile("levelOneBackground_v2");
         addCustomWindowCloseButton();
+        addAudioButton();
         timerLabel = new TimerLabel(jFrame, this);
         timerLabel.setVisible(false);
         revalidate();
-        repaint();
 
+        repaint();
         scoreBoard = new ScoreBoard(jFrame, this);
         scoreBoard.setVisible(false);
         revalidate();
@@ -99,7 +103,6 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
 
 
-        music = getClass().getResource("/background_music/bgmusic.wav");
     }
 
 
@@ -199,6 +202,16 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         this.repaint();
         this.revalidate();
     }
+
+
+    public void addAudioButton(){
+        AudioChangeButton audioChangeButton = new AudioChangeButton(jFrame,sound);
+        this.add(audioChangeButton);
+        this.repaint();
+        this.revalidate();
+    }
+
+
 
     public int getX(int x){
         return DeviceInformation.screenWidth*x/1536;
@@ -319,6 +332,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         resetItemNameLabelList();
         remove(BigItemListAtBottomOfScreen);
         timerLabel.st_alpha=255;
+        sound.stop();
 //        HintAnimationGif.setVisible();
         revalidate();
         repaint();
@@ -333,7 +347,6 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         loadingAnimationT.initializeTimer();
         jFrame.revalidate();
         jFrame.repaint();
-        musicPlayer.stop(music);
     }
 
 
@@ -434,6 +447,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     @Override
     public void startScene() {
+        sound.play();
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
@@ -475,30 +489,11 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 //        revalidate();
 //        repaint();
 
-
-        musicPlayer = new MusicPlayer();
-            musicPlayer.playMusic(music);
+//
+//        musicPlayer = new MusicPlayer();
+//            musicPlayer.playMusic(music);
     }
 
-    /**TODO:
-    disable buttons while pop up is there
-     add Combo textBox
-     */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /** unneeded functions */
 
 
 
