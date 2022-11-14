@@ -46,7 +46,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     RandomGenerator randomGenerator;
     boolean InitiallyClicked = false;
     public TimerLabel timerLabel;
-    ScoreBoard scoreBoard;
+    public ScoreBoard scoreBoard;
     public Sound backgroundMusic;
     public JLabel ShowGottenScore;
     public JLabel HintAnimationGif;
@@ -80,14 +80,8 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         JLabel objectLabel = new JLabel();
         objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
 
-        BufferedImage bufferedImage = ImageIO.read(new File(image));
-//        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-//        Image image1 = .getImage();
-
-        Image image1 = bufferedImage.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-//        obj1icon = new ImageIcon(image1);
-//
-        ImageIcon obj1icon = new ImageIcon(image1);
+        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+        obj1icon.setImage(obj1icon.getImage().getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT));
 
         objectLabel.setIcon(obj1icon);
         imageList.add(objectLabel);

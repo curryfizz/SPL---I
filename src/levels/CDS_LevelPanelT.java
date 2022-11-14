@@ -106,6 +106,11 @@ public class CDS_LevelPanelT extends ALevelPanel implements Runnable{
         this.add(ShowGottenScore);
     }
 
+    @Override
+    public String getMessMessage() {
+        return null;
+    }
+
     public void MessNotification(){
         messNotification = new JButton("<html>CDS is a busy place to find things as always.<br/> Can i find my things in CDS ??  (Tap to Search)</html>");
         messNotification.setFont(FontInfo.getResizedFont(34f));
@@ -299,6 +304,16 @@ public class CDS_LevelPanelT extends ALevelPanel implements Runnable{
         musicPlayer.stop(music);
     }
 
+    @Override
+    public String getBackgroundPath() {
+        return null;
+    }
+
+    @Override
+    public String getBackgroundMusicPath() {
+        return null;
+    }
+
     public JLabel createObject1(String image){
         JLabel objectLabel = new JLabel();
         objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
@@ -407,6 +422,10 @@ public class CDS_LevelPanelT extends ALevelPanel implements Runnable{
     }
 
     @Override
+    public int getLevelNumber() {
+        return 0;
+    }
+
     public void startScene() {
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
