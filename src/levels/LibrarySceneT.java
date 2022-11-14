@@ -81,7 +81,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         scoreBoard.setVisible(false);
         revalidate();
         repaint();
-
+        addAudioButton();
         addCustomWindowCloseButton();
         repaint();
 
@@ -209,6 +209,12 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         this.revalidate();
     }
 
+    public void addAudioButton(){
+        AudioChangeButton audioChangeButton = new AudioChangeButton(jFrame,sound);
+        this.add(audioChangeButton);
+        this.repaint();
+        this.revalidate();
+    }
 
 
     public  void generateScreenWithAllObjectsAndButtons() {

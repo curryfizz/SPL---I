@@ -2,6 +2,7 @@ package src.levels;
 
 import src.LabelListener;
 import src.MusicPlayer;
+import src.buttons.AudioChangeButton;
 import src.buttons.CloseButton;
 import src.buttons.LevelCloseButton;
 import src.buttons.ObjectHidingButton;
@@ -75,7 +76,7 @@ public class CDS_LevelPanelT extends ALevelPanel implements Runnable{
         scoreBoard.setVisible(false);
         revalidate();
         repaint();
-
+        addAudioButton();
         addCustomWindowCloseButton();
         repaint();
 
@@ -180,6 +181,15 @@ public class CDS_LevelPanelT extends ALevelPanel implements Runnable{
         this.repaint();
         this.revalidate();
     }
+
+    public void addAudioButton(){
+        AudioChangeButton audioChangeButton = new AudioChangeButton(jFrame,sound);
+        this.add(audioChangeButton);
+        this.repaint();
+        this.revalidate();
+    }
+
+
 
     public  void generateScreenWithAllObjectsAndButtons() {
 
