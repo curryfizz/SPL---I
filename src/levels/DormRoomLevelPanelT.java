@@ -128,7 +128,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         ShowGottenScore.setBackground(null);
         ShowGottenScore.setFont(FontInfo.getResizedFont(29f));
 //        ShowGottenScore.setForeground(new Color(30, 120, 20));
-        ShowGottenScore.setForeground(new Color(255,0,0));
+        ShowGottenScore.setForeground(new Color(1, 65, 59));
         ShowGottenScore.setVisible(false);
         ShowGottenScore.setOpaque(false);
         this.add(ShowGottenScore);

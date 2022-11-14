@@ -72,7 +72,7 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
         scoreBoard.setVisible(false);
         revalidate();
         repaint();
-
+        addAudioButton();
         addCustomWindowCloseButton();
         repaint();
 
@@ -177,6 +177,14 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
         this.repaint();
         this.revalidate();
     }
+
+    public void addAudioButton(){
+        AudioChangeButton audioChangeButton = new AudioChangeButton(jFrame,sound);
+        this.add(audioChangeButton);
+        this.repaint();
+        this.revalidate();
+    }
+
 
     public  void generateScreenWithAllObjectsAndButtons() {
 
@@ -379,10 +387,6 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
         createButton("images/Classroom images/classroom objects/item 59.PNG",  DeviceInformation.screenWidth *67/1920, DeviceInformation.screenHeight *529/1080,
                 DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *50/1080);
         createText("Uno Reverse");
-
-
-
-
 
 
 
