@@ -79,9 +79,9 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         setupShowGottenScore();
         setupHintAnimationGif();
         createBackground("images/dormImages/LevelOneMain.png");
-
-        sound = new Sound();
-        sound.setFile("levelOneBackground_v2");
+        createSound("levelOneBackground_v2");
+//        sound = new Sound();
+//        sound.setFile("levelOneBackground_v2");
         addCustomWindowCloseButton();
         addAudioButton();
         timerLabel = new TimerLabel(jFrame, this);
@@ -140,7 +140,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
         messNotification.setFont(FontInfo.getResizedFont(34f));
         messNotification.setFocusPainted(false);
         messNotification.setEnabled(false);
-        messNotification.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
+        messNotification.setBounds(0, DeviceInformation.screenHeight -120, DeviceInformation.screenWidth, 120);
         messNotification.setBackground(Color.decode("#14171C"));
         messNotification.setForeground(Color.white);
         messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));

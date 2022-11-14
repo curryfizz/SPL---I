@@ -52,6 +52,11 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         }
     }
 
+    public void createSound(String audioFilePath){
+        sound = new Sound();
+        sound.setFile(audioFilePath);
+    }
+
 
 
 }

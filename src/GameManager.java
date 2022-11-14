@@ -11,12 +11,7 @@ import src.transitionPanels.StartMenuScreenT;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -103,7 +98,7 @@ public class GameManager {
         /* Set up the frame*/
         JFrame jFrame = new JFrame();
         jFrame.setTitle("Lost Treasures");
-        jFrame.setIconImage(new ImageIcon("images/Others/logo2.png").getImage());
+        jFrame.setIconImage(new ImageIcon("images/icons/logo2.png").getImage());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setUndecorated(true);
         jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);

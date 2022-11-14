@@ -6,17 +6,19 @@ import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 
 public class ChangeVolumeDialog extends JDialog {
 
     public ChangeVolumeDialog(JFrame jFrame, Sound sound){
-        setModal(true);
         setUndecorated(true);
         getContentPane().setBackground(Color.decode("#14171C"));
 //        setLayout(new GridLayout(2,1));
@@ -25,10 +27,29 @@ public class ChangeVolumeDialog extends JDialog {
 
         JSlider jSlider = new JSlider(-40,6);
         jSlider.setFocusable(false);
+        jSlider.setBackground(null);
+
+        ImageIcon audioIcon = new ImageIcon(getClass().getClassLoader().getResource("images/icons/upAudio.png"));
+        Image image = audioIcon.getImage().getScaledInstance(30,32,Image.SCALE_SMOOTH);
+        audioIcon = new ImageIcon(image);
+
+        JLabel upAudio = new JLabel(audioIcon);
+        upAudio.setSize(30,40);
+
+        audioIcon = new ImageIcon(getClass().getClassLoader().getResource("images/icons/noAudio.png"));
+        image = audioIcon.getImage().getScaledInstance(30,32,Image.SCALE_SMOOTH);
+        audioIcon = new ImageIcon(image);
+
+        JLabel noAudio = new JLabel(audioIcon);
+        noAudio.setSize(30,40);
+        add(noAudio);
         add(jSlider);
-        jSlider.setBorder(null);
-        setLocation(DeviceInformation.screenWidth-100, 50);
-        setSize(100,100);
+        add(upAudio);
+        jSlider.setBorder(new EmptyBorder(10,0,10,0));
+//        jSlider.setBorder(new LineBorder(Color.PINK,18));
+        setLocation(DeviceInformation.screenWidth-300, 50);
+        setSize(300,60);
+        jSlider.setValue((int)sound.fc.getValue());
 //        setBounds(De.viceInformation.screenWidth-300,50,100,100);
         setResizable(false);
         System.out.println(jSlider.getWidth() + " " + jSlider.getHeight());
@@ -49,45 +70,18 @@ public class ChangeVolumeDialog extends JDialog {
         });
 
 
-        JButton closeButton = new JButton();
-        closeButton.setBackground(Color.decode("#14171C"));
-        closeButton.setPreferredSize(new Dimension(50,30));
-        closeButton.setFocusPainted(false);
-        closeButton.setHorizontalAlignment(JButton.CENTER);
-        closeButton.setBorder(new LineBorder(Color.white,2));
-        closeButton.setForeground(Color.white);
-        closeButton.setFont(FontInfo.getResizedFont(25f));
-        closeButton.setOpaque(true);
-        closeButton.setText("OK");
-        closeButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
 
+        addWindowFocusListener(new WindowFocusListener() {
+            @Override
+            public void windowGainedFocus(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowLostFocus(WindowEvent e) {
                 dispose();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
         });
-
-        add(closeButton);
         setVisible(true);
 
 

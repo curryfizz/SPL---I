@@ -20,6 +20,8 @@ public class GameAudioSlider extends BasicSliderUI {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.decode("#14171C"));
         g2d.fill(trackRect);
+        g2d.setStroke(new BasicStroke(5));
+
         g2d.setPaint(Color.WHITE);
         g2d.drawLine(trackRect.x * 3, trackRect.y + trackRect.height / 2,
                     trackRect.x + trackRect.width - trackRect.x * 3, trackRect.y + trackRect.height / 2);
@@ -34,8 +36,6 @@ public class GameAudioSlider extends BasicSliderUI {
         Rectangle knobBounds = thumbRect;
         int w = knobBounds.height;
         int h = knobBounds.height;
-        w = w*2/3;
-        h = h*2/3;
         Graphics2D g2d = (Graphics2D) g.create();
         Shape thumbShape = createThumbShape(w - 1, h - 1);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -45,7 +45,7 @@ public class GameAudioSlider extends BasicSliderUI {
         }
 
         if(knobBounds.x >trackRect.x + trackRect.width-trackRect.x*3){
-            knobBounds.x = trackRect.x + trackRect.width-trackRect.x*3;
+            knobBounds.x = trackRect.x + trackRect.width-trackRect.x*4;
         }
 
 
