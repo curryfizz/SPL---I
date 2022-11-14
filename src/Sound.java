@@ -57,6 +57,23 @@ public class Sound {
         }
     }
 
+    public void setSoundEffectFile(String fileName) {
+        try {
+            fileinput = new File("audio/soundeffects/"+fileName+".wav");
+            AudioInputStream ais = AudioSystem.getAudioInputStream(fileinput);
+            clip = AudioSystem.getClip();
+            clip.open(ais);
+            clip.setFramePosition(0);
+            fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            fc.setValue(currentVolume);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
     public void loop() {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }

@@ -47,7 +47,7 @@ public class ChangeVolumeDialog extends JDialog {
         add(upAudio);
         jSlider.setBorder(new EmptyBorder(10,0,10,0));
 //        jSlider.setBorder(new LineBorder(Color.PINK,18));
-        setLocation(DeviceInformation.screenWidth-300, 50);
+        setLocation(DeviceInformation.screenWidth-300, 80);
         setSize(300,60);
         jSlider.setValue((int)sound.fc.getValue());
 //        setBounds(De.viceInformation.screenWidth-300,50,100,100);

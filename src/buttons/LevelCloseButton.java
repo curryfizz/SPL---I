@@ -23,7 +23,7 @@ public class LevelCloseButton extends JButton {
         removeBorder();
         removeFocusPaint();
         removeContentArea();
-        assignFont(FontInfo.getResizedFont(50f));
+        assignFont(FontInfo.getResizedFont(35f));
         addExitText(text);
         setDefaultTextColor();
 //        addCloseActions(fontInfo,jFrame,exitConfirmation);
@@ -65,7 +65,7 @@ public class LevelCloseButton extends JButton {
     }
 
     private void setDefaultPosition(){
-        setBounds(DeviceInformation.screenWidth -50, 5, 50,50);
+        setBounds(DeviceInformation.screenWidth -70, 10, 60,60);
     }
     private void removeBackground(){
         setBackground(null);
@@ -99,7 +99,18 @@ public class LevelCloseButton extends JButton {
         setForeground(Color.white);
     }
 
-//    private void addCloseActions(FontInfo fontInfo, JFrame jFrame, ConfirmationWindowPopup exitConfirmation){
-//        addMouseListener(new closeWindowMouseEvents(fontInfo,jFrame, exitConfirmation));
-//    }
+    public void paint(Graphics g){
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setColor(Color.WHITE);
+
+        g2d.setPaint(Color.decode("#14171C"));
+        g2d.fillOval(5, 5,50,50);
+
+        g2d.setStroke(new BasicStroke(4));
+        g2d.setColor(Color.WHITE);
+        g2d.drawOval(5,5,50,50);
+        super.paint(g);
+    }
 }

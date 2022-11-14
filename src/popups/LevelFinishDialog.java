@@ -1,5 +1,7 @@
 package src.popups;
 
+import src.Sound;
+import src.levels.ALevelPanel;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.levels.DormRoomLevelPanelT;
@@ -7,6 +9,7 @@ import src.levels.LibrarySceneT;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.SliderUI;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,8 +23,12 @@ public class LevelFinishDialog extends JDialog {
     JButton exitToMapButton;
 
     JButton closeButton2;
-    public LevelFinishDialog(JFrame jFrame, JPanel jPanel){
 
+    Sound sound;
+    public LevelFinishDialog(JFrame jFrame, JPanel jPanel){
+        sound = new Sound();
+        sound.setSoundEffectFile("levelFinishTada");
+        sound.play();
         setModal(true);
         setUndecorated(true);
 
@@ -29,15 +36,50 @@ public class LevelFinishDialog extends JDialog {
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
-        jLabel.setPreferredSize(new Dimension(250,130));
+        jLabel.setPreferredSize(new Dimension(DeviceInformation.screenWidth/5,200));
 
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
-        jLabel.setText(convertToMultiline("Congratulations!\nYou've cleared this level successfully!"));
-        jLabel.setFont(FontInfo.getResizedFont(28f));
+//        jLabel.setText(convertToMultiline("Congratulations!\nYou've cleared this level successfully!"));
+        Integer score=0;
+        JTextPane scoreTextPane = new JTextPane();
+        JTextPane levelCompletedTextPane = new JTextPane();
+        JTextPane timeTakenTextPane = new JTextPane();
+        levelCompletedTextPane.setFont(FontInfo.getResizedFont(70f));
+        levelCompletedTextPane.setText("Level completed!");
+        levelCompletedTextPane.setBackground(Color.decode("#14171C"));
+        levelCompletedTextPane.setForeground(Color.white);
+        levelCompletedTextPane.setFocusable(false);
+        jLabel.add(levelCompletedTextPane);
+        jLabel.repaint();
+        jLabel.revalidate();
+        if(jPanel instanceof ALevelPanel){
+
+            score = ((ALevelPanel)jPanel).scoreBoard.score;
+            scoreTextPane.setText("Score: " + score+"   ");
+            scoreTextPane.setBackground(Color.decode("#14171C"));
+            scoreTextPane.setForeground(Color.white);
+            scoreTextPane.setFocusable(false);
+            scoreTextPane.setFont(FontInfo.getResizedFont(40f));
+            jLabel.add(scoreTextPane);
+            jLabel.repaint();
+            jLabel.revalidate();
+
+            timeTakenTextPane.setText("Time: " + ((ALevelPanel)jPanel).timerLabel.elapsedTime);
+            timeTakenTextPane.setBackground(Color.decode("#14171C"));
+            timeTakenTextPane.setForeground(Color.white);
+            timeTakenTextPane.setFocusable(false);
+            timeTakenTextPane.setFont(FontInfo.getResizedFont(40f));
+            jLabel.add(timeTakenTextPane);
+            jLabel.repaint();
+            jLabel.revalidate();
+
+
+        }
+        jLabel.setFont(FontInfo.getResizedFont(65f));
         add(jLabel);
         jLabel.setHorizontalAlignment(JLabel.CENTER);
-        setSize(DeviceInformation.screenWidth/6,200);
+        setSize(DeviceInformation.screenWidth/5,300);
         setLocationRelativeTo(jFrame);
         setResizable(false);
         exitToMapButton = new JButton();
@@ -55,6 +97,7 @@ public class LevelFinishDialog extends JDialog {
             public void mouseClicked(MouseEvent e) {
                 if(jPanel instanceof DormRoomLevelPanelT){
                     ((DormRoomLevelPanelT)jPanel).timerLabel.endLevel();
+                    sound.stop();
                     dispose();
                 }
                  if(jPanel instanceof LibrarySceneT){
