@@ -56,7 +56,7 @@ public class LevelFinishDialog extends JDialog {
         if(jPanel instanceof ALevelPanel){
 
             score = ((ALevelPanel)jPanel).scoreBoard.score;
-            scoreTextPane.setText("Score: " + score+"\n");
+            scoreTextPane.setText("Score: " + score+"   ");
             scoreTextPane.setBackground(Color.decode("#14171C"));
             scoreTextPane.setForeground(Color.white);
             scoreTextPane.setFocusable(false);

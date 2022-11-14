@@ -329,6 +329,7 @@ public class DormRoomLevelPanelT extends ALevelPanel implements Runnable{
 
     @Override
     public void EndLevel() {
+        congratulationsConfetti.setVisible(false);
         resetItemNameLabelList();
         remove(BigItemListAtBottomOfScreen);
         timerLabel.st_alpha=255;
