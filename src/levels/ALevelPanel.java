@@ -17,6 +17,7 @@ import java.util.Objects;
 public abstract class ALevelPanel extends JPanel implements Runnable{
     public TimerLabel timerLabel;
     ScoreBoard scoreBoard;
+
     public Sound sound;
     public JLabel ShowGottenScore;
     public JLabel HintAnimationGif;

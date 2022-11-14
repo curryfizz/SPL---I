@@ -90,7 +90,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         repaint();
 
 
-      //  URL soundURl = getClass().getResource("/background_music/library.wav");
+      //  URL soundURl = getClass().getResource("/audio.background_music/library.wav");
     }
 
     private void setupHintAnimationGif() {

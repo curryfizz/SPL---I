@@ -21,15 +21,9 @@ public class GameAudioSlider extends BasicSliderUI {
         g2d.setColor(Color.decode("#14171C"));
         g2d.fill(trackRect);
         g2d.setPaint(Color.WHITE);
-        if(slider.getOrientation() == SwingConstants.HORIZONTAL) {
-            g2d.drawLine(trackRect.x * 3, trackRect.y + trackRect.height / 2,
-                    trackRect.x + trackRect.width - trackRect.x * 3, trackRect.y + trackRect.height / 2);
-        }else{
-            g2d.drawLine(trackRect.x * 3, trackRect.y + trackRect.height / 2,
+        g2d.drawLine(trackRect.x * 3, trackRect.y + trackRect.height / 2,
                     trackRect.x + trackRect.width - trackRect.x * 3, trackRect.y + trackRect.height / 2);
 
-
-        }
 
         slider.repaint();
 
@@ -55,7 +49,7 @@ public class GameAudioSlider extends BasicSliderUI {
         }
 
 
-        g2d.translate(knobBounds.x, trackRect.y*3);
+        g2d.translate(knobBounds.x, trackRect.y);
         g2d.setColor(Color.white);
         g2d.fill(thumbShape);
 

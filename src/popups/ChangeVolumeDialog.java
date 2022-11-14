@@ -19,6 +19,7 @@ public class ChangeVolumeDialog extends JDialog {
         setModal(true);
         setUndecorated(true);
         getContentPane().setBackground(Color.decode("#14171C"));
+//        setLayout(new GridLayout(2,1));
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
 
@@ -26,8 +27,9 @@ public class ChangeVolumeDialog extends JDialog {
         jSlider.setFocusable(false);
         add(jSlider);
         jSlider.setBorder(null);
-        setSize(120,100);
-        setBounds(DeviceInformation.screenWidth-300,50,300,100);
+        setLocation(DeviceInformation.screenWidth-100, 50);
+        setSize(100,100);
+//        setBounds(De.viceInformation.screenWidth-300,50,100,100);
         setResizable(false);
         System.out.println(jSlider.getWidth() + " " + jSlider.getHeight());
 
@@ -41,6 +43,7 @@ public class ChangeVolumeDialog extends JDialog {
                     sound.currentVolume = -80;
                 }
                 sound.fc.setValue(sound.currentVolume);
+                System.out.println(jSlider.getValue());
                 jSlider.repaint();
             }
         });
