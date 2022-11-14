@@ -2,12 +2,17 @@ package src;
 
 import src.setup.DeviceInformation;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.net.URL;
 
 public class Main {
@@ -21,25 +26,27 @@ public class Main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLayout(new GridLayout(1,3));
 
+
+
         JButton volumeUpB = new JButton("Volume UP");
         volumeUpB.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sound.volumeUp();
+//                sound.volumeUp();
             }
         });
 
 
         window.add(volumeUpB);
-        slider = new JSlider(-40,7);
+        slider = new JSlider();
         slider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                sound.currentVolume = slider.getValue();
-                if(sound.currentVolume == -40){
-                    sound.currentVolume = -80;
-                }
-                sound.fc.setValue(sound.currentVolume);
+//                sound.currentVolume = slider.getValue();
+//                if(sound.currentVolume == -40){
+//                    sound.currentVolume = -80;
+//                }
+//                sound.fc.setValue(sound.currentVolume);
             }
         });
         JPanel dummy = new JPanel();
@@ -48,9 +55,10 @@ public class Main {
         dummy.add(slider);
         window.add(dummy);
         window.pack();
+        window.add(slider);
         window.setVisible(true);
 
-        URL soundURl = getClass().getResource("/background_music/library.wav");
+        URL soundURl = getClass().getResource("background_music/library.wav");
 
         playMusic(soundURl);
     }
