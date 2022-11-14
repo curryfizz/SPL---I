@@ -1,5 +1,6 @@
 package src.buttons;
 import src.events.SceneObjectEvents;
+import src.levels.ALevelPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,11 +13,11 @@ public class ObjectHidingButton extends JButton {
     int buttonWidth;
     int buttonHeight;
     public JLabel associatedLabel;
-    public JPanel scenePanel;
+    public ALevelPanel scenePanel;
     public int myIndex;
     public boolean HintWasUsed = false;
 
-    public ObjectHidingButton(int posx, int posy, int width, int height, JLabel label, JPanel scenePanel, int myIndex){
+    public ObjectHidingButton(int posx, int posy, int width, int height, JLabel label, ALevelPanel scenePanel, int myIndex){
         this.positionX = posx;
         this.positionY = posy;
         this.buttonWidth = width;

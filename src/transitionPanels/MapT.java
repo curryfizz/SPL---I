@@ -299,7 +299,6 @@ public class MapT extends JPanel implements Runnable{
                 libraryText.setVisible(false);
                 classroomText.setVisible(false);
 
-                System.out.println(gameProgress);
                 if(gameProgress >= 2) {
                     classroomText.setVisible(true);
                 }else{

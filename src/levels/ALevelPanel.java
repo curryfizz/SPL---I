@@ -76,7 +76,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         this.add(congratulationsConfetti);
     }
 
-    public JLabel createObject1(String image) throws IOException{
+    public JLabel createObject(String image) throws IOException{
         JLabel objectLabel = new JLabel();
         objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
 
@@ -113,7 +113,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         BigItemListAtBottomOfScreen.setBackground(Color.decode("#14171C"));
         BigItemListAtBottomOfScreen.setForeground(Color.white);
         BigItemListAtBottomOfScreen.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
-        BigItemListAtBottomOfScreen.setFont(FontInfo.getResizedFont(29f));
+        BigItemListAtBottomOfScreen.setFont(FontInfo.getResizedFont(32f));
         BigItemListAtBottomOfScreen.setOpaque(true);
     }
 
@@ -135,17 +135,24 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     }
 
 
+    public void createLabelOnly(String image){
+        JLabel objectLabel = new JLabel();
+        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
 
+        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+        Image image1 = obj1icon.getImage();
+        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
+        obj1icon = new ImageIcon(image1);
 
+        objectLabel.setIcon(obj1icon);
+        objectLabel.setVisible(true);
+        this.add(objectLabel);
 
-
-
-
-
+    }
 
 
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) throws IOException {
-        JLabel objectLabel = createObject1(image);
+        JLabel objectLabel = createObject(image);
 
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size()){
             @Override
@@ -197,10 +204,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
                             setEnabled(false);
                             ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
                             if(imagesFound == 6){
-                                if(scenePanel instanceof ALevelPanel){
-                                    ((DormRoomLevelPanelT)scenePanel).timerLabel.isTimeOver = true;
-
-                                }
+                                scenePanel.timerLabel.isTimeOver = true;
                                 imagesFound=0;
                                 congratulationsConfetti.setVisible(true);
                                 LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,scenePanel);
@@ -228,11 +232,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void createText (String text) {
         textList.add(text);
     }
-    public int getLevelNumber(){
-        return 2;
-    }
-
-
+    public abstract int getLevelNumber();
 
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
@@ -262,10 +262,9 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
     public abstract void generateScreenWithAllObjectsAndButtons() throws IOException;
 
-
-
-    public void startScene() { //when clicked from Map, resets some things and starts the scene
+    public void StartLevel() { //when clicked from Map, resets some things and starts the scene
         congratulationsConfetti.setVisible(false);
+        ShowGottenScore.setVisible(false);
         backgroundMusic.play();
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
@@ -291,6 +290,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void EndLevel() {
         resetItemNameLabelList();
         remove(BigItemListAtBottomOfScreen);
+
         timerLabel.st_alpha=255;
         backgroundMusic.stop();
 //        HintAnimationGif.setVisible();
@@ -308,15 +308,17 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         jFrame.revalidate();
         jFrame.repaint();
     }
+    public abstract String getBackgroundPath();
+    public abstract String getBackgroundMusicPath();
     public void buildScene() throws IOException {
         createConfettiScreen();
         MessNotification();
         setupShowGottenScore();
         setupHintAnimationGif();
-        createBackground("images/dormImages/LevelOneMain.png");
+        createBackground(getBackgroundPath());
 
         backgroundMusic = new Sound();
-        backgroundMusic.setFile("SoundAndMusic/BackgroundMusic/levelOneBackground_v2.wav");
+        backgroundMusic.setFile(getBackgroundMusicPath());
 
         objClickSound = new Sound();
         objClickSound.setFile("SoundAndMusic/SoundEffects/mixkit-arcade-game-jump-coin-216.wav");
@@ -365,7 +367,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         ShowGottenScore = new JLabel("", SwingConstants.CENTER);
         ShowGottenScore.setBounds(500,400, 50, 30);
         ShowGottenScore.setBackground(null);
-        ShowGottenScore.setFont(FontInfo.getResizedFont(29f));
+        ShowGottenScore.setFont(FontInfo.getResizedFont(32f));
 //        ShowGottenScore.setForeground(new Color(30, 120, 20));
         ShowGottenScore.setForeground(new Color(255,0,0));
         ShowGottenScore.setVisible(false);
@@ -373,10 +375,11 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         this.add(ShowGottenScore);
     }
 
+    public abstract String getMessMessage();
+
     public void MessNotification(){
         messNotification = new JButton("<html>Oh No, The room looks like it got ransacked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>");
-
-        messNotification.setFont(FontInfo.getResizedFont(34f));
+        messNotification.setFont(FontInfo.getResizedFont(38f));
         messNotification.setFocusPainted(false);
         messNotification.setEnabled(false);
         messNotification.setBounds(0, DeviceInformation.screenHeight -(textBox_height*2), DeviceInformation.screenWidth, textBox_height*2);

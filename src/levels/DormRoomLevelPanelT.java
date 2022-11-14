@@ -30,15 +30,12 @@ public class DormRoomLevelPanelT extends ALevelPanel{
         super(jFrame);
     }
 
+    @Override
+    public int getLevelNumber() {
+        return 2;
+    }
 
-
-
-
-
-
-
-
-
+    @Override
     public  void generateScreenWithAllObjectsAndButtons() throws IOException {
         createButton("images/dormImages/01.png", getX(308), getY(428), getX(68), getY(85));
         createText("Cornflakes Box");
@@ -84,12 +81,20 @@ public class DormRoomLevelPanelT extends ALevelPanel{
         createText("Shoes");
         createButton("images/dormImages/22.png", getX(489), getY(400), getX(26), getY(20));
         createText("TeaCup");
-
         this.add(backgroundLabel);
     }
 
+    @Override
+    public String getBackgroundPath() {
+        return "images/dormImages/LevelOneMain.png";
+    }
 
-
-
-
+    @Override
+    public String getBackgroundMusicPath() {
+        return "SoundAndMusic/BackgroundMusic/levelOneBackground_v2.wav";
+    }
+    @Override
+    public String getMessMessage(){
+        return "<html>Oh No, The room looks like it got ransacked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>";
+    }
 }

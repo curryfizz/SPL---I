@@ -14,9 +14,7 @@ import java.util.Objects;
 public class MessageFromMomT extends JPanel implements Runnable {
 
     JFrame jFrame;
-//    DeviceInformation deviceInfo;
-//    FontInfo fontInfo;
-    Font eastSea = FontInfo.getResizedFont(42f);
+    Font eastSea = FontInfo.getResizedFont(48f);
     JLabel backgroundLabel;
     JLabel Bubble1;
     JLabel Bubble2;

@@ -3,213 +3,41 @@ package src.levels;
 import src.*;
 import src.buttons.*;
 import src.events.SceneObjectEvents;
-import src.levelObjects.ScoreBoard;
-import src.levelObjects.TimerLabel;
 import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
-import src.setup.FontInfo;
 import src.setup.PlayerInfo;
-import src.setup.RandomGenerator;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.net.URL;
+import java.io.IOException;
 import java.util.Objects;
 
 public class LibrarySceneT extends ALevelPanel implements Runnable{
-    JFrame jFrame;
-    Rectangle maxBounds;
-
-    boolean isTimerOver;
-    public int score = 0;
-    int currentCombo = 0;
-    int timeSinceLastFind = 0;
-    CloseButton closeButton;
-    JLabel backgroundLabel;
-    JLabel BigItemListAtBottomOfScreen;
-    LoadingAnimationT loadingAnimationT;
-    MapT mapT;
-    URL  music = getClass().getResource("/SoundAndMusic/BackgroundMusic/library.wav");
-    MusicPlayer musicPlayer;
-
-//    JLabel HintAnimationGif;
-
-    boolean levelFinished;
-    int imagesFound;
-    int textBox_height;
-
-
-    JButton messNotification; // notification that someone messed up your dorm room
-    RandomGenerator randomGenerator;
-    boolean InnitiallyClicked = false;
-
-
-
-
-
-
     public LibrarySceneT(JFrame jFrame){
         super(jFrame);
     }
+    @Override
+    public int getLevelNumber() {
+        return 4;
+    }
+    @Override
+    public String getBackgroundPath() {
+        return "images/libraryImages/libraryMain.png";
+    }
 
     @Override
-    public void run() {
-        buildScene();
+    public String getBackgroundMusicPath() {
+        return "SoundAndMusic/BackgroundMusic/library.wav";
     }
 
-
-    public void buildScene(){
-        MessNotification();
-        setupShowGottenScore();
-        setupHintAnimationGif();
-        createBackground("images/libraryImages/libraryMain.png");
-        timerLabel = new TimerLabel(jFrame, this);
-        timerLabel.setVisible(false);
-        revalidate();
-        repaint();
-
-
-        scoreBoard = new ScoreBoard(jFrame, this);
-        scoreBoard.setVisible(false);
-        revalidate();
-        repaint();
-
-        addCustomWindowCloseButton();
-        repaint();
-
-        imagesFound=0;
-        generateScreenWithAllObjectsAndButtons();
-        repaint();
-
-
-      //  URL soundURl = getClass().getResource("/background_music/library.wav");
+    @Override
+    public String getMessMessage(){
+        return "<html>Oh No, The Library is very messy! Where is my things?<br/> Guess I'll have to look for my present (Tap to Search)</html>";
     }
-
-    private void setupHintAnimationGif() {
-//        JLabel objectLabel = new JLabel();
-//        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
-//
-//        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-//        Image image1 = obj1icon.getImage();
-//        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-//        obj1icon = new ImageIcon(image1);
-//
-//        objectLabel.setIcon(obj1icon);
-//        imageList.add(objectLabel);
-
-        int sizeX = 200;
-        int sizeY = 200;
-
-        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/playing_brown_cat.gif")));
-        gif.setImage(gif.getImage().getScaledInstance(sizeX, sizeY, Image.SCALE_DEFAULT));
-        HintAnimationGif = new JLabel();
-        HintAnimationGif.setBounds(600,500, sizeX,sizeY);
-
-        HintAnimationGif.setIcon(gif);
-        HintAnimationGif.setVisible(true);
-//        HintAnimationGif.setBackground(Color.BLACK);
-//        HintAnimationGif.setOpaque(true);
-        HintAnimationGif.setVisible(false);
-        this.add(HintAnimationGif);
-    }
-
-    private void setupShowGottenScore() {
-        ShowGottenScore = new JLabel("", SwingConstants.CENTER);
-        ShowGottenScore.setBounds(500,400, 50, 30);
-        ShowGottenScore.setBackground(null);
-        ShowGottenScore.setFont(FontInfo.getResizedFont(29f));
-//        ShowGottenScore.setForeground(new Color(30, 120, 20));
-        ShowGottenScore.setForeground(Color.decode("#ffff00"));
-        ShowGottenScore.setVisible(false);
-        ShowGottenScore.setOpaque(false);
-        this.add(ShowGottenScore);
-    }
-
-
-    public void MessNotification(){
-        messNotification = new JButton("<html>Oh No, The Library is very messy! Where is my things?<br/> Guess I'll have to look for my present (Tap to Search)</html>");
-        messNotification.setFont(FontInfo.getResizedFont(34f));
-        messNotification.setFocusPainted(false);
-        messNotification.setEnabled(false);
-        messNotification.setBounds(0, DeviceInformation.screenHeight -100, DeviceInformation.screenWidth, 100);
-        messNotification.setBackground(Color.decode("#14171C"));
-        messNotification.setForeground(Color.white);
-        messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
-        messNotification.setOpaque(true);
-
-        this.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if(!InnitiallyClicked) {
-                    timerLabel.setVisible(true);
-                    scoreBoard.setVisible(true);
-                    revalidate();
-                    repaint();
-                    enableObjectButtons();
-                    messNotification.setVisible(false);
-                    timerLabel.StartTimer();
-                    InnitiallyClicked = true;
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        this.add(messNotification);
-    }
-
-
-
-    public  void createBackground(String bgfilename) {
-        this.setLayout(null);
-        this.setBounds(0, 0, maxBounds.width, maxBounds.height);//size of the background image
-        this.setBackground(Color.black);
-
-        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(bgfilename)));
-        Image image = imageIcon.getImage();
-        image = image.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-        imageIcon = new ImageIcon(image);
-        backgroundLabel = new JLabel();
-        backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
-        backgroundLabel.setIcon(imageIcon);
-    }
-
-
-
-
-    public void addCustomWindowCloseButton(){
-        LevelCloseButton levelCloseButton = new LevelCloseButton("X",jFrame,this);
-        this.add(levelCloseButton);
-        this.repaint();
-        this.revalidate();
-    }
-
-
-
-    public  void generateScreenWithAllObjectsAndButtons() {
-
-
+    public  void generateScreenWithAllObjectsAndButtons() throws IOException {
         createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
                 DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
         createText("<html>Black and white <br/> Photo </html>");
@@ -234,18 +62,18 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 7.PNG", DeviceInformation.screenWidth *228/1536, DeviceInformation.screenHeight *570/864,
                 DeviceInformation.screenWidth *10/1536, DeviceInformation.screenHeight *10/864);
         createText("Wrist Watch");
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 8.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 8.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 9.PNG", DeviceInformation.screenWidth *970/1536, DeviceInformation.screenHeight *458/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *35/864);
         createText("Stack of books");
         createButton("images/libraryImages/levelTwoWithOutlines/item 10.PNG", DeviceInformation.screenWidth *108/1536, DeviceInformation.screenHeight *588/864,
                 DeviceInformation.screenWidth *88/1536, DeviceInformation.screenHeight *28/864);
         createText("Soft Drinks");
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 11.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 11.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 12.PNG", DeviceInformation.screenWidth *795/1536, DeviceInformation.screenHeight *744/864,
                 DeviceInformation.screenWidth *20/1536, DeviceInformation.screenHeight *12/864);
         createText("<html>keyring on the <br/> floor<html>");
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 13.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 13.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 14.PNG", DeviceInformation.screenWidth *1078/1536, DeviceInformation.screenHeight *748/864,
                 DeviceInformation.screenWidth *80/1536, DeviceInformation.screenHeight *15/864);
         createText("NotePad");
@@ -279,14 +107,14 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
                 DeviceInformation.screenWidth *70/1536, DeviceInformation.screenHeight *35/864);
         createText("Board");
 
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 23.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 23.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 24.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *437/864,
                 DeviceInformation.screenWidth *120/1536, DeviceInformation.screenHeight *95/864);
         createText("Laptop");
         createButton("images/libraryImages/levelTwoWithOutlines/item 25.PNG", DeviceInformation.screenWidth *817/1536, DeviceInformation.screenHeight *381/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *70/864);
         createText("Laptop Screen");
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 26.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 26.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 27.PNG", DeviceInformation.screenWidth *888/1536, DeviceInformation.screenHeight *410/864,
                 DeviceInformation.screenWidth *20/1536, DeviceInformation.screenHeight *40/864);
         createText("Coffee Cup");
@@ -306,7 +134,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 31.PNG", DeviceInformation.screenWidth *978/1536, DeviceInformation.screenHeight *510/864,
                 DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *15/864);
         createText("Black mouse");
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 32.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 32.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 33.PNG", DeviceInformation.screenWidth *1085/1536, DeviceInformation.screenHeight *443/864,
                 DeviceInformation.screenWidth *58/1536, DeviceInformation.screenHeight *65/864);
         createText("Shoulder Bag");
@@ -316,7 +144,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 35.PNG", DeviceInformation.screenWidth *1023/1536, DeviceInformation.screenHeight *642/864,
                 DeviceInformation.screenWidth *128/1536, DeviceInformation.screenHeight *62/864);
         createText("letters");
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 36.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 36.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 37.PNG", DeviceInformation.screenWidth *1276/1536, DeviceInformation.screenHeight *644/864,
                 DeviceInformation.screenWidth *38/1536, DeviceInformation.screenHeight *55/864);
         createText("Watch");
@@ -328,7 +156,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createText("PowerBank");
 
 
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 40.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 40.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 40.PNG", DeviceInformation.screenWidth *1025/1536, DeviceInformation.screenHeight *495/864,
                 DeviceInformation.screenWidth *38/1536, DeviceInformation.screenHeight *15/864);
         createText("Cornflakes Box");
@@ -364,7 +192,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 50.PNG", DeviceInformation.screenWidth *167/1536, DeviceInformation.screenHeight *618/864,
                 DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *25/864);
         createText("Open Diary");
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 51.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 51.PNG");
         createButton("images/libraryImages/levelTwoWithOutlines/item 52.PNG", DeviceInformation.screenWidth *294/1536, DeviceInformation.screenHeight *618/864,
                 DeviceInformation.screenWidth *58/1536, DeviceInformation.screenHeight *25/864);
         createText("Bag");
@@ -434,7 +262,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
         createButton("images/libraryImages/levelTwoWithOutlines/item 78.PNG", DeviceInformation.screenWidth *1350/1536, DeviceInformation.screenHeight *682/864,
                 DeviceInformation.screenWidth *58/1536, DeviceInformation.screenHeight *75/864);
         createText(" Box");
-        createObject2("images/libraryImages/levelTwoWithOutlines/item 79.PNG");
+        createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 79.PNG");
         //idk
         createButton("images/libraryImages/levelTwoWithOutlines/item 80.PNG", DeviceInformation.screenWidth *925/1536, DeviceInformation.screenHeight *574/864,
                 DeviceInformation.screenWidth *35/1536, DeviceInformation.screenHeight *23/864);
@@ -472,258 +300,6 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
 
         this.add(backgroundLabel);
-    }
-
-
-
-
-
-    private void CreateAListWithAllItemNamesAsLabels() {
-
-        for(int i = 0; i < textList.size(); i++){
-            JLabel temp = new JLabel(textList.get(i), SwingConstants.CENTER);
-            temp.setForeground(Color.white);
-            temp.setFont(FontInfo.getResizedFont(37f));
-//            temp.setText(textList.get(i));
-            ListOfAllItemNamesAsLabels.add(temp);
-        }
-
-    }
-
-    public void CreateTheBigItemListTextBoxAtTheBottomOfScreen(){
-        BigItemListAtBottomOfScreen = new JLabel();
-        BigItemListAtBottomOfScreen.setLayout(new GridLayout(1,5));
-        BigItemListAtBottomOfScreen.setBounds(0, DeviceInformation.screenHeight -(textBox_height*2), DeviceInformation.screenWidth, textBox_height*2);
-        BigItemListAtBottomOfScreen.setBackground(Color.decode("#14171C"));
-        BigItemListAtBottomOfScreen.setForeground(Color.white);
-        BigItemListAtBottomOfScreen.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
-        BigItemListAtBottomOfScreen.setFont(FontInfo.getResizedFont(29f));
-        BigItemListAtBottomOfScreen.setOpaque(true);
-    }
-
-    public void MakeRandomItemListAtBottomOfScreen(){
-        CreateAListWithAllItemNamesAsLabels();
-        CreateTheBigItemListTextBoxAtTheBottomOfScreen();
-        randomGenerator = new RandomGenerator(buttonList.size());
-        randomGenerator.createUnique();
-        this.RandObjIndices = randomGenerator.RandObjIndices;
-        this.add(BigItemListAtBottomOfScreen);
-        int index;
-        for(int i=0; i<RandObjIndices.size(); i++){
-            index = RandObjIndices.get(i);
-            ListOfAllItemNamesAsLabels.get(index).addMouseListener(new LabelListener(jFrame, this,
-                    ListOfAllItemNamesAsLabels.get(index), index));
-            BigItemListAtBottomOfScreen.add(ListOfAllItemNamesAsLabels.get(index));
-        }
-
-    }
-
-
-    public void enableObjectButtons(){
-        for(int i=0; i<6; i++){
-            buttonList.get(RandObjIndices.get(i)).setEnabled(true);
-        }
-    }
-
-
-
-    public void resetItemNameLabelList() {
-
-        for(int i = 0; i < textList.size(); i++){
-            ListOfAllItemNamesAsLabels.get(i).setVisible(true);
-            imageList.get(i).setVisible(true);
-
-        }
-
-    }
-
-    @Override
-    public void EndLevel() {
-        resetItemNameLabelList();
-        remove(BigItemListAtBottomOfScreen);
-        ShowGottenScore.setVisible(false);
-        timerLabel.st_alpha=255;
-//        HintAnimationGif.setVisible();
-        revalidate();
-        repaint();
-
-        jFrame.remove(this);
-
-        loadingAnimationT.changeNextScene(mapT);
-        mapT.MaxLibraryScore = Math.max(scoreBoard.score, mapT.MaxLibraryScore);
-        mapT.updateScore();
-
-        jFrame.add(loadingAnimationT);
-        loadingAnimationT.initializeTimer();
-        jFrame.revalidate();
-        jFrame.repaint();
-        musicPlayer.stop(music);
-    }
-
-
-    public JLabel createObject1(String image){
-        JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
-
-        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-        Image image1 = obj1icon.getImage();
-        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-        obj1icon = new ImageIcon(image1);
-
-        objectLabel.setIcon(obj1icon);
-        imageList.add(objectLabel);
-        objectLabel.setVisible(true);
-        return objectLabel;
-
-    }
-
-    public void createObject2(String image){
-        JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
-
-        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-        Image image1 = obj1icon.getImage();
-        image1 = image1.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);
-        obj1icon = new ImageIcon(image1);
-
-        objectLabel.setIcon(obj1icon);
-        objectLabel.setVisible(true);
-        this.add(objectLabel);
-
-    }
-
-
-
-
-
-    public void  createButton(String image, int posx, int posy, int sizex,int sizey) {
-        JLabel objectLabel = createObject1(image);
-
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size()){
-            @Override
-            public void addSceneEventsListener(ObjectHidingButton button){
-                addMouseListener(new SceneObjectEvents(associatedLabel, scenePanel){
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        if(isEnabled()) {
-                            imageLabel.setVisible(false);
-                            imagesFound+=1;
-
-                            if((timerLabel.elapsedTime - timeSinceLastFind) < 10){
-                                currentCombo++;
-                            }else{
-                                currentCombo = 0;
-                            }
-
-                            timeSinceLastFind = timerLabel.elapsedTime;
-
-                            int gottenScore;
-                            if(HintWasUsed){
-                                gottenScore = scoreBoard.setScore(50, 0);
-                                currentCombo = 0;
-                                HintAnimationGif.setVisible(false);
-                            }
-                            else{
-                                gottenScore = scoreBoard.setScore((int) (timerLabel.elapsedTime/2.0), currentCombo);
-                            }
-                            scoreBoard.refreshScore();
-
-                            ShowGottenScore.setText("+" + Integer.toString(gottenScore));
-                            ShowGottenScore.setLocation(button.getLocation());
-                            ShowGottenScore.setVisible(true);
-                            repaint();
-
-//                            //hehe
-//
-//                            HintAnimationGif.setLocation(button.getLocation());
-//                            HintAnimationGif.setVisible(true);
-//
-//                            //hehe
-
-                            timerLabel.AnimateScore(e.getPoint());
-
-                            setEnabled(false);
-                            ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
-                            if(imagesFound == 6){
-                                if(scenePanel instanceof ALevelPanel){
-                                    ((LibrarySceneT)scenePanel).timerLabel.isTimeOver = true;
-
-                                }
-                                imagesFound=0;
-                                congratulationsConfetti.setVisible(true);
-                                LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,scenePanel);
-                                PlayerInfo.gameProgress = 3; ///////////////////
-                                MapT.gameProgress = 3;
-                                scenePanel.revalidate();
-                                scenePanel.repaint();
-                                jFrame.revalidate();
-                                jFrame.repaint();
-
-                            }
-                        }
-                    }
-                });
-            }
-        };
-        this.add(objectHidingButton);
-        this.add(objectLabel);
-        buttonList.add(objectHidingButton);
-    }
-    public void createText (String text) {
-        textList.add(text);
-    }
-
-
-
-
-    @Override
-    public void startScene() {
-        congratulationsConfetti.setVisible(false);
-        messNotification.setVisible(true);
-        timerLabel.setVisible(false);
-        scoreBoard.setVisible(false);
-        MakeRandomItemListAtBottomOfScreen();
-        InnitiallyClicked = false;
-        resetVariables();
-        ResetTimerAndScore();
-    }
-
-
-
-    @Override
-    public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, MapT mapT) {
-        this.loadingAnimationT = loadingAnimationT;
-        this.mapT = mapT;
-    }
-
-
-    public void ResetTimerAndScore(){
-        timerLabel.isTimeOver = false;
-        timerLabel.second = 30;
-        timerLabel.minute = 2;
-        timerLabel.elapsedTime = 0;
-        scoreBoard.score=0;
-        scoreBoard.setText("0000");
-        imagesFound = 0;
-        score=0;
-
-    }
-
-    public void resetVariables(){
-
-        timerLabel.isTimeOver = false;
-        scoreBoard.score=0;
-
-        timerLabel.setVisible(false);
-     //   revalidate();
-     //   repaint();
-        scoreBoard.setVisible(false);
-    //    revalidate();
-    //    repaint();
-
-        musicPlayer = new MusicPlayer();
-        musicPlayer.playMusic(music);
-
     }
 
 }

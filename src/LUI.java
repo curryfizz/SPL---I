@@ -1,6 +1,7 @@
 package src;
 
 import src.buttons.ObjectHidingButton;
+import src.levels.DormRoomLevelPanelT;
 
 import javax.swing.*;
 import java.awt.*;
@@ -221,7 +222,7 @@ public class LUI {
     {
         createObject(image);
 
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), new JPanel(), buttonlist.size());
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey,imagelist.get(imagelist.size()-1), new DormRoomLevelPanelT(new JFrame()), buttonlist.size());
         //imagelist.get(imagelist.size-1)
         bgPanel[1].add(objectHidingButton);
         buttonlist.add(objectHidingButton);
