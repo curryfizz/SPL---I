@@ -2,17 +2,12 @@ package src;
 
 import src.setup.DeviceInformation;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.net.URL;
 
 public class Main {
@@ -58,7 +53,7 @@ public class Main {
         window.add(slider);
         window.setVisible(true);
 
-        URL soundURl = getClass().getResource("background_music/library.wav");
+        URL soundURl = getClass().getResource("SoundAndMusic/BackgroundMusic/library.wav");
 
         playMusic(soundURl);
     }

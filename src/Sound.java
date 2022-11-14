@@ -2,7 +2,6 @@ package src;
 
 import javax.sound.sampled.*;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 public class Sound {
@@ -44,9 +43,9 @@ public class Sound {
             System.out.println(e.getMessage());
         }
     }
-    public void setFile(String fileName) {
+    public void setFile(String filePath) {
         try {
-            fileinput = new File("background_music/"+fileName+".wav");
+            fileinput = new File(filePath);
             AudioInputStream ais = AudioSystem.getAudioInputStream(fileinput);
             clip = AudioSystem.getClip();
             clip.open(ais);

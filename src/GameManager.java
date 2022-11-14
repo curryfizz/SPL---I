@@ -3,6 +3,7 @@ package src;
 import src.levels.*;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
+import src.setup.PlayerInfo;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;
 import src.transitionPanels.MessageFromMomT;
@@ -23,6 +24,7 @@ import java.util.concurrent.Executors;
 
 public class GameManager {
 
+    public static DormRoomLevelPanelT dormRoomLevelPanelT;
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         new GameManager();
@@ -93,15 +95,18 @@ public class GameManager {
         jFrame.add(testAnimation);
         testAnimation.initializeTimer();
     }
-    public GameManager(){
+    public GameManager() throws IOException {
         System.setProperty("sun.java2d.uiScale", "1.0");
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
+        PlayerInfo player = new PlayerInfo(1); // taken from database
 
         System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
 
         /* Set up the frame*/
         JFrame jFrame = new JFrame();
+        jFrame.setBackground(Color.black);
+        jFrame.setForeground(Color.black);
         jFrame.setTitle("Lost Treasures");
         jFrame.setIconImage(new ImageIcon("images/Others/logo2.png").getImage());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -180,6 +185,18 @@ public class GameManager {
 
         pl.shutdown();
         //librarySceneT.startScene();
+
+
+
+//        dormRoomLevelPanelT = new DormRoomLevelPanelT(jFrame);
+//        dormRoomLevelPanelT.buildScene();
+//        dormRoomLevelPanelT.startScene();
+//
+//        jFrame.add(dormRoomLevelPanelT);
+
+
+
+
 
         /*
         TODO:

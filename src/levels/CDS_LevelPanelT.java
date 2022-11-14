@@ -36,7 +36,7 @@ public class CDS_LevelPanelT extends ALevelPanel implements Runnable{
     JLabel BigItemListAtBottomOfScreen;
     LoadingAnimationT loadingAnimationT;
     MapT mapT;
-    URL music = getClass().getResource("/background_music/library.wav");
+    URL music = getClass().getResource("/SoundAndMusic/BackgroundMusic/library.wav");
     MusicPlayer musicPlayer;
     boolean levelFinished;
     int imagesFound;
@@ -49,12 +49,7 @@ public class CDS_LevelPanelT extends ALevelPanel implements Runnable{
 
 
     public CDS_LevelPanelT(JFrame jFrame){
-        this.jFrame = jFrame;
-        levelFinished = false;
-        maxBounds = DeviceInformation.graphicsEnvironment.getMaximumWindowBounds();
-        textBox_height = DeviceInformation.screenHeight*50/864;
-        // this.setLayout(new GridLayout());
-        this.setLayout(null);
+        super(jFrame);
     }
 
     @Override

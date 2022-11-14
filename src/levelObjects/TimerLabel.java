@@ -171,7 +171,7 @@ public class TimerLabel extends JLabel implements Runnable{
                 if(miliFPS > 70 && miliFPS<100){
                     p = backGroundPanel.ShowGottenScore.getLocation();
                     p.y -= 2;
-                    backGroundPanel.ShowGottenScore.setForeground(new Color(0,0,255,st_alpha));
+                    backGroundPanel.ShowGottenScore.setForeground(new Color(200,255,0,st_alpha));
                     st_alpha*=2;
                     st_alpha/=3;
                     backGroundPanel.ShowGottenScore.setLocation(p);

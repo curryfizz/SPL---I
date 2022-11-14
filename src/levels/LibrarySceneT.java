@@ -8,6 +8,7 @@ import src.levelObjects.TimerLabel;
 import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
+import src.setup.PlayerInfo;
 import src.setup.RandomGenerator;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;
@@ -32,7 +33,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     JLabel BigItemListAtBottomOfScreen;
     LoadingAnimationT loadingAnimationT;
     MapT mapT;
-    URL  music = getClass().getResource("/background_music/library.wav");
+    URL  music = getClass().getResource("/SoundAndMusic/BackgroundMusic/library.wav");
     MusicPlayer musicPlayer;
 
 //    JLabel HintAnimationGif;
@@ -52,12 +53,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
 
     public LibrarySceneT(JFrame jFrame){
-        this.jFrame = jFrame;
-        levelFinished = false;
-        maxBounds = DeviceInformation.graphicsEnvironment.getMaximumWindowBounds();
-        textBox_height = DeviceInformation.screenHeight*50/864;
-       // this.setLayout(new GridLayout());
-        this.setLayout(null);
+        super(jFrame);
     }
 
     @Override
@@ -654,7 +650,10 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
                                 }
                                 imagesFound=0;
+                                congratulationsConfetti.setVisible(true);
                                 LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,scenePanel);
+                                PlayerInfo.gameProgress = 3; ///////////////////
+                                MapT.gameProgress = 3;
                                 scenePanel.revalidate();
                                 scenePanel.repaint();
                                 jFrame.revalidate();
@@ -679,6 +678,7 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
     @Override
     public void startScene() {
+        congratulationsConfetti.setVisible(false);
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
