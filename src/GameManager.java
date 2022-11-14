@@ -8,17 +8,71 @@ import src.transitionPanels.MapT;
 import src.transitionPanels.MessageFromMomT;
 import src.transitionPanels.StartMenuScreenT;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class GameManager {
 
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         new GameManager();
+
 //        test();
+//        Sound sound = new Sound();
+//
+//        JFrame jFrame = new JFrame();
+//        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        jFrame.setLayout(new GridLayout(1,3));
+//
+//        JSlider jSlider = new JSlider(-40,6);
+//
+//
+//
+//
+//
+//        jFrame.add(jSlider);
+//
+//        jSlider.setUI(new GameAudioSlider(jSlider));
+//        jSlider.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+//        jSlider.addChangeListener(new ChangeListener() {
+//            @Override
+//            public void stateChanged(ChangeEvent e) {
+//                sound.currentVolume =jSlider.getValue();
+//                if(sound.currentVolume==-40){
+//                    sound.currentVolume = -80;
+//                }
+//                sound.fc.setValue(sound.currentVolume);
+//                jSlider.repaint();
+//            }
+//        });
+//
+//
+//        jFrame.pack();
+//        jFrame.setVisible(true);
+//
+//        sound.setFile(0);
+//
+//        sound.play();
+//
+//        do {
+//            try {
+//                Thread.sleep(50);
+//            } catch (InterruptedException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        } while (sound.clip.isActive());
+
     }
 
     public static void test(){
@@ -120,6 +174,8 @@ public class GameManager {
         //librarySceneT.run();
 
         jFrame.add(startMenu); //should be startmenu during real play
+//        jFrame.add(dormRoomSceneT); //should be startmenu during real play
+//        dormRoomSceneT.startScene();
         //classRoomSceneT.startScene();
 
         pl.shutdown();
