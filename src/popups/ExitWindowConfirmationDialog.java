@@ -15,8 +15,6 @@ public class ExitWindowConfirmationDialog extends JDialog {
 
     JButton closeButton2;
 
-    JLabel congratulationsgif;
-
     public ExitWindowConfirmationDialog(JFrame jFrame, FontInfo fontInfo){
 
         setModal(true);
