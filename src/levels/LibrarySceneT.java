@@ -1,19 +1,9 @@
 package src.levels;
 
-import src.*;
-import src.buttons.*;
-import src.events.SceneObjectEvents;
-import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
-import src.setup.PlayerInfo;
-import src.transitionPanels.LoadingAnimationT;
-import src.transitionPanels.MapT;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.Objects;
 
 public class LibrarySceneT extends ALevelPanel implements Runnable{
     public LibrarySceneT(JFrame jFrame){

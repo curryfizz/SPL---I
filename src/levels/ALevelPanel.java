@@ -11,7 +11,7 @@ import src.levelObjects.TimerLabel;
 import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.setup.PlayerInfo;
+import src.DatabaseConnection.PlayerInfo;
 import src.setup.RandomGenerator;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;

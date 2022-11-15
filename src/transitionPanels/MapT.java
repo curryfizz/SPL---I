@@ -7,7 +7,7 @@ import src.buttons.StartGameButton;
 import src.levels.ALevelPanel;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.setup.PlayerInfo;
+import src.DatabaseConnection.PlayerInfo;
 
 import javax.swing.*;
 import java.awt.*;
