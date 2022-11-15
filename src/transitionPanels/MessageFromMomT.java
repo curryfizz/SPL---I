@@ -1,5 +1,6 @@
 package src.transitionPanels;
 
+import src.Sound;
 import src.buttons.CloseButton;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.Objects;
 
 public class MessageFromMomT extends JPanel implements Runnable {
@@ -19,10 +21,13 @@ public class MessageFromMomT extends JPanel implements Runnable {
     JLabel Bubble1;
     JLabel Bubble2;
     JLabel Text1;
+    public Sound objClickSound;
     JLabel Text2;
     LoadingAnimationT loadingAnimationT;
     JPanel nextScene;
     int taps = 0;
+
+
 
     public  MessageFromMomT(JFrame jFrame){
         this.jFrame = jFrame;
@@ -35,12 +40,14 @@ public class MessageFromMomT extends JPanel implements Runnable {
         this.add(closeButton);
     }
 
-    public void buildScene(){
+    public void buildScene() throws IOException{
         createText1();
         createText2();
         createBubble1();
         createBubble2();
 
+        objClickSound = new Sound();
+        objClickSound.setFile("audio/soundeffects/message.wav");
 
         addCustomWindowCloseButton();
         addTapToContinue();
@@ -86,6 +93,9 @@ public class MessageFromMomT extends JPanel implements Runnable {
         Text1.setLayout(null);
         Text1.setBounds(DeviceInformation.screenWidth*470/1920, DeviceInformation.screenHeight*128/1080, 520, 277);
         Text1.setBackground(Color.BLACK);
+
+
+
         Text1.setForeground(Color.decode("#14171C"));
         Text1.setFont(eastSea);
 //        Text1.setOpaque(true);
@@ -135,11 +145,15 @@ public class MessageFromMomT extends JPanel implements Runnable {
                 if(taps == 1 ){
                     Bubble1.setVisible(true);
                     Text1.setVisible(true);
+
+                    objClickSound.play();
                     repaint();
                     revalidate();
                 }else if(taps == 2){
                     Bubble1.setVisible(false);
                     Bubble2.setVisible(true);
+
+                    objClickSound.play();
                     Text2.setVisible(true);
                     repaint();
                     revalidate();
@@ -203,6 +217,11 @@ public class MessageFromMomT extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        buildScene();
+        try {
+            buildScene();
+
+        } catch (IOException e) {
+
+        }
     }
 }

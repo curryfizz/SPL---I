@@ -186,7 +186,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void StartLevel() { //when clicked from Map, resets some things and starts the scene
         congratulationsConfetti.setVisible(false);
         ShowGottenScore.setVisible(false);
-
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
