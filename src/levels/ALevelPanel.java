@@ -8,10 +8,8 @@ import src.buttons.ObjectHidingButton;
 import src.events.SceneObjectEvents;
 import src.levelObjects.ScoreBoard;
 import src.levelObjects.TimerLabel;
-import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.setup.PlayerInfo;
 import src.setup.RandomGenerator;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;
@@ -28,18 +26,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class ALevelPanel extends JPanel implements Runnable{
-    JFrame jFrame;
+    public JFrame jFrame;
     Rectangle maxBounds;
     public int score = 0;
-    int currentCombo = 0;
-    Sound objClickSound;
-    int timeSinceLastFind = 0;
+    public int currentCombo = 0;
+    public Sound objClickSound;
+    public int timeSinceLastFind = 0;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
     LoadingAnimationT loadingAnimationT;
     MapT mapT;
     boolean levelFinished;
-    int imagesFound;
+    public int imagesFound;
     int textBox_height;
     JButton messNotification; // notification that someone messed up your dorm room
     RandomGenerator randomGenerator;
@@ -48,12 +46,12 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public ScoreBoard scoreBoard;
     public Sound backgroundMusic;
     public JLabel ShowGottenScore;
-    public JLabel HintAnimationGif;
-    JLabel congratulationsConfetti;
+    public JLabel hintAnimationGif;
+    public JLabel congratulationsConfetti;
     public ArrayList<JLabel> imageList = new ArrayList<>(); // array of images of items we may need to find
     public ArrayList<ObjectHidingButton> buttonList = new ArrayList<>(); //all the buttons for the objects are in this
     public ArrayList<String> textList = new ArrayList<>(); //all the names of the objects are in this\
-    ArrayList<JLabel> ListOfAllItemNamesAsLabels = new ArrayList<>(); //the labels containing Strings of 'item names' that were randomly chosen
+    public ArrayList<JLabel> ListOfAllItemNamesAsLabels = new ArrayList<>(); //the labels containing Strings of 'item names' that were randomly chosen
     public ArrayList<Integer> RandObjIndices;
 
     ALevelPanel(JFrame jFrame){
@@ -147,66 +145,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) throws IOException {
         JLabel objectLabel = createObject(image);
 
-        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size()){
-            @Override
-            public void addSceneEventsListener(ObjectHidingButton button){
-                addMouseListener(new SceneObjectEvents(associatedLabel, scenePanel){
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        if(isEnabled()) {
-
-                            objClickSound.play();
-
-
-                            imageLabel.setVisible(false);
-                            imagesFound+=1;
-
-                            if((timerLabel.elapsedTime - timeSinceLastFind) < 10){
-                                currentCombo++;
-                            }else{
-                                currentCombo = 0;
-                            }
-
-                            timeSinceLastFind = timerLabel.elapsedTime;
-
-                            int gottenScore;
-                            if(HintWasUsed){
-                                gottenScore = scoreBoard.setScore(50, 0);
-                                currentCombo = 0;
-                                HintAnimationGif.setVisible(false);
-                                HintWasUsed = false;
-                            }
-                            else{
-                                gottenScore = scoreBoard.setScore((int) (timerLabel.elapsedTime/2.0), currentCombo);
-                            }
-                            scoreBoard.refreshScore();
-
-                            ShowGottenScore.setText("+" + gottenScore);
-                            ShowGottenScore.setLocation(button.getLocation());
-                            ShowGottenScore.setVisible(true);
-                            repaint();
-                            timerLabel.AnimateScore(e.getPoint());
-
-                            setEnabled(false);
-                            ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
-                            if(imagesFound == 6){
-                                scenePanel.timerLabel.isTimeOver = true;
-                                imagesFound=0;
-                                congratulationsConfetti.setVisible(true);
-                                LevelFinishDialog levelFinishDialog = new LevelFinishDialog(jFrame,scenePanel);
-                                PlayerInfo.gameProgress = getLevelNumber(); ////////////
-                                MapT.gameProgress = getLevelNumber();
-                                scenePanel.revalidate();
-                                scenePanel.repaint();
-                                jFrame.revalidate();
-                                jFrame.repaint();
-
-                            }
-                        }
-                    }
-                });
-            }
-        };
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size());
         this.add(objectHidingButton);
         this.add(objectLabel);
         buttonList.add(objectHidingButton);
@@ -284,6 +223,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         loadingAnimationT.changeNextScene(mapT);
         mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
         mapT.updateScore();
+        mapT.refreshButtonGrayness();
 
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
@@ -331,15 +271,14 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         int sizeX = 200;
         int sizeY = 200;
 
-        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/playing_brown_cat.gif")));
+        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/sparkles.gif")));
         gif.setImage(gif.getImage().getScaledInstance(sizeX, sizeY, Image.SCALE_DEFAULT));
-        HintAnimationGif = new JLabel();
-        HintAnimationGif.setBounds(600,500, sizeX,sizeY);
+        hintAnimationGif = new JLabel();
+        hintAnimationGif.setBounds(600,500, sizeX,sizeY);
 
-        HintAnimationGif.setIcon(gif);
-        HintAnimationGif.setVisible(true);
-        HintAnimationGif.setVisible(false);
-        this.add(HintAnimationGif);
+        hintAnimationGif.setIcon(gif);
+        hintAnimationGif.setVisible(false);
+        this.add(hintAnimationGif);
     }
 
     private void setupShowGottenScore() {
@@ -367,23 +306,19 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
         messNotification.setOpaque(true);
         this.addMouseListener(new MouseListener() {
+            int i = 0;
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(!InitiallyClicked) {
-                    timerLabel.setVisible(true);
-                    scoreBoard.setVisible(true);
-                    revalidate();
-                    repaint();
-                    enableObjectButtons();
-                    messNotification.setVisible(false);
-                    timerLabel.StartTimer();
-                    InitiallyClicked = true;
-                }
+                System.out.println("Mouse Clicked" + Integer.toString(i));
+                i++;
+                PanelClick();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                System.out.println("Mouse pressed" + Integer.toString(i));
+                i++;
+                PanelClick();
             }
 
             @Override
@@ -402,6 +337,19 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
             }
         });
         this.add(messNotification);
+    }
+
+    public void PanelClick(){
+        if(!InitiallyClicked) {
+            timerLabel.setVisible(true);
+            scoreBoard.setVisible(true);
+            revalidate();
+            repaint();
+            enableObjectButtons();
+            messNotification.setVisible(false);
+            timerLabel.StartTimer();
+            InitiallyClicked = true;
+        }
     }
 
     public void enableObjectButtons(){
