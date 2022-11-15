@@ -158,7 +158,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
         timerLabel.second = 30;
-        timerLabel.minute = 2;
+        timerLabel.minute = 0;
         timerLabel.elapsedTime = 0;
         scoreBoard.score=0;
         scoreBoard.setText("0000");

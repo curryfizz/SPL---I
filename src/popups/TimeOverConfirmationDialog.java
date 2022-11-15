@@ -38,7 +38,7 @@ public class TimeOverConfirmationDialog extends JDialog {
 
         objClickSound = new Sound();
         objClickSound.setFile("audio/soundeffects/fail.wav");
-        objClickSound.play();
+      //  objClickSound.play();
         jLabel.setFont(FontInfo.getResizedFont(28f));
         add(jLabel);
         jLabel.setHorizontalAlignment(JLabel.CENTER);
