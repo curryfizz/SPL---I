@@ -1,6 +1,9 @@
 package src.buttons;
 import src.events.SceneObjectEvents;
 import src.levels.ALevelPanel;
+import src.popups.LevelFinishDialog;
+import src.setup.PlayerInfo;
+import src.transitionPanels.MapT;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,17 +16,17 @@ public class ObjectHidingButton extends JButton {
     int buttonWidth;
     int buttonHeight;
     public JLabel associatedLabel;
-    public ALevelPanel scenePanel;
+    public ALevelPanel levelPanel;
     public int myIndex;
     public boolean HintWasUsed = false;
 
-    public ObjectHidingButton(int posx, int posy, int width, int height, JLabel label, ALevelPanel scenePanel, int myIndex){
+    public ObjectHidingButton(int posx, int posy, int width, int height, JLabel label, ALevelPanel levelPanel, int myIndex){
         this.positionX = posx;
         this.positionY = posy;
         this.buttonWidth = width;
         this.buttonHeight = height;
         this.associatedLabel = label;
-        this.scenePanel = scenePanel;
+        this.levelPanel = levelPanel;
         this.myIndex = myIndex;
         createInvisibleButton();
     }
@@ -35,14 +38,14 @@ public class ObjectHidingButton extends JButton {
 
         /* during debugging*/
 
-        setOpaque(true);
-        setBackground(new Color(255, 0, 0, 100));
+//        setOpaque(true);
+//        setBackground(new Color(255, 0, 0, 100));
 
 
         /* stuff that works*/
 
-//        setOpaque(false);
-//        setContentAreaFilled(false);
+        setOpaque(false);
+        setContentAreaFilled(false);
 
         repaint();
         setFocusPainted(false);
@@ -57,14 +60,62 @@ public class ObjectHidingButton extends JButton {
     }
 
     public void addSceneEventsListener(ObjectHidingButton button){
-        addMouseListener(new SceneObjectEvents(associatedLabel, scenePanel){
+        addMouseListener(new SceneObjectEvents(associatedLabel, levelPanel){
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(isEnabled())
-                imageLabel.setOpaque(false);
-                imageLabel.setVisible(false);
-                scenePanel.repaint();
-//                this.scenePanel.score += 100;
+                if(isEnabled()) {
+
+                    levelPanel.objClickSound.play();
+
+
+                    imageLabel.setVisible(false);
+                    levelPanel.imagesFound+=1;
+
+                    if((levelPanel.timerLabel.elapsedTime - levelPanel.timeSinceLastFind) < 10){
+                        levelPanel.currentCombo++;
+                    }else{
+                        levelPanel.currentCombo = 0;
+                    }
+
+                    levelPanel.timeSinceLastFind = levelPanel.timerLabel.elapsedTime;
+
+                    int gottenScore;
+                    if(HintWasUsed){
+                        gottenScore = levelPanel.scoreBoard.setScore(50, 0);
+                        levelPanel.currentCombo = 0;
+                        levelPanel.hintAnimationGif.setVisible(false);
+                        HintWasUsed = false;
+                    }
+                    else{
+                        gottenScore = levelPanel.scoreBoard.setScore((int) (levelPanel.timerLabel.elapsedTime/2.0), levelPanel.currentCombo);
+                    }
+                    levelPanel.scoreBoard.refreshScore();
+
+                    levelPanel.ShowGottenScore.setText("+" + gottenScore);
+                    levelPanel.ShowGottenScore.setLocation(button.getLocation());
+                    levelPanel.ShowGottenScore.setVisible(true);
+                    repaint();
+                    levelPanel.timerLabel.AnimateScore(e.getPoint());
+
+                    setEnabled(false);
+                    levelPanel.ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
+                    if(levelPanel.imagesFound == 6){
+                        levelPanel.timerLabel.isTimeOver = true;
+                        levelPanel.imagesFound=0;
+                        levelPanel.congratulationsConfetti.setVisible(true);
+                        LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel);
+                        PlayerInfo.gameProgress = levelPanel.getLevelNumber();
+                        MapT.gameProgress = levelPanel.getLevelNumber();
+                        levelPanel.revalidate();
+                        levelPanel.repaint();
+                        levelPanel.jFrame.revalidate();
+                        levelPanel.jFrame.repaint();
+
+                    }
+                }
+                else {
+                    levelPanel.PanelClick();
+                }
 
             }
             @Override
@@ -72,5 +123,6 @@ public class ObjectHidingButton extends JButton {
             }
         });
     }
+
 
 }

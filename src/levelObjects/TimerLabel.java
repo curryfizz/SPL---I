@@ -128,13 +128,13 @@ public class TimerLabel extends JLabel implements Runnable{
         isTimeOver = true;
 //        timer.stop();
 //        timeUpWindowPopup = new ConfirmationWindowPopup();
-        backGroundPanel.add(timeUpWindowPopup);
+//        backGroundPanel.add(timeUpWindowPopup);
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         jFrame.repaint();
         jFrame.revalidate();
         TimeOverConfirmationDialog timeOverConfirmationDialog = new TimeOverConfirmationDialog(jFrame, backGroundPanel);
-
+        jFrame.add(timeOverConfirmationDialog);
     }
 
     public void AnimateScore(Point point){
