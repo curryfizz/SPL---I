@@ -36,7 +36,7 @@ public class ClassRoomSceneT extends ALevelPanel implements Runnable{
 
     @Override
     public String getBackgroundMusicPath() {
-        return "SoundAndMusic/BackgroundMusic/library.wav";
+        return "audio/background_music/classroomBackgroundAudio.wav";
     }
 
     @Override

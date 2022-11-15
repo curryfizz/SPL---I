@@ -1,27 +1,7 @@
 package src.levels;
 
-import src.*;
-import src.buttons.*;
-import src.events.SceneObjectEvents;
-import src.levelObjects.ScoreBoard;
-import src.levelObjects.TimerLabel;
-import src.popups.LevelFinishDialog;
-import src.setup.DeviceInformation;
-import src.setup.FontInfo;
-import src.setup.PlayerInfo;
-import src.setup.RandomGenerator;
-import src.transitionPanels.LoadingAnimationT;
-import src.transitionPanels.MapT;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.util.*;
 
 
 public class DormRoomLevelPanelT extends ALevelPanel{
@@ -91,7 +71,7 @@ public class DormRoomLevelPanelT extends ALevelPanel{
 
     @Override
     public String getBackgroundMusicPath() {
-        return "SoundAndMusic/BackgroundMusic/levelOneBackground_v2.wav";
+        return "audio/background_music/dormBackgroundAudio.wav";
     }
     @Override
     public String getMessMessage(){

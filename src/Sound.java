@@ -6,10 +6,6 @@ import java.net.URL;
 
 public class Sound {
     Clip clip;
-
-    File file[] = new File[30];
-    URL soundURL[] = new URL[30];
-
     File fileinput;
     float previousVolume;
 
@@ -23,26 +19,10 @@ public class Sound {
         previousVolume = 0;
         currentVolume = -17;
         mute = false;
-        file[0] = new File("C:\\Users\\nawsh\\Desktop\\SPL---I\\background_music\\levelOneBackground_v2.wav");
 
 
     }
 
-    public void setFile(int i) {
-        try {
-            if (file[i].exists()) {
-                AudioInputStream ais = AudioSystem.getAudioInputStream(file[i]);
-                clip = AudioSystem.getClip();
-                clip.open(ais);
-                clip.setFramePosition(0);
-                fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            } else {
-                throw new Exception("File not found!");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
     public void setFile(String filePath) {
         try {
             fileinput = new File(filePath);
@@ -79,10 +59,11 @@ public class Sound {
     }
 
     public void play() {
-
+        clip.stop();
         clip.setFramePosition(0);
         clip.start();
     }
+
 
     public void stop() {
         clip.stop();

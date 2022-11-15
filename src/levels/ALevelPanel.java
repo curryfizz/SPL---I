@@ -33,7 +33,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public int score = 0;
     int currentCombo = 0;
     Sound objClickSound;
-    Sound errorClickSound;
     int timeSinceLastFind = 0;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
@@ -158,6 +157,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
                             objClickSound.play();
 
+
                             imageLabel.setVisible(false);
                             imagesFound+=1;
 
@@ -185,14 +185,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
                             ShowGottenScore.setLocation(button.getLocation());
                             ShowGottenScore.setVisible(true);
                             repaint();
-
-//                            //hehe
-//
-//                            HintAnimationGif.setLocation(button.getLocation());
-//                            HintAnimationGif.setVisible(true);
-//
-//                            //hehe
-
                             timerLabel.AnimateScore(e.getPoint());
 
                             setEnabled(false);
@@ -210,10 +202,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
                                 jFrame.repaint();
 
                             }
-                        }
-                        else{
-                            errorClickSound.stop();
-                            errorClickSound.play();
                         }
                     }
                 });
@@ -315,10 +303,9 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         backgroundMusic.setFile(getBackgroundMusicPath());
 
         objClickSound = new Sound();
-        objClickSound.setFile("SoundAndMusic/SoundEffects/mixkit-arcade-game-jump-coin-216.wav");
+        objClickSound.setFile("audio/soundeffects/objectFoundClick2.wav");
 
-        errorClickSound = new Sound();
-        errorClickSound.setFile("SoundAndMusic/SoundEffects/mixkit-click-error-1110.wav");
+
 
         addCustomWindowCloseButton();
         addAudioButton();
@@ -394,10 +381,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
                     timerLabel.StartTimer();
                     InitiallyClicked = true;
                 }
-                else{
-                    errorClickSound.stop();
-                    errorClickSound.play();
-                }
+
             }
 
             @Override
