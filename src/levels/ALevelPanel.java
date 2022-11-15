@@ -305,8 +305,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         objClickSound = new Sound();
         objClickSound.setFile("audio/soundeffects/objectFoundClick2.wav");
 
-
-
         addCustomWindowCloseButton();
         addAudioButton();
         timerLabel = new TimerLabel(jFrame, this);
@@ -381,7 +379,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
                     timerLabel.StartTimer();
                     InitiallyClicked = true;
                 }
-
             }
 
             @Override

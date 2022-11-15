@@ -93,25 +93,11 @@ public class LevelFinishDialog extends JDialog {
         exitToMapButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(jPanel instanceof DormRoomLevelPanelT){
-                    ((DormRoomLevelPanelT)jPanel).timerLabel.endLevel();
+                if(jPanel instanceof ALevelPanel) {
+                    ((ALevelPanel) jPanel).timerLabel.endLevel();
                     sound.stop();
                     dispose();
                 }
-                 if(jPanel instanceof LibrarySceneT){
-                    ((LibrarySceneT)jPanel).timerLabel.endLevel();
-                    dispose();
-                }
-                if(jPanel instanceof ClassRoomSceneT){
-                    ((ClassRoomSceneT)jPanel).timerLabel.endLevel();
-                    dispose();
-                }
-                if(jPanel instanceof CDS_LevelPanelT){
-                    ((CDS_LevelPanelT)jPanel).timerLabel.endLevel();
-                    dispose();
-                }
-
-
                 dispose();
             }
 
