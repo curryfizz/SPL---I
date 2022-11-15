@@ -73,6 +73,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         congratulationsConfetti.setIcon(gif);
         congratulationsConfetti.setVisible(false);
         this.add(congratulationsConfetti);
+
     }
 
     public JLabel createObject(String image) throws IOException{
@@ -247,7 +248,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void StartLevel() { //when clicked from Map, resets some things and starts the scene
         congratulationsConfetti.setVisible(false);
         ShowGottenScore.setVisible(false);
-        backgroundMusic.play();
+
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
@@ -301,6 +302,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
         backgroundMusic = new Sound();
         backgroundMusic.setFile(getBackgroundMusicPath());
+
 
         objClickSound = new Sound();
         objClickSound.setFile("audio/soundeffects/objectFoundClick2.wav");
@@ -373,6 +375,10 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
                     timerLabel.setVisible(true);
                     scoreBoard.setVisible(true);
                     revalidate();
+
+
+                    backgroundMusic.play();
+
                     repaint();
                     enableObjectButtons();
                     messNotification.setVisible(false);
@@ -453,9 +459,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 //        revalidate();
 //        repaint();
 
-//
-//        musicPlayer = new MusicPlayer();
-//            musicPlayer.playMusic(music);
     }
 
 }

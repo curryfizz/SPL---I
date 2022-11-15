@@ -51,6 +51,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
                 if(jPanel instanceof ALevelPanel) {
                     ((ALevelPanel) jPanel).timerLabel.endLevel();
                 }
+
                     dispose();
             }
 
