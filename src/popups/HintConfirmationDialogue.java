@@ -9,6 +9,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Objects;
 
 public class HintConfirmationDialogue extends JDialog {
 
@@ -52,15 +53,21 @@ public class HintConfirmationDialogue extends JDialog {
     }
 
     private void addYesButtonMouseListener() {
+        int hintEnlargement = 50;
         YesButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 backgroundPanel.buttonList.get(indexOfObjectButton).HintWasUsed = true;
-                Point location = backgroundPanel.buttonList.get(indexOfObjectButton).getLocation();
-//                location.x -= 50;
-                location.y -= 50;
-                backgroundPanel.HintAnimationGif.setLocation(location);
-                backgroundPanel.HintAnimationGif.setVisible(true);
+                Rectangle rectangle = backgroundPanel.buttonList.get(indexOfObjectButton).getBounds();
+                rectangle.x -= hintEnlargement/2;
+                rectangle.y -= hintEnlargement/2;
+                rectangle.width += hintEnlargement;
+                rectangle.height += hintEnlargement;
+                ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/sparkles.gif")));
+                gif.setImage(gif.getImage().getScaledInstance((int)(rectangle.getWidth()), (int)(rectangle.getHeight()), Image.SCALE_DEFAULT));
+                backgroundPanel.hintAnimationGif.setIcon(gif);
+                backgroundPanel.hintAnimationGif.setBounds(rectangle);
+                backgroundPanel.hintAnimationGif.setVisible(true);
                 dispose();
             }
 
@@ -90,7 +97,7 @@ public class HintConfirmationDialogue extends JDialog {
         NoButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                backgroundPanel.HintAnimationGif.setVisible(false);
+                backgroundPanel.hintAnimationGif.setVisible(false);
                 dispose();
             }
 

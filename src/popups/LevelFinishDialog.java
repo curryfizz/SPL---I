@@ -1,11 +1,9 @@
 package src.popups;
 
 import src.Sound;
-import src.levels.ALevelPanel;
+import src.levels.*;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.levels.DormRoomLevelPanelT;
-import src.levels.LibrarySceneT;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -95,13 +93,9 @@ public class LevelFinishDialog extends JDialog {
         exitToMapButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(jPanel instanceof DormRoomLevelPanelT){
-                    ((DormRoomLevelPanelT)jPanel).timerLabel.endLevel();
+                if(jPanel instanceof ALevelPanel) {
+                    ((ALevelPanel) jPanel).timerLabel.endLevel();
                     sound.stop();
-                    dispose();
-                }
-                 if(jPanel instanceof LibrarySceneT){
-                    ((LibrarySceneT)jPanel).timerLabel.endLevel();
                     dispose();
                 }
                 dispose();

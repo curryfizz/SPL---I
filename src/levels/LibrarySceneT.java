@@ -5,7 +5,7 @@ import src.setup.DeviceInformation;
 import javax.swing.*;
 import java.io.IOException;
 
-public class LibrarySceneT extends ALevelPanel implements Runnable{
+public class LibrarySceneT extends ALevelPanel {
     public LibrarySceneT(JFrame jFrame){
         super(jFrame);
     }
@@ -25,8 +25,10 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
 
     @Override
     public String getMessMessage(){
-        return "<html>Oh No, The Library is very messy! Where is my things?<br/> Guess I'll have to look for my present (Tap to Search)</html>";
+        return "<html>Why is everywhere so messy?<br/> Let's try looking here (Tap to Search)</html>";
     }
+
+    @Override
     public  void generateScreenWithAllObjectsAndButtons() throws IOException {
         createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
                 DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);

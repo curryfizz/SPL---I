@@ -1,5 +1,6 @@
 package src.transitionPanels;
 
+import src.Sound;
 import src.buttons.CloseButton;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -9,20 +10,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.Objects;
 
 public class MessageFromMomT extends JPanel implements Runnable {
 
     JFrame jFrame;
-    Font eastSea = FontInfo.getResizedFont(48f);
+    Font eastSea = FontInfo.getResizedFont(50f);
     JLabel backgroundLabel;
     JLabel Bubble1;
     JLabel Bubble2;
     JLabel Text1;
+    public Sound objClickSound;
     JLabel Text2;
     LoadingAnimationT loadingAnimationT;
     JPanel nextScene;
     int taps = 0;
+
+
 
     public  MessageFromMomT(JFrame jFrame){
         this.jFrame = jFrame;
@@ -35,12 +40,14 @@ public class MessageFromMomT extends JPanel implements Runnable {
         this.add(closeButton);
     }
 
-    public void buildScene(){
+    public void buildScene() throws IOException{
         createText1();
         createText2();
         createBubble1();
         createBubble2();
 
+        objClickSound = new Sound();
+        objClickSound.setFile("audio/soundeffects/objectFoundClick2.wav");
 
         addCustomWindowCloseButton();
         addTapToContinue();
@@ -82,12 +89,16 @@ public class MessageFromMomT extends JPanel implements Runnable {
         Text1 = new JLabel(
                 "<html>Assalamualaikum Dear<br/>Did you reach safely?<br/>Hope your classes are going well.</html>",
                 SwingConstants.CENTER);
+//        Text1.setBackground(Color.pink);
         Text1.setLayout(null);
-        Text1.setBounds(DeviceInformation.screenWidth*400/1536, DeviceInformation.screenHeight*50/864, 400, 300);
+        Text1.setBounds(DeviceInformation.screenWidth*470/1920, DeviceInformation.screenHeight*128/1080, 520, 277);
         Text1.setBackground(Color.BLACK);
+
+
+
         Text1.setForeground(Color.decode("#14171C"));
         Text1.setFont(eastSea);
-
+//        Text1.setOpaque(true);
         Text1.setVisible(false);
         this.add(Text1);
 
@@ -99,11 +110,11 @@ public class MessageFromMomT extends JPanel implements Runnable {
                 "<html>Oh I forgot to mention<br/>I packed a special present for you in your bag<br/>Tell me if you like it.</html>",
                 SwingConstants.CENTER);
         Text2.setLayout(null);
-        Text2.setBounds(DeviceInformation.screenWidth*1050/1536, DeviceInformation.screenHeight*10/864, 400, 300);
+        Text2.setBounds(DeviceInformation.screenWidth*1300/1920, DeviceInformation.screenHeight*50/1080, 520, 300);
         Text2.setBackground(Color.BLACK);
         Text2.setForeground(Color.decode("#14171C"));
         Text2.setFont(eastSea);
-
+//        Text2.setOpaque(true);
         Text2.setVisible(false);
         this.add(Text2);
 
@@ -129,15 +140,20 @@ public class MessageFromMomT extends JPanel implements Runnable {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                System.out.println(e.getX() + " " + e.getY());
                 taps++;
                 if(taps == 1 ){
                     Bubble1.setVisible(true);
                     Text1.setVisible(true);
+
+                    objClickSound.play();
                     repaint();
                     revalidate();
                 }else if(taps == 2){
                     Bubble1.setVisible(false);
                     Bubble2.setVisible(true);
+
+                    objClickSound.play();
                     Text2.setVisible(true);
                     repaint();
                     revalidate();
@@ -201,6 +217,11 @@ public class MessageFromMomT extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        buildScene();
+        try {
+            buildScene();
+
+        } catch (IOException e) {
+
+        }
     }
 }

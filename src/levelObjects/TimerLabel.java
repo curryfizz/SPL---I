@@ -22,7 +22,7 @@ public class TimerLabel extends JLabel implements Runnable{
     boolean doingScoreAnimation = false;
     long lastAnimated = 0;
     int FramesDone = 0;
-
+    public ALevelPanel levelPanel;
     Point p;
     Thread TimerThread;
     public int elapsedTime = 0;
@@ -128,13 +128,15 @@ public class TimerLabel extends JLabel implements Runnable{
         isTimeOver = true;
 //        timer.stop();
 //        timeUpWindowPopup = new ConfirmationWindowPopup();
-        backGroundPanel.add(timeUpWindowPopup);
+//        backGroundPanel.add(timeUpWindowPopup);
         backGroundPanel.repaint();
         backGroundPanel.revalidate();
         jFrame.repaint();
         jFrame.revalidate();
+        levelPanel.backgroundMusic.stop();
         TimeOverConfirmationDialog timeOverConfirmationDialog = new TimeOverConfirmationDialog(jFrame, backGroundPanel);
-
+        timeOverConfirmationDialog.objClickSound.play();
+        jFrame.add(timeOverConfirmationDialog);
     }
 
     public void AnimateScore(Point point){
