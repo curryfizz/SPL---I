@@ -20,11 +20,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
-public class ClassRoomSceneT extends ALevelPanel implements Runnable{
+public class ClassRoomSceneT extends ALevelPanel{
+
     public ClassRoomSceneT(JFrame jFrame){
         super(jFrame);
     }
-
     @Override
     public int getLevelNumber() {
         return 3;

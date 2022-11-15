@@ -1,11 +1,9 @@
 package src.popups;
 
 import src.Sound;
-import src.levels.ALevelPanel;
+import src.levels.*;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.levels.DormRoomLevelPanelT;
-import src.levels.LibrarySceneT;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -104,6 +102,16 @@ public class LevelFinishDialog extends JDialog {
                     ((LibrarySceneT)jPanel).timerLabel.endLevel();
                     dispose();
                 }
+                if(jPanel instanceof ClassRoomSceneT){
+                    ((ClassRoomSceneT)jPanel).timerLabel.endLevel();
+                    dispose();
+                }
+                if(jPanel instanceof CDS_LevelPanelT){
+                    ((CDS_LevelPanelT)jPanel).timerLabel.endLevel();
+                    dispose();
+                }
+
+
                 dispose();
             }
 

@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LibrarySceneT extends ALevelPanel implements Runnable{
+public class LibrarySceneT extends ALevelPanel {
     public LibrarySceneT(JFrame jFrame){
         super(jFrame);
     }
@@ -37,6 +37,8 @@ public class LibrarySceneT extends ALevelPanel implements Runnable{
     public String getMessMessage(){
         return "<html>Oh No, The Library is very messy! Where is my things?<br/> Guess I'll have to look for my present (Tap to Search)</html>";
     }
+
+    @Override
     public  void generateScreenWithAllObjectsAndButtons() throws IOException {
         createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
                 DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
