@@ -24,52 +24,6 @@ public class GameManager {
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         new GameManager();
 
-//        test();
-//        Sound sound = new Sound();
-//
-//        JFrame jFrame = new JFrame();
-//        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        jFrame.setLayout(new GridLayout(1,3));
-//
-//        JSlider jSlider = new JSlider(-40,6);
-//
-//
-//
-//
-//
-//        jFrame.add(jSlider);
-//
-//        jSlider.setUI(new GameAudioSlider(jSlider));
-//        jSlider.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-//        jSlider.addChangeListener(new ChangeListener() {
-//            @Override
-//            public void stateChanged(ChangeEvent e) {
-//                sound.currentVolume =jSlider.getValue();
-//                if(sound.currentVolume==-40){
-//                    sound.currentVolume = -80;
-//                }
-//                sound.fc.setValue(sound.currentVolume);
-//                jSlider.repaint();
-//            }
-//        });
-//
-//
-//        jFrame.pack();
-//        jFrame.setVisible(true);
-//
-//        sound.setFile(0);
-//
-//        sound.play();
-//
-//        do {
-//            try {
-//                Thread.sleep(50);
-//            } catch (InterruptedException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//        } while (sound.clip.isActive());
-
     }
 
     public static void test(){
@@ -116,22 +70,17 @@ public class GameManager {
         ExecutorService pl = Executors.newFixedThreadPool(1);
 
 
-       StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
-//        Thread startMenuThread = new Thread(startMenu);
+        StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
 
         MapT mapT = new MapT(jFrame);
 
-//        Thread mapThread = new Thread(mapT);
 
         DormRoomLevelPanelT dormRoomSceneT = new DormRoomLevelPanelT(jFrame);
 
-//        Thread dormRoomThread = new Thread(dormRoomSceneT);
 
         LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
-//        Thread  librarySceneThread = new Thread(librarySceneT);
 
         ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
-//        Thread classroomThread = new Thread(classRoomSceneT);
 
 
         CDS_LevelPanelT cds_levelPanelT = new CDS_LevelPanelT(jFrame);
@@ -139,10 +88,8 @@ public class GameManager {
 
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
-//        Thread messageMomThread = new Thread(messageFromMomT);
 
         LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,2,messageFromMomT);
-//        Thread loadingThread = new Thread(loadingAnimationT);
 
 
 
@@ -160,49 +107,9 @@ public class GameManager {
         pl.execute(cds_levelPanelT);
 
 
-//        ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
-//        classRoomSceneT.buildScene();
-
-
-//        messageMomThread.start();
-//        mapThread.start();
-//        loadingThread.start();
-//        startMenuThread.start();
-//        dormRoomThread.start();
-//        classroomThread.start();
-//        librarySceneThread.start();
-        //librarySceneT.run();
-
         jFrame.add(startMenu); //should be startmenu during real play
-//        jFrame.add(dormRoomSceneT); //should be startmenu during real play
-//        dormRoomSceneT.startScene();
-        //classRoomSceneT.startScene();
 
         pl.shutdown();
-        //librarySceneT.startScene();
-
-
-
-//        dormRoomLevelPanelT = new DormRoomLevelPanelT(jFrame);
-//        dormRoomLevelPanelT.buildScene();
-//        dormRoomLevelPanelT.startScene();
-//
-//        jFrame.add(dormRoomLevelPanelT);
-
-
-
-
-
-        /*
-        TODO:
-        - Combo
-        - fix hint
-        - new levels
-        - plot
-        - fix lame text boxes
-        * */
-
-
 
     }
 }
