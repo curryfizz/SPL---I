@@ -36,7 +36,7 @@ public class ClassRoomSceneT extends ALevelPanel{
 
     @Override
     public String getBackgroundMusicPath() {
-        return "SoundAndMusic/BackgroundMusic/library.wav";
+        return "audio/background_music/classroomBackgroundAudio.wav";
     }
 
     @Override
