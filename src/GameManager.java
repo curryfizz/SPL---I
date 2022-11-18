@@ -26,14 +26,14 @@ public class GameManager {
     public static DormRoomLevelPanelT dormRoomLevelPanelT;
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
-//        new GameManager();
-        oracleDatabase oracle = new oracleDatabase();
-        try {
-            test(oracle);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        new GameManager();
+//        oracleDatabase oracle = new oracleDatabase();
+//        try {
+//            test(oracle);
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
     public static void test(oracleDatabase oracleDatabase) throws SQLException {

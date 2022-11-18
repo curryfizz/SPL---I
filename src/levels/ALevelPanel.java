@@ -11,7 +11,6 @@ import src.levelObjects.TimerLabel;
 import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.setup.PlayerInfo;
 import src.setup.RandomGenerator;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;
@@ -28,12 +27,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class ALevelPanel extends JPanel implements Runnable{
-    JFrame jFrame;
+    public JFrame jFrame;
     Rectangle maxBounds;
     public int score = 0;
-    int currentCombo = 0;
-    Sound objClickSound;
-    int timeSinceLastFind = 0;
+    public int currentCombo = 0;
+    public Sound objClickSound;
+    public int timeSinceLastFind = 0;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
     LoadingAnimationT loadingAnimationT;
@@ -188,7 +187,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void StartLevel() { //when clicked from Map, resets some things and starts the scene
         congratulationsConfetti.setVisible(false);
         ShowGottenScore.setVisible(false);
-        backgroundMusic.play();
+
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);

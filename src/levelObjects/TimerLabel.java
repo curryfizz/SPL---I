@@ -102,7 +102,7 @@ public class TimerLabel extends JLabel implements Runnable{
             if(minute <=0 ){
                 backGroundPanel.backgroundMusic.stop();
                 sound = new Sound();
-                sound.setSoundEffectFile("levelFinishTada");//fail hobe
+                sound.setSoundEffectFile("fail");//fail hobe
                 sound.play();
                 timeOver();
 
@@ -164,9 +164,6 @@ public class TimerLabel extends JLabel implements Runnable{
 
         long lastUpdatedAt = System.currentTimeMillis();
         long milisecs = 0;
-
-
-
         long miliFPS;
 
 

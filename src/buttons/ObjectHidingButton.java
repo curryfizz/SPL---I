@@ -1,8 +1,8 @@
 package src.buttons;
+import src.DatabaseConnection.PlayerInfo;
 import src.events.SceneObjectEvents;
 import src.levels.ALevelPanel;
 import src.popups.LevelFinishDialog;
-import src.setup.PlayerInfo;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
