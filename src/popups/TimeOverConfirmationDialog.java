@@ -1,5 +1,8 @@
 package src.popups;
 
+import src.Sound;
+import src.levels.CDS_LevelPanelT;
+import src.levels.ClassRoomSceneT;
 import src.levels.DormRoomLevelPanelT;
 import src.setup.FontInfo;
 import src.levels.LibrarySceneT;
@@ -17,6 +20,7 @@ public class TimeOverConfirmationDialog extends JDialog {
 
     JButton closeButton2;
 
+    public Sound objClickSound;
 
     public TimeOverConfirmationDialog(JFrame jFrame, JPanel jPanel){
 
@@ -31,6 +35,10 @@ public class TimeOverConfirmationDialog extends JDialog {
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Oh no! Your Time is Up"));
+
+        objClickSound = new Sound();
+        objClickSound.setFile("audio/soundeffects/fail.wav");
+      //  objClickSound.play();
         jLabel.setFont(FontInfo.getResizedFont(28f));
         add(jLabel);
         jLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -58,6 +66,14 @@ public class TimeOverConfirmationDialog extends JDialog {
 
                 if(jPanel instanceof LibrarySceneT){
                     ((LibrarySceneT)jPanel).timerLabel.endLevel();
+                    dispose();
+                }
+                if(jPanel instanceof CDS_LevelPanelT){
+                    ((CDS_LevelPanelT)jPanel).timerLabel.endLevel();
+                    dispose();
+                }
+                if(jPanel instanceof ClassRoomSceneT){
+                    ((ClassRoomSceneT)jPanel).timerLabel.endLevel();
                     dispose();
                 }
             }

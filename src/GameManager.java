@@ -1,9 +1,10 @@
 package src;
 
+import src.DatabaseConnection.oracleDatabase;
 import src.levels.*;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.setup.PlayerInfo;
+import src.DatabaseConnection.PlayerInfo;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;
 import src.transitionPanels.MessageFromMomT;
@@ -13,7 +14,10 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -23,26 +27,134 @@ public class GameManager {
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         new GameManager();
-
+//        oracleDatabase oracle = new oracleDatabase();
+//        try {
+//            test(oracle);
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
-    public static void test(){
-        System.setProperty("sun.java2d.uiScale", "1.0");
-        DeviceInformation deviceInformation = new DeviceInformation();
-        FontInfo fontInfo = new FontInfo();
-        System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
-        /* Set up the frame*/
-        JFrame jFrame = new JFrame();
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setUndecorated(true);
-        jFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        jFrame.setBackground(Color.decode("#14171C"));
-        jFrame.pack();
-        jFrame.setVisible(true);
+    public static void test(oracleDatabase oracleDatabase) throws SQLException {
 
-        testAnimation testAnimation = new testAnimation();
-        jFrame.add(testAnimation);
-        testAnimation.initializeTimer();
+        try {
+            System.setProperty("sun.java2d.uiScale", "1.0");
+            DeviceInformation deviceInformation = new DeviceInformation();
+            FontInfo fontInfo = new FontInfo();
+            System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
+            /* Set up the frame*/
+            JFrame jFrame = new JFrame();
+            jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            jFrame.setBounds(300, 100, 600, 600);
+            JPanel jPanel = new JPanel();
+            jPanel.setBackground(new Color(220, 90, 70, 255));
+            jPanel.setPreferredSize(new Dimension(500, 500));
+            JButton signup = new JButton("Signup");
+            JTextField jTextField = new JTextField();
+            jTextField.setPreferredSize(new Dimension(100, 60));
+            JTextField jTextField2 = new JTextField();
+            jTextField2.setPreferredSize(new Dimension(100, 60));
+
+            JTextField getUser = new JTextField();
+            getUser.setPreferredSize(new Dimension(200,50));
+            JTextPane showDeets =  new JTextPane();
+            showDeets.setPreferredSize(new Dimension(300,80));
+            JButton login = new JButton("login");
+            signup.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if(signup.isEnabled()) {
+                        jTextField2.setEnabled(false);
+                        jTextField.setEnabled(false);
+                        try {
+                            oracleDatabase.insertUser(jTextField.getText(), jTextField2.getText());
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        signup.setEnabled(false);
+                    }
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+
+                }
+            });
+
+            login.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if(login.isEnabled()) {
+                        try {
+                            if (oracleDatabase.retrieveUserInfo(getUser.getText())) {
+                                showDeets.setText(PlayerInfo.getString());
+                            } else {
+                                showDeets.setForeground(Color.red);
+                                showDeets.setText("User doesnt exist!");
+                            }
+
+                        } catch (SQLException ex) {
+
+                            ex.printStackTrace();
+                        } finally {
+
+                        }
+                        login.setEnabled(false);
+                    }
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+
+                }
+            });
+            jPanel.add(jTextField2);
+            jPanel.add(jTextField);
+            jPanel.add(signup);
+            jPanel.add(getUser);
+            jPanel.add(login);
+            jPanel.add(showDeets);
+            jFrame.add(jPanel);
+            jFrame.pack();
+            jFrame.setVisible(true);
+            System.out.println(PlayerInfo.getString());
+//        testAnimation testAnimation = new testAnimation();
+//        jFrame.add(testAnimation);
+//        testAnimation.initializeTimer();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     public GameManager() throws IOException {
         System.setProperty("sun.java2d.uiScale", "1.0");

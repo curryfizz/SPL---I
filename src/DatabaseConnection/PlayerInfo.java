@@ -1,4 +1,4 @@
-package src.setup;
+package src.DatabaseConnection;
 
 public class PlayerInfo {
     public static String username;
@@ -24,4 +24,10 @@ public class PlayerInfo {
     public PlayerInfo(int gameProgress){
         this.gameProgress = gameProgress;
     }
+
+
+    public static String getString(){
+        return username+" "+email+" "+gameProgress+"\n";
+    }
+
 }

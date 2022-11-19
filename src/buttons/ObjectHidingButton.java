@@ -1,8 +1,8 @@
 package src.buttons;
+import src.DatabaseConnection.PlayerInfo;
 import src.events.SceneObjectEvents;
 import src.levels.ALevelPanel;
 import src.popups.LevelFinishDialog;
-import src.setup.PlayerInfo;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
@@ -102,7 +102,6 @@ public class ObjectHidingButton extends JButton {
                     if(levelPanel.imagesFound == 6){
                         levelPanel.timerLabel.isTimeOver = true;
                         levelPanel.imagesFound=0;
-                        levelPanel.loadingAnimationT.LevelOverProgressUpdated = true;
                         levelPanel.congratulationsConfetti.setVisible(true);
                         LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel);
                         PlayerInfo.gameProgress = levelPanel.getLevelNumber();

@@ -1,6 +1,7 @@
 package src.levelObjects;
 
 import src.ConfirmationWindowPopup;
+import src.Sound;
 import src.levels.ALevelPanel;
 import src.popups.TimeOverConfirmationDialog;
 import src.setup.FontInfo;
@@ -15,6 +16,7 @@ public class TimerLabel extends JLabel implements Runnable{
     ConfirmationWindowPopup timeUpWindowPopup;
     public int second;
     public int minute;
+    Sound sound;
     long StartTimeMili;
     int FPS = 60;
 
@@ -22,7 +24,7 @@ public class TimerLabel extends JLabel implements Runnable{
     boolean doingScoreAnimation = false;
     long lastAnimated = 0;
     int FramesDone = 0;
-
+    public ALevelPanel levelPanel;
     Point p;
     Thread TimerThread;
     public int elapsedTime = 0;
@@ -98,7 +100,12 @@ public class TimerLabel extends JLabel implements Runnable{
         if (second <=0)
         {
             if(minute <=0 ){
+                backGroundPanel.backgroundMusic.stop();
+                sound = new Sound();
+                sound.setSoundEffectFile("fail");//fail hobe
+                sound.play();
                 timeOver();
+
                 return;
             }
             minute --;
@@ -133,7 +140,12 @@ public class TimerLabel extends JLabel implements Runnable{
         backGroundPanel.revalidate();
         jFrame.repaint();
         jFrame.revalidate();
+
+
+
+
         TimeOverConfirmationDialog timeOverConfirmationDialog = new TimeOverConfirmationDialog(jFrame, backGroundPanel);
+      //  timeOverConfirmationDialog.objClickSound.play();
         jFrame.add(timeOverConfirmationDialog);
     }
 
@@ -152,9 +164,6 @@ public class TimerLabel extends JLabel implements Runnable{
 
         long lastUpdatedAt = System.currentTimeMillis();
         long milisecs = 0;
-
-
-
         long miliFPS;
 
 

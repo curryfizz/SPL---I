@@ -8,6 +8,7 @@ import src.buttons.ObjectHidingButton;
 import src.events.SceneObjectEvents;
 import src.levelObjects.ScoreBoard;
 import src.levelObjects.TimerLabel;
+import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.setup.RandomGenerator;
@@ -158,7 +159,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
         timerLabel.second = 30;
-        timerLabel.minute = 2;
+        timerLabel.minute = 0;
         timerLabel.elapsedTime = 0;
         scoreBoard.score=0;
         scoreBoard.setText("0000");
@@ -186,7 +187,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void StartLevel() { //when clicked from Map, resets some things and starts the scene
         congratulationsConfetti.setVisible(false);
         ShowGottenScore.setVisible(false);
-        backgroundMusic.play();
+
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
@@ -223,7 +224,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         loadingAnimationT.changeNextScene(mapT);
         mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
         mapT.updateScore();
-        mapT.refreshButtonGrayness();
 
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
@@ -244,6 +244,8 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
         objClickSound = new Sound();
         objClickSound.setFile("audio/soundeffects/objectFoundClick2.wav");
+
+
 
         addCustomWindowCloseButton();
         addAudioButton();
@@ -344,6 +346,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
             timerLabel.setVisible(true);
             scoreBoard.setVisible(true);
             revalidate();
+            backgroundMusic.play();
             repaint();
             enableObjectButtons();
             messNotification.setVisible(false);
