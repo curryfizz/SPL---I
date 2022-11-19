@@ -1,36 +1,52 @@
 package src.events;
 
+import src.buttons.MapLevelButton;
+import src.levels.ALevelPanel;
 import src.transitionPanels.MapT;
 
+import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MenuMouseEvents implements MouseListener {
     MapT mapT;
-    String buttonInfo;
-    MenuMouseEvents(MapT mapT, String text){
-        buttonInfo = text;
+    int serial;
+    ALevelPanel SceneT;
+    JLabel SidePanelText;
+    JLabel DefaultText;
+    JLabel padLock;
+    JLabel CutOut;
+    MapLevelButton motherButton;
+    public MenuMouseEvents(MapT mapT, MapLevelButton motherButton, int priority){
+        this.serial = priority;
+        this.motherButton = motherButton;
         this.mapT = mapT;
+        this.SceneT = mapT.ScenesToLoadList.get(serial);
+        this.SidePanelText = mapT.SidePanelTextList.get(serial+1);
+        this.CutOut = mapT.CutOutList.get(serial);
+        this.DefaultText = mapT.SidePanelTextList.get(0);
+        this.padLock = mapT.PadLockList.get(serial);
+    }
+
+    private void hideAllText(){
+        for( JLabel SideText : mapT.SidePanelTextList){
+            SideText.setVisible(false);
+        }
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(buttonInfo.equals("Dormitory")){
-//            mapT.remove(mapT.padLockDorm);
-//            mapT.revalidate();
-//            mapT.repaint();
-        }else if(buttonInfo.equals("Academic Building 2")){
-//            mapT.remove(mapT.padLockAC2);
-//            mapT.revalidate();
-//            mapT.repaint();
-        }else if(buttonInfo.equals("Library")){
-//            mapT.remove(mapT.padLockLibrary);
-//            mapT.revalidate();
-//            mapT.repaint();
-        }else if(buttonInfo.equals("CDS")){
-//            mapT.remove(mapT.padLockCDS);
-//            mapT.revalidate();
-//            mapT.repaint();
-        }
+
+
+        mapT.jFrame.remove(mapT);
+        mapT.loadingAnimationT.changeNextScene(SceneT);
+        SceneT.PrepareForSceneTransition(mapT.loadingAnimationT, mapT);
+        mapT.jFrame.add(mapT.loadingAnimationT);
+        mapT.loadingAnimationT.initializeTimer();
+
+        hideAllText();
+
+        mapT.jFrame.revalidate();
+        mapT.jFrame.repaint();
     }
 
     @Override
@@ -45,12 +61,29 @@ public class MenuMouseEvents implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        CutOut.setVisible(true);
 
+        hideAllText();
+
+        if(MapT.gameProgress > serial) {
+            motherButton.setBackground(mapT.hoveringActiveButtonColor);
+            SidePanelText.setVisible(true);
+        }else{
+            motherButton.setBackground(mapT.hoveringInactiveButtonColor);
+            DefaultText.setVisible(true);
+            padLock.setVisible(true);
+        }
+
+
+        mapT.revalidate();
+        mapT.repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
+        CutOut.setVisible(false);
+        mapT.refreshButtonGrayness();
+        DefaultText.setVisible(false);
+        padLock.setVisible(false);
     }
-
-
 }

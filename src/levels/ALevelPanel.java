@@ -34,7 +34,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public int timeSinceLastFind = 0;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
-    LoadingAnimationT loadingAnimationT;
+    public LoadingAnimationT loadingAnimationT;
     MapT mapT;
     boolean levelFinished;
     public int imagesFound;

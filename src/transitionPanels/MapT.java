@@ -1,6 +1,6 @@
 package src.transitionPanels;
 
-import src.buttons.MapLevelButtons;
+import src.buttons.MapLevelButton;
 import src.levelObjects.PlayerScoreBoard;
 import src.buttons.CloseButton;
 import src.levels.ALevelPanel;
@@ -10,19 +10,26 @@ import src.setup.PlayerInfo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MapT extends JPanel implements Runnable{
-    Color hoveringActiveButtonColor = Color.decode("#75afff");
-    Color hoveringInactiveButtonColor = Color.decode("#4f4f4f");
-    MapLevelButtons DormButton;
-    MapLevelButtons ClassroomButton;
-    MapLevelButtons LibraryButton;
-    MapLevelButtons CDSButton;
+    public ArrayList<ALevelPanel> ScenesToLoadList = new ArrayList<>();
+    public ArrayList<MapLevelButton> mapButtonList = new ArrayList<>();
+    public ArrayList<JLabel> CutOutList = new ArrayList<>();
+    public ArrayList<JLabel> SidePanelTextList = new ArrayList<>();
+    public ArrayList<JLabel> PadLockList = new ArrayList<>();
+    public Color hoveringActiveButtonColor = Color.decode("#75afff");
+    public Color hoveringInactiveButtonColor = Color.decode("#4f4f4f");
+    JLabel HugeUnLock;
+    MapLevelButton DormButton;
+    MapLevelButton ClassroomButton;
+    MapLevelButton LibraryButton;
+    MapLevelButton CDSButton;
     public static int gameProgress;
-    JFrame jFrame;
+    public JFrame jFrame;
     JLabel DormColourCut;
     JLabel ClassroomColourCut;
     JLabel LibraryColourCut;
@@ -38,7 +45,7 @@ public class MapT extends JPanel implements Runnable{
     public int MaxClassroomScore =0;
 
     public int MaxCDS_Score =0;
-    JLabel padLockAC2;
+    JLabel padLockClassroom;
     JLabel padLockDorm;
     JLabel padLockLibrary;
     JLabel padLockCDS;
@@ -50,8 +57,10 @@ public class MapT extends JPanel implements Runnable{
     JLabel defaultText;
     JLabel CDSText;
 
-    private LoadingAnimationT loadingAnimationT;
-    private ALevelPanel dormRoomSceneT;
+    Timer timer;
+
+    public LoadingAnimationT loadingAnimationT;
+    public ALevelPanel dormRoomSceneT;
     private ALevelPanel librarySceneT;
     private ALevelPanel classroomSceneT;
 
@@ -61,105 +70,89 @@ public class MapT extends JPanel implements Runnable{
         gameProgress = PlayerInfo.gameProgress;
 
         this.jFrame = jFrame;
-        addDormText();
-        addLibraryText();
-        addClassroomText();
-        addCDSText();
-        makeDefaultText();
+
     }
-    public void makeDefaultText(){
-        defaultText = new JLabel(
-                "<html>Level Locked<br/>Please complete previous levels to access.</html>",
-                SwingConstants.CENTER);
-        defaultText.setLayout(null);
-        defaultText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
-        defaultText.setBackground(Color.decode("#14171C"));
-        defaultText.setForeground(Color.white);
-//                text.setOpaque(true);
-        defaultText.setFont(FontInfo.getResizedFont(45f));
-        defaultText.setVisible(false);
-        add(defaultText);
+
+    public void ShowUnlockAnimation(){
+        HugeUnLock.setVisible(true);
+        timer = new Timer(2800, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                HugeUnLock.setVisible(false);
+                stopTimer();
+            }
+        });
+
+        timer.start();
+
+    }
+    public void stopTimer(){
+        timer.stop();
+    }
+    public void AddUnlockAnimation(){
+        HugeUnLock = new JLabel();
+        int size = 800;
+        HugeUnLock.setBounds(getX(1920/2 - size/2),getY(1080/2 - size/2),size,size);
+
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Map_images/lockgif.gif")));
+        Image image = imageIcon.getImage();
+        image = image.getScaledInstance(size,size,Image.SCALE_DEFAULT);
+        imageIcon = new ImageIcon(image);
+        HugeUnLock.setIcon(imageIcon);
+        HugeUnLock.setVisible(false);
+        this.add(HugeUnLock);
+
+    }
+
+    private JLabel makeSidePanelTextLabels(String Text){
+        JLabel SidePanelText = new JLabel(Text, SwingConstants.CENTER);
+        SidePanelText.setLayout(null);
+        SidePanelText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
+        SidePanelText.setBackground(Color.decode("#14171C"));
+        SidePanelText.setForeground(Color.white);
+        SidePanelText.setFont(FontInfo.getResizedFont(45f));
+        SidePanelText.setVisible(false);
+        add(SidePanelText);
+        SidePanelTextList.add(SidePanelText);
         repaint();
+        return SidePanelText;
     }
-    public void addDormText(){
-        dormText = new JLabel(
-                "<html>Mom packed a special Surprise for me?<br/>Let's go back to my room and see what it is.</html>",
-                SwingConstants.CENTER);
-        dormText.setLayout(null);
-        dormText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
-        dormText.setBackground(Color.decode("#14171C"));
-        dormText.setForeground(Color.white);
-//                text.setOpaque(true);
-        dormText.setFont(FontInfo.getResizedFont(45f));
-        dormText.setVisible(false);
-        add(dormText);
-        repaint();
-    }
-
-    public void addLibraryText(){
-        libraryText = new JLabel(
-                "<html>I should check out the library ?<br/>Let's go  to my library and see if i can find this or not.</html>",
-                SwingConstants.CENTER);
-        libraryText.setLayout(null);
-        libraryText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
-        libraryText.setBackground(Color.decode("#14171C"));
-        libraryText.setForeground(Color.white);
-//                text.setOpaque(true);
-        libraryText.setFont(FontInfo.getResizedFont(45f));
-        libraryText.setVisible(false);
-        add( libraryText);
-        repaint();
-    }
-
-    public void addCDSText(){
-        CDSText = new JLabel(
-                "<html>I should go to Our CDS <br/> If i can found some of my things<br/>Here is the CDS.</html>",
-                SwingConstants.CENTER);
-
-        CDSText.setLayout(null);
-        CDSText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
-        CDSText.setBackground(Color.decode("#14171C"));
-        CDSText.setForeground(Color.white);
-//                text.setOpaque(true);
-        CDSText.setFont(FontInfo.getResizedFont(45f));
-        CDSText.setVisible(false);
-        add(  CDSText);
-        repaint();
+    private void AssignSideLabels() {
+        defaultText = makeSidePanelTextLabels("<html>Level Locked<br/>Please complete previous levels to access.</html>");
+        dormText = makeSidePanelTextLabels("<html>Mom packed a special Surprise for me?<br/>Let's go back to my room and see what it is.</html>");
+        classroomText = makeSidePanelTextLabels("<html>I should go back to my classroom <br/> If i can found some of my things<br/>Let's go  to my Classroom.</html>");
+        libraryText = makeSidePanelTextLabels("<html>I should check out the library ?<br/>Let's go  to my library and see if i can find this or not.</html>");
+        CDSText = makeSidePanelTextLabels("<html>I should go to Our CDS <br/> If i can found some of my things<br/>Here is the CDS.</html>");
     }
 
 
-    public void addClassroomText(){
-        classroomText = new JLabel(
-                "<html>I should go back to my classroom <br/> If i can found some of my things<br/>Let's go  to my Classroom.</html>",
-                SwingConstants.CENTER);
-        classroomText.setLayout(null);
-        classroomText.setBounds(DeviceInformation.screenWidth*1300/1536, DeviceInformation.screenHeight*200/864, DeviceInformation.screenWidth /5 -100, 500);
-        classroomText.setBackground(Color.decode("#14171C"));
-        classroomText.setForeground(Color.white);
-//                text.setOpaque(true);
-        classroomText.setFont(FontInfo.getResizedFont(45f));
-        classroomText.setVisible(false);
-        add( classroomText);
-        repaint();
-    }
-
-
-    public JLabel addPadLock(JLabel label, int posX, int posY, int side){
-        label =  new JLabel();
-        label.setLocation(posX,posY);
-        label.setBounds(posX,posY,side,side);
-        label.setIcon(padLock);
-        return label;
+    public JLabel addPadLock( int posX, int posY, int side){
+        JLabel padLabel =  new JLabel();
+        padLabel.setLocation(posX,posY);
+        padLabel.setBounds(posX,posY,side,side);
+        padLabel.setIcon(padLock);
+        padLabel.setVisible(false);
+        this.add(padLabel);
+        PadLockList.add(padLabel);
+        return padLabel;
     }
 
     public ImageIcon getScaledImage(String text, int width, int height){
         ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(text)));
         Image image = imageIcon.getImage();
-        image = image.getScaledInstance(width,height,Image.SCALE_AREA_AVERAGING);
+        image = image.getScaledInstance(width,height,Image.SCALE_DEFAULT);
         imageIcon = new ImageIcon(image);
         return imageIcon;
 
     }
+    private int getX(int x){
+        return DeviceInformation.screenWidth* x/1920;
+    }
+
+    private int getY(int y){
+        return DeviceInformation.screenHeight*y/1080;
+    }
+
 
     public void updateScore(){
 
@@ -169,350 +162,91 @@ public class MapT extends JPanel implements Runnable{
 
 
     public void buildScene(){
-        doMapButtonThings();
-        createCutOutLabels();
+        AddUnlockAnimation();
+        AssignSideLabels();
+        AssignCutOutLabels();
+        addLockLabels();
+        createMapButtons();
+        addCutOuts();
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
-        padLock = getScaledImage("images/Map_images/level_locked.png", 50,50);
         playerScoreBoard = new PlayerScoreBoard(jFrame, this);
-//        padLockDorm=addPadLock(padLockDorm, 770,195, 50);
-//        this.add(padLockDorm);
-        padLockAC2=addPadLock(padLockAC2, DeviceInformation.screenWidth* 500/1536,DeviceInformation.screenHeight*25/864,50);
-        this.add(padLockAC2);
-        padLockLibrary=addPadLock(padLockLibrary,DeviceInformation.screenWidth* 600/1536,DeviceInformation.screenHeight*250/864, 50);
-        this.add(padLockLibrary);
-        padLockCDS=addPadLock(padLockCDS,DeviceInformation.screenWidth* 1000/1536,DeviceInformation.screenHeight*250/864, 50);
-        this.add(padLockCDS);
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
         refreshButtonGrayness();
     }
 
 
-    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT,ALevelPanel ClassroomSceneT,ALevelPanel CDS_LevelPanelT) {
+    private void addLockLabels() {
+        int size = 70;
+        padLock = getScaledImage("images/Map_images/lock unhappy.png", size,size);
+
+        padLockDorm = addPadLock(getX(790),getY(290), 50);
+        padLockClassroom = addPadLock( getX(325),getY(285),size);
+        padLockLibrary = addPadLock(getX(630),getY(444), size);
+        padLockCDS = addPadLock(getX(1225),getY(485), size);
+
+    }
+
+
+    public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT,ALevelPanel ClassroomSceneT,ALevelPanel CDSSceneT) {
         this.loadingAnimationT = loadingAnimationT;
         this.dormRoomSceneT = dormSceneT;
         this.librarySceneT = librarySceneT;
         this.classroomSceneT = ClassroomSceneT;
-        this.CDS_LevelPanelT = CDS_LevelPanelT;
+        this.CDS_LevelPanelT = CDSSceneT;
+
+        ScenesToLoadList.add(dormSceneT);
+        ScenesToLoadList.add(ClassroomSceneT);
+        ScenesToLoadList.add(librarySceneT);
+        ScenesToLoadList.add(CDSSceneT);
     }
 
-    private void createCutOutLabels() {
-        DormColourCut = new JLabel();
-        DormColourCut.setLayout(null);
-        DormColourCut.setBounds(0,0, DeviceInformation.screenWidth, DeviceInformation.screenHeight);
-        DormColourCut.setVisible(false);
-        ImageIcon  cutoutIcon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Map_images/DormCutOut.png")));
+    private void AssignCutOutLabels(){
+        DormColourCut = createCutOutLabels("images/Map_images/mapbg Dorm.png");
+        ClassroomColourCut = createCutOutLabels("images/Map_images/mapbg Classroom.png");
+        LibraryColourCut = createCutOutLabels("images/Map_images/mapbg Library.png");
+        CDSColourCut = createCutOutLabels("images/Map_images/mapbg CDS.png");
+    }
+
+    private JLabel createCutOutLabels(String Path) {
+        JLabel CutOutLabel = new JLabel();
+        CutOutLabel.setLayout(null);
+        CutOutLabel.setBounds(0,0, DeviceInformation.screenWidth, DeviceInformation.screenHeight);
+        CutOutLabel.setVisible(false);
+
+        ImageIcon  cutoutIcon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(Path)));
+
         Image image1 = cutoutIcon.getImage();
         image1 = image1.getScaledInstance(DeviceInformation.screenWidth, DeviceInformation.screenHeight, Image.SCALE_DEFAULT);
+
         ImageIcon scaledCutout = new ImageIcon(image1);
-        DormColourCut.setIcon(scaledCutout);
-        add(DormColourCut);
 
-        ClassroomColourCut = new JLabel();
-        ClassroomColourCut.setLayout(null);
-        ClassroomColourCut.setBounds(0,0, DeviceInformation.screenWidth, DeviceInformation.screenHeight);
-        ClassroomColourCut.setVisible(false);
-        cutoutIcon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Map_images/AcademicBuildingCutOut.png")));
-        image1 = cutoutIcon.getImage();
-        image1 = image1.getScaledInstance(DeviceInformation.screenWidth, DeviceInformation.screenHeight, Image.SCALE_DEFAULT);
-        scaledCutout = new ImageIcon(image1);
-        ClassroomColourCut.setIcon(scaledCutout);
-        add(ClassroomColourCut);
-
-        LibraryColourCut = new JLabel();
-        LibraryColourCut.setLayout(null);
-        LibraryColourCut.setBounds(0,0, DeviceInformation.screenWidth, DeviceInformation.screenHeight);
-        LibraryColourCut.setVisible(false);
-        cutoutIcon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Map_images/LibraryCutOut.png")));
-        image1 = cutoutIcon.getImage();
-        image1 = image1.getScaledInstance(DeviceInformation.screenWidth, DeviceInformation.screenHeight, Image.SCALE_DEFAULT);
-        scaledCutout = new ImageIcon(image1);
-        LibraryColourCut.setIcon(scaledCutout);
-        add(LibraryColourCut);
-
-
-        CDSColourCut = new JLabel();
-        CDSColourCut.setLayout(null);
-        CDSColourCut.setBounds(0,0, DeviceInformation.screenWidth, DeviceInformation.screenHeight);
-        CDSColourCut.setVisible(false);
-        cutoutIcon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Map_images/CDSCutOut.png")));
-        image1 = cutoutIcon.getImage();
-        image1 = image1.getScaledInstance(DeviceInformation.screenWidth, DeviceInformation.screenHeight, Image.SCALE_DEFAULT);
-        scaledCutout = new ImageIcon(image1);
-        CDSColourCut.setIcon(scaledCutout);
-        add(CDSColourCut);
+        CutOutLabel.setIcon(scaledCutout);
+        CutOutList.add(CutOutLabel);
+        return CutOutLabel;
     }
 
-    private void makeLabel(JLabel jLabel, String path){
-        jLabel = new JLabel();
+    private void addCutOuts(){
+        for(JLabel cutout : CutOutList){
+            this.add(cutout);
+        }
     }
 
-    private void doMapButtonThings() {
-        ClassroomButton = new MapLevelButtons(DeviceInformation.screenWidth* 450/1536,DeviceInformation.screenHeight*80/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Classroom", this);
-        DormButton = new MapLevelButtons(DeviceInformation.screenWidth* 699/1536,DeviceInformation.screenHeight*145/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Dormitory", this);
-        CDSButton = new MapLevelButtons(DeviceInformation.screenWidth* 979/1536,DeviceInformation.screenHeight*300/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "CDS", this);
-        LibraryButton =  new MapLevelButtons(DeviceInformation.screenWidth* 580/1536,DeviceInformation.screenHeight*300/864, DeviceInformation.screenWidth *200/1536, DeviceInformation.screenHeight *52/864,  "Library", this);
-             //   this.add(mapLevelButtonLibrary);
-
-
-
-        DormButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                jFrame.remove(DormButton.mapT);
-                loadingAnimationT.changeNextScene(dormRoomSceneT);
-                dormRoomSceneT.PrepareForSceneTransition(loadingAnimationT, ClassroomButton.mapT);
-                jFrame.add(loadingAnimationT);
-                loadingAnimationT.initializeTimer();
-
-                DormButton.mapT.dormText.setVisible(false);
-                CDSButton.mapT.CDSText.setVisible(false);
-                LibraryButton.mapT.libraryText.setVisible(false);
-                ClassroomButton.mapT.classroomText.setVisible(false);
-
-                jFrame.revalidate();
-                jFrame.repaint();
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                DormColourCut.setVisible(true);
-
-                defaultText.setVisible(false);
-                dormText.setVisible(false);
-                CDSText.setVisible(false);
-                libraryText.setVisible(false);
-                classroomText.setVisible(false);
-
-                if(gameProgress >= 1) {
-                    DormButton.setBackground(hoveringActiveButtonColor);
-                    dormText.setVisible(true);
-                }else{
-                    DormButton.setBackground(hoveringInactiveButtonColor);
-                    defaultText.setVisible(true);
-                }
-
-
-                DormButton.mapT.revalidate();
-                DormButton.mapT.repaint();
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                DormColourCut.setVisible(false);
-                refreshButtonGrayness();
-                defaultText.setVisible(false);
-            }
-        });
-
-
-        ClassroomButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                jFrame.remove(ClassroomButton.mapT);
-                loadingAnimationT.changeNextScene(classroomSceneT);
-                classroomSceneT.PrepareForSceneTransition(loadingAnimationT, CDSButton.mapT);
-                jFrame.add(loadingAnimationT);
-                loadingAnimationT.initializeTimer();
-
-                DormButton.mapT.dormText.setVisible(false);
-                CDSButton.mapT.CDSText.setVisible(false);
-                LibraryButton.mapT.libraryText.setVisible(false);
-                ClassroomButton.mapT.classroomText.setVisible(false);
-
-                jFrame.revalidate();
-                jFrame.repaint();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                ClassroomColourCut.setVisible(true);
-
-
-                defaultText.setVisible(false);
-                dormText.setVisible(false);
-                CDSText.setVisible(false);
-                libraryText.setVisible(false);
-                classroomText.setVisible(false);
-
-                if(gameProgress >= 2) {
-                    ClassroomButton.setBackground(hoveringActiveButtonColor);
-                    classroomText.setVisible(true);
-                }else{
-                    ClassroomButton.setBackground(hoveringInactiveButtonColor);
-                    defaultText.setVisible(true);
-                }
-
-
-                DormButton.mapT.revalidate();
-                DormButton.mapT.repaint();
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                ClassroomColourCut.setVisible(false);
-                refreshButtonGrayness();
-                defaultText.setVisible(false);
-            }
-        });
-
-
-
-
-
-        LibraryButton.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                jFrame.remove(LibraryButton.mapT);
-                loadingAnimationT.changeNextScene(librarySceneT);
-                librarySceneT.PrepareForSceneTransition(loadingAnimationT, CDSButton.mapT);
-                jFrame.add(loadingAnimationT);
-                loadingAnimationT.initializeTimer();
-
-                DormButton.mapT.dormText.setVisible(false);
-                CDSButton.mapT.CDSText.setVisible(false);
-                ClassroomButton.mapT.classroomText.setVisible(false);
-                LibraryButton.mapT.libraryText.setVisible(false);
-
-                LibraryButton.setBackground(Color.BLACK);
-                jFrame.revalidate();
-                jFrame.repaint();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                LibraryColourCut.setVisible(true);
-
-
-                defaultText.setVisible(false);
-                dormText.setVisible(false);
-                CDSText.setVisible(false);
-                libraryText.setVisible(false);
-                classroomText.setVisible(false);
-
-                if(gameProgress >= 3) {
-                    LibraryButton.setBackground(hoveringActiveButtonColor);
-                    libraryText.setVisible(true);
-                }else{
-                    LibraryButton.setBackground(hoveringInactiveButtonColor);
-                    defaultText.setVisible(true);
-                }
-
-
-                DormButton.mapT.revalidate();
-                DormButton.mapT.repaint();
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                LibraryColourCut.setVisible(false);
-                refreshButtonGrayness();
-                defaultText.setVisible(false);
-            }
-        });
-
-
-
-
-
-
-       CDSButton.addMouseListener(new MouseListener() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            jFrame.remove(CDSButton.mapT);
-            loadingAnimationT.changeNextScene(CDS_LevelPanelT);
-            CDS_LevelPanelT.PrepareForSceneTransition(loadingAnimationT, DormButton.mapT);
-            jFrame.add(loadingAnimationT);
-            loadingAnimationT.initializeTimer();
-
-            CDSButton.mapT.CDSText.setVisible(false);
-            DormButton.mapT.dormText.setVisible(false);
-            ClassroomButton.mapT.classroomText.setVisible(false);
-            LibraryButton.mapT.libraryText.setVisible(false);
-
-            CDSButton.setBackground(Color.BLACK);
-            jFrame.revalidate();
-            jFrame.repaint();
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            CDSColourCut.setVisible(true);
-
-
-            defaultText.setVisible(false);
-            dormText.setVisible(false);
-            CDSText.setVisible(false);
-            libraryText.setVisible(false);
-            classroomText.setVisible(false);
-
-            if(gameProgress >= 4) {
-                CDSButton.setBackground(hoveringActiveButtonColor);
-                CDSText.setVisible(true);
-            }else{
-                CDSButton.setBackground(hoveringInactiveButtonColor);
-                defaultText.setVisible(true);
-            }
-
-
-            DormButton.mapT.revalidate();
-            DormButton.mapT.repaint();
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            CDSColourCut.setVisible(false);
-            refreshButtonGrayness();
-            defaultText.setVisible(false);
-        }
-    });
-}
-
-
+    private void createMapButtons() {
+        int height = getY(70);
+        int width = getX(200);
+        DormButton = new MapLevelButton(getX(733), getY(170),width, height,  "Dormitory",0, this);
+        ClassroomButton = new MapLevelButton(getX(255), getY(160),width, height,  "Classroom", 1,this);
+        LibraryButton =  new MapLevelButton(getX(525), getY(600) ,width, height,  "Library",2, this);
+        CDSButton = new MapLevelButton(getX(1200), getY(590),width, height,  "CDS", 3, this);
+
+        mapButtonList.add(DormButton);
+        mapButtonList.add(ClassroomButton);
+        mapButtonList.add(LibraryButton);
+        mapButtonList.add(CDSButton);
+
+    }
 
 
     public void createMapBackground(){
@@ -523,7 +257,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public ImageIcon getDefaultImage(){
-        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Map_images/Levelbackground.png")));
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Map_images/mapbg desaturated.png")));
         Image image = imageIcon.getImage();
         image = image.getScaledInstance(DeviceInformation.screenWidth, DeviceInformation.screenHeight, Image.SCALE_DEFAULT);
         imageIcon = new ImageIcon(image);
