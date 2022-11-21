@@ -1,16 +1,20 @@
 package src.buttons;
 
+import src.events.MenuMouseEvents;
 import src.setup.FontInfo;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class MapLevelButtons extends JButton {
+public class MapLevelButton extends JButton {
     public MapT mapT;
+    int priority;
 
-
-    public MapLevelButtons( int posx, int posy, int width,int height, String text, MapT mapT){
+    public MapLevelButton(int posx, int posy, int width, int height, String text, int priority, MapT mapT){
+        this.priority = priority;
         this.mapT = mapT;
         setText(text);
         setBackground(Color.darkGray);
@@ -19,11 +23,13 @@ public class MapLevelButtons extends JButton {
         setBounds(posx,posy,width,height);
         setFocusPainted(false);
         setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.decode("#55a38b"),2)));
-//        addMouseListener(new MenuMouseEvents(mapT, text)); //prolly not needed
+
+        addMouseListener(new MenuMouseEvents(mapT, this, priority));
         setVisible(true);
+
         mapT.add(this);
         mapT.repaint();
         mapT.revalidate();
     }
-    
+
 }

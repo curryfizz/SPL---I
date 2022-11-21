@@ -164,9 +164,6 @@ public class TimerLabel extends JLabel implements Runnable{
 
         long lastUpdatedAt = System.currentTimeMillis();
         long milisecs = 0;
-
-
-
         long miliFPS;
 
 

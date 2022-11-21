@@ -102,7 +102,6 @@ public class ObjectHidingButton extends JButton {
                     if(levelPanel.imagesFound == 6){
                         levelPanel.timerLabel.isTimeOver = true;
                         levelPanel.imagesFound=0;
-                        levelPanel.backgroundMusic.stop();
                         levelPanel.congratulationsConfetti.setVisible(true);
                         LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel);
                         PlayerInfo.gameProgress = levelPanel.getLevelNumber();

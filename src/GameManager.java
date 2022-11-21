@@ -194,11 +194,7 @@ public class GameManager {
 
         ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
 
-
         CDS_LevelPanelT cds_levelPanelT = new CDS_LevelPanelT(jFrame);
-
-
-        //lomkjbyutvbn
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
 
@@ -225,4 +221,23 @@ public class GameManager {
         pl.shutdown();
 
     }
+
+    /*TODO:
+    - add small icon in map to go to player stats;
+    - try to make garbage collector work;
+    - why does score Animation keep disappearing so quickly;
+    - why does the given score go up to 200+ when you play dorm scene 2 times;
+    - make sure music audio start's at 50%
+    - tie all the music and sound effects together, or make them seperate, people may find it too loud;
+    - add sound effects for other button clicks
+    - add music for start menu and map
+    - make sure unlocking animation doesn't appear unless level is actually unlocked
+    - make sure map level buttons don't work unless gameProgress is satisfactory;
+    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
+    - change forest music for classroom
+    - try re-rendering dormscene if there's time, it looks bad compared to it's fancy classroom and fancy library brothers
+    - add transcucent background image for text Box in AlevelPanels, black box looks kinda bad;
+    - add background image for timer label and score label;
+    - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
+    */
 }

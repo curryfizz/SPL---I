@@ -140,7 +140,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println(e.getX() + " " + e.getY());
+//                System.out.println(e.getX() + " " + e.getY());
                 taps++;
                 if(taps == 1 ){
                     Bubble1.setVisible(true);
