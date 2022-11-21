@@ -11,7 +11,6 @@ import src.levelObjects.TimerLabel;
 import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.setup.PlayerInfo;
 import src.setup.RandomGenerator;
 import src.transitionPanels.LoadingAnimationT;
 import src.transitionPanels.MapT;
@@ -28,12 +27,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class ALevelPanel extends JPanel implements Runnable{
-    JFrame jFrame;
+    public JFrame jFrame;
     Rectangle maxBounds;
     public int score = 0;
-    int currentCombo = 0;
-    Sound objClickSound;
-    int timeSinceLastFind = 0;
+    public int currentCombo = 0;
+    public Sound objClickSound;
+    public int timeSinceLastFind = 0;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
     LoadingAnimationT loadingAnimationT;
@@ -146,7 +145,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) throws IOException {
         JLabel objectLabel = createObject(image);
-
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size());
         this.add(objectHidingButton);
         this.add(objectLabel);
@@ -160,7 +158,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
         timerLabel.second = 30;
-        timerLabel.minute = 0;
+        timerLabel.minute = 2;
         timerLabel.elapsedTime = 0;
         scoreBoard.score=0;
         scoreBoard.setText("0000");
@@ -188,7 +186,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void StartLevel() { //when clicked from Map, resets some things and starts the scene
         congratulationsConfetti.setVisible(false);
         ShowGottenScore.setVisible(false);
-        backgroundMusic.play();
+
         messNotification.setVisible(true);
         timerLabel.setVisible(false);
         scoreBoard.setVisible(false);
@@ -370,6 +368,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         BufferedImage bufferedImage = ImageIO.read(new File(bgfilename));
         Image image = bufferedImage.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);//        imageIcon = new ImageIcon(image);
         ImageIcon imageIcon = new ImageIcon(image);
+//        imageIcon.setImage(imageIcon.getImage().getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT));
         backgroundLabel = new JLabel();
         backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
         backgroundLabel.setIcon(imageIcon);
