@@ -34,7 +34,7 @@ public class oracleDatabase {
         preparedStatement.setString(1,userName);
         preparedStatement.setString(2,email);
     }
-    public void insertUser(String userName, String email) throws SQLException{
+    public boolean insertUser(String userName, String email) throws SQLException{
 
         try {
             Class.forName(JDBC_DRIVER);
@@ -42,7 +42,11 @@ public class oracleDatabase {
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
             System.out.println("Inserting user");
             prepareStatementforInsert();
+            if(retrieveUserInfo(email)==true){
+                return false;
+            }
             createUser(userName,email);
+
             preparedStatement.executeUpdate();
             System.out.println("User inserted");
             preparedStatement.close();
@@ -57,6 +61,8 @@ public class oracleDatabase {
             e.printStackTrace();
 
         }
+
+        return true;
     }
 
 
