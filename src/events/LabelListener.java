@@ -1,4 +1,4 @@
-package src;
+package src.events;
 
 import src.levels.ALevelPanel;
 import src.popups.HintConfirmationDialogue;

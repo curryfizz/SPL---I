@@ -45,6 +45,9 @@ public class oracleDatabase {
                 return false;
             }
             prepareStatementforInsert();
+            if(retrieveUserInfo(email)==true){
+                return false;
+            }
             createUser(userName,email);
 
             preparedStatement.executeUpdate();

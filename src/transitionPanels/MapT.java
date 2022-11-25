@@ -1,5 +1,6 @@
 package src.transitionPanels;
 
+import src.GameManager;
 import src.buttons.MapLevelButton;
 import src.levelObjects.PlayerScoreBoard;
 import src.buttons.CloseButton;
@@ -16,14 +17,16 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MapT extends JPanel implements Runnable{
-    public ArrayList<ALevelPanel> ScenesToLoadList = new ArrayList<>();
+//    public ArrayList<ALevelPanel> ScenesToLoadList = new ArrayList<>();
     public ArrayList<MapLevelButton> mapButtonList = new ArrayList<>();
     public ArrayList<JLabel> CutOutList = new ArrayList<>();
     public ArrayList<JLabel> SidePanelTextList = new ArrayList<>();
     public ArrayList<JLabel> PadLockList = new ArrayList<>();
+
     public Color hoveringActiveButtonColor = Color.decode("#75afff");
     public Color hoveringInactiveButtonColor = Color.decode("#4f4f4f");
     JLabel HugeUnLock;
+
     MapLevelButton DormButton;
     MapLevelButton ClassroomButton;
     MapLevelButton LibraryButton;
@@ -60,16 +63,12 @@ public class MapT extends JPanel implements Runnable{
     Timer timer;
 
     public LoadingAnimationT loadingAnimationT;
-    public ALevelPanel dormRoomSceneT;
-    private ALevelPanel librarySceneT;
-    private ALevelPanel classroomSceneT;
 
-    private ALevelPanel CDS_LevelPanelT;
-
-    public MapT(JFrame jFrame){
+    public MapT(JFrame jFrame, LoadingAnimationT loadingAnimationT){
         gameProgress = PlayerInfo.gameProgress;
 
         this.jFrame = jFrame;
+        this.loadingAnimationT = loadingAnimationT;
 
     }
 
@@ -191,15 +190,11 @@ public class MapT extends JPanel implements Runnable{
 
     public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT,ALevelPanel ClassroomSceneT,ALevelPanel CDSSceneT) {
         this.loadingAnimationT = loadingAnimationT;
-        this.dormRoomSceneT = dormSceneT;
-        this.librarySceneT = librarySceneT;
-        this.classroomSceneT = ClassroomSceneT;
-        this.CDS_LevelPanelT = CDSSceneT;
 
-        ScenesToLoadList.add(dormSceneT);
-        ScenesToLoadList.add(ClassroomSceneT);
-        ScenesToLoadList.add(librarySceneT);
-        ScenesToLoadList.add(CDSSceneT);
+//        ScenesToLoadList.add(dormSceneT);
+//        ScenesToLoadList.add(ClassroomSceneT);
+//        ScenesToLoadList.add(librarySceneT);
+//        ScenesToLoadList.add(CDSSceneT);
     }
 
     private void AssignCutOutLabels(){
@@ -348,7 +343,5 @@ public class MapT extends JPanel implements Runnable{
         }
     }
 
-    /*TODO:
-    Fix score bullshit
-     */
+
 }

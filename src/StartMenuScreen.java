@@ -1,4 +1,4 @@
-package src.transitionPanels;
+package src;
 
 import src.buttons.CloseButton;
 import src.setup.DeviceInformation;

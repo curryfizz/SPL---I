@@ -4,10 +4,8 @@ import java.awt.*;
 import java.io.File;
 
 public class FontInfo {
-//    GraphicsEnvironment graphicsEnvironment;
     static Font eastSeaDokdo;
     public FontInfo(){
-//        graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         importFont();
     }
     private void importFont(){

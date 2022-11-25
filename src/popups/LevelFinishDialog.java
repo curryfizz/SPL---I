@@ -1,13 +1,12 @@
 package src.popups;
 
-import src.Sound;
+import src.levelObjects.Sound;
 import src.levels.*;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.plaf.SliderUI;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

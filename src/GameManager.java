@@ -22,9 +22,9 @@ import java.sql.SQLException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class GameManager {
+public class GameManager{
 
-    public static DormRoomLevelPanelT dormRoomLevelPanelT;
+    public String testString;
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
 //        new GameManager();
@@ -186,40 +186,22 @@ public class GameManager {
         //thread pool
         ExecutorService pl = Executors.newFixedThreadPool(1);
 
-
         StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
 
-        MapT mapT = new MapT(jFrame);
-
-
-        DormRoomLevelPanelT dormRoomSceneT = new DormRoomLevelPanelT(jFrame);
-
-
-        LibrarySceneT librarySceneT= new LibrarySceneT(jFrame);
-
-        ClassRoomSceneT classRoomSceneT = new ClassRoomSceneT(jFrame);
-
-        CDS_LevelPanelT cds_levelPanelT = new CDS_LevelPanelT(jFrame);
-
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
-
         LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,2,messageFromMomT);
+        MapT mapT = new MapT(jFrame, loadingAnimationT);
 
 
-
-        mapT.AddAllScenes(loadingAnimationT, dormRoomSceneT,librarySceneT,classRoomSceneT,cds_levelPanelT);
-        startMenu.PrepareForSceneTransition(loadingAnimationT, mapT);
+        startMenu.PrepareForSceneTransition(loadingAnimationT, null); //nextscene is not being used
+                                                                                //perhaps later we can use player info to change next scene
+                                                                                //for loadingscene
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
 
         pl.execute(startMenu);
         pl.execute(mapT);
         pl.execute(loadingAnimationT);
         pl.execute(messageFromMomT);
-        pl.execute(dormRoomSceneT);
-        pl.execute(classRoomSceneT);
-        pl.execute(librarySceneT);
-        pl.execute(cds_levelPanelT);
-
 
         jFrame.add(startMenu); //should be startmenu during real play
 
@@ -244,5 +226,7 @@ public class GameManager {
     - add transcucent background image for text Box in AlevelPanels, black box looks kinda bad;
     - add background image for timer label and score label;
     - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
+    - add arrow gif pointing at the next level in map?
+
     */
 }

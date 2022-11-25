@@ -1,6 +1,6 @@
 package src.events;
 
-import src.ConfirmationWindowPopup;
+import src.popups.ConfirmationWindowPopup;
 import src.setup.FontInfo;
 
 import javax.swing.*;
