@@ -1,5 +1,6 @@
 package src.transitionPanels;
 
+import src.GameManager;
 import src.levels.ALevelPanel;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -15,6 +16,8 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     public boolean LevelOverProgressUpdated;
     JFrame jFrame;
     JPanel nextScene;
+    public int calledBy;
+    public boolean iNeedYouToRemoveMe;
     Timer timer;
     JLabel loadingText;
     long animationStartTime;
@@ -54,6 +57,9 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     }
 
     public void initializeTimer(){
+        jFrame.revalidate();
+        jFrame.repaint();
+
         timer = new Timer(50,this);
         timer.start();
         timerStopped=false;
@@ -92,13 +98,11 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     public void actionPerformed(ActionEvent e) {
         animationRunTime = (System.currentTimeMillis()-animationStartTime)/1000;
         if(animationRunTime > animationDuration){
+            System.gc(); //calling garbage collector
+
             timerStopped=true;
             timer.stop();
-            try {
-                Thread.sleep((long)100);
-            } catch (InterruptedException ex) {
-                throw new RuntimeException(ex);
-            }
+
             jFrame.remove(this);
             jFrame.add(nextScene);
 

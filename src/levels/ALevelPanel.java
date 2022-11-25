@@ -1,14 +1,13 @@
 package src.levels;
 
-import src.LabelListener;
-import src.Sound;
+import src.GameManager;
+import src.events.LabelListener;
+import src.levelObjects.Sound;
 import src.buttons.AudioChangeButton;
 import src.buttons.LevelCloseButton;
 import src.buttons.ObjectHidingButton;
-import src.events.SceneObjectEvents;
 import src.levelObjects.ScoreBoard;
 import src.levelObjects.TimerLabel;
-import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.setup.RandomGenerator;
@@ -222,13 +221,14 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         jFrame.remove(this);
 
         loadingAnimationT.changeNextScene(mapT);
+        loadingAnimationT.calledBy = getLevelNumber() - 2; //sending my serial so loading can remove the panel and call garbage
+        loadingAnimationT.iNeedYouToRemoveMe = true;
+
         mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
         mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
-        jFrame.revalidate();
-        jFrame.repaint();
     }
     public abstract String getBackgroundPath();
     public abstract String getBackgroundMusicPath();
@@ -308,18 +308,13 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
         messNotification.setOpaque(true);
         this.addMouseListener(new MouseListener() {
-            int i = 0;
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Mouse Clicked" + Integer.toString(i));
-                i++;
                 PanelClick();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                System.out.println("Mouse pressed" + Integer.toString(i));
-                i++;
                 PanelClick();
             }
 

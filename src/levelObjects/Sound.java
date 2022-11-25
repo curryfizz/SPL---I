@@ -1,4 +1,4 @@
-package src;
+package src.levelObjects;
 
 import javax.sound.sampled.*;
 import java.io.File;

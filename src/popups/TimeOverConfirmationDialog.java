@@ -1,9 +1,9 @@
 package src.popups;
 
-import src.Sound;
+import src.levelObjects.Sound;
 import src.levels.CDS_LevelPanelT;
 import src.levels.ClassRoomSceneT;
-import src.levels.DormRoomLevelPanelT;
+import src.levels.DormRoomSceneT;
 import src.setup.FontInfo;
 import src.levels.LibrarySceneT;
 
@@ -59,8 +59,8 @@ public class TimeOverConfirmationDialog extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                if(jPanel instanceof DormRoomLevelPanelT){
-                    ((DormRoomLevelPanelT)jPanel).timerLabel.endLevel();
+                if(jPanel instanceof DormRoomSceneT){
+                    ((DormRoomSceneT)jPanel).timerLabel.endLevel();
                     dispose();
                 }
 

@@ -1,12 +1,14 @@
 package src.levels;
 
+import src.GameManager;
+
 import javax.swing.*;
 import java.io.IOException;
 
 
-public class DormRoomLevelPanelT extends ALevelPanel{
+public class DormRoomSceneT extends ALevelPanel{
 
-    public DormRoomLevelPanelT(JFrame jFrame){
+    public DormRoomSceneT(JFrame jFrame){
         super(jFrame);
     }
 

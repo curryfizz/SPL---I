@@ -1,5 +1,6 @@
 package src;
 
+import src.levelObjects.Sound;
 import src.setup.DeviceInformation;
 
 import javax.swing.*;

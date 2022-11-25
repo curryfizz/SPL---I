@@ -1,9 +1,8 @@
 package src.popups;
 
-import src.GameAudioSlider;
-import src.Sound;
+import src.levelObjects.GameAudioSlider;
+import src.levelObjects.Sound;
 import src.setup.DeviceInformation;
-import src.setup.FontInfo;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +10,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 

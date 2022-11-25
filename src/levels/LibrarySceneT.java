@@ -1,5 +1,6 @@
 package src.levels;
 
+import src.GameManager;
 import src.setup.DeviceInformation;
 
 import javax.swing.*;
@@ -74,7 +75,7 @@ public class LibrarySceneT extends ALevelPanel {
         createText("wallet");
         createButton("images/libraryImages/levelTwoWithOutlines/item 16.PNG", DeviceInformation.screenWidth *282/1536, DeviceInformation.screenHeight *507/864,
                 DeviceInformation.screenWidth *10/1536, DeviceInformation.screenHeight *10/864);
-        createText("FristAid kit");
+        createText("FirstAid kit");
         createButton("images/libraryImages/levelTwoWithOutlines/item 17.PNG", DeviceInformation.screenWidth *578/1536, DeviceInformation.screenHeight *42/864,
                 DeviceInformation.screenWidth *68/1536, DeviceInformation.screenHeight *74/864);
         createText("Wall Clock");
@@ -194,7 +195,7 @@ public class LibrarySceneT extends ALevelPanel {
         createButton("images/libraryImages/levelTwoWithOutlines/item 54.PNG", DeviceInformation.screenWidth *86/1536, DeviceInformation.screenHeight *704/864,
                 DeviceInformation.screenWidth *28/1536, DeviceInformation.screenHeight *60/864);
         createText("Orange Cup");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 55.PNG", DeviceInformation.screenWidth *01/1536, DeviceInformation.screenHeight *680/864,
+        createButton("images/libraryImages/levelTwoWithOutlines/item 55.PNG", DeviceInformation.screenWidth /1536, DeviceInformation.screenHeight *680/864,
                 DeviceInformation.screenWidth *78/1536, DeviceInformation.screenHeight *50/864);
         createText("Chips Packet");
         createButton("images/libraryImages/levelTwoWithOutlines/item 56.PNG", DeviceInformation.screenWidth *82/1536, DeviceInformation.screenHeight *570/864,
@@ -209,7 +210,7 @@ public class LibrarySceneT extends ALevelPanel {
         createButton("images/libraryImages/levelTwoWithOutlines/item 59.PNG", DeviceInformation.screenWidth *226/1536, DeviceInformation.screenHeight *382/864,
                 DeviceInformation.screenWidth *18/1536, DeviceInformation.screenHeight *45/864);
         createText("Coke Bottle");
-        createButton("images/libraryImages/levelTwoWithOutlines/item 60.PNG", DeviceInformation.screenWidth *0/1536, DeviceInformation.screenHeight *419/864,
+        createButton("images/libraryImages/levelTwoWithOutlines/item 60.PNG", 0 /1536, DeviceInformation.screenHeight *419/864,
                 DeviceInformation.screenWidth *48/1536, DeviceInformation.screenHeight *25/864);
         createText("<html>Database Management Book<br/> on the table </html>");
 

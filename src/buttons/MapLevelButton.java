@@ -1,13 +1,11 @@
 package src.buttons;
 
-import src.events.MenuMouseEvents;
+import src.events.MapButtonEvents;
 import src.setup.FontInfo;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class MapLevelButton extends JButton {
     public MapT mapT;
@@ -24,7 +22,7 @@ public class MapLevelButton extends JButton {
         setFocusPainted(false);
         setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.decode("#55a38b"),2)));
 
-        addMouseListener(new MenuMouseEvents(mapT, this, priority));
+        addMouseListener(new MapButtonEvents(mapT, this, priority));
         setVisible(true);
 
         mapT.add(this);

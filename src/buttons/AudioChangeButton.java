@@ -1,8 +1,7 @@
 package src.buttons;
 
-import src.Sound;
+import src.levelObjects.Sound;
 import src.popups.ChangeVolumeDialog;
-import src.popups.ExitWindowConfirmationDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 
