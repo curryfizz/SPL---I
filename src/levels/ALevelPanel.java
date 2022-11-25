@@ -144,7 +144,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) throws IOException {
         JLabel objectLabel = createObject(image);
-
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size());
         this.add(objectHidingButton);
         this.add(objectLabel);
@@ -158,7 +157,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
         timerLabel.second = 30;
-        timerLabel.minute = 0;
+        timerLabel.minute = 2;
         timerLabel.elapsedTime = 0;
         scoreBoard.score=0;
         scoreBoard.setText("0000");
@@ -364,6 +363,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         BufferedImage bufferedImage = ImageIO.read(new File(bgfilename));
         Image image = bufferedImage.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);//        imageIcon = new ImageIcon(image);
         ImageIcon imageIcon = new ImageIcon(image);
+//        imageIcon.setImage(imageIcon.getImage().getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT));
         backgroundLabel = new JLabel();
         backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
         backgroundLabel.setIcon(imageIcon);
