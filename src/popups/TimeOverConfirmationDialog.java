@@ -37,7 +37,7 @@ public class TimeOverConfirmationDialog extends JDialog {
         jLabel.setText(convertToMultiline("Oh no! Your Time is Up"));
 
         objClickSound = new Sound();
-        objClickSound.setFile("audio/soundeffects/fail.wav");
+        objClickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
       //  objClickSound.play();
         jLabel.setFont(FontInfo.getResizedFont(28f));
         add(jLabel);
