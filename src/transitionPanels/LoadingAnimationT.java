@@ -116,8 +116,8 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
 
             if(nextScene instanceof MapT){
 
-                ((MapT) nextScene).mapMusic.play();
-                ((MapT) nextScene).mapMusic.loop();
+//                ((MapT) nextScene).mapMusic.play();
+//                ((MapT) nextScene).mapMusic.loop();
             }
 
             jFrame.revalidate();

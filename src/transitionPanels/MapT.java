@@ -177,11 +177,11 @@ public class MapT extends JPanel implements Runnable{
         createMapBackground();
         refreshButtonGrayness();
 
-        mapMusic = new Sound();
-        mapMusic.setFile("audio/background_music/Chau Sara - Mramor(for Map).wav");
+//        mapMusic = new Sound();
+//        mapMusic.setFile("audio/background_music/Chau Sara - Mramor(for Map).wav");
 
-        mapMusic.currentVolume = -5;
-        mapMusic.fc.setValue(mapMusic.currentVolume);
+//        mapMusic.currentVolume = -5;
+//        mapMusic.fc.setValue(mapMusic.currentVolume);
     }
 
 

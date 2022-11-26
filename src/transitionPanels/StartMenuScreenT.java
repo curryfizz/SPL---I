@@ -30,8 +30,8 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         this.add(startGameButton);
 
         bgMusic = new Sound();
-        bgMusic.setFile("audio/background_music/Ibrahim - Bullet Train Fantasy(for StartMenu).wav");
-        bgMusic.loop();
+//        bgMusic.setFile("audio/background_music/Ibrahim - Bullet Train Fantasy(for StartMenu).wav");
+//        bgMusic.loop();
         clickSound = new Sound();
         clickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
     }
@@ -87,7 +87,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
                     jFrame.add(loadingAnimationT);
                     loadingAnimationT.initializeTimer();
 
-                    bgMusic.stop();
+//                    bgMusic.stop();
 
                     jFrame.revalidate();
                     jFrame.repaint();
