@@ -114,6 +114,12 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
                 LevelOverProgressUpdated = false;
             }
 
+            if(nextScene instanceof MapT){
+
+                ((MapT) nextScene).mapMusic.play();
+                ((MapT) nextScene).mapMusic.loop();
+            }
+
             jFrame.revalidate();
             jFrame.repaint();
 //            LoadMenu(this.jFrame);

@@ -1,15 +1,10 @@
 package src.transitionPanels;
 
 import src.DatabaseConnection.oracleDatabase;
-import src.levels.*;
 import src.popups.SignupDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.DatabaseConnection.PlayerInfo;
-import src.transitionPanels.LoadingAnimationT;
-import src.transitionPanels.MapT;
-import src.transitionPanels.MessageFromMomT;
-import src.transitionPanels.StartMenuScreenT;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -211,13 +206,13 @@ public class GameManager{
 
     /*TODO:
     - add small icon in map to go to player stats;
-    - try to make garbage collector work;
+    //- try to make garbage collector work;
     - why does score Animation keep disappearing so quickly;
     - why does the given score go up to 200+ when you play dorm scene 2 times;
-    - make sure music audio start's at 50%
+    //- make sure music audio start's at 50%
     - tie all the music and sound effects together, or make them seperate, people may find it too loud;
     - add sound effects for other button clicks
-    - add music for start menu and map
+    //- add music for start menu and map
     - make sure unlocking animation doesn't appear unless level is actually unlocked
     - make sure map level buttons don't work unless gameProgress is satisfactory;
     - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
@@ -227,6 +222,8 @@ public class GameManager{
     - add background image for timer label and score label;
     - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
     - add arrow gif pointing at the next level in map?
-
+    - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
+    - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does.
+    - managed to
     */
 }

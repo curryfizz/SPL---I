@@ -3,6 +3,7 @@ package src.transitionPanels;
 import src.buttons.MapLevelButton;
 import src.levelObjects.PlayerScoreBoard;
 import src.buttons.CloseButton;
+import src.levelObjects.Sound;
 import src.levels.ALevelPanel;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -16,6 +17,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MapT extends JPanel implements Runnable{
+
+    public Sound mapMusic;
+
 //    public ArrayList<ALevelPanel> ScenesToLoadList = new ArrayList<>();
     public ArrayList<MapLevelButton> mapButtonList = new ArrayList<>();
     public ArrayList<JLabel> CutOutList = new ArrayList<>();
@@ -172,7 +176,14 @@ public class MapT extends JPanel implements Runnable{
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
         refreshButtonGrayness();
+
+        mapMusic = new Sound();
+        mapMusic.setFile("audio/background_music/Chau Sara - Mramor(for Map).wav");
+
+        mapMusic.currentVolume = -5;
+        mapMusic.fc.setValue(mapMusic.currentVolume);
     }
+
 
 
     private void addLockLabels() {
