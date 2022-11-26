@@ -1,6 +1,5 @@
 package src.transitionPanels;
 
-import src.GameManager;
 import src.buttons.MapLevelButton;
 import src.levelObjects.PlayerScoreBoard;
 import src.buttons.CloseButton;

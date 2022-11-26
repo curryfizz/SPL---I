@@ -1,4 +1,4 @@
-package src;
+package src.transitionPanels;
 
 import src.DatabaseConnection.oracleDatabase;
 import src.levels.*;
@@ -27,14 +27,14 @@ public class GameManager{
     public String testString;
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
-//        new GameManager();
-        oracleDatabase oracle = new oracleDatabase();
-        try {
-            test(oracle);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        new GameManager();
+//        oracleDatabase oracle = new oracleDatabase();
+//        try {
+//            test(oracle);
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
     public static void test(oracleDatabase oracleDatabase) throws SQLException {
@@ -189,7 +189,7 @@ public class GameManager{
         StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
-        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,2,messageFromMomT);
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,3,messageFromMomT);
         MapT mapT = new MapT(jFrame, loadingAnimationT);
 
 

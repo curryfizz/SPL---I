@@ -1,7 +1,5 @@
 package src.levels;
 
-import src.GameManager;
-
 import javax.swing.*;
 import java.io.IOException;
 
@@ -18,7 +16,7 @@ public class DormRoomSceneT extends ALevelPanel{
     }
 
     @Override
-    public  void generateScreenWithAllObjectsAndButtons() throws IOException {
+    public synchronized void generateScreenWithAllObjectsAndButtons() throws IOException {
         createButton("images/dormImages/01.png", getX(308), getY(428), getX(68), getY(85));
         createText("Cornflakes Box");
         createButton("images/dormImages/02.png", getX(1188), getY(493), getX(18), getY(37));

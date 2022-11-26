@@ -1,6 +1,5 @@
 package src.levels;
 
-import src.GameManager;
 import src.events.LabelListener;
 import src.levelObjects.Sound;
 import src.buttons.AudioChangeButton;
@@ -85,7 +84,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         return objectLabel;
 
     }
-    private void CreateAListWithAllItemNamesAsLabels() {
+    private synchronized void CreateAListWithAllItemNamesAsLabels() {
 
         for (String s : textList) {
             JLabel temp = new JLabel(s, SwingConstants.CENTER);
@@ -108,7 +107,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         BigItemListAtBottomOfScreen.setOpaque(true);
     }
 
-    public void MakeRandomItemListAtBottomOfScreen(){
+    public synchronized void MakeRandomItemListAtBottomOfScreen(){
         CreateAListWithAllItemNamesAsLabels();
         CreateTheBigItemListTextBoxAtTheBottomOfScreen();
         randomGenerator = new RandomGenerator(buttonList.size());

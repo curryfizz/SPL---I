@@ -1,6 +1,5 @@
 package src.transitionPanels;
 
-import src.GameManager;
 import src.levels.ALevelPanel;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
