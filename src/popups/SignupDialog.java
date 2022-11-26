@@ -44,14 +44,17 @@ public class SignupDialog extends JDialog {
         JTextArea userNameTextArea = new JTextArea();
         userNameTextArea.setFont(FontInfo.getResizedFont(30f));
         userNameTextArea.setBackground(Color.white);
-        userNameTextArea.setForeground(Color.decode("#14171C"));
+        userNameTextArea.setForeground(new Color(2, 2, 23, 122));
         userNameTextArea.setVisible(true);
         userNameTextArea.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "none");
         userNameTextArea.setText("Enter username here");
         userNameTextArea.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                if(userNameTextArea.getText().equals("") || userNameTextArea.getText().isBlank() || userNameTextArea.getText().isEmpty()) {
+                if(userNameTextArea.getText().equals("") || userNameTextArea.getText().isBlank() || userNameTextArea.getText().isEmpty()|| userNameTextArea.getText().equals("Enter username here")) {
+                    userNameTextArea.setForeground(new Color(2, 2, 23, 255));
+                    repaint();
+                    revalidate();
                     userNameTextArea.setText("");
                 }
             }
@@ -59,6 +62,9 @@ public class SignupDialog extends JDialog {
             @Override
             public void focusLost(FocusEvent e) {
                 if(userNameTextArea.getText().equals("") || userNameTextArea.getText().isBlank() || userNameTextArea.getText().isEmpty()) {
+                    userNameTextArea.setForeground(new Color(2, 2, 23, 122));
+                    repaint();
+                    revalidate();
                     userNameTextArea.setText("Enter username here");
                 }
             }
