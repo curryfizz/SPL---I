@@ -1,6 +1,5 @@
 package src.levels;
 
-import src.GameManager;
 import src.setup.DeviceInformation;
 
 import javax.swing.*;

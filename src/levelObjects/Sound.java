@@ -17,7 +17,7 @@ public class Sound {
     public Sound() {
 
         previousVolume = 0;
-        currentVolume = -17;
+        currentVolume = -14;
         mute = false;
 
 
@@ -32,6 +32,7 @@ public class Sound {
             clip.setFramePosition(0);
             fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 
+            fc.setValue(currentVolume);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

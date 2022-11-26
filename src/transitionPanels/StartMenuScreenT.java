@@ -2,6 +2,7 @@ package src.transitionPanels;
 
 import src.buttons.CloseButton;
 import src.buttons.StartGameButton;
+import src.levelObjects.Sound;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.transitionPanels.LoadingAnimationT;
@@ -14,6 +15,8 @@ import java.awt.event.MouseListener;
 public class StartMenuScreenT extends JPanel implements Runnable{
     JFrame jFrame;
     JLabel gameTitle;
+    Sound bgMusic;
+    Sound clickSound;
     public StartGameButton startGameButton;
     CloseButton closeButton;
     LoadingAnimationT loadingAnimationT;
@@ -25,6 +28,12 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         this.jFrame = jFrame;
         this.startGameButton = new StartGameButton(this);
         this.add(startGameButton);
+
+        bgMusic = new Sound();
+        bgMusic.setFile("audio/background_music/Ibrahim - Bullet Train Fantasy(for StartMenu).wav");
+        bgMusic.loop();
+        clickSound = new Sound();
+        clickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
     }
 
     public void PrepareForSceneTransition(LoadingAnimationT loadingAnimationT, JPanel nextScene) {
@@ -34,14 +43,14 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 
 
     public void buildScene(){
+
+
         createBackgroundPanel();
-//        addStartGameButton();
         addCustomWindowCloseButton(jFrame);
         createGameTitleLabel();
         this.add(gameTitle);
         doButtonThings();
 
-//        this.add(startGameButton);
     }
 
     private void doButtonThings() {
@@ -49,8 +58,13 @@ public class StartMenuScreenT extends JPanel implements Runnable{
             boolean isHovering = false;
             @Override
             public void mouseClicked(MouseEvent e) {
+                clickSound.play();
+
                 jFrame.remove(startGameButton.startMenu);
                 jFrame.add(loadingAnimationT);
+
+                bgMusic.stop();
+
                 loadingAnimationT.initializeTimer();
 
                 jFrame.revalidate();
@@ -67,9 +81,13 @@ public class StartMenuScreenT extends JPanel implements Runnable{
             public void mouseReleased(MouseEvent e) {
                 startGameButton.setBackground(null);
                 if(isHovering) {
+                    clickSound.play();
+
                     jFrame.remove(startGameButton.startMenu);
                     jFrame.add(loadingAnimationT);
                     loadingAnimationT.initializeTimer();
+
+                    bgMusic.stop();
 
                     jFrame.revalidate();
                     jFrame.repaint();

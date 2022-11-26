@@ -56,7 +56,7 @@ public class MapButtonEvents implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        mapT.mapMusic.stop();
 
         mapT.jFrame.remove(mapT);
         mapT.loadingAnimationT.changeNextScene(SceneT);

@@ -12,6 +12,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
+import java.util.Objects;
 
 public class ChangeVolumeDialog extends JDialog {
 
@@ -26,14 +27,14 @@ public class ChangeVolumeDialog extends JDialog {
         jSlider.setFocusable(false);
         jSlider.setBackground(null);
 
-        ImageIcon audioIcon = new ImageIcon(getClass().getClassLoader().getResource("images/icons/upAudio.png"));
+        ImageIcon audioIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/icons/upAudio.png")));
         Image image = audioIcon.getImage().getScaledInstance(30,32,Image.SCALE_SMOOTH);
         audioIcon = new ImageIcon(image);
 
         JLabel upAudio = new JLabel(audioIcon);
         upAudio.setSize(30,40);
 
-        audioIcon = new ImageIcon(getClass().getClassLoader().getResource("images/icons/noAudio.png"));
+        audioIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/icons/noAudio.png")));
         image = audioIcon.getImage().getScaledInstance(30,32,Image.SCALE_SMOOTH);
         audioIcon = new ImageIcon(image);
 
@@ -56,8 +57,8 @@ public class ChangeVolumeDialog extends JDialog {
         jSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                sound.currentVolume =jSlider.getValue();
-                if(sound.currentVolume==-40){
+                sound.currentVolume = jSlider.getValue();
+                if(sound.currentVolume == -40){
                     sound.currentVolume = -80;
                 }
                 sound.fc.setValue(sound.currentVolume);

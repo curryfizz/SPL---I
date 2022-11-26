@@ -1,7 +1,5 @@
 package src.levels;
 
-import src.GameManager;
-
 import javax.swing.*;
 import java.io.IOException;
 

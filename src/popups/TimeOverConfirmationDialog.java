@@ -1,11 +1,8 @@
 package src.popups;
 
 import src.levelObjects.Sound;
-import src.levels.CDS_LevelPanelT;
-import src.levels.ClassRoomSceneT;
-import src.levels.DormRoomSceneT;
+import src.levels.*;
 import src.setup.FontInfo;
-import src.levels.LibrarySceneT;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -15,14 +12,16 @@ import java.awt.event.MouseListener;
 
 public class TimeOverConfirmationDialog extends JDialog {
 
-    JLabel jLabel;
+    JFrame jFrame;
+    ALevelPanel backgoundPanel;
+    JLabel textLabel;
     JButton closeButton;
-
-    JButton closeButton2;
-
     public Sound objClickSound;
+    public Sound GameOverSound;
 
-    public TimeOverConfirmationDialog(JFrame jFrame, JPanel jPanel){
+    public TimeOverConfirmationDialog(JFrame jFrame, ALevelPanel jPanel){
+        this.jFrame = jFrame;
+        this.backgoundPanel = jPanel;
 
         setModal(true);
         setUndecorated(true);
@@ -30,18 +29,27 @@ public class TimeOverConfirmationDialog extends JDialog {
         getContentPane().setBackground(Color.decode("#14171C"));
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
-        jLabel = new JLabel();
-        jLabel.setPreferredSize(new Dimension(280,90));
-        jLabel.setLayout(new FlowLayout());
-        jLabel.setForeground(Color.white);
-        jLabel.setText(convertToMultiline("Oh no! Your Time is Up"));
+        textLabel = new JLabel();
+        textLabel.setPreferredSize(new Dimension(280,90));
+        textLabel.setLayout(new FlowLayout());
+        textLabel.setForeground(Color.white);
+        textLabel.setText(convertToMultiline("Oh no! Your Time is Up"));
 
         objClickSound = new Sound();
         objClickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
       //  objClickSound.play();
-        jLabel.setFont(FontInfo.getResizedFont(28f));
-        add(jLabel);
-        jLabel.setHorizontalAlignment(JLabel.CENTER);
+        backgoundPanel.backgroundMusic.stop();
+        System.gc();
+
+        GameOverSound = new Sound();
+        GameOverSound.setFile("audio/soundeffects/Fail Sound Effect.wav");
+
+        System.out.println("Omae wa mou shin desu");
+        GameOverSound.play();
+
+        textLabel.setFont(FontInfo.getResizedFont(28f));
+        add(textLabel);
+        textLabel.setHorizontalAlignment(JLabel.CENTER);
         setSize(300,150);
         setLocationRelativeTo(jFrame);
         setResizable(false);
@@ -58,24 +66,10 @@ public class TimeOverConfirmationDialog extends JDialog {
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
-                if(jPanel instanceof DormRoomSceneT){
-                    ((DormRoomSceneT)jPanel).timerLabel.endLevel();
-                    dispose();
-                }
-
-                if(jPanel instanceof LibrarySceneT){
-                    ((LibrarySceneT)jPanel).timerLabel.endLevel();
-                    dispose();
-                }
-                if(jPanel instanceof CDS_LevelPanelT){
-                    ((CDS_LevelPanelT)jPanel).timerLabel.endLevel();
-                    dispose();
-                }
-                if(jPanel instanceof ClassRoomSceneT){
-                    ((ClassRoomSceneT)jPanel).timerLabel.endLevel();
-                    dispose();
-                }
+                objClickSound.play();
+//                GameOverSound.stop();
+                backgoundPanel.timerLabel.endLevel();
+                dispose();
             }
 
             @Override
@@ -98,6 +92,7 @@ public class TimeOverConfirmationDialog extends JDialog {
 
             }
         });
+
         add(closeButton);
 
         setVisible(true);
