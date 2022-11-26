@@ -22,14 +22,14 @@ public class GameManager{
     public String testString;
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
-        new GameManager();
-//        oracleDatabase oracle = new oracleDatabase();
-//        try {
-//            test(oracle);
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+//        new GameManager();
+        oracleDatabase oracle = new oracleDatabase();
+        try {
+            test(oracle);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static void test(oracleDatabase oracleDatabase) throws SQLException {
@@ -206,14 +206,13 @@ public class GameManager{
 
     /*TODO:
     - add small icon in map to go to player stats;
-    //- try to make garbage collector work;
+    */
+    /*TODO:
     - why does score Animation keep disappearing so quickly;
     - why does the given score go up to 200+ when you play dorm scene 2 times;
-    //- make sure music audio start's at 50%
     - tie all the music and sound effects together, or make them seperate, people may find it too loud;
     - add sound effects for other button clicks
     //- add music for start menu and map
-    - make sure unlocking animation doesn't appear unless level is actually unlocked
     - make sure map level buttons don't work unless gameProgress is satisfactory;
     - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
     - change forest music for classroom
@@ -224,6 +223,6 @@ public class GameManager{
     - add arrow gif pointing at the next level in map?
     - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
     - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does.
-    - managed to
+    - managed to?????? ayesha bhule gese
     */
 }
