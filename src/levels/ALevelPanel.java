@@ -1,14 +1,13 @@
 package src.levels;
 
-import src.LabelListener;
-import src.Sound;
+import src.GameManager;
+import src.events.LabelListener;
+import src.levelObjects.Sound;
 import src.buttons.AudioChangeButton;
 import src.buttons.LevelCloseButton;
 import src.buttons.ObjectHidingButton;
-import src.events.SceneObjectEvents;
 import src.levelObjects.ScoreBoard;
 import src.levelObjects.TimerLabel;
-import src.popups.LevelFinishDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.setup.RandomGenerator;
@@ -35,7 +34,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public int timeSinceLastFind = 0;
     JLabel backgroundLabel;
     JLabel BigItemListAtBottomOfScreen;
-    LoadingAnimationT loadingAnimationT;
+    public LoadingAnimationT loadingAnimationT;
     MapT mapT;
     boolean levelFinished;
     public int imagesFound;
@@ -145,7 +144,6 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
     public void  createButton(String image,int posx, int posy, int sizex,int sizey) throws IOException {
         JLabel objectLabel = createObject(image);
-
         ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size());
         this.add(objectHidingButton);
         this.add(objectLabel);
@@ -159,7 +157,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
         timerLabel.second = 30;
-        timerLabel.minute = 0;
+        timerLabel.minute = 2;
         timerLabel.elapsedTime = 0;
         scoreBoard.score=0;
         scoreBoard.setText("0000");
@@ -222,13 +220,14 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         jFrame.remove(this);
 
         loadingAnimationT.changeNextScene(mapT);
+        loadingAnimationT.calledBy = getLevelNumber() - 2; //sending my serial so loading can remove the panel and call garbage
+        loadingAnimationT.iNeedYouToRemoveMe = true;
+
         mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
         mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
-        jFrame.revalidate();
-        jFrame.repaint();
     }
     public abstract String getBackgroundPath();
     public abstract String getBackgroundMusicPath();
@@ -308,18 +307,13 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         messNotification.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.white,3)));
         messNotification.setOpaque(true);
         this.addMouseListener(new MouseListener() {
-            int i = 0;
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Mouse Clicked" + Integer.toString(i));
-                i++;
                 PanelClick();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                System.out.println("Mouse pressed" + Integer.toString(i));
-                i++;
                 PanelClick();
             }
 
@@ -369,6 +363,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         BufferedImage bufferedImage = ImageIO.read(new File(bgfilename));
         Image image = bufferedImage.getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT);//        imageIcon = new ImageIcon(image);
         ImageIcon imageIcon = new ImageIcon(image);
+//        imageIcon.setImage(imageIcon.getImage().getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT));
         backgroundLabel = new JLabel();
         backgroundLabel.setBounds(0,0, maxBounds.width,maxBounds.height-textBox_height);
         backgroundLabel.setIcon(imageIcon);

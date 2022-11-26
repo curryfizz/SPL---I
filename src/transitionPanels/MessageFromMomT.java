@@ -1,10 +1,9 @@
 package src.transitionPanels;
 
-import src.Sound;
+import src.levelObjects.Sound;
 import src.buttons.CloseButton;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
-import src.transitionPanels.LoadingAnimationT;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +30,6 @@ public class MessageFromMomT extends JPanel implements Runnable {
 
     public  MessageFromMomT(JFrame jFrame){
         this.jFrame = jFrame;
-//        this.deviceInfo = deviceInfo;
-//        this.fontInfo = fontInfo;
         this.setLayout(null);
     }
     public void addCustomWindowCloseButton(){
@@ -47,7 +44,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         createBubble2();
 
         objClickSound = new Sound();
-        objClickSound.setFile("audio/soundeffects/objectFoundClick2.wav");
+        objClickSound.setFile("audio/soundeffects/podong click sound.wav");
 
         addCustomWindowCloseButton();
         addTapToContinue();
@@ -140,7 +137,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println(e.getX() + " " + e.getY());
+
                 taps++;
                 if(taps == 1 ){
                     Bubble1.setVisible(true);

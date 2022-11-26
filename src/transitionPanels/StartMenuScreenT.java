@@ -15,8 +15,6 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     JFrame jFrame;
     JLabel gameTitle;
     public StartGameButton startGameButton;
-//    DeviceInformation deviceInfo;
-//    FontInfo fontInfo;
     CloseButton closeButton;
     LoadingAnimationT loadingAnimationT;
     JPanel nextScene;

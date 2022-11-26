@@ -1,4 +1,4 @@
-package src;
+package src.popups;
 
 import src.setup.FontInfo;
 

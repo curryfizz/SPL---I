@@ -1,7 +1,6 @@
 package src.levelObjects;
 
-import src.ConfirmationWindowPopup;
-import src.Sound;
+import src.popups.ConfirmationWindowPopup;
 import src.levels.ALevelPanel;
 import src.popups.TimeOverConfirmationDialog;
 import src.setup.FontInfo;
@@ -146,7 +145,7 @@ public class TimerLabel extends JLabel implements Runnable{
 
         TimeOverConfirmationDialog timeOverConfirmationDialog = new TimeOverConfirmationDialog(jFrame, backGroundPanel);
       //  timeOverConfirmationDialog.objClickSound.play();
-        jFrame.add(timeOverConfirmationDialog);
+//        backGroundPanel.add(timeOverConfirmationDialog);
     }
 
     public void AnimateScore(Point point){

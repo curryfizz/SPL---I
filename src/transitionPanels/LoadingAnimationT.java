@@ -1,5 +1,6 @@
 package src.transitionPanels;
 
+import src.GameManager;
 import src.levels.ALevelPanel;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -12,11 +13,11 @@ import java.awt.event.ActionListener;
 import static java.lang.Math.ceil;
 
 public class LoadingAnimationT extends JPanel implements ActionListener,Runnable {
+    public boolean LevelOverProgressUpdated;
     JFrame jFrame;
-
     JPanel nextScene;
-//    DeviceInformation deviceInfo;
-//    FontInfo fontInfo;
+    public int calledBy;
+    public boolean iNeedYouToRemoveMe;
     Timer timer;
     JLabel loadingText;
     long animationStartTime;
@@ -37,6 +38,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
         this.animationDuration = animationDuration;
         this.nextScene = nextScene;
         this.increment = 500/(animationDuration*20);
+        this.LevelOverProgressUpdated = false;
 
 //        timer.start();
 //        animationStartTime = System.nanoTime();
@@ -55,6 +57,9 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     }
 
     public void initializeTimer(){
+        jFrame.revalidate();
+        jFrame.repaint();
+
         timer = new Timer(50,this);
         timer.start();
         timerStopped=false;
@@ -93,19 +98,23 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     public void actionPerformed(ActionEvent e) {
         animationRunTime = (System.currentTimeMillis()-animationStartTime)/1000;
         if(animationRunTime > animationDuration){
+            System.gc(); //calling garbage collector
+
             timerStopped=true;
             timer.stop();
-            try {
-                Thread.sleep((long)100);
-            } catch (InterruptedException ex) {
-                throw new RuntimeException(ex);
-            }
+
             jFrame.remove(this);
+            jFrame.add(nextScene);
 
             if(nextScene instanceof ALevelPanel){
                 ((ALevelPanel) nextScene).StartLevel();
             }
-            jFrame.add(nextScene);
+            else if((nextScene instanceof MapT) && LevelOverProgressUpdated){
+                ((MapT) nextScene).ShowUnlockAnimation();
+                System.out.println("loading did it's job");
+                LevelOverProgressUpdated = false;
+            }
+
             jFrame.revalidate();
             jFrame.repaint();
 //            LoadMenu(this.jFrame);

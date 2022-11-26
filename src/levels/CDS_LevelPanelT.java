@@ -1,27 +1,10 @@
 package src.levels;
 
-import src.LabelListener;
-import src.MusicPlayer;
-import src.buttons.CloseButton;
-import src.buttons.LevelCloseButton;
-import src.buttons.ObjectHidingButton;
-import src.events.SceneObjectEvents;
-import src.levelObjects.ScoreBoard;
-import src.levelObjects.TimerLabel;
-import src.popups.LevelFinishDialog;
+import src.GameManager;
 import src.setup.DeviceInformation;
-import src.setup.FontInfo;
-import src.setup.RandomGenerator;
-import src.transitionPanels.LoadingAnimationT;
-import src.transitionPanels.MapT;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 
 
 public  class CDS_LevelPanelT extends ALevelPanel {

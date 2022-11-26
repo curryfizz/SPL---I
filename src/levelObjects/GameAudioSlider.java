@@ -1,4 +1,4 @@
-package src;
+package src.levelObjects;
 
 import javax.swing.*;
 import javax.swing.plaf.SliderUI;
