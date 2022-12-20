@@ -206,10 +206,10 @@ public class GameManager{
 
     /*TODO:
     - add small icon in map to go to player stats;
+    - make it another panel
     */
     /*TODO:
     - why does score Animation keep disappearing so quickly;
-    - why does the given score go up to 200+ when you play dorm scene 2 times;
     - tie all the music and sound effects together, or make them seperate, people may find it too loud;
     - add sound effects for other button clicks
     //- add music for start menu and map

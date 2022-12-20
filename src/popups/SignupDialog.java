@@ -1,53 +1,69 @@
 package src.popups;
 
+import src.buttons.BasicBlueButton;
+import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.awt.image.FilteredImageSource;
+import java.awt.image.ImageProducer;
+import java.awt.image.RGBImageFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignupDialog extends JDialog {
 
     JLabel dialogBackgroundLabel;
-    JButton closeButton;
-    JButton closeButton2;
+    JTextArea userNameTextArea;
+
+    BasicBlueButton submitButton;
+
+    private void addSubmitButton(){
+        submitButton = new BasicBlueButton(400,60,"Submit: ");
+        add(submitButton);
+    }
 
     public SignupDialog(JFrame jFrame){
+        addDialogStyles(jFrame);
+        addDialogBackgroundLabel();
+        addFieldLabel("Username: ", 400,65);
+        addUserNameTextBox();
+        addUserNameTextBoxNullTransition();
+        addFieldLabel("Email: ", 400, 65);
+        addEmailTextBox();
+        addSubmitButton();
+        setVisible(true);
+
+    }
+
+    private void addDialogStyles(JFrame jFrame) {
         setModal(true);
         setUndecorated(true);
-
         getContentPane().setBackground(Color.decode("#14171C"));
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
         setSize(500,500);
         setLocationRelativeTo(jFrame);
         setResizable(false);
+    }
+
+    private void addDialogBackgroundLabel() {
         dialogBackgroundLabel = new JLabel();
         dialogBackgroundLabel.setPreferredSize(new Dimension(400,400));
         dialogBackgroundLabel.setLayout(new GridLayout(5,1));
         dialogBackgroundLabel.setHorizontalTextPosition(JLabel.LEFT);
         add(dialogBackgroundLabel);
+    }
 
-        JTextPane userNameTextPane = new JTextPane();
-        userNameTextPane.setFont(FontInfo.getResizedFont(40f));
-        userNameTextPane.setText("Username: ");
-        userNameTextPane.setBackground(Color.decode("#14171C"));
-        userNameTextPane.setForeground(Color.white);
-        userNameTextPane.setVisible(true);
-        dialogBackgroundLabel.add(userNameTextPane);
-
-
-        JTextArea userNameTextArea = new JTextArea();
-        userNameTextArea.setFont(FontInfo.getResizedFont(30f));
-        userNameTextArea.setBackground(Color.white);
-        userNameTextArea.setForeground(new Color(2, 2, 23, 122));
-        userNameTextArea.setVisible(true);
-        userNameTextArea.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "none");
-        userNameTextArea.setText("Enter username here");
+    private void addUserNameTextBoxNullTransition() {
         userNameTextArea.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -69,18 +85,21 @@ public class SignupDialog extends JDialog {
                 }
             }
         });
+    }
+
+    private void addUserNameTextBox() {
+        userNameTextArea = new JTextArea();
+        userNameTextArea.setFont(FontInfo.getResizedFont(30f));
+        userNameTextArea.setBackground(Color.white);
+        userNameTextArea.setForeground(new Color(2, 2, 23, 122));
+        userNameTextArea.setVisible(true);
+        userNameTextArea.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "none");
+        userNameTextArea.setText("Enter username here");
         dialogBackgroundLabel.add(userNameTextArea);
 
+    }
 
-        JTextPane emailTextPane = new JTextPane();
-        emailTextPane.setFont(FontInfo.getResizedFont(40f));
-        emailTextPane.setText("Email: ");
-        emailTextPane.setBackground(Color.decode("#14171C"));
-        emailTextPane.setForeground(Color.white);
-        emailTextPane.setVisible(true);
-        dialogBackgroundLabel.add(emailTextPane);
-
-
+    private void addEmailTextBox() {
         JTextArea emailTextArea = new JTextArea();
         emailTextArea.setFont(FontInfo.getResizedFont(30f));
         emailTextArea.setBackground(Color.white);
@@ -88,16 +107,25 @@ public class SignupDialog extends JDialog {
         emailTextArea.setVisible(true);
         emailTextArea.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "none");
         dialogBackgroundLabel.add(emailTextArea);
-
-
-
-
-        setVisible(true);
-
     }
 
-    public static String convertToMultiline(String orig)
-    {
-        return "<html>" + orig.replaceAll("\n", "<br>");
+    private void addFieldLabel(String text, int height, int width) {
+        SignupDialogLabels emailTextPane = new SignupDialogLabels(text,height,width);
+        dialogBackgroundLabel.add(emailTextPane);
     }
+
+    public boolean checkIfValid(String email){
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+
+        if(matcher.matches()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
 }

@@ -23,15 +23,12 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     JPanel nextScene;
 
     public StartMenuScreenT(JFrame jFrame){
-//        this.deviceInfo = deviceInformation;
-//        this.fontInfo = fontInfo;
+
         this.jFrame = jFrame;
         this.startGameButton = new StartGameButton(this);
         this.add(startGameButton);
 
         bgMusic = new Sound();
-//        bgMusic.setFile("audio/background_music/Ibrahim - Bullet Train Fantasy(for StartMenu).wav");
-//        bgMusic.loop();
         clickSound = new Sound();
         clickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
     }
