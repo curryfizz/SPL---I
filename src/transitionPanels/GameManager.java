@@ -1,6 +1,6 @@
 package src.transitionPanels;
 
-import src.DatabaseConnection.oracleDatabase;
+import src.DatabaseConnection.OracleDatabase;
 import src.popups.SignupDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -23,7 +23,7 @@ public class GameManager{
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
 //        new GameManager();
-        oracleDatabase oracle = new oracleDatabase();
+        OracleDatabase oracle = new OracleDatabase();
         try {
             test(oracle);
 
@@ -32,7 +32,7 @@ public class GameManager{
         }
     }
 
-    public static void test(oracleDatabase oracleDatabase) throws SQLException {
+    public static void test(OracleDatabase oracleDatabase) throws SQLException {
 
         try {
             System.setProperty("sun.java2d.uiScale", "1.0");

@@ -2,7 +2,7 @@ package src.DatabaseConnection;
 
 import java.sql.*;
 
-public class oracleDatabase {
+public class OracleDatabase {
 
     static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
     static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -12,7 +12,7 @@ public class oracleDatabase {
     Connection conn = null;
 
     PreparedStatement preparedStatement;
-    public oracleDatabase(){
+    public OracleDatabase(){
 
         Statement stmt = null;
         try {
