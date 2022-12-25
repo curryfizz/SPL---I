@@ -43,8 +43,8 @@ public abstract class AccountNotSuccessDialog extends JDialog {
     }
 
     protected abstract void addYesButtonMouseEvents();
-    protected void addNoButton(String text){
-        noButton = new BasicBlueButton(180, 40, text);
+    protected void addNoButton(){
+        noButton = new BasicBlueButton(180, 40, "Try Again!");
         noButton.setFont(FontInfo.getResizedFont(30f));
         buttonFieldLabel.add(noButton);
         addNoButtonMouseEvents();
@@ -89,6 +89,4 @@ public abstract class AccountNotSuccessDialog extends JDialog {
         });
     }
 
-    protected void addYesButton() {
-    }
 }
