@@ -41,13 +41,11 @@ public class OracleDatabase {
             System.out.println("Connecting to database");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
             System.out.println("Inserting user");
+            prepareStatementforRetrieval();
             if(retrieveUserInfo(email)==true){
                 return false;
             }
             prepareStatementforInsert();
-            if(retrieveUserInfo(email)==true){
-                return false;
-            }
             createUser(userName,email);
 
             preparedStatement.executeUpdate();
