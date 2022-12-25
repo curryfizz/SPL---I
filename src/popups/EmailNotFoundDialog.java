@@ -10,7 +10,7 @@ public class EmailNotFoundDialog extends AccountNotSuccessDialog{
         addUnsuccessfulReasonLabel("Email not Found!");
         addButtonFieldLabel();
         addYesButton("Create Account");
-        addNoButton("Try Again!");
+        addNoButton();
         setVisible(true);
     }
 

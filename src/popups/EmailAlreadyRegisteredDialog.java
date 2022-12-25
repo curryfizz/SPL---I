@@ -1,6 +1,5 @@
 package src.popups;
 
-import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -10,7 +9,7 @@ public class EmailAlreadyRegisteredDialog extends AccountNotSuccessDialog {
         addUnsuccessfulReasonLabel("Email already registered!");
         addButtonFieldLabel();
         addYesButton("Login");
-        addNoButton("Try Again!");
+        addNoButton();
         setVisible(true);
 
     }
