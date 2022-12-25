@@ -8,10 +8,10 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class SignupTextAreas extends JTextArea {
+public class AccountDialogTextArea extends JTextArea {
 
 
-    public SignupTextAreas(int width, int height){
+    public AccountDialogTextArea(int width, int height){
         addStyles(width,height);
     }
     
@@ -21,8 +21,9 @@ public class SignupTextAreas extends JTextArea {
         setBorder(new LineBorder(Color.white, 3));
         setPreferredSize(new Dimension(width, height));
         setForeground(new Color(2, 2, 23, 122));
-        setVisible(true);
         getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "none");
+        getInputMap().put(KeyStroke.getKeyStroke("TAB"), "none");
+        setVisible(true);
     }
 
     final Color focusColor = new Color(2, 2, 23, 255);
