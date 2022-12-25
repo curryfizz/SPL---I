@@ -4,12 +4,10 @@ import src.setup.FontInfo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class SignupDialogLabel extends JLabel{
+public class AccountDialogLabel extends JLabel{
 
-    public SignupDialogLabel(String text, int width, int height){
+    public AccountDialogLabel(String text, int width, int height){
         addLabelStyles(text, width, height);
     }
 
@@ -23,9 +21,9 @@ public class SignupDialogLabel extends JLabel{
         setVisible(true);
     }
 
-    public void updateText(int seconds){
+    public void updateText(int seconds, String text){
         setHorizontalAlignment(CENTER);
-        setText("Account created successfully! Exiting to main menu in (" + seconds + ")");
+        setText(text + "! Exiting to main menu in (" + seconds + ")");
     }
 
 }
