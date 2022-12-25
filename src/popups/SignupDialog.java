@@ -7,10 +7,8 @@ import src.setup.FontInfo;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,13 +17,17 @@ public class SignupDialog extends JDialog {
     JLabel userNameFieldLabel;
     JLabel emailFieldLabel;
     JLabel submitFieldLabel;
-    JTextArea userNameTextArea;
-    JTextArea emailTextArea;
+    SignupTextAreas userNameTextArea;
+    SignupTextAreas emailTextArea;
     SignupDialogLabel emailVerificationLabel;
+
+    SignupDialogLabel accountCreatedExit;
     BasicBlueButton submitButton;
+
+    OracleDatabase database;
     private void addSubmitButton(){
-        submitButton = new BasicBlueButton(200,30,"Submit: ");
-        submitButton.setFont(FontInfo.getResizedFont(28f));
+        submitButton = new BasicBlueButton(200,40,"Submit");
+        submitButton.setFont(FontInfo.getResizedFont(30f));
         submitFieldLabel.add(submitButton);
     }
 
@@ -49,14 +51,23 @@ public class SignupDialog extends JDialog {
     }
     private void addSubmitFieldLabel(){
         submitFieldLabel = new JLabel();
-        submitFieldLabel.setPreferredSize(new Dimension(400,90));
-        submitFieldLabel.setLayout(new FlowLayout(FlowLayout.CENTER,10,3));
+        submitFieldLabel.setPreferredSize(new Dimension(400,80));
+        submitFieldLabel.setLayout(new FlowLayout(FlowLayout.CENTER,10,6));
         submitFieldLabel.setHorizontalTextPosition(JLabel.LEFT);
         add(submitFieldLabel);
+        addAccountCreatedExitLabel();
         addSubmitButton();
         addSubmitEmailVerification();
     }
-    public SignupDialog(JFrame jFrame){
+
+    private void addAccountCreatedExitLabel(){
+        accountCreatedExit = new SignupDialogLabel("", 400, 25);
+        accountCreatedExit.setForeground(Color.pink);
+        accountCreatedExit.setFont(FontInfo.getResizedFont(22f));
+        submitFieldLabel.add(accountCreatedExit);
+    }
+    public SignupDialog(JFrame jFrame, OracleDatabase oracleDatabase){
+        this.database = oracleDatabase;
         addDialogStyles(jFrame);
         addUserFieldLabel();
         addEmailFieldLabel();
@@ -69,9 +80,9 @@ public class SignupDialog extends JDialog {
         setModal(true);
         setUndecorated(true);
         getContentPane().setBackground(Color.decode("#14171C"));
-        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 2));
+        setLayout(new FlowLayout(FlowLayout.CENTER, 12, 12));
         getRootPane().setBorder(new LineBorder(Color.white,2));
-        setSize(500,250);
+        setSize(500,330);
         setLocationRelativeTo(jFrame);
         setResizable(false);
     }
@@ -85,56 +96,18 @@ public class SignupDialog extends JDialog {
         add(userNameFieldLabel);
         userNameFieldLabel.add(createLabel("Username: ", 400, 35));
         addUserNameTextBox();
-        addUserNameTextBoxNullTransition();
-    }
-
-    private void addUserNameTextBoxNullTransition() {
-        userNameTextArea.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                if(userNameTextArea.getText().equals("") || userNameTextArea.getText().isBlank() || userNameTextArea.getText().isEmpty()|| userNameTextArea.getText().equals("Enter username here")) {
-                    userNameTextArea.setForeground(new Color(2, 2, 23, 255));
-                    repaint();
-                    revalidate();
-                    userNameTextArea.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(userNameTextArea.getText().equals("") || userNameTextArea.getText().isBlank() || userNameTextArea.getText().isEmpty()) {
-                    userNameTextArea.setForeground(new Color(2, 2, 23, 122));
-                    repaint();
-                    revalidate();
-                    userNameTextArea.setText("Enter username here");
-                }
-            }
-        });
     }
 
     private void addUserNameTextBox() {
-        userNameTextArea = new JTextArea();
-        userNameTextArea.setFont(FontInfo.getResizedFont(24f));
-        userNameTextArea.setBackground(Color.white);
-        userNameTextArea.setBorder(new LineBorder(Color.white, 3));
-        userNameTextArea.setPreferredSize(new Dimension(400, 30));
-        userNameTextArea.setForeground(new Color(2, 2, 23, 122));
-        userNameTextArea.setVisible(true);
-        userNameTextArea.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "none");
-        userNameTextArea.setText("Enter username here");
+        userNameTextArea = new SignupTextAreas(400,30);
+        userNameTextArea.addFocusEvent("Enter username here");
         userNameFieldLabel.add(userNameTextArea);
 
     }
 
     private void addEmailTextBox() {
-        emailTextArea = new JTextArea();
-        emailTextArea.setFont(FontInfo.getResizedFont(24f));
-        emailTextArea.setBackground(Color.white);
-        emailTextArea.setBorder(new LineBorder(Color.white, 3));
-        emailTextArea.setPreferredSize(new Dimension(400, 30));
-        emailTextArea.setForeground(Color.decode("#14171C"));
-        emailTextArea.setVisible(true);
-        emailTextArea.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "none");
+        emailTextArea = new SignupTextAreas(400,30);
+        emailTextArea.addFocusEvent("Enter email here");
         emailFieldLabel.add(emailTextArea);
     }
 
@@ -144,39 +117,88 @@ public class SignupDialog extends JDialog {
         return signupDialogLabel;
     }
 
-    private void insertUserIntoDatabase(OracleDatabase database){
+
+    private void showEmailNotInCurrentFormatLabel(){
+        emailVerificationLabel.setText("*Enter email in correct format!");
+        emailVerificationLabel.setVisible(true);
+        repaint();
 
     }
+
+    private void disableEverything(){
+        userNameTextArea.setFocusable(false);
+        userNameTextArea.setEnabled(false);
+        emailTextArea.setFocusable(false);
+        emailTextArea.setEnabled(false);
+        submitButton.setEnabled(false);
+        submitButton.setFocusable(false);
+        repaint();
+    }
+
+    private void enableEverything(){
+        userNameTextArea.setFocusable(true);
+        userNameTextArea.setEnabled(true);
+        emailTextArea.setFocusable(true);
+        emailTextArea.setEnabled(true);
+        submitButton.setEnabled(true);
+        submitButton.setFocusable(true);
+        repaint();
+    }
+
+    private void showEmailAlreadyExistsLabel(){
+        emailVerificationLabel.setText("*Email already exists, try again or enter new email!");
+        emailVerificationLabel.setVisible(true);
+        repaint();
+    }
+
+
     private void addSubmitEmailVerification(){
         submitButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                userNameTextArea.setFocusable(false);
-                userNameTextArea.setEnabled(false);
-                emailTextArea.setFocusable(false);
-                emailTextArea.setEnabled(false);
-                submitButton.setEnabled(false);
-                submitButton.setFocusable(false);
-                repaint();
+
                 try {
+                    disableEverything();
                     Thread.sleep(500);
+                        System.out.println(userNameTextArea.getText());
+                        System.out.println(emailTextArea.getText());
+                    if(isEmailValid(emailTextArea.getText())==false){
+                        System.out.println(isEmailValid(emailTextArea.getText()));
+                        showEmailNotInCurrentFormatLabel();
+                        enableEverything();
+                    }else if(database.insertUser(userNameTextArea.getText(), emailTextArea.getText())==false){
+                        showEmailAlreadyExistsLabel();
+                        enableEverything();
+                    }else{
+                        accountCreatedExitLabelCountDown();
+                    }
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
+                }catch (SQLException sqlException){
+                    sqlException.printStackTrace();
                 }
-                if(isEmailValid(emailTextArea.getText())==false){
-                    System.out.println(isEmailValid(emailTextArea.getText()));
-                    emailVerificationLabel.setVisible(true);
-                    emailVerificationLabel.setText("*Enter email in correct format!");
-                    emailVerificationLabel.setVisible(true);
-                }
-                repaint();
-                userNameTextArea.setFocusable(true);
-                userNameTextArea.setEnabled(true);
-                emailTextArea.setFocusable(true);
-                emailTextArea.setEnabled(true);
-                submitButton.setEnabled(true);
-                submitButton.setFocusable(true);
-                repaint();
+
+
+            }
+
+            private void accountCreatedExitLabelCountDown() {
+                Timer timer = new Timer(0, new ActionListener() {
+                    int seconds = 10;
+                    boolean timeOver = false;
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        accountCreatedExit.updateText(seconds);
+                        if(seconds==-1){
+                            dispose();
+                            return;
+                        }
+                        seconds--;
+
+                    }
+                });
+
+                timer.setDelay(1000);
+                timer.start();
             }
 
             @Override
@@ -200,6 +222,8 @@ public class SignupDialog extends JDialog {
             }
         });
     }
+
+
     public boolean isEmailValid(String email){
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
