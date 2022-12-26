@@ -2,17 +2,6 @@
 
 ## PROJECT TITLE: LOST TREASURE
 
-## TECHNOLOGIES AND PLATFORMS:
-```
-Platform — Desktop Application
-Language — JAVA
-Database — Oracle
-UI Toolkit — JAVA swing
-GitHub —Version Control
-IDE —IntelliJ
-```
-
-
 ## Current Phase
 ```
 DONE
@@ -31,5 +20,25 @@ DONE
  ```
  huygygukjhiuh
  ```
+ 
+
+## TECHNOLOGIES AND PLATFORMS:
+```
+*Platform 
+   Desktop Application
+*Language 
+   JAVA
+*Database 
+   Oracle
+*UI Toolkit 
+   JAVA swing
+*GitHub 
+   Version Control
+*IDE 
+   IntelliJ
+```
+
+
+
  
 A hidden object game based on a journey to find a special object.
