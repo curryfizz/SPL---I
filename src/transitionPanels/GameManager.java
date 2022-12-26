@@ -1,15 +1,10 @@
-package src;
+package src.transitionPanels;
 
-import src.DatabaseConnection.oracleDatabase;
-import src.levels.*;
+import src.DatabaseConnection.OracleDatabase;
 import src.popups.SignupDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.DatabaseConnection.PlayerInfo;
-import src.transitionPanels.LoadingAnimationT;
-import src.transitionPanels.MapT;
-import src.transitionPanels.MessageFromMomT;
-import src.transitionPanels.StartMenuScreenT;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -28,7 +23,7 @@ public class GameManager{
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
 //        new GameManager();
-        oracleDatabase oracle = new oracleDatabase();
+        OracleDatabase oracle = new OracleDatabase();
         try {
             test(oracle);
 
@@ -37,7 +32,7 @@ public class GameManager{
         }
     }
 
-    public static void test(oracleDatabase oracleDatabase) throws SQLException {
+    public static void test(OracleDatabase oracleDatabase) throws SQLException {
 
         try {
             System.setProperty("sun.java2d.uiScale", "1.0");
@@ -189,7 +184,7 @@ public class GameManager{
         StartMenuScreenT startMenu = new StartMenuScreenT(jFrame);
 
         MessageFromMomT messageFromMomT = new MessageFromMomT(jFrame);
-        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,2,messageFromMomT);
+        LoadingAnimationT loadingAnimationT = new LoadingAnimationT(jFrame,3,messageFromMomT);
         MapT mapT = new MapT(jFrame, loadingAnimationT);
 
 
@@ -211,14 +206,13 @@ public class GameManager{
 
     /*TODO:
     - add small icon in map to go to player stats;
-    - try to make garbage collector work;
+    - make it another panel
+    */
+    /*TODO:
     - why does score Animation keep disappearing so quickly;
-    - why does the given score go up to 200+ when you play dorm scene 2 times;
-    - make sure music audio start's at 50%
     - tie all the music and sound effects together, or make them seperate, people may find it too loud;
     - add sound effects for other button clicks
-    - add music for start menu and map
-    - make sure unlocking animation doesn't appear unless level is actually unlocked
+    //- add music for start menu and map
     - make sure map level buttons don't work unless gameProgress is satisfactory;
     - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
     - change forest music for classroom
@@ -227,6 +221,8 @@ public class GameManager{
     - add background image for timer label and score label;
     - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
     - add arrow gif pointing at the next level in map?
-
+    - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
+    - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does.
+    - managed to?????? ayesha bhule gese
     */
 }

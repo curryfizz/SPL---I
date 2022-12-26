@@ -1,6 +1,5 @@
 package src.levels;
 
-import src.GameManager;
 import src.setup.DeviceInformation;
 
 import javax.swing.*;
@@ -30,7 +29,7 @@ public class LibrarySceneT extends ALevelPanel {
     }
 
     @Override
-    public  void generateScreenWithAllObjectsAndButtons() throws IOException {
+    public synchronized void generateScreenWithAllObjectsAndButtons() throws IOException {
         createButton("images/libraryImages/levelTwoWithOutlines/item 0.PNG", DeviceInformation.screenWidth *308/1536, DeviceInformation.screenHeight *741/864,
                 DeviceInformation.screenWidth *45/1536, DeviceInformation.screenHeight *10/864);
         createText("<html>Black and white <br/> Photo </html>");

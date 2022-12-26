@@ -1,6 +1,5 @@
 package src.levels;
 
-import src.GameManager;
 import src.setup.DeviceInformation;
 
 import javax.swing.*;
@@ -38,7 +37,7 @@ public  class CDS_LevelPanelT extends ALevelPanel {
     }
 
     @Override
-    public void generateScreenWithAllObjectsAndButtons() throws IOException {
+    public synchronized void generateScreenWithAllObjectsAndButtons() throws IOException {
         createButton("images/Classroom images/classroom objects/item 0.PNG", DeviceInformation.screenWidth *0/1920, DeviceInformation.screenHeight *435/1080,
                 DeviceInformation.screenWidth *25/1920, DeviceInformation.screenHeight *50/1080);
         createText("<html>Brown Coffee<br/> cup </html>");

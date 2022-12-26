@@ -2,7 +2,7 @@ package src.DatabaseConnection;
 
 import java.sql.*;
 
-public class oracleDatabase {
+public class OracleDatabase {
 
     static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
     static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -12,7 +12,7 @@ public class oracleDatabase {
     Connection conn = null;
 
     PreparedStatement preparedStatement;
-    public oracleDatabase(){
+    public OracleDatabase(){
 
         Statement stmt = null;
         try {
@@ -41,13 +41,11 @@ public class oracleDatabase {
             System.out.println("Connecting to database");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
             System.out.println("Inserting user");
+            prepareStatementforRetrieval();
             if(retrieveUserInfo(email)==true){
                 return false;
             }
             prepareStatementforInsert();
-            if(retrieveUserInfo(email)==true){
-                return false;
-            }
             createUser(userName,email);
 
             preparedStatement.executeUpdate();

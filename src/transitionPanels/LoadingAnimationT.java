@@ -1,6 +1,5 @@
 package src.transitionPanels;
 
-import src.GameManager;
 import src.levels.ALevelPanel;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -113,6 +112,12 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
                 ((MapT) nextScene).ShowUnlockAnimation();
                 System.out.println("loading did it's job");
                 LevelOverProgressUpdated = false;
+            }
+
+            if(nextScene instanceof MapT){
+
+//                ((MapT) nextScene).mapMusic.play();
+//                ((MapT) nextScene).mapMusic.loop();
             }
 
             jFrame.revalidate();

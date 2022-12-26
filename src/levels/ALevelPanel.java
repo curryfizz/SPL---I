@@ -1,6 +1,5 @@
 package src.levels;
 
-import src.GameManager;
 import src.events.LabelListener;
 import src.levelObjects.Sound;
 import src.buttons.AudioChangeButton;
@@ -85,7 +84,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         return objectLabel;
 
     }
-    private void CreateAListWithAllItemNamesAsLabels() {
+    private synchronized void CreateAListWithAllItemNamesAsLabels() {
 
         for (String s : textList) {
             JLabel temp = new JLabel(s, SwingConstants.CENTER);
@@ -108,7 +107,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         BigItemListAtBottomOfScreen.setOpaque(true);
     }
 
-    public void MakeRandomItemListAtBottomOfScreen(){
+    public synchronized void MakeRandomItemListAtBottomOfScreen(){
         CreateAListWithAllItemNamesAsLabels();
         CreateTheBigItemListTextBoxAtTheBottomOfScreen();
         randomGenerator = new RandomGenerator(buttonList.size());
@@ -157,7 +156,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
         timerLabel.second = 30;
-        timerLabel.minute = 2;
+        timerLabel.minute = 0;
         timerLabel.elapsedTime = 0;
         scoreBoard.score=0;
         scoreBoard.setText("0000");
@@ -212,7 +211,9 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         remove(BigItemListAtBottomOfScreen);
 
         timerLabel.st_alpha=255;
-        backgroundMusic.stop();
+        if(backgroundMusic != null){
+            backgroundMusic.stop();
+        }
 //        HintAnimationGif.setVisible();
         revalidate();
         repaint();
@@ -288,7 +289,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         ShowGottenScore.setBackground(null);
         ShowGottenScore.setFont(FontInfo.getResizedFont(32f));
 //        ShowGottenScore.setForeground(new Color(30, 120, 20));
-        ShowGottenScore.setForeground(new Color(255,0,0));
+//        ShowGottenScore.setForeground(new Color(255,0,0));
         ShowGottenScore.setVisible(false);
         ShowGottenScore.setOpaque(false);
         this.add(ShowGottenScore);
@@ -341,6 +342,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
             scoreBoard.setVisible(true);
             revalidate();
             backgroundMusic.play();
+            backgroundMusic.loop();
             repaint();
             enableObjectButtons();
             messNotification.setVisible(false);

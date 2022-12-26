@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 public class MapButtonEvents implements MouseListener {
     MapT mapT;
     int serial;
-    ALevelPanel SceneT;
+//    ALevelPanel SceneT;
     JLabel SidePanelText;
     JLabel DefaultText;
     JLabel padLock;
@@ -23,7 +23,7 @@ public class MapButtonEvents implements MouseListener {
         this.serial = priority;
         this.motherButton = motherButton;
         this.mapT = mapT;
-        this.SceneT = getPanel(serial);
+
         this.SidePanelText = mapT.SidePanelTextList.get(serial+1);
         this.CutOut = mapT.CutOutList.get(serial);
         this.DefaultText = mapT.SidePanelTextList.get(0);
@@ -56,7 +56,8 @@ public class MapButtonEvents implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        ALevelPanel SceneT = getPanel(serial);
+//        mapT.mapMusic.stop();
 
         mapT.jFrame.remove(mapT);
         mapT.loadingAnimationT.changeNextScene(SceneT);

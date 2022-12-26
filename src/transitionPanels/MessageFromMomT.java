@@ -149,7 +149,6 @@ public class MessageFromMomT extends JPanel implements Runnable {
                 }else if(taps == 2){
                     Bubble1.setVisible(false);
                     Bubble2.setVisible(true);
-
                     objClickSound.play();
                     Text2.setVisible(true);
                     repaint();

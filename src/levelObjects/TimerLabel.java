@@ -99,10 +99,13 @@ public class TimerLabel extends JLabel implements Runnable{
         if (second <=0)
         {
             if(minute <=0 ){
-                backGroundPanel.backgroundMusic.stop();
-                sound = new Sound();
-                sound.setSoundEffectFile("fail");//fail hobe
-                sound.play();
+                if(backGroundPanel.backgroundMusic != null){
+                    backGroundPanel.backgroundMusic.stop();
+                }
+//                sound = new Sound();
+//                sound.setSoundEffectFile("fail");//fail hobe
+//                sound.play();
+
                 timeOver();
 
                 return;
