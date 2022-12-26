@@ -12,17 +12,18 @@ DONE
 ```
 
 ## Assigned works  
- ## Abonty
+ ## Ayeasha Afroza Mohsin 
+ ID-200042106
  ```
- Illustrator and Character Animator
+ kjbyugyv
  ```
- ## Sabil
+ ## Lomatul Mahzabin
  ```
- SFML & game development basics
+ kjbhuyvvbnj
  ```
- ## Abir
+ ## Nawseen Mehereen
  ```
- Game design and project planning
+ huygygukjhiuh
  ```
  
 A hidden object game based on a journey to find a special object.
