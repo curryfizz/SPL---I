@@ -6,7 +6,6 @@ import src.popups.LevelFinishDialog;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class ObjectHidingButton extends JButton {
@@ -105,7 +104,8 @@ public class ObjectHidingButton extends JButton {
                         if(PlayerInfo.gameProgress < levelPanel.getLevelNumber()){ // first time
                             PlayerInfo.gameProgress = levelPanel.getLevelNumber();
                             MapT.gameProgress = levelPanel.getLevelNumber();
-                            levelPanel.loadingAnimationT.LevelOverProgressUpdated = true;
+                            levelPanel.loadingAnimationT.LevelOver_ProgressUpdated = true;
+                            levelPanel.loadingAnimationT.level_number = levelPanel.getLevelNumber();
                         }
                         levelPanel.revalidate();
                         levelPanel.repaint();

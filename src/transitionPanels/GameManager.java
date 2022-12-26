@@ -22,14 +22,14 @@ public class GameManager{
     public String testString;
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
-//        new GameManager();
-        OracleDatabase oracle = new OracleDatabase();
-        try {
-            test(oracle);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        new GameManager();
+//        OracleDatabase oracle = new OracleDatabase();
+//        try {
+//            test(oracle);
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
     }
 
     public static void test(OracleDatabase oracleDatabase) throws SQLException {
@@ -60,7 +60,7 @@ public class GameManager{
             signup.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    SignupDialog signupDialog = new SignupDialog(jFrame);
+                    SignupDialog signupDialog = new SignupDialog(jFrame,oracleDatabase);
                     if(signup.isEnabled()) {
                         jTextField2.setEnabled(false);
                         jTextField.setEnabled(false);

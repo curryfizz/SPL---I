@@ -5,6 +5,7 @@ import src.levelObjects.PlayerScoreBoard;
 import src.buttons.CloseButton;
 import src.levelObjects.Sound;
 import src.levels.ALevelPanel;
+import src.popups.LevelUnlockPopUp;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.DatabaseConnection.PlayerInfo;
@@ -75,13 +76,14 @@ public class MapT extends JPanel implements Runnable{
 
     }
 
-    public void ShowUnlockAnimation(){
+    public void ShowUnlockAnimation(int level_number){
         HugeUnLock.setVisible(true);
         timer = new Timer(2800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 HugeUnLock.setVisible(false);
                 stopTimer();
+                LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);
             }
         });
 

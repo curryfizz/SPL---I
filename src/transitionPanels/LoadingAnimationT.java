@@ -12,7 +12,8 @@ import java.awt.event.ActionListener;
 import static java.lang.Math.ceil;
 
 public class LoadingAnimationT extends JPanel implements ActionListener,Runnable {
-    public boolean LevelOverProgressUpdated;
+    public boolean LevelOver_ProgressUpdated;
+    public int level_number = -1;
     JFrame jFrame;
     JPanel nextScene;
     public int calledBy;
@@ -37,7 +38,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
         this.animationDuration = animationDuration;
         this.nextScene = nextScene;
         this.increment = 500/(animationDuration*20);
-        this.LevelOverProgressUpdated = false;
+        this.LevelOver_ProgressUpdated = false;
 
 //        timer.start();
 //        animationStartTime = System.nanoTime();
@@ -108,10 +109,12 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
             if(nextScene instanceof ALevelPanel){
                 ((ALevelPanel) nextScene).StartLevel();
             }
-            else if((nextScene instanceof MapT) && LevelOverProgressUpdated){
-                ((MapT) nextScene).ShowUnlockAnimation();
-                System.out.println("loading did it's job");
-                LevelOverProgressUpdated = false;
+            else if((nextScene instanceof MapT) && LevelOver_ProgressUpdated){
+
+                ((MapT) nextScene).ShowUnlockAnimation(level_number);
+
+                LevelOver_ProgressUpdated = false;
+                level_number = -1;
             }
 
             if(nextScene instanceof MapT){
