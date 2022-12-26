@@ -44,19 +44,22 @@ While moving into dorms for the first time, freshmen are very emotional and brin
  
  
  
- ##CORE FEATURE
+ ## CORE FEATURE
  ```
- ###START SCREEN
+ ### START SCREEN
  Login/Registration
  New Game/Resume 
  Settings
  ```
- ###MAIN MAP
+ ```
+ ### MAIN MAP
  With one unlocked level and Locked levels with a route to tour key areas in IUT
  ```
- ###5 LEVELS
+ ```
+ ### 5 LEVELS
  Each level is a scene with 7/8 hidden items in them
  ```
- ###BASIC MECHANISM 
+ ```
+ ### BASIC MECHANISM 
  If you click on the hidden object it will be regarded as “FOUND” and if you find all the items in the scenery you will pass that level and can play the next.
  ```
