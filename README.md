@@ -33,7 +33,7 @@ DONE
  
  ## CORE FEATURE
  ```
-  1.START SCREEN
+ 1. START SCREEN
  Login/Registration
  New Game/Resume 
  Settings
@@ -47,7 +47,7 @@ DONE
  Each level is a scene with 7/8 hidden items in them
  ```
  ```
- 5. BASIC MECHANISM 
+ 4. BASIC MECHANISM 
  If you click on the hidden object it will be regarded as “FOUND” and if you find all the items in the scenery you will pass that level and can play the next.
  ```
 
@@ -61,4 +61,5 @@ While moving into dorms for the first time, freshmen are very emotional and brin
 3. Library:  The scene changes to the Library which is the 3rd Level. The players can complete the level 
 
 4. Dorm Room (Second Play- through) You fail to find your surprise gift and return to your room in despair. You want to wash up so you open your wardrobe to find some things.
+ 
  
