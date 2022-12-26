@@ -23,10 +23,8 @@ DONE
  
 
 ## TECHNOLOGIES AND PLATFORMS:
-* Platform 
-   Desktop Application
-* Language 
-   JAVA
+* Platform -Desktop Application
+* Language -JAVA
 * Database 
    Oracle
 * UI Toolkit 
