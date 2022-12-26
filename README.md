@@ -8,7 +8,7 @@ DONE
 ```
 
 ## Assigned works  
- ## Ayeasha Afroza Mohsin  ID-200042106
+ ## Ayesha Afroza Mohsin  ID-200042106
  ```
  kjbyugyv
  ```
@@ -16,7 +16,7 @@ DONE
  ```
  kjbhuyvvbnj
  ```
- ## Nawseen Mehereen ID-200042134
+ ## Nawsheen Mehereen ID-200042134
  ```
  huygygukjhiuh
  ```
