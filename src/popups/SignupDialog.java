@@ -77,12 +77,12 @@ public class SignupDialog extends AccountDialog {
         repaint();
     }
 
-
     protected void enableUserFields(){
         userNameTextArea.setEnabled(true);
         userNameTextArea.setFocusable(true);
         repaint();
     }
+
     private void disableSubmitButton(){
         submitButton.setEnabled(false);
         submitButton.setFocusable(false);
