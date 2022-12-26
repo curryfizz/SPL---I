@@ -63,3 +63,5 @@ While moving into dorms for the first time, freshmen are very emotional and brin
 4. Dorm Room (Second Play- through) You fail to find your surprise gift and return to your room in despair. You want to wash up so you open your wardrobe to find some things.
  
  
+ ## HOW TO USE THE SOFTWARE
+
