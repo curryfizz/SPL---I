@@ -29,7 +29,27 @@ DONE
 * UI Toolkit -JAVA swing
 * GitHub     -Version Control
 * IDE        - IntelliJ
-
+ 
+ 
+ ## CORE FEATURE
+ ```
+  1.START SCREEN
+ Login/Registration
+ New Game/Resume 
+ Settings
+ ```
+ ```
+ 2. MAIN MAP
+ With one unlocked level and Locked levels with a route to tour key areas in IUT
+ ```
+ ```
+ 3. 5 LEVELS
+ Each level is a scene with 7/8 hidden items in them
+ ```
+ ```
+ 5. BASIC MECHANISM 
+ If you click on the hidden object it will be regarded as “FOUND” and if you find all the items in the scenery you will pass that level and can play the next.
+ ```
 
 ## STORYLINE
 While moving into dorms for the first time, freshmen are very emotional and bring a lot of luggage for their first stay. A new game commences with you (the player, a freshman) looking at a text message in your phone from your mother. In the message, your mother wishes you good luck for your classes. She also mentions that she packed a special surprise for you in your luggage. The scene changes to a messy IUT dorm room. The gameplay starts from here and is split into 5 levels. Each level is played in a different scene. At the beginning and end of every level, a narration text box appears explaining the situation.
@@ -42,24 +62,3 @@ While moving into dorms for the first time, freshmen are very emotional and brin
 
 4. Dorm Room (Second Play- through) You fail to find your surprise gift and return to your room in despair. You want to wash up so you open your wardrobe to find some things.
  
- 
- 
- ## CORE FEATURE
- ```
- ### START SCREEN
- Login/Registration
- New Game/Resume 
- Settings
- ```
- ```
- ### MAIN MAP
- With one unlocked level and Locked levels with a route to tour key areas in IUT
- ```
- ```
- ### 5 LEVELS
- Each level is a scene with 7/8 hidden items in them
- ```
- ```
- ### BASIC MECHANISM 
- If you click on the hidden object it will be regarded as “FOUND” and if you find all the items in the scenery you will pass that level and can play the next.
- ```
