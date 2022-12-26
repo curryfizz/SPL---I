@@ -5,6 +5,7 @@ import src.levelObjects.PlayerScoreBoard;
 import src.buttons.CloseButton;
 import src.levelObjects.Sound;
 import src.levels.ALevelPanel;
+import src.levels.ClassRoomSceneT;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.DatabaseConnection.PlayerInfo;
@@ -19,8 +20,6 @@ import java.util.Objects;
 public class MapT extends JPanel implements Runnable{
 
     public Sound mapMusic;
-
-//    public ArrayList<ALevelPanel> ScenesToLoadList = new ArrayList<>();
     public ArrayList<MapLevelButton> mapButtonList = new ArrayList<>();
     public ArrayList<JLabel> CutOutList = new ArrayList<>();
     public ArrayList<JLabel> SidePanelTextList = new ArrayList<>();
@@ -29,7 +28,7 @@ public class MapT extends JPanel implements Runnable{
     public Color hoveringActiveButtonColor = Color.decode("#75afff");
     public Color hoveringInactiveButtonColor = Color.decode("#4f4f4f");
     JLabel HugeUnLock;
-
+    public JLabel ArrowGif;
     MapLevelButton DormButton;
     MapLevelButton ClassroomButton;
     MapLevelButton LibraryButton;
@@ -40,9 +39,7 @@ public class MapT extends JPanel implements Runnable{
     JLabel ClassroomColourCut;
     JLabel LibraryColourCut;
     JLabel CDSColourCut;
-
     JLabel backgroundLabel;
-
     PlayerScoreBoard playerScoreBoard;
 
     int score;
@@ -72,7 +69,8 @@ public class MapT extends JPanel implements Runnable{
 
         this.jFrame = jFrame;
         this.loadingAnimationT = loadingAnimationT;
-
+        mapMusic = new Sound();
+        mapMusic.setFile("audio/background_music/mapBackgroundAudio_The Deli - 5_32PM.wav");
     }
 
     public void ShowUnlockAnimation(){
@@ -82,6 +80,7 @@ public class MapT extends JPanel implements Runnable{
             public void actionPerformed(ActionEvent e) {
                 HugeUnLock.setVisible(false);
                 stopTimer();
+                fixArrowPosition();
             }
         });
 
@@ -104,6 +103,24 @@ public class MapT extends JPanel implements Runnable{
         HugeUnLock.setVisible(false);
         this.add(HugeUnLock);
 
+    }
+
+    public void AddArrowGif(){
+        ArrowGif = new JLabel();
+        int len = 240;
+        int height = 130;
+        ArrowGif.setBounds(getX(0),getY(0),len,height);
+
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/arrow6.gif")));
+        Image image = imageIcon.getImage();
+        image = image.getScaledInstance(len, height,Image.SCALE_DEFAULT);
+        imageIcon = new ImageIcon(image);
+        ArrowGif.setIcon(imageIcon);
+        ArrowGif.repaint();
+//        ArrowGif.setVisible(false);
+        this.add(ArrowGif);
+        repaint();
+        revalidate();
     }
 
     private JLabel makeSidePanelTextLabels(String Text){
@@ -165,6 +182,7 @@ public class MapT extends JPanel implements Runnable{
 
     public void buildScene(){
         AddUnlockAnimation();
+        AddArrowGif();
         AssignSideLabels();
         AssignCutOutLabels();
         addLockLabels();
@@ -176,7 +194,7 @@ public class MapT extends JPanel implements Runnable{
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
         refreshButtonGrayness();
-
+        fixArrowPosition();
 //        mapMusic = new Sound();
 //        mapMusic.setFile("audio/background_music/Chau Sara - Mramor(for Map).wav");
 
@@ -184,6 +202,27 @@ public class MapT extends JPanel implements Runnable{
 //        mapMusic.fc.setValue(mapMusic.currentVolume);
     }
 
+    public void fixArrowPosition() {
+        Point p = new Point(0,0);
+        switch (gameProgress) {
+            case 1, 5 -> {
+                p = DormButton.getLocation();
+            }
+            case 2 -> {
+                p = ClassroomButton.getLocation();
+            }
+            case 3 -> {
+                p = LibraryButton.getLocation();
+            }
+            case 4 -> {
+                p = CDSButton.getLocation();
+            }
+        }
+        p.x = p.x-250*1980/DeviceInformation.screenWidth;
+        p.y = p.y-(35)*1080/DeviceInformation.screenHeight;
+        ArrowGif.setLocation(p);
+        ArrowGif.setVisible(true);
+    }
 
 
     private void addLockLabels() {
@@ -297,7 +336,7 @@ public class MapT extends JPanel implements Runnable{
     public void refreshButtonHover(){
         Color hoverColour = Color.decode("#487844");
         switch (gameProgress) {
-            case 1, 5 -> {
+            case 1, 5, 6, 7 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(Color.darkGray);
                 LibraryButton.setBackground(Color.darkGray);
@@ -326,7 +365,7 @@ public class MapT extends JPanel implements Runnable{
 
     public void refreshButtonGrayness() {
         switch (gameProgress) {
-            case 1, 5 -> {
+            case 1, 5, 6, 7 -> {
                 DormButton.setBackground(Color.decode("#14171C"));
                 ClassroomButton.setBackground(Color.darkGray);
                 LibraryButton.setBackground(Color.darkGray);
@@ -341,13 +380,13 @@ public class MapT extends JPanel implements Runnable{
             case 3 -> {
                 DormButton.setBackground(Color.decode("#14171C"));
                 ClassroomButton.setBackground(Color.decode("#14171C"));
-                LibraryColourCut.setBackground(Color.decode("#14171C"));
+                LibraryButton.setBackground(Color.decode("#14171C"));
                 CDSButton.setBackground(Color.darkGray);
             }
             case 4 -> {
                 DormButton.setBackground(Color.decode("#14171C"));
                 ClassroomButton.setBackground(Color.decode("#14171C"));
-                LibraryColourCut.setBackground(Color.decode("#14171C"));
+                LibraryButton.setBackground(Color.decode("#14171C"));
                 CDSButton.setBackground(Color.decode("#14171C"));
             }
         }
