@@ -2,12 +2,12 @@
 
 ## PROJECT TITLE: LOST TREASURE
 
-## Current Phase
+## Current Phase :
 ```
 DONE
 ```
 
-## Assigned works  
+## Assigned works :
  ## Ayesha Afroza Mohsin  ID-200042106
  ```
  kjbyugyv
@@ -22,7 +22,7 @@ DONE
  ```
  
 
-## TECHNOLOGIES AND PLATFORMS:
+## TECHNOLOGIES AND PLATFORMS :
 * Platform   -Desktop Application
 * Language   -JAVA
 * Database   -Oracle
@@ -31,7 +31,7 @@ DONE
 * IDE        - IntelliJ
  
  
- ## CORE FEATURE
+ ## CORE FEATURES :
  ```
  1. START SCREEN
  Login/Registration
@@ -51,7 +51,7 @@ DONE
  If you click on the hidden object it will be regarded as “FOUND” and if you find all the items in the scenery you will pass that level and can play the next.
  ```
 
-## STORYLINE
+## STORYLINE :
 While moving into dorms for the first time, freshmen are very emotional and bring a lot of luggage for their first stay. A new game commences with you (the player, a freshman) looking at a text message in your phone from your mother. In the message, your mother wishes you good luck for your classes. She also mentions that she packed a special surprise for you in your luggage. The scene changes to a messy IUT dorm room. The gameplay starts from here and is split into 5 levels. Each level is played in a different scene. At the beginning and end of every level, a narration text box appears explaining the situation.
 
 1. Dorm Room:  (First playthrough) You went back to your room to see the surprise your mother packed, but are faced with a tangled mess. The first level is the dorm room you are in. You have to find several items from a checklist from the dorm scene infront of you. After finding the items from the scene, the level is completed.
@@ -63,5 +63,5 @@ While moving into dorms for the first time, freshmen are very emotional and brin
 4. Dorm Room (Second Play- through) You fail to find your surprise gift and return to your room in despair. You want to wash up so you open your wardrobe to find some things.
  
  
- ## HOW TO USE THE SOFTWARE
+ ## HOW TO USE THE SOFTWARE :
 
