@@ -29,15 +29,15 @@ public class LevelUnlockPopUp extends JDialog {
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         if(level_number==2){
-            jLabel.setText(convertToMultiline("ClassRoom Scene Unlocked "));
+            jLabel.setText(convertToMultiline("ClassRoom  Unlocked "));
         }
         else if(level_number==3){
-            jLabel.setText(convertToMultiline("ClassRoom Scene Unlocked "));
+            jLabel.setText(convertToMultiline("Library Unlocked "));
         }
         else if (level_number==4){
-            jLabel.setText(convertToMultiline("ClassRoom Scene Unlocked "));
+            jLabel.setText(convertToMultiline("DormRoom  Unlocked "));
         }
-        jLabel.setFont(FontInfo.getResizedFont(26f));
+        jLabel.setFont(FontInfo.getResizedFont(30f));
         add(jLabel);
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
         setSize(200,180);
@@ -53,7 +53,7 @@ public class LevelUnlockPopUp extends JDialog {
         closeButton.setForeground(Color.white);
         closeButton.setFont(FontInfo.getResizedFont(25f));
         closeButton.setOpaque(true);
-        closeButton.setText("OKay");
+        closeButton.setText("Okay");
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
