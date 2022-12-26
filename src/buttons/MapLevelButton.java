@@ -10,10 +10,12 @@ import java.awt.*;
 public class MapLevelButton extends JButton {
     public MapT mapT;
     int priority;
+    public MapButtonEvents mapButtonListener;
 
     public MapLevelButton(int posx, int posy, int width, int height, String text, int priority, MapT mapT){
         this.priority = priority;
         this.mapT = mapT;
+        mapButtonListener = new MapButtonEvents(mapT, this, priority);
         setText(text);
         setBackground(Color.darkGray);
         setForeground(Color.white);
@@ -22,7 +24,7 @@ public class MapLevelButton extends JButton {
         setFocusPainted(false);
         setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.decode("#14171C"),3), BorderFactory.createLineBorder(Color.decode("#55a38b"),2)));
 
-        addMouseListener(new MapButtonEvents(mapT, this, priority));
+        addMouseListener(mapButtonListener);
         setVisible(true);
 
         mapT.add(this);

@@ -23,7 +23,7 @@ public class GameManager{
     public String testString;
 
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
-//        new GameManager();
+        new GameManager();
 //        OracleDatabase oracle = new OracleDatabase();
 //        try {
 //            test(oracle);
@@ -32,7 +32,7 @@ public class GameManager{
 //            e.printStackTrace();
 //        }
 
-        test();
+//        test();
     }
 
     public static void test(){

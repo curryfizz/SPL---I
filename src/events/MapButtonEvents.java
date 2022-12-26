@@ -56,8 +56,10 @@ public class MapButtonEvents implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
+        mapT.ArrowGif.setVisible(false);
+
         ALevelPanel SceneT = getPanel(serial);
-//        mapT.mapMusic.stop();
+        mapT.mapMusic.stop();
 
         mapT.jFrame.remove(mapT);
         mapT.loadingAnimationT.changeNextScene(SceneT);
@@ -103,7 +105,9 @@ public class MapButtonEvents implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        CutOut.setVisible(false);
+        if(MapT.gameProgress-2 < serial) {
+            CutOut.setVisible(false);
+        }
         mapT.refreshButtonGrayness();
         DefaultText.setVisible(false);
         padLock.setVisible(false);
