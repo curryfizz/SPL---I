@@ -35,7 +35,6 @@ public class LevelFinishDialog extends JDialog {
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
         jLabel.setPreferredSize(new Dimension(DeviceInformation.screenWidth/5,200));
-
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
 //        jLabel.setText(convertToMultiline("Congratulations!\nYou've cleared this level successfully!"));

@@ -39,7 +39,9 @@ public class MapT extends JPanel implements Runnable{
     JLabel ClassroomColourCut;
     JLabel LibraryColourCut;
     JLabel CDSColourCut;
+
     JLabel backgroundLabel;
+
     PlayerScoreBoard playerScoreBoard;
 
     int score;
@@ -73,13 +75,14 @@ public class MapT extends JPanel implements Runnable{
         mapMusic.setFile("audio/background_music/mapBackgroundAudio_The Deli - 5_32PM.wav");
     }
 
-    public void ShowUnlockAnimation(){
+    public void ShowUnlockAnimation(int level_number){
         HugeUnLock.setVisible(true);
         timer = new Timer(2800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 HugeUnLock.setVisible(false);
                 stopTimer();
+                LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);
                 fixArrowPosition();
             }
         });
@@ -351,13 +354,13 @@ public class MapT extends JPanel implements Runnable{
             case 3 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
-                LibraryColourCut.setBackground(hoverColour);
+                LibraryButton.setBackground(hoverColour);
                 CDSButton.setBackground(Color.darkGray);
             }
             case 4 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
-                LibraryColourCut.setBackground(hoverColour);
+                LibraryButton.setBackground(hoverColour);
                 CDSButton.setBackground(hoverColour);
             }
         }
