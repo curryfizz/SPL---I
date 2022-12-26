@@ -23,7 +23,6 @@ DONE
  
 
 ## TECHNOLOGIES AND PLATFORMS:
-```
 * Platform 
    Desktop Application
 * Language 
@@ -36,7 +35,6 @@ DONE
    Version Control
 * IDE 
    IntelliJ
-```
 
 
 
