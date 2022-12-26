@@ -20,31 +20,32 @@ public class LevelUnlockPopUp extends JDialog {
 
         setModal(true);
         setUndecorated(true);
-        getContentPane().setBackground(Color.black);
+
+        getContentPane().setBackground(Color.decode("#14171C"));
         setLayout(new FlowLayout());
-        getRootPane().setBorder(new LineBorder(Color.BLUE,3));
+        getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
-        jLabel.setPreferredSize(new Dimension(370,200));
+        jLabel.setPreferredSize(new Dimension(170,90));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
-        jLabel.setFont(FontInfo.getResizedFont(26f));
-        jLabel.setHorizontalTextPosition(JLabel.CENTER);
-        setSize(400,180);
-        setLocationRelativeTo(jFrame);
-        setResizable(false);
         if(level_number==2){
-            jLabel.setText("ClassRoom Scene Unlocked");
+            jLabel.setText(convertToMultiline("ClassRoom Scene Unlocked "));
         }
         else if(level_number==3){
-            jLabel.setText("Library Scene Unlocked");
+            jLabel.setText(convertToMultiline("ClassRoom Scene Unlocked "));
         }
-        else if(level_number==4){
-            jLabel.setText("DormRoom Scene Unlocked");
+        else if (level_number==4){
+            jLabel.setText(convertToMultiline("ClassRoom Scene Unlocked "));
         }
+        jLabel.setFont(FontInfo.getResizedFont(26f));
         add(jLabel);
+        jLabel.setHorizontalTextPosition(JLabel.CENTER);
+        setSize(200,180);
+        setLocationRelativeTo(jFrame);
+        setResizable(false);
 
         closeButton = new JButton();
-        closeButton.setBackground(Color.pink);
+        closeButton.setBackground(Color.decode("#14171C"));
         closeButton.setPreferredSize(new Dimension(110,30));
         closeButton.setFocusPainted(false);
         closeButton.setHorizontalAlignment(JButton.CENTER);
@@ -52,11 +53,13 @@ public class LevelUnlockPopUp extends JDialog {
         closeButton.setForeground(Color.white);
         closeButton.setFont(FontInfo.getResizedFont(25f));
         closeButton.setOpaque(true);
-        closeButton.setText("OKAY");
+        closeButton.setText("OKay");
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
+
+                dispose();
             }
 
             @Override
@@ -79,12 +82,8 @@ public class LevelUnlockPopUp extends JDialog {
 
             }
         });
-
         add(closeButton);
-        closeButton.setVisible(true);
         setVisible(true);
-        repaint();
-        revalidate();
     }
     public static String convertToMultiline(String orig)
     {
