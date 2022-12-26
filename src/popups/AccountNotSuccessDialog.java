@@ -3,9 +3,12 @@ package src.popups;
 import src.buttons.BasicBlueButton;
 import src.setup.FontInfo;
 
-import javax.swing.*;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
