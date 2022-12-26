@@ -32,7 +32,7 @@ public class GameManager{
 //            e.printStackTrace();
 //        }
 
-     //   test();
+//        test();
     }
 
     public static void test(){
