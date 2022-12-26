@@ -24,17 +24,17 @@ DONE
 
 ## TECHNOLOGIES AND PLATFORMS:
 ```
-*Platform 
+* Platform 
    Desktop Application
-*Language 
+* Language 
    JAVA
-*Database 
+* Database 
    Oracle
-*UI Toolkit 
+* UI Toolkit 
    JAVA swing
-*GitHub 
+* GitHub 
    Version Control
-*IDE 
+* IDE 
    IntelliJ
 ```
 
