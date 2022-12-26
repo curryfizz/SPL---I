@@ -1,8 +1,16 @@
-# Software Project Lab
+# COURSE CODE: SWE 4304 COURSE TITLE: SOFTWARE PROJECT LAB-I
 
-## Project Name : Lost Treasure
+## PROJECT TITLE: LOST TREASURE
 
-## TECH: JAVA , 
+## TECHNOLOGIES AND PLATFORMS:
+```
+Platform — Desktop Application
+Language — JAVA
+Database — Oracle
+UI Toolkit — JAVA swing
+GitHub —Version Control
+IDE —IntelliJ
+```
 
 
 ## Current Phase
@@ -11,17 +19,15 @@ DONE
 ```
 
 ## Assigned works  
- ## Ayeasha Afroza Mohsin 
- ```
- ID-200042106
+ ## Ayeasha Afroza Mohsin  ID-200042106
  ```
  kjbyugyv
  ```
- ## Lomatul Mahzabin
+ ## Lomatul Mahzabin ID-200042113
  ```
  kjbhuyvvbnj
  ```
- ## Nawseen Mehereen
+ ## Nawseen Mehereen ID-200042134
  ```
  huygygukjhiuh
  ```
