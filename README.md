@@ -42,4 +42,21 @@ While moving into dorms for the first time, freshmen are very emotional and brin
 
 4. Dorm Room (Second Play- through) You fail to find your surprise gift and return to your room in despair. You want to wash up so you open your wardrobe to find some things.
  
-A hidden object game based on a journey to find a special object.
+ 
+ 
+ ##CORE FEATURE
+ ```
+ ###START SCREEN
+ Login/Registration
+ New Game/Resume 
+ Settings
+ ```
+ ###MAIN MAP
+ With one unlocked level and Locked levels with a route to tour key areas in IUT
+ ```
+ ###5 LEVELS
+ Each level is a scene with 7/8 hidden items in them
+ ```
+ ###BASIC MECHANISM 
+ If you click on the hidden object it will be regarded as “FOUND” and if you find all the items in the scenery you will pass that level and can play the next.
+ ```
