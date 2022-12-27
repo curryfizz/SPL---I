@@ -23,7 +23,7 @@ DONE
  
 
 ## TECHNOLOGIES AND PLATFORMS :
-* :white_circle:  Platform   - [![Next][Next.js]][Next-url]
+* :white_circle:  Platform   [![Next][Next.js]][Next-url]
 * :white_circle:  Language   -JAVA
 * :white_circle:  Database   -Oracle
 * :white_circle:  UI Toolkit -JAVA swing
