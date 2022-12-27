@@ -27,7 +27,7 @@ DONE
 * :white_circle:  Language   -  ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 * :white_circle:  Database   - ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white)
 * :white_circle:  UI Toolkit - ![JAVA swing](https://img.shields.io/badge/JAVASwing-0082C9?style=for-the-badge&logo=Ne&logoColor=brightgreen)
-* :white_circle:  Version Control - ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+* :white_circle:  Version Control - ![Github](https://img.shields.io/badge/GitHub-108000?style=for-the-badge&logo=github&logoColor=white)
 * :white_circle:  IDE        - ![IntelliJ](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
 
 
