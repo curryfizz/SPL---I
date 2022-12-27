@@ -25,10 +25,10 @@ DONE
 ## TECHNOLOGIES AND PLATFORMS :
 * :white_circle:  Platform   -Desktop Application
 * :white_circle:  Language   -JAVA
-:white_circle:  Database   -Oracle
-:white_circle:  UI Toolkit -JAVA swing
-:white_circle:  GitHub     -Version Control
-:white_circle:  IDE        - IntelliJ
+* :white_circle:  Database   -Oracle
+* :white_circle:  UI Toolkit -JAVA swing
+* :white_circle:  GitHub     -Version Control
+* :white_circle:  IDE        - IntelliJ
  
  
 :package: ## CORE FEATURES : 
