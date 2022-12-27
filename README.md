@@ -29,7 +29,7 @@ DONE
 * :white_circle:  UI Toolkit -JAVA swing
 * :white_circle:  GitHub     -Version Control
 * :white_circle:  IDE        - IntelliJ
- 
+* [![Next][Next.js]][Next-url]
  
  ## :package: CORE FEATURES : 
  ```
