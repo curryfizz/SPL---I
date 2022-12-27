@@ -7,37 +7,6 @@
 DONE
 ```
 
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
-
 ## Assigned works :
  ## Ayesha Afroza Mohsin  ID-200042106
  ```
@@ -54,30 +23,16 @@ DONE
  
 
 ## TECHNOLOGIES AND PLATFORMS :
-* :white_circle:  Platform   [![Next][Next.js]][Next-url]
-* :white_circle:  Language   -JAVA
-* :white_circle:  Database   -Oracle
-* :white_circle:  UI Toolkit -JAVA swing
-* :white_circle:  GitHub     -Version Control
+* :white_circle:  Platform   - Desktop Application
+* :white_circle:  Language   - JAVA
+* :white_circle:  Database   - Oracle
+* :white_circle:  UI Toolkit - JAVA swing
+* :white_circle:  Version Control - https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 * :white_circle:  IDE        - IntelliJ
-* [![Next][Next.js]][Next-url]
+
  
  
- 
-### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
  ## :package: CORE FEATURES : 
  ```
