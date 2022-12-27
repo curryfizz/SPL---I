@@ -31,7 +31,7 @@ DONE
 * :white_circle:  IDE        - IntelliJ
  
  
-:package: ## CORE FEATURES : 
+ ## :package: CORE FEATURES : 
  ```
  1. START SCREEN
  Login/Registration
