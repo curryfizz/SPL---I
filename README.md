@@ -25,8 +25,8 @@ DONE
 ## TECHNOLOGIES AND PLATFORMS :
 * :white_circle:  Platform   - Desktop Application
 * :white_circle:  Language   -  ![JAVA](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-* :white_circle:  Database   - Oracle  
-* :white_circle:  UI Toolkit - JAVA swing ![JAVA swing](https://img.shields.io/badge/JAVASwing-0082C9?style=for-the-badge&logo=Ne&logoColor=brightgreen)
+* :white_circle:  Database   - ![Oracle](https://img.shields.io/badge/Database-0082C9?style=for-the-badge&logo=Ne&logoColor=white)
+* :white_circle:  UI Toolkit - ![JAVA swing](https://img.shields.io/badge/JAVASwing-0082C9?style=for-the-badge&logo=Ne&logoColor=brightgreen)
 * :white_circle:  Version Control - ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 * :white_circle:  IDE        - IntelliJ
 
