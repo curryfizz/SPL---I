@@ -9,9 +9,9 @@ public class OracleDatabase {
     static final String USER = "gameAdmin";
     static final String PASS = "gameAdminpassword3";
 
-    Connection conn = null;
+    static Connection conn = null;
 
-    PreparedStatement preparedStatement;
+    static PreparedStatement preparedStatement;
     public OracleDatabase(){
 
         Statement stmt = null;
@@ -30,11 +30,11 @@ public class OracleDatabase {
         }
     }
 
-    public void createUser(String userName, String email) throws SQLException {
+    public static void createUser(String userName, String email) throws SQLException {
         preparedStatement.setString(1,userName);
         preparedStatement.setString(2,email);
     }
-    public boolean insertUser(String userName, String email) throws SQLException{
+    public static boolean insertUser(String userName, String email) throws SQLException{
 
         try {
             Class.forName(JDBC_DRIVER);
@@ -67,18 +67,18 @@ public class OracleDatabase {
     }
 
 
-    public void prepareStatementforInsert() throws SQLException {
+    public static void prepareStatementforInsert() throws SQLException {
          preparedStatement = conn.prepareStatement("insert into user_info values(?,?,0,'0')");
     }
 
-    public void prepareStatementforRetrieval() throws SQLException{
+    public static void prepareStatementforRetrieval() throws SQLException{
         preparedStatement = conn.prepareStatement("select * from user_info where email = ?");
     }
 
 
 
 
-    public boolean retrieveUserInfo(String email) throws SQLException{
+    public static boolean retrieveUserInfo(String email) throws SQLException{
         try {
             Class.forName(JDBC_DRIVER);
             System.out.println("Connecting to database");

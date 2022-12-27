@@ -1,6 +1,7 @@
 package src.popups;
 
 import src.DatabaseConnection.OracleDatabase;
+import src.buttons.BasicBlueButton;
 import src.setup.FontInfo;
 
 import javax.swing.*;
@@ -8,6 +9,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +20,7 @@ public abstract class AccountDialog extends JDialog {
     OracleDatabase database;
     AccountDialogLabel emailVerificationLabel;
 
+    BasicBlueButton cancelButton;
     JFrame jFrame;
     protected void doExitCountDown(AccountDialogLabel exitLabel, String text){
         Timer timer = new Timer(0, new ActionListener() {
@@ -48,9 +52,19 @@ public abstract class AccountDialog extends JDialog {
         addEmailVerificationLabel(text);
     }
 
+    void addCancelButton(){
+        cancelButton = new BasicBlueButton(120,40,"Cancel");
+        cancelButton.setFont(FontInfo.getResizedFont(30f));
+        addCancelButtonMouseEvents();
+    }
 
     public AccountDialog(JFrame jFrame, OracleDatabase oracleDatabase){
         this.database = oracleDatabase;
+        this.jFrame = jFrame;
+        addDialogStyles(jFrame);
+    }
+
+    public AccountDialog(JFrame jFrame){
         this.jFrame = jFrame;
         addDialogStyles(jFrame);
     }
@@ -108,9 +122,40 @@ public abstract class AccountDialog extends JDialog {
         emailVerificationLabel.setText("*Enter email in correct format!");
         emailVerificationLabel.setVisible(true);
         repaint();
-
     }
 
+    private void addCancelButtonMouseEvents(){
+        cancelButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Thread.sleep(1000);
+                    dispose();
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+    }
 }
 

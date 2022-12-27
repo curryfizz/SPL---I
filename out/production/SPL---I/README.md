@@ -1,4 +1,4 @@
-# COURSE CODE: SWE 4304 COURSE TITLE: SOFTWARE PROJECT LAB-I
+# COURSE CODE: SWE 4304 COURSE TITLE: SOFTWARE PROJECT LAB-I :computer:
 
 ## PROJECT TITLE: LOST TREASURE
 
@@ -23,15 +23,18 @@ DONE
  
 
 ## TECHNOLOGIES AND PLATFORMS :
-* Platform   -Desktop Application
-* Language   -JAVA
-* Database   -Oracle
-* UI Toolkit -JAVA swing
-* GitHub     -Version Control
-* IDE        - IntelliJ
+* :white_circle:  Platform   - Desktop Application
+* :white_circle:  Language   -  ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+* :white_circle:  Database   - ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white)
+* :white_circle:  UI Toolkit - ![JAVA swing](https://img.shields.io/badge/JAVASwing-0082C9?style=for-the-badge&logo=Ne&logoColor=brightgreen)
+* :white_circle:  Version Control - ![Github](https://img.shields.io/badge/GitHub-108000?style=for-the-badge&logo=github&logoColor=white)
+* :white_circle:  IDE        - ![IntelliJ](https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
+
+
  
- 
- ## CORE FEATURES :
+
+
+ ## :package: CORE FEATURES : 
  ```
  1. START SCREEN
  Login/Registration
@@ -54,14 +57,16 @@ DONE
 ## STORYLINE :
 While moving into dorms for the first time, freshmen are very emotional and bring a lot of luggage for their first stay. A new game commences with you (the player, a freshman) looking at a text message in your phone from your mother. In the message, your mother wishes you good luck for your classes. She also mentions that she packed a special surprise for you in your luggage. The scene changes to a messy IUT dorm room. The gameplay starts from here and is split into 5 levels. Each level is played in a different scene. At the beginning and end of every level, a narration text box appears explaining the situation.
 
-1. Dorm Room:  (First playthrough) You went back to your room to see the surprise your mother packed, but are faced with a tangled mess. The first level is the dorm room you are in. You have to find several items from a checklist from the dorm scene infront of you. After finding the items from the scene, the level is completed.
+:one: Dorm Room:  (First playthrough) You went back to your room to see the surprise your mother packed, but are faced with a tangled mess. The first level is the dorm room you are in. You have to find several items from a checklist from the dorm scene infront of you. After finding the items from the scene, the level is completed.
 
-2. Classroom: The first location you visit is your Classroom. You will again be tasked to find several Items from the classroom scene infront of you. Most of the items you find will not be the actual ones you’re looking for, so they will appear again in the next levels.
+:two: Classroom: The first location you visit is your Classroom. You will again be tasked to find several Items from the classroom scene infront of you. Most of the items you find will not be the actual ones you’re looking for, so they will appear again in the next levels.
 
-3. Library:  The scene changes to the Library which is the 3rd Level. The players can complete the level 
+:three: Library:  The scene changes to the Library which is the 3rd Level. The players can complete the level 
 
-4. Dorm Room (Second Play- through) You fail to find your surprise gift and return to your room in despair. You want to wash up so you open your wardrobe to find some things.
+:four: Dorm Room (Second Play- through) You fail to find your surprise gift and return to your room in despair. You want to wash up so you open your wardrobe to find some things.
  
  
  ## HOW TO USE THE SOFTWARE :
+ 
+ 
 

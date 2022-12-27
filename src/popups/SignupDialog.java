@@ -27,6 +27,14 @@ public class SignupDialog extends AccountDialog {
         setVisible(true);
     }
 
+    public SignupDialog(JFrame jFrame){
+        super(jFrame);
+        addUserFieldLabel();
+        addEmailFieldLabel("*Email already exists, try again or enter new email");
+        addSubmitFieldLabel();
+        setVisible(true);
+    }
+
     protected void addUserFieldLabel() {
         userNameFieldLabel = new JLabel();
         userNameFieldLabel.setPreferredSize(new Dimension(400,70));
@@ -43,8 +51,15 @@ public class SignupDialog extends AccountDialog {
         userNameFieldLabel.add(userNameTextArea);
 
     }
+
+    @Override
+    void addCancelButton(){
+        super.addCancelButton();
+        submitFieldLabel.add(cancelButton);
+    }
+
     private void addSubmitButton(){
-        submitButton = new BasicBlueButton(200,40,"Submit");
+        submitButton = new BasicBlueButton(120,40,"Submit");
         submitButton.setFont(FontInfo.getResizedFont(30f));
         submitFieldLabel.add(submitButton);
     }
@@ -56,6 +71,7 @@ public class SignupDialog extends AccountDialog {
         add(submitFieldLabel);
         addAccountCreatedExitLabel();
         addSubmitButton();
+        addCancelButton();
         addSubmitButtonMouseEvents();
     }
     private void addAccountCreatedExitLabel(){
@@ -116,7 +132,7 @@ public class SignupDialog extends AccountDialog {
                         enableUserFields();
                         enableEmailFields();
                         enableSubmitButton();
-                    }else if(!database.insertUser(userNameTextArea.getText(), emailTextArea.getText())){
+                    }else if(!OracleDatabase.insertUser(userNameTextArea.getText(), emailTextArea.getText())){
                         EmailAlreadyRegisteredDialog emailAlreadyRegisteredDialog = new EmailAlreadyRegisteredDialog(returnSelf());
 //                        showEmailAlreadyExistsLabel();
                         enableUserFields();

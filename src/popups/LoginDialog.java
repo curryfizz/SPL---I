@@ -26,6 +26,13 @@ public class LoginDialog extends AccountDialog {
         addLoginFieldLabel();
         setVisible(true);
     }
+    public LoginDialog(JFrame jFrame){
+        super(jFrame);
+        setSize(500, 220);
+        addEmailFieldLabel("*Enter email in correct format!");
+        addLoginFieldLabel();
+        setVisible(true);
+    }
 
     private void addLoginSuccessFullExitLabel(){
         loginSuccessFullExitLabel = new AccountDialogLabel("", 400, 25);
@@ -42,9 +49,16 @@ public class LoginDialog extends AccountDialog {
         add(loginFieldLabel);
         addLoginSuccessFullExitLabel();
         addLoginButton();
+        addCancelButton();
+    }
+
+    @Override
+    void addCancelButton(){
+        super.addCancelButton();
+        loginFieldLabel.add(cancelButton);
     }
     private void addLoginButton(){
-        loginButton = new BasicBlueButton(200, 40, "Login");
+        loginButton = new BasicBlueButton(120, 40, "Login");
         loginButton.setFont(FontInfo.getResizedFont(30f));
         loginFieldLabel.add(loginButton);
         addLoginButtonMouseEvents();
@@ -78,7 +92,7 @@ public class LoginDialog extends AccountDialog {
                         showEmailNotInCurrentFormatLabel();
                         enableEmailFields();
                         enableLoginButton();
-                    }else if(database.retrieveUserInfo(emailTextArea.getText())){
+                    }else if(OracleDatabase.retrieveUserInfo(emailTextArea.getText())){
                         doExitCountDown(loginSuccessFullExitLabel, "Login successful");
                     }else{
                         EmailNotFoundDialog emailNotFoundDialog = new EmailNotFoundDialog(returnSelf());
