@@ -9,10 +9,6 @@ import java.awt.*;
 public class StartMenuLabel extends JLabel {
 
 
-    public StartMenuLabel(int width, int height){
-//        addLabelStyles(width,height);
-    }
-
     public StartMenuLabel(){
         addLabelStyles();
     }
@@ -25,10 +21,4 @@ public class StartMenuLabel extends JLabel {
         setBackground(Color.decode("#14171C"));
     }
 
-    @Override
-    public void paint(Graphics g){
-        Graphics2D g2d = (Graphics2D)g;
-
-
-    }
 }

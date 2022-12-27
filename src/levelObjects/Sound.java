@@ -5,7 +5,7 @@ import java.io.File;
 import java.net.URL;
 
 public class Sound {
-    Clip clip;
+    public Clip clip;
     File fileinput;
     float previousVolume;
 
@@ -16,6 +16,15 @@ public class Sound {
 
     public Sound() {
 
+        previousVolume = 0;
+        currentVolume = -25;
+        mute = false;
+
+
+    }
+    public Sound(String path) {
+
+        setFile(path);
         previousVolume = 0;
         currentVolume = -25;
         mute = false;

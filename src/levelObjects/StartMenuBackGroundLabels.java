@@ -13,6 +13,8 @@ public class StartMenuBackGroundLabels extends JLabel implements ActionListener 
     Image backGroundImage;
     float alpha=0.0f;
     public Timer timer = new Timer(0, this);
+
+    Sound animationEffect;
     public StartMenuBackGroundLabels(String path){
         backGroundImage = new ImageIcon(path).getImage();
         addStartMenuStyles();
@@ -33,11 +35,17 @@ public class StartMenuBackGroundLabels extends JLabel implements ActionListener 
     public synchronized void startAnimation(int delay){
         timer.setDelay(delay);
         timer.start();
+
+        animationEffect = new Sound("audio/soundeffects/iconAppearance.wav");
+        if(timer.isRunning()) {
+            animationEffect.play();
+        }
     }
 
     @Override
     public synchronized void actionPerformed(ActionEvent e) {
-        alpha+=0.05f;
+
+        alpha+=0.02f;
         if(alpha>=1.0f){
             alpha = 1.0F;
             timer.stop();
@@ -46,4 +54,6 @@ public class StartMenuBackGroundLabels extends JLabel implements ActionListener 
 
         repaint();
     }
+
+
 }

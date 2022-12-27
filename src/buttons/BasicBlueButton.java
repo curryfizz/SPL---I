@@ -11,14 +11,12 @@ import java.awt.event.MouseListener;
 public class BasicBlueButton extends JButton {
 
     public BasicBlueButton(int width, int height, String text){
-
-
         addButtonStyles(width,height,text);
-
         addFocusInOutTransition();
     }
 
-    private void addFocusInOutTransition() {
+
+    void addFocusInOutTransition() {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -53,12 +51,14 @@ public class BasicBlueButton extends JButton {
         });
     }
 
-    private void addButtonStyles(int width, int height, String text) {
+    void addButtonStyles(int width, int height, String text) {
         setPreferredSize(new Dimension(width,height));
         setBorder(new LineBorder(Color.white, 2));
         setBackground(Color.decode("#14171C"));
         setForeground(Color.white);
         setFont(FontInfo.getResizedFont(40f));
+        setFocusPainted(false);
+        setContentAreaFilled(false);
         setText(text);
         setOpaque(true);
     }

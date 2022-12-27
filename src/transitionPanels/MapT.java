@@ -6,6 +6,7 @@ import src.buttons.CloseButton;
 import src.levelObjects.Sound;
 import src.levels.ALevelPanel;
 import src.levels.ClassRoomSceneT;
+import src.popups.LevelUnlockPopUp;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.DatabaseConnection.PlayerInfo;
