@@ -25,7 +25,7 @@ DONE
 ## TECHNOLOGIES AND PLATFORMS :
 * :white_circle:  Platform   - Desktop Application
 * :white_circle:  Language   - JAVA    ![JAVA](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-* :white_circle:  Database   - Oracle  ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+* :white_circle:  Database   - Oracle  ![MySQL](https://img.shields.io/badge/java%20-swing-brightgreen)
 * :white_circle:  UI Toolkit - JAVA swing ![](https://img.shields.io/endpoint?color=orange&style=for-the-badge)
 * :white_circle:  Version Control - ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 * :white_circle:  IDE        - IntelliJ
