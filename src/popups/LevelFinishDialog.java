@@ -18,11 +18,16 @@ public class LevelFinishDialog extends JDialog {
 
     JLabel congratulationsgif;
     JButton exitToMapButton;
+    Sound levelCompleted;
+
 
     JButton closeButton2;
 
     Sound sound;
     public LevelFinishDialog(JFrame jFrame, JPanel jPanel){
+        levelCompleted = new Sound();
+        levelCompleted.setFile("audio/soundeffects/lvlcompleted.wav");
+        levelCompleted.play();
         sound = new Sound();
         sound.setSoundEffectFile("levelFinishTada");
         sound.play();
