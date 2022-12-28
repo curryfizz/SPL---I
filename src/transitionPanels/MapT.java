@@ -23,6 +23,7 @@ import java.util.Objects;
 public class MapT extends JPanel implements Runnable{
 
     public Sound mapMusic;
+    Sound level2;
     public  Sound unlockMusic;
     public ArrayList<MapLevelButton> mapButtonList = new ArrayList<>();
     public ArrayList<JLabel> CutOutList = new ArrayList<>();
@@ -89,6 +90,28 @@ public class MapT extends JPanel implements Runnable{
             public void actionPerformed(ActionEvent e) {
                 unlockMusic.play();
                 HugeUnLock.setVisible(false);
+                if(level_number==2) {
+                    level2 = new Sound();
+                    level2.setFile("audio/soundeffects/lvl2unlock.wav");
+                    level2.play();
+                }
+                else  if(level_number==3) {
+                    level2 = new Sound();
+                    level2.setFile("audio/soundeffects/lvl3unlock.wav");
+                    level2.play();
+                }
+                else  if(level_number==4) {
+                    level2 = new Sound();
+                    level2.setFile("audio/soundeffects/lvl5unlock.wav");
+                    level2.play();
+                }
+
+                else  if(level_number==5) {
+                    level2 = new Sound();
+                    level2.setFile("audio/soundeffects/lvl3unlock.wav");
+                    level2.play();
+                }
+
 
                 stopTimer();
                 LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);

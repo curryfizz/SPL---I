@@ -1,5 +1,6 @@
 package src.popups;
 
+import src.levelObjects.Sound;
 import src.levels.ALevelPanel;
 import src.levels.ClassRoomSceneT;
 import src.setup.FontInfo;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class LevelUnlockPopUp extends JDialog {
     JLabel jLabel;
     JButton closeButton;
+
 
     public LevelUnlockPopUp (JFrame jFrame, int level_number)
     {
