@@ -120,7 +120,6 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
                 LevelOver_ProgressUpdated = false;
                 level_number = -1;
 
-
             }
             else if(nextScene instanceof MapT){
                 ((MapT) nextScene).fixArrowPosition();

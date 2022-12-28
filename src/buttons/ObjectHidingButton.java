@@ -104,7 +104,7 @@ public class ObjectHidingButton extends JButton {
                         LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel);
                         if(PlayerInfo.gameProgress < levelPanel.getLevelNumber()){ // first time
                             PlayerInfo.gameProgress = levelPanel.getLevelNumber();
-                            MapT.gameProgress = levelPanel.getLevelNumber();
+//                            MapT.gameProgress = levelPanel.getLevelNumber();
                             levelPanel.loadingAnimationT.LevelOver_ProgressUpdated = true;
                             levelPanel.loadingAnimationT.level_number = levelPanel.getLevelNumber();
                         }

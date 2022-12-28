@@ -93,7 +93,10 @@ public class OracleDatabase {
                 System.out.println(rs.toString());
                 PlayerInfo.email = rs.getString("email");
                 PlayerInfo.username = rs.getString("username");
+                System.out.println();
+                System.out.println("Player Info's game progress in Oracle beforeupdate is : " + PlayerInfo.gameProgress);
                 PlayerInfo.gameProgress = rs.getInt("levels_completed");
+                System.out.println("Player Info's game progress in Oracle Afterupdate is : " + PlayerInfo.gameProgress);
                 if(rs.getString("HAS_STARTED_GAME")=="0"){
                     PlayerInfo.hasStartedGame = true;
                 }

@@ -39,7 +39,7 @@ public class MapT extends JPanel implements Runnable{
     MapLevelButton LibraryButton;
     MapLevelButton CDSButton;
     MapLevelButton FinalDormButton;
-    public static int gameProgress;
+//    public static int gameProgress;
     public JFrame jFrame;
     JLabel DormColourCut;
     JLabel ClassroomColourCut;
@@ -69,7 +69,7 @@ public class MapT extends JPanel implements Runnable{
     public LoadingAnimationT loadingAnimationT;
 
     public MapT(JFrame jFrame, LoadingAnimationT loadingAnimationT){
-        gameProgress = PlayerInfo.gameProgress;
+        PlayerInfo.gameProgress = PlayerInfo.gameProgress;
 
         this.jFrame = jFrame;
         this.loadingAnimationT = loadingAnimationT;
@@ -80,7 +80,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void ShowUnlockAnimation(int level_number){
-        for(int i =0; i<=gameProgress-2; i++){
+        for(int i =0; i<=PlayerInfo.gameProgress-2; i++){
             CutOutList.get(i).setVisible(true);
         }
         HugeUnLock.setVisible(true);
@@ -219,7 +219,7 @@ public class MapT extends JPanel implements Runnable{
 
     public void fixArrowPosition() {
         Point p = new Point(0,0);
-        switch (gameProgress) {
+        switch (PlayerInfo.gameProgress) {
             case 1, 5 -> {
                 p = DormButton.getLocation();
             }
@@ -368,7 +368,7 @@ public class MapT extends JPanel implements Runnable{
 
     public void refreshButtonHover(){
         Color hoverColour = Color.decode("#487844");
-        switch (gameProgress) {
+        switch (PlayerInfo.gameProgress) {
             case 1, 5, 6, 7 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(Color.darkGray);
@@ -401,7 +401,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void refreshButtonGrayness() {
-        switch (gameProgress) {
+        switch (PlayerInfo.gameProgress) {
             case 1, 5, 6, 7 -> {
                 DormButton.setBackground(Color.decode("#14171C"));
                 ClassroomButton.setBackground(Color.darkGray);
