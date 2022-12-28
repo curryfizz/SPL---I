@@ -34,7 +34,8 @@ import static java.lang.Thread.sleep;
 public class StartMenuScreenT extends JPanel implements Runnable{
     JFrame jFrame;
     JLabel backGroundImageLabel;
-    Sound bgMusic;
+    //Sound bgMusic;
+    Sound startMusic;
     Sound clickSound;
     LoadingAnimationT loadingAnimationT;
     JPanel nextScene;
@@ -47,9 +48,12 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     public StartMenuScreenT(JFrame jFrame){
 
         this.jFrame = jFrame;
-        bgMusic = new Sound();
+       // bgMusic = new Sound();
         clickSound = new Sound();
         clickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
+        startMusic= new Sound();
+        startMusic.setFile("audio/soundeffects/startmusic.wav");
+        startMusic.play();
     }
 
     private void addBackGroundImageLabel(){
@@ -196,13 +200,13 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         add(playerStatsButton);
     }
     public void addLoginButton(){
-        loginButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Login");
+        loginButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Sign in");
         loginButton.setBounds(0, DeviceInformation.screenHeight/3, DeviceInformation.screenWidth/5, 70);
         add(loginButton);
     }
 
     public void addSignupButton(){
-        signupButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Signup");
+        signupButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Sign up");
         signupButton.setBounds(0, DeviceInformation.screenHeight/2, DeviceInformation.screenWidth/5, 70);
         signupButton.addMouseListener(new SignUpButtonEvent(jFrame));
         add(signupButton);
