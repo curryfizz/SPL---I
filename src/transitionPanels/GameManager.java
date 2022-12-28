@@ -223,7 +223,7 @@ public class GameManager{
     - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
 
 //important
-    - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does
+
     - add sound effects for other button clicks
     - why does score Animation keep disappearing so quickly;
     - make score animation larger
@@ -232,5 +232,6 @@ public class GameManager{
 //    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
 //    - add arrow gif pointing at the next level in map?
 //    - add music for start menu and map
+//  - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does
     */
 }

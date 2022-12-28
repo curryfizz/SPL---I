@@ -51,6 +51,9 @@ public class LevelToMapConfirmationDialog extends JDialog {
 
                 if(jPanel instanceof ALevelPanel) {
                     ((ALevelPanel) jPanel).timerLabel.endLevel();
+                    Sound alert = new Sound();
+                    alert.setFile("audio/soundeffects/alert.wav");
+                    alert.play();
                 }
 
                     dispose();
