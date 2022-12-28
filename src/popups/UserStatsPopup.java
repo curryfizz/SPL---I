@@ -29,15 +29,27 @@ public class UserStatsPopup extends JDialog{
         getContentPane().setBackground(Color.decode("#14171C"));
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
+
+        int sizeX = 100;
+        int sizeY = 100;
+
+        JLabel profileImage = new JLabel();
+        ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/sparkles.gif")));
+        gif.setImage(gif.getImage().getScaledInstance(sizeX, sizeY, Image.SCALE_DEFAULT));
+        profileImage = new JLabel();
+        profileImage.setBounds(600,500, sizeX,sizeY);
+
+        profileImage.setIcon(gif);
+        profileImage.setVisible(false);
+        this.add(profileImage);
+
         textLabel = new JLabel();
         textLabel.setPreferredSize(new Dimension(400,500));
         textLabel.setBackground(Color.blue);
         textLabel.setLayout(new FlowLayout());
         textLabel.setForeground(Color.white);
 
-//        BasicInfo();
         AdvancedInfo();
-
         textLabel.setText(convertToMultiline(AdvancedInfo));
         objClickSound = new Sound();
         objClickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
