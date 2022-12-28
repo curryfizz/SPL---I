@@ -76,7 +76,9 @@ public class OracleDatabase {
     }
 
 
-
+    public static void prepareStatementforCheckingLevelPlayed() throws SQLException {
+        preparedStatement = conn.prepareStatement("select * from level_info where email = ? and level_number = ?");
+    }
 
     public static boolean retrieveUserInfo(String email) throws SQLException{
         try {
@@ -89,11 +91,57 @@ public class OracleDatabase {
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
                 System.out.println(rs.toString());
-
                 PlayerInfo.email = rs.getString("email");
                 PlayerInfo.username = rs.getString("username");
                 PlayerInfo.gameProgress = rs.getInt("levels_completed");
+                if(rs.getString("HAS_STARTED_GAME")=="0"){
+                    PlayerInfo.hasStartedGame = true;
+                }
                 rs.close();
+                prepareStatementforCheckingLevelPlayed();
+                preparedStatement.setString(1, PlayerInfo.email);
+                preparedStatement.setString(2,"1");
+                rs = preparedStatement.executeQuery();
+                if(rs.next()){
+                    PlayerInfo.DormHighScore = rs.getInt("score");
+                    PlayerInfo.DormLeastTime = rs.getInt("time_taken");
+                }
+
+                preparedStatement.setString(1, PlayerInfo.email);
+                preparedStatement.setString(2,"2");
+                rs = preparedStatement.executeQuery();
+                if(rs.next()){
+                    PlayerInfo.ClassroomHighScore = rs.getInt("score");
+                    PlayerInfo.ClassroomHighScore = rs.getInt("time_taken");
+                }
+
+                preparedStatement.setString(1, PlayerInfo.email);
+                preparedStatement.setString(2,"3");
+                rs = preparedStatement.executeQuery();
+                if(rs.next()){
+                    PlayerInfo.LibraryHighScore = rs.getInt("score");
+                    PlayerInfo.LibraryLeastTime = rs.getInt("time_taken");
+                }
+
+                preparedStatement.setString(1, PlayerInfo.email);
+                preparedStatement.setString(2,"4");
+                rs = preparedStatement.executeQuery();
+                if(rs.next()){
+                    PlayerInfo.CDSHighScore = rs.getInt("score");
+                    PlayerInfo.CDSLeastTime = rs.getInt("time_taken");
+                }
+
+                preparedStatement.setString(1, PlayerInfo.email);
+                preparedStatement.setString(2,"5");
+                rs = preparedStatement.executeQuery();
+                if(rs.next()){
+                    PlayerInfo.DormV2HighScore = rs.getInt("score");
+                    PlayerInfo.DormV2LeastTime = rs.getInt("time_taken");
+                }
+
+
+
+
                 preparedStatement.close();
                 conn.close();
                 System.out.println("Got user");
@@ -109,5 +157,7 @@ public class OracleDatabase {
 
         return true;
     }
+
+
 
 }

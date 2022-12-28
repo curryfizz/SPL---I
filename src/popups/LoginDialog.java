@@ -149,7 +149,7 @@ public class LoginDialog extends AccountDialog {
             }
             disableEmailFields();
             disableLoginButton();
-            Thread.sleep(500);
+            Thread.sleep(200);
 
             System.out.println(emailTextArea.getText());
             if(!isEmailValid(emailTextArea.getText())){
