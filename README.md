@@ -68,5 +68,20 @@ While moving into dorms for the first time, freshmen are very emotional and brin
  
  ## HOW TO USE THE SOFTWARE :
  
- 
+As a First time user, you need to Sign up for the game, after signing up you can log in and play. 
+You will see a screen that is the message from your mother 
+
+![image](https://user-images.githubusercontent.com/90206489/209766860-c659fd37-f60b-480c-bad3-263989290cb7.png)
+
+
+After that, you can go to the map scene. here you will see an arrow sign indicating where you have to go. 
+
+![image](https://user-images.githubusercontent.com/90206489/209767362-be14ea93-989f-409f-b4ce-2c823d38fada.png)
+
+
+After unlocking each level you can proceed.
+In Each level, you will see 6-8 items. You need to find the items on your own. But wait there is a feature for you that you can use the hint. If you use the hint some scores will be redacted.
+
+After finding all the items and scoring a required score you can go to the next leve
+
 
