@@ -84,7 +84,6 @@ In Each level, you will see 6-8 items. You need to find the items on your own. B
 
 ![image](https://user-images.githubusercontent.com/90206489/209767589-46f4e932-180e-40d4-a9aa-0aae4f891ecc.png)![image](https://user-images.githubusercontent.com/90206489/209767688-09a6c0ef-0129-441f-831e-8ace1f23b2c9.png)
 
-
 After finding all the items and scoring a required score you can go to the next leve
 
 
