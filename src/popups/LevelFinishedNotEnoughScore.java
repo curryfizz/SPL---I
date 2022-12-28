@@ -65,6 +65,7 @@ public class LevelFinishedNotEnoughScore extends JDialog {
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                dispose();
                 objClickSound.play();
                 backgoundPanel.timerLabel.endLevel();
                 dispose();

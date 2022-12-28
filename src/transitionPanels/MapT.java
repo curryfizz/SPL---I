@@ -39,19 +39,12 @@ public class MapT extends JPanel implements Runnable{
     MapLevelButton LibraryButton;
     MapLevelButton CDSButton;
     MapLevelButton FinalDormButton;
-//    public static int gameProgress;
     public JFrame jFrame;
     JLabel DormColourCut;
     JLabel ClassroomColourCut;
     JLabel LibraryColourCut;
     JLabel CDSColourCut;
     JLabel backgroundLabel;
-    int score;
-    public int MaxDormScore =0;
-    public int MaxLibraryScore =0;
-    public int MaxClassroomScore =0;
-
-    public int MaxCDS_Score =0;
     JLabel padLockClassroom;
     JLabel padLockDorm;
     JLabel padLockLibrary;

@@ -201,7 +201,7 @@ public class TimerLabel extends JLabel implements Runnable{
             if(milisecs > 1000){ //one second has passed
                 UpdateTimeVariables();
                 lastUpdatedAt = System.currentTimeMillis();
-                if(minute==0 && second==30){
+                if(minute==0 && second<30){
                     this.setForeground(new Color(200,0,0));
                 }
             }

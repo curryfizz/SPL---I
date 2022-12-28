@@ -123,7 +123,6 @@ public class MapButtonEvents implements MouseListener {
             padLock.setVisible(true);
         }
 
-
         mapT.revalidate();
         mapT.repaint();
     }

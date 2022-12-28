@@ -224,9 +224,11 @@ public class GameManager{
 
 //important
 
-
     - why does score Animation keep disappearing so quickly;
     - make score animation larger
+    - fix click path in map for dorm
+
+
 //done
 //    - make sure map level buttons don't work unless gameProgress is satisfactory;
 //    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
