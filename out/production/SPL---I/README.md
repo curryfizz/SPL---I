@@ -1,6 +1,7 @@
-# COURSE CODE: SWE 4304 COURSE TITLE: SOFTWARE PROJECT LAB-I :computer:
 
-## PROJECT TITLE: LOST TREASURE
+# COURSE TITLE: SOFTWARE PROJECT LAB-I :computer:
+# COURSE CODE: SWE 4304
+## PROJECT TITLE: LOST TREASURE  :package:
 
 ## Current Phase :
 ```
@@ -22,7 +23,7 @@ DONE
  ```
  
 
-## TECHNOLOGIES AND PLATFORMS :
+## :gear: :wrench: TECHNOLOGIES AND PLATFORMS :
 * :white_circle:  Platform   - Desktop Application
 * :white_circle:  Language   -  ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 * :white_circle:  Database   - ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white)
@@ -34,7 +35,7 @@ DONE
  
 
 
- ## :package: CORE FEATURES : 
+ ##  :sparkles: CORE FEATURES : 
  ```
  1. START SCREEN
  Login/Registration
@@ -54,7 +55,7 @@ DONE
  If you click on the hidden object it will be regarded as “FOUND” and if you find all the items in the scenery you will pass that level and can play the next.
  ```
 
-## STORYLINE :
+## :clipboard: :books: STORYLINE :
 While moving into dorms for the first time, freshmen are very emotional and bring a lot of luggage for their first stay. A new game commences with you (the player, a freshman) looking at a text message in your phone from your mother. In the message, your mother wishes you good luck for your classes. She also mentions that she packed a special surprise for you in your luggage. The scene changes to a messy IUT dorm room. The gameplay starts from here and is split into 5 levels. Each level is played in a different scene. At the beginning and end of every level, a narration text box appears explaining the situation.
 
 :one: Dorm Room:  (First playthrough) You went back to your room to see the surprise your mother packed, but are faced with a tangled mess. The first level is the dorm room you are in. You have to find several items from a checklist from the dorm scene infront of you. After finding the items from the scene, the level is completed.
@@ -68,5 +69,24 @@ While moving into dorms for the first time, freshmen are very emotional and brin
  
  ## HOW TO USE THE SOFTWARE :
  
- 
+As a First time user, you need to Sign up for the game, after signing up you can log in and play. 
+You will see a screen that is the message from your mother 
+
+![image](https://user-images.githubusercontent.com/90206489/209766860-c659fd37-f60b-480c-bad3-263989290cb7.png)
+
+
+After that, you can go to the map scene. here you will see an arrow sign indicating where you have to go. 
+
+![image](https://user-images.githubusercontent.com/90206489/209767362-be14ea93-989f-409f-b4ce-2c823d38fada.png)
+
+
+After unlocking each level you can proceed.
+In Each level, you will see 6-8 items. You need to find the items on your own. But wait there is a feature for you that you can use the hint. If you use the hint some scores will be redacted.
+
+![image](https://user-images.githubusercontent.com/90206489/209767589-46f4e932-180e-40d4-a9aa-0aae4f891ecc.png)![image](https://user-images.githubusercontent.com/90206489/209767688-09a6c0ef-0129-441f-831e-8ace1f23b2c9.png)
+
+After finding all the items and scoring a required score you can go to the next level.
+
+
+
 

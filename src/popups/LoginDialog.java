@@ -107,36 +107,13 @@ public class LoginDialog extends AccountDialog {
         loginButton.setEnabled(true);
         repaint();
     }
+    
+
     private void addLoginButtonMouseEvents(){
         loginButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                try {
-                    if(!loginButton.isEnabled()){
-                        return;
-                    }
-                    disableEmailFields();
-                    disableLoginButton();
-                    Thread.sleep(500);
-
-                    System.out.println(emailTextArea.getText());
-                    if(!isEmailValid(emailTextArea.getText())){
-                        System.out.println(isEmailValid(emailTextArea.getText()));
-                        showEmailNotInCurrentFormatLabel();
-                        enableEmailFields();
-                        enableLoginButton();
-                    }else if(OracleDatabase.retrieveUserInfo(emailTextArea.getText())){
-                        doExitCountDown(loginSuccessFullExitLabel, "Login successful");
-                    }else{
-                        EmailNotFoundDialog emailNotFoundDialog = new EmailNotFoundDialog(returnSelf());
-                        enableEmailFields();
-                        enableLoginButton();
-                    }
-                }catch (InterruptedException ex){
-                    throw new RuntimeException(ex);
-                }catch (SQLException sqlException){
-                    sqlException.printStackTrace();
-                }
+                doButtonActions();
             }
 
             @Override
@@ -146,7 +123,7 @@ public class LoginDialog extends AccountDialog {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                doButtonActions();
             }
 
             @Override
@@ -159,6 +136,35 @@ public class LoginDialog extends AccountDialog {
 
             }
         });
+    }
+
+    private void doButtonActions() {
+        try {
+            if(!loginButton.isEnabled()){
+                return;
+            }
+            disableEmailFields();
+            disableLoginButton();
+            Thread.sleep(500);
+
+            System.out.println(emailTextArea.getText());
+            if(!isEmailValid(emailTextArea.getText())){
+                System.out.println(isEmailValid(emailTextArea.getText()));
+                showEmailNotInCurrentFormatLabel();
+                enableEmailFields();
+                enableLoginButton();
+            }else if(OracleDatabase.retrieveUserInfo(emailTextArea.getText())){
+                doExitCountDown(loginSuccessFullExitLabel, "Login successful");
+            }else{
+                EmailNotFoundDialog emailNotFoundDialog = new EmailNotFoundDialog(returnSelf());
+                enableEmailFields();
+                enableLoginButton();
+            }
+        }catch (InterruptedException ex){
+            throw new RuntimeException(ex);
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
     }
 
     private LoginDialog returnSelf(){

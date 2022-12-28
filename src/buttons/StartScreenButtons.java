@@ -47,7 +47,8 @@ public class StartScreenButtons extends BasicBlueButton{
                 clickSound.play();
                 if(getBackground()!=backGroundColor){
                     setBackground(getBackground().darker());
-                }            }
+                }
+            }
             @Override
             public void mouseEntered(MouseEvent e) {
 

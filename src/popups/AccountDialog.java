@@ -19,12 +19,11 @@ public abstract class AccountDialog extends JDialog {
     AccountDialogTextArea emailTextArea;
     OracleDatabase database;
     AccountDialogLabel emailVerificationLabel;
-
     BasicBlueButton cancelButton;
     JFrame jFrame;
     void doExitCountDown(AccountDialogLabel exitLabel, String text){
         Timer timer = new Timer(0, new ActionListener() {
-            int seconds = 10;
+            int seconds = 4;
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -129,7 +128,7 @@ public abstract class AccountDialog extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                     dispose();
                 } catch (InterruptedException ex) {
                     throw new RuntimeException(ex);
@@ -143,7 +142,7 @@ public abstract class AccountDialog extends JDialog {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                dispose();
             }
 
             @Override

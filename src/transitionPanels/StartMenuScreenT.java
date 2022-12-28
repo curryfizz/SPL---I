@@ -2,7 +2,7 @@ package src.transitionPanels;
 
 import src.buttons.BasicBlueButton;
 import src.buttons.CloseButton;
-import src.buttons.StartGameButton;
+import src.buttons.StartScreenButtons;
 import src.buttons.StartScreenButtons;
 import src.events.LoginButtonEvent;
 import src.events.SignUpButtonEvent;
@@ -34,8 +34,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     JLabel backGroundImageLabel;
     Sound bgMusic;
     Sound clickSound;
-
-    StartGameButton startGameButton;
+    StartScreenButtons startGameButton;
     LoadingAnimationT loadingAnimationT;
     JPanel nextScene;
     public StartScreenButtons loginButton;
@@ -88,7 +87,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
             public void mouseClicked(MouseEvent e) {
                 clickSound.play();
 
-                jFrame.remove(startGameButton.startMenu);
+//                jFrame.remove(startGameButton.startMenu);
                 jFrame.add(loadingAnimationT);
 
                 bgMusic.stop();
@@ -111,7 +110,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
                 if(isHovering) {
                     clickSound.play();
 
-                    jFrame.remove(startGameButton.startMenu);
+//                    jFrame.remove(startGameButton.startMenu);
                     jFrame.add(loadingAnimationT);
                     loadingAnimationT.initializeTimer();
 
@@ -175,7 +174,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     }
 
     public void addStartGameButton(){
-        startGameButton = new StartGameButton(this);
+        startGameButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Start Game");
         startGameButton.setFont(FontInfo.getResizedFont(60f));
         startGameButton.setBounds(0, DeviceInformation.screenHeight/3, DeviceInformation.screenWidth/5, 70);
         add(startGameButton);
@@ -239,7 +238,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                System.exit(0);
             }
 
             @Override
@@ -262,7 +261,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         startGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                jFrame.remove(startGameButton.startMenu);
+                jFrame.remove(StartMenuScreenT.this);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
                 jFrame.revalidate();

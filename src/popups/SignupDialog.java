@@ -116,36 +116,7 @@ public class SignupDialog extends AccountDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
 
-                try {
-                    if(!submitButton.isEnabled()){
-                        return;
-                    }
-                    disableUserFields();
-                    disableEmailFields();
-                    disableSubmitButton();
-                    Thread.sleep(500);
-                        System.out.println(userNameTextArea.getText());
-                        System.out.println(emailTextArea.getText());
-                    if(!isEmailValid(emailTextArea.getText())){
-                        System.out.println(isEmailValid(emailTextArea.getText()));
-                        showEmailNotInCurrentFormatLabel();
-                        enableUserFields();
-                        enableEmailFields();
-                        enableSubmitButton();
-                    }else if(!OracleDatabase.insertUser(userNameTextArea.getText(), emailTextArea.getText())){
-                        EmailAlreadyRegisteredDialog emailAlreadyRegisteredDialog = new EmailAlreadyRegisteredDialog(returnSelf());
-//                        showEmailAlreadyExistsLabel();
-                        enableUserFields();
-                        enableEmailFields();
-                        enableSubmitButton();
-                    }else{
-                        doExitCountDown(accountCreatedExit, "Account created successfully");
-                    }
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex);
-                }catch (SQLException sqlException){
-                    sqlException.printStackTrace();
-                }
+                doButtonActions();
 
 
             }
@@ -156,7 +127,7 @@ public class SignupDialog extends AccountDialog {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                doButtonActions();
             }
 
             @Override
@@ -169,6 +140,39 @@ public class SignupDialog extends AccountDialog {
 
             }
         });
+    }
+
+    private void doButtonActions() {
+        try {
+            if(!submitButton.isEnabled()){
+                return;
+            }
+            disableUserFields();
+            disableEmailFields();
+            disableSubmitButton();
+            Thread.sleep(500);
+                System.out.println(userNameTextArea.getText());
+                System.out.println(emailTextArea.getText());
+            if(!isEmailValid(emailTextArea.getText())){
+                System.out.println(isEmailValid(emailTextArea.getText()));
+                showEmailNotInCurrentFormatLabel();
+                enableUserFields();
+                enableEmailFields();
+                enableSubmitButton();
+            }else if(!OracleDatabase.insertUser(userNameTextArea.getText(), emailTextArea.getText())){
+                EmailAlreadyRegisteredDialog emailAlreadyRegisteredDialog = new EmailAlreadyRegisteredDialog(returnSelf());
+//                        showEmailAlreadyExistsLabel();
+                enableUserFields();
+                enableEmailFields();
+                enableSubmitButton();
+            }else{
+                doExitCountDown(accountCreatedExit, "Account created successfully");
+            }
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
     }
 
     private SignupDialog returnSelf(){

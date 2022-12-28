@@ -1,5 +1,6 @@
 package src.buttons;
 
+import src.levelObjects.Sound;
 import src.setup.FontInfo;
 
 import javax.swing.*;
@@ -9,6 +10,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class BasicBlueButton extends JButton {
+
+    Sound clickSound = new Sound("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
+
 
     public BasicBlueButton(int width, int height, String text){
         addButtonStyles(width,height,text);
@@ -20,7 +24,8 @@ public class BasicBlueButton extends JButton {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                clickSound.stop();
+                clickSound.play();
             }
 
             @Override
@@ -30,7 +35,8 @@ public class BasicBlueButton extends JButton {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                clickSound.stop();
+                clickSound.play();
             }
 
             @Override

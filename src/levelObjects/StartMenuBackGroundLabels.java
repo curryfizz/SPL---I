@@ -36,7 +36,7 @@ public class StartMenuBackGroundLabels extends JLabel implements ActionListener 
         timer.setDelay(delay);
         timer.start();
 
-        animationEffect = new Sound("audio/soundeffects/iconAppearance.wav");
+        animationEffect = new Sound("audio/soundeffects/iconApprearancev2.wav");
         if(timer.isRunning()) {
             animationEffect.play();
         }
