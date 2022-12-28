@@ -10,7 +10,9 @@ import src.levelObjects.Sound;
 import src.levelObjects.StartMenuBackGroundLabels;
 import src.levelObjects.StartMenuLabel;
 import src.levelObjects.TimerLabel;
+import src.popups.ExitWindowConfirmationDialog;
 import src.popups.LoginDialog;
+import src.popups.UserStatsPopup;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 
@@ -34,9 +36,10 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     JLabel backGroundImageLabel;
     Sound bgMusic;
     Sound clickSound;
-    StartScreenButtons startGameButton;
     LoadingAnimationT loadingAnimationT;
     JPanel nextScene;
+    public StartScreenButtons startGameButton;
+    public StartScreenButtons playerStatsButton;
     public StartScreenButtons loginButton;
     public StartScreenButtons signupButton;
     public StartScreenButtons quitButton;
@@ -80,72 +83,75 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 
     }
 
-    private void doButtonThings() {
-        startGameButton.addMouseListener(new MouseListener() {
-            boolean isHovering = false;
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                clickSound.play();
-
-//                jFrame.remove(startGameButton.startMenu);
-                jFrame.add(loadingAnimationT);
-
-                bgMusic.stop();
-
-                loadingAnimationT.initializeTimer();
-
-                jFrame.revalidate();
-                jFrame.repaint();
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                startGameButton.setBackground(new Color(100,70,120));
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                startGameButton.setBackground(null);
-                if(isHovering) {
-                    clickSound.play();
-
-//                    jFrame.remove(startGameButton.startMenu);
-                    jFrame.add(loadingAnimationT);
-                    loadingAnimationT.initializeTimer();
-
-//                    bgMusic.stop();
-
-                    jFrame.revalidate();
-                    jFrame.repaint();
-                }
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                isHovering = true;
-                startGameButton.setBackground(new Color(0,40,80));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                isHovering = false;
-                startGameButton.setBackground(null);
-            }
-        });
-    }
+//    private void doButtonThings() {
+//        startGameButton.addMouseListener(new MouseListener() {
+//            boolean isHovering = false;
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                clickSound.play();
+//
+////                jFrame.remove(startGameButton.startMenu);
+//                jFrame.add(loadingAnimationT);
+//
+//                bgMusic.stop();
+//
+//                loadingAnimationT.initializeTimer();
+//
+//                jFrame.revalidate();
+//                jFrame.repaint();
+//
+//            }
+//
+//            @Override
+//            public void mousePressed(MouseEvent e) {
+//                startGameButton.setBackground(new Color(100,70,120));
+//            }
+//
+//            @Override
+//            public void mouseReleased(MouseEvent e) {
+//                startGameButton.setBackground(null);
+//                if(isHovering) {
+//                    clickSound.play();
+//
+////                    jFrame.remove(startGameButton.startMenu);
+//                    jFrame.add(loadingAnimationT);
+//                    loadingAnimationT.initializeTimer();
+//
+////                    bgMusic.stop();
+//
+//                    jFrame.revalidate();
+//                    jFrame.repaint();
+//                }
+//            }
+//
+//            @Override
+//            public void mouseEntered(MouseEvent e) {
+//                isHovering = true;
+//                startGameButton.setBackground(new Color(0,40,80));
+//            }
+//
+//            @Override
+//            public void mouseExited(MouseEvent e) {
+//                isHovering = false;
+//                startGameButton.setBackground(null);
+//            }
+//        });
+//    }
 
 
     private void addLoginButtonMouseevents(){
         loginButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                clickSound.play();
                 LoginDialog loginDialog = new LoginDialog(jFrame);
                 if(loginDialog.isLoggedIn){
                     loginDialog.addStartMenuSceneT(StartMenuScreenT.this);
                     loginDialog.changeButtons(StartMenuScreenT.this);
                     addStartGameButton();
+                    addPlayerStatsButton();
                     addStartGameButtonMouseEvents();
+                    addPlayerStatsButtonMouseEvents();
                     repaint();
                     revalidate();
                 }
@@ -178,6 +184,13 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         startGameButton.setFont(FontInfo.getResizedFont(60f));
         startGameButton.setBounds(0, DeviceInformation.screenHeight/3, DeviceInformation.screenWidth/5, 70);
         add(startGameButton);
+    }
+
+    public void addPlayerStatsButton(){
+        playerStatsButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Start Game");
+        playerStatsButton.setFont(FontInfo.getResizedFont(60f));
+        playerStatsButton.setBounds(0, DeviceInformation.screenHeight/2, DeviceInformation.screenWidth/5, 70);
+        add(playerStatsButton);
     }
     public void addLoginButton(){
         loginButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Login");
@@ -228,7 +241,8 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         quitButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.exit(0);
+                clickSound.play();
+                new ExitWindowConfirmationDialog(jFrame, new FontInfo());
             }
 
             @Override
@@ -257,10 +271,42 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         this.loadingAnimationT = loadingAnimationT;
         this.nextScene = nextScene;
     }
+
+    private void addPlayerStatsButtonMouseEvents(){
+        playerStatsButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                clickSound.play();
+                new UserStatsPopup(jFrame);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+    }
     private void addStartGameButtonMouseEvents(){
         startGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                clickSound.play();
+
                 jFrame.remove(StartMenuScreenT.this);
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();

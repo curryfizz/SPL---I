@@ -1,5 +1,6 @@
 package src.transitionPanels;
 
+import src.DatabaseConnection.PlayerInfo;
 import src.levelObjects.Sound;
 import src.buttons.CloseButton;
 import src.setup.DeviceInformation;
@@ -154,7 +155,9 @@ public class MessageFromMomT extends JPanel implements Runnable {
                     repaint();
                     revalidate();
                 }else {
-                    // next scene
+                    if(PlayerInfo.gameProgress <= 0){
+                        PlayerInfo.gameProgress = 1;
+                    }
                     EndScene();
                 }
 

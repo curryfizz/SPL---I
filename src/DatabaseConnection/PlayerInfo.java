@@ -3,26 +3,27 @@ package src.DatabaseConnection;
 public class PlayerInfo {
     public static String username;
     public static String email;
-    public static int gameProgress;
+    public static int gameProgress = 0;
 
-    public static int DormHighScore;
-    public static int DormLeastTime;
+    public static int DormHighScore = -1;
+    public static int DormLeastTime = -1;
 
-    public static int ClassroomHighScore;
-    public static int ClassroomLeastTime;
+    public static int ClassroomHighScore = -1;
+    public static int ClassroomLeastTime = -1;
 
-    public static int LibraryHighScore;
-    public static int LibraryLeastTime;
+    public static int LibraryHighScore = -1;
+    public static int LibraryLeastTime = -1;
 
-    public static int CDSHighScore;
-    public static int CDSLeastTime;
+    public static int CDSHighScore = -1;
+    public static int CDSLeastTime = -1;
 
-    public static int DormV2HighScore;
-    public static int DormV2LeastTime;
+    public static int DormV2HighScore = -1;
+    public static int DormV2LeastTime = -1;
 
+    public static int numberOfFinished = 0;
 
     public PlayerInfo(int gameProgress){
-        this.gameProgress = gameProgress;
+        PlayerInfo.gameProgress = gameProgress;
     }
 
 
@@ -31,3 +32,4 @@ public class PlayerInfo {
     }
 
 }
+

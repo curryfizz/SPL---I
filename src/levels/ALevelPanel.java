@@ -52,6 +52,8 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public ArrayList<String> textList = new ArrayList<>(); //all the names of the objects are in this\
     public ArrayList<JLabel> ListOfAllItemNamesAsLabels = new ArrayList<>(); //the labels containing Strings of 'item names' that were randomly chosen
     public ArrayList<Integer> RandObjIndices;
+    /**change to implement**/
+    public int PassingScore = 100;
 
     ALevelPanel(JFrame jFrame){
         this.jFrame = jFrame;

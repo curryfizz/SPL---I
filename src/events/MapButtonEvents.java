@@ -1,6 +1,7 @@
 package src.events;
 
 import src.buttons.MapLevelButton;
+import src.levelObjects.Sound;
 import src.levels.*;
 import src.transitionPanels.MapT;
 
@@ -19,6 +20,8 @@ public class MapButtonEvents implements MouseListener {
     JLabel padLock;
     JLabel CutOut;
     MapLevelButton motherButton;
+    Sound errorSound;
+    Sound clickSound;
     public MapButtonEvents(MapT mapT, MapLevelButton motherButton, int priority){
         this.serial = priority;
         this.motherButton = motherButton;
@@ -28,6 +31,11 @@ public class MapButtonEvents implements MouseListener {
         this.CutOut = mapT.CutOutList.get(serial);
         this.DefaultText = mapT.SidePanelTextList.get(0);
         this.padLock = mapT.PadLockList.get(serial);
+
+        errorSound = new Sound();
+        clickSound = new Sound();
+        clickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
+        errorSound.setFile("audio/soundeffects/mixkit-click-error-1110.wav");
     }
 
     public ALevelPanel getPanel(int serial){
@@ -54,23 +62,39 @@ public class MapButtonEvents implements MouseListener {
             SideText.setVisible(false);
         }
     }
+
+    private void hideAllCutOutsAndLock(){
+        for( JLabel cutout : mapT.CutOutList){
+            cutout.setVisible(false);
+        }
+        for(JLabel lock : mapT.PadLockList){
+            lock.setVisible(false);
+        }
+    }
     @Override
     public void mouseClicked(MouseEvent e) {
-        mapT.ArrowGif.setVisible(false);
+        if(MapT.gameProgress > serial){
+            clickSound.play();
+            mapT.ArrowGif.setVisible(false);
 
-        ALevelPanel SceneT = getPanel(serial);
-        mapT.mapMusic.stop();
+            ALevelPanel SceneT = getPanel(serial);
+            mapT.mapMusic.stop();
 
-        mapT.jFrame.remove(mapT);
-        mapT.loadingAnimationT.changeNextScene(SceneT);
-        SceneT.PrepareForSceneTransition(mapT.loadingAnimationT, mapT);
-        mapT.jFrame.add(mapT.loadingAnimationT);
-        mapT.loadingAnimationT.initializeTimer();
+            mapT.jFrame.remove(mapT);
+            mapT.loadingAnimationT.changeNextScene(SceneT);
+            SceneT.PrepareForSceneTransition(mapT.loadingAnimationT, mapT);
+            mapT.jFrame.add(mapT.loadingAnimationT);
+            mapT.loadingAnimationT.initializeTimer();
 
-        hideAllText();
+            hideAllText();
+            hideAllCutOutsAndLock();
 
-        mapT.jFrame.revalidate();
-        mapT.jFrame.repaint();
+            mapT.jFrame.revalidate();
+            mapT.jFrame.repaint();
+        }
+        else{
+            errorSound.play();
+        }
     }
 
     @Override

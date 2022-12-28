@@ -3,6 +3,7 @@ import src.DatabaseConnection.PlayerInfo;
 import src.events.SceneObjectEvents;
 import src.levels.ALevelPanel;
 import src.popups.LevelFinishDialog;
+import src.popups.LevelFinishedNotEnoughScore;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
@@ -96,7 +97,9 @@ public class ObjectHidingButton extends JButton {
 
                     setEnabled(false);
                     levelPanel.ListOfAllItemNamesAsLabels.get(myIndex).setVisible(false);
-                    if(levelPanel.imagesFound == 6){
+
+
+                    if(levelPanel.imagesFound == 6 && levelPanel.scoreBoard.score >= levelPanel.PassingScore){
                         levelPanel.timerLabel.isTimeOver = true;
                         levelPanel.imagesFound=0;
                         levelPanel.congratulationsConfetti.setVisible(true);
@@ -112,6 +115,8 @@ public class ObjectHidingButton extends JButton {
                         levelPanel.jFrame.revalidate();
                         levelPanel.jFrame.repaint();
 
+                    } else if (levelPanel.imagesFound == 6) {
+                        new LevelFinishedNotEnoughScore(levelPanel);
                     }
                 }
                 else {

@@ -7,11 +7,13 @@ import src.levelObjects.Sound;
 import src.levels.ALevelPanel;
 import src.levels.ClassRoomSceneT;
 import src.popups.LevelUnlockPopUp;
+import src.popups.UserStatsPopup;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.DatabaseConnection.PlayerInfo;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,11 +42,9 @@ public class MapT extends JPanel implements Runnable{
     JLabel ClassroomColourCut;
     JLabel LibraryColourCut;
     JLabel CDSColourCut;
-
     JLabel backgroundLabel;
-
     PlayerScoreBoard playerScoreBoard;
-
+    JButton ProfileButton;
     int score;
     public int MaxDormScore =0;
     public int MaxLibraryScore =0;
@@ -77,6 +77,9 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void ShowUnlockAnimation(int level_number){
+        for(int i =0; i<=gameProgress-2; i++){
+            CutOutList.get(i).setVisible(true);
+        }
         HugeUnLock.setVisible(true);
         timer = new Timer(2800, new ActionListener() {
             @Override
@@ -109,23 +112,6 @@ public class MapT extends JPanel implements Runnable{
 
     }
 
-    public void AddArrowGif(){
-        ArrowGif = new JLabel();
-        int len = 240;
-        int height = 130;
-        ArrowGif.setBounds(getX(0),getY(0),len,height);
-
-        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/arrow6.gif")));
-        Image image = imageIcon.getImage();
-        image = image.getScaledInstance(len, height,Image.SCALE_DEFAULT);
-        imageIcon = new ImageIcon(image);
-        ArrowGif.setIcon(imageIcon);
-        ArrowGif.repaint();
-//        ArrowGif.setVisible(false);
-        this.add(ArrowGif);
-        repaint();
-        revalidate();
-    }
 
     private JLabel makeSidePanelTextLabels(String Text){
         JLabel SidePanelText = new JLabel(Text, SwingConstants.CENTER);
@@ -187,6 +173,7 @@ public class MapT extends JPanel implements Runnable{
     public void buildScene(){
         AddUnlockAnimation();
         AddArrowGif();
+        ProfileButton();
         AssignSideLabels();
         AssignCutOutLabels();
         addLockLabels();
@@ -199,8 +186,6 @@ public class MapT extends JPanel implements Runnable{
         createMapBackground();
         refreshButtonGrayness();
         fixArrowPosition();
-//        mapMusic = new Sound();
-//        mapMusic.setFile("audio/background_music/Chau Sara - Mramor(for Map).wav");
 
 //        mapMusic.currentVolume = -5;
 //        mapMusic.fc.setValue(mapMusic.currentVolume);
@@ -222,12 +207,29 @@ public class MapT extends JPanel implements Runnable{
                 p = CDSButton.getLocation();
             }
         }
-        p.x = p.x-250*1980/DeviceInformation.screenWidth;
-        p.y = p.y-(35)*1080/DeviceInformation.screenHeight;
+        p.x = p.x-(150)*1980/DeviceInformation.screenWidth;
+//        p.y = p.y-(35)*1080/DeviceInformation.screenHeight;
         ArrowGif.setLocation(p);
         ArrowGif.setVisible(true);
     }
 
+    public void AddArrowGif(){
+        ArrowGif = new JLabel();
+        int len = 120;
+        int height = 65;
+        ArrowGif.setBounds(getX(0),getY(0),len,height);
+
+        ImageIcon imageIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Gifs/arrow6.gif")));
+        Image image = imageIcon.getImage();
+        image = image.getScaledInstance(len, height,Image.SCALE_DEFAULT);
+        imageIcon = new ImageIcon(image);
+        ArrowGif.setIcon(imageIcon);
+        ArrowGif.repaint();
+//        ArrowGif.setVisible(false);
+        this.add(ArrowGif);
+        repaint();
+        revalidate();
+    }
 
     private void addLockLabels() {
         int size = 70;
@@ -239,7 +241,6 @@ public class MapT extends JPanel implements Runnable{
         padLockCDS = addPadLock(getX(1225),getY(485), size);
 
     }
-
 
     public void AddAllScenes(LoadingAnimationT loadingAnimationT, ALevelPanel dormSceneT,ALevelPanel librarySceneT,ALevelPanel ClassroomSceneT,ALevelPanel CDSSceneT) {
         this.loadingAnimationT = loadingAnimationT;
@@ -395,6 +396,46 @@ public class MapT extends JPanel implements Runnable{
             }
         }
     }
+
+    void ProfileButton(){
+        ProfileButton = new JButton("+");
+        ProfileButton.setBounds(500, 0, 30, 25);
+        ProfileButton.setBorder(new RoundedBorder(10)); //10 is the radius
+        ProfileButton.setForeground(Color.BLUE);
+        ProfileButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new UserStatsPopup(jFrame);
+            }
+        });
+        this.add(ProfileButton);
+    }
+
+    private static class RoundedBorder implements Border {
+
+        private int radius;
+
+
+        RoundedBorder(int radius) {
+            this.radius = radius;
+        }
+
+
+        public Insets getBorderInsets(Component c) {
+            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
+        }
+
+
+        public boolean isBorderOpaque() {
+            return true;
+        }
+
+
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            g.drawRoundRect(x, y, width-1, height-1, radius, radius);
+        }
+    }
+
 
 
 }
