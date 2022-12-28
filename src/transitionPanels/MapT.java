@@ -189,7 +189,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
 
-//    public void updateScore(){
+//    public void updatePlayerStats(){
 //
 //        score = MaxDormScore + MaxLibraryScore +MaxClassroomScore +MaxCDS_Score;
 //        playerScoreBoard.setText("Current Score: " + score);

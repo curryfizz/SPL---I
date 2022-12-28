@@ -149,6 +149,7 @@ public class GameManager{
 //
 //                }
 //            });
+
 //            jPanel.add(jTextField2);
 //            jPanel.add(jTextField);
 //            jPanel.add(signup);
@@ -171,7 +172,6 @@ public class GameManager{
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
         PlayerInfo player = new PlayerInfo(1); // taken from database
-
         System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
 
         /* Set up the frame*/
@@ -199,8 +199,8 @@ public class GameManager{
 
 
         startMenu.PrepareForSceneTransition(loadingAnimationT, null); //nextscene is not being used
-                                                                                //perhaps later we can use player info to change next scene
-                                                                                //for loadingscene
+        //perhaps later we can use player info to change next scene
+        //for loadingscene
 
         loadingAnimationT.startMenuScreenT = startMenu;
         loadingAnimationT.mapT = mapT;
@@ -208,6 +208,7 @@ public class GameManager{
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
 
         pl.execute(startMenu);
+        System.out.println(PlayerInfo.gameProgress);
         pl.execute(mapT);
         pl.execute(loadingAnimationT);
         pl.execute(messageFromMomT);
