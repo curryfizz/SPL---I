@@ -45,7 +45,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         createBubble2();
 
         objClickSound = new Sound();
-        objClickSound.setFile("audio/soundeffects/podong click sound.wav");
+        objClickSound.setFile("audio/soundeffects/unlock.wav");
 
         addCustomWindowCloseButton();
         addTapToContinue();
