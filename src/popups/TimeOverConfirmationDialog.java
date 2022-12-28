@@ -42,7 +42,7 @@ public class TimeOverConfirmationDialog extends JDialog {
         System.gc();
 
         GameOverSound = new Sound();
-        GameOverSound.setFile("audio/soundeffects/Fail Sound Effect.wav");
+        GameOverSound.setFile("audio/soundeffects/failbg.wav");
 
         System.out.println("Omae wa mou shin desu");
         GameOverSound.play();
