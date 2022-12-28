@@ -11,7 +11,6 @@ import java.awt.*;
 public class TimerLabel extends JLabel implements Runnable{
     JFrame jFrame;
     ALevelPanel backGroundPanel;
-
     ConfirmationWindowPopup timeUpWindowPopup;
     public int second;
     public int minute;
@@ -27,7 +26,6 @@ public class TimerLabel extends JLabel implements Runnable{
     Point p;
     Thread TimerThread;
     public int elapsedTime = 0;
-
 
     public boolean isTimeOver = false;
     public TimerLabel(JFrame jFrame, ALevelPanel backGroundPanel) {
@@ -89,7 +87,6 @@ public class TimerLabel extends JLabel implements Runnable{
     }
 
     public void StartTimer() { //starts outside the class
-
         TimerThread = new Thread(this);
         StartTimeMili = System.currentTimeMillis();
         TimerThread.start(); // starts run method in another thread
