@@ -202,16 +202,12 @@ public class GameManager{
                                                                                 //perhaps later we can use player info to change next scene
                                                                                 //for loadingscene
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
-
         pl.execute(startMenu);
         pl.execute(mapT);
         pl.execute(loadingAnimationT);
         pl.execute(messageFromMomT);
-
         jFrame.add(startMenu); //should be startmenu during real play
-
         pl.shutdown();
-
     }
 
     /*TODO:

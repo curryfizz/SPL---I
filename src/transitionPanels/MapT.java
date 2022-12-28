@@ -38,6 +38,7 @@ public class MapT extends JPanel implements Runnable{
     MapLevelButton ClassroomButton;
     MapLevelButton LibraryButton;
     MapLevelButton CDSButton;
+    MapLevelButton FinalDormButton;
     public static int gameProgress;
     public JFrame jFrame;
     JLabel DormColourCut;
@@ -102,13 +103,13 @@ public class MapT extends JPanel implements Runnable{
                 }
                 else  if(level_number==4) {
                     level2 = new Sound();
-                    level2.setFile("audio/soundeffects/lvl5unlock.wav");
+                    level2.setFile("audio/soundeffects/lvl4unlock.wav");
                     level2.play();
                 }
 
                 else  if(level_number==5) {
                     level2 = new Sound();
-                    level2.setFile("audio/soundeffects/lvl3unlock.wav");
+                    level2.setFile("audio/soundeffects/lvl5unlock.wav");
                     level2.play();
                 }
 
@@ -317,11 +318,13 @@ public class MapT extends JPanel implements Runnable{
         ClassroomButton = new MapLevelButton(getX(255), getY(160),width, height,  "Classroom", 1,this);
         LibraryButton =  new MapLevelButton(getX(525), getY(600) ,width, height,  "Library",2, this);
         CDSButton = new MapLevelButton(getX(1200), getY(590),width, height,  "CDS", 3, this);
+        FinalDormButton= new MapLevelButton(getX(733), getY(170),width, height,  "Dormitory",0, this);
 
         mapButtonList.add(DormButton);
         mapButtonList.add(ClassroomButton);
         mapButtonList.add(LibraryButton);
         mapButtonList.add(CDSButton);
+        mapButtonList.add(FinalDormButton);
 
     }
 
@@ -374,24 +377,28 @@ public class MapT extends JPanel implements Runnable{
                 ClassroomButton.setBackground(Color.darkGray);
                 LibraryButton.setBackground(Color.darkGray);
                 CDSButton.setBackground(Color.darkGray);
+                FinalDormButton.setBackground(Color.darkGray);
             }
             case 2 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
                 LibraryButton.setBackground(Color.darkGray);
                 CDSButton.setBackground(Color.darkGray);
+                FinalDormButton.setBackground(Color.darkGray);
             }
             case 3 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
                 LibraryButton.setBackground(hoverColour);
                 CDSButton.setBackground(Color.darkGray);
+
             }
             case 4 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
                 LibraryButton.setBackground(hoverColour);
                 CDSButton.setBackground(hoverColour);
+
             }
         }
     }

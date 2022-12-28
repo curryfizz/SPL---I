@@ -26,12 +26,10 @@ public class MapButtonEvents implements MouseListener {
         this.serial = priority;
         this.motherButton = motherButton;
         this.mapT = mapT;
-
         this.SidePanelText = mapT.SidePanelTextList.get(serial+1);
         this.CutOut = mapT.CutOutList.get(serial);
         this.DefaultText = mapT.SidePanelTextList.get(0);
         this.padLock = mapT.PadLockList.get(serial);
-
         errorSound = new Sound();
         clickSound = new Sound();
         clickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
@@ -50,8 +48,9 @@ public class MapButtonEvents implements MouseListener {
             Scene = new LibrarySceneT(mapT.jFrame);
         } else if (serial == 3) {
             Scene = new CDS_LevelPanelT(mapT.jFrame);
+        } else if (serial==4) {
+            Scene = new FinalDormRoomSceneT(mapT.jFrame);
         }
-
         es.execute(Scene);
         es.shutdown();
         return Scene;
