@@ -1,35 +1,21 @@
 package src.transitionPanels;
 
-import src.buttons.BasicBlueButton;
-import src.buttons.CloseButton;
 import src.buttons.StartScreenButtons;
-import src.buttons.StartScreenButtons;
-import src.events.LoginButtonEvent;
 import src.events.SignUpButtonEvent;
 import src.levelObjects.Sound;
 import src.levelObjects.StartMenuBackGroundLabels;
 import src.levelObjects.StartMenuLabel;
-import src.levelObjects.TimerLabel;
 import src.popups.ExitWindowConfirmationDialog;
 import src.popups.LoginDialog;
 import src.popups.UserStatsPopup;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.TableHeaderUI;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
-
-import static java.lang.Thread.sleep;
 
 public class StartMenuScreenT extends JPanel implements Runnable{
     JFrame jFrame;

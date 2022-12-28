@@ -215,24 +215,22 @@ public class GameManager{
     }
 
     /*TODO:
-    - add small icon in map to go to player stats;
-    - make it another panel
-    */
-    /*TODO:
-    - why does score Animation keep disappearing so quickly;
     - tie all the music and sound effects together, or make them seperate, people may find it too loud;
-    - add sound effects for other button clicks
-    //- add music for start menu and map
-    - make sure map level buttons don't work unless gameProgress is satisfactory;
-    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
-    - change forest music for classroom
     - try re-rendering dormscene if there's time, it looks bad compared to it's fancy classroom and fancy library brothers
     - add transcucent background image for text Box in AlevelPanels, black box looks kinda bad;
     - add background image for timer label and score label;
     - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
-    - add arrow gif pointing at the next level in map?
     - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
-    - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does.
-    - managed to?????? ayesha bhule gese
+
+//important
+    - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does
+    - add sound effects for other button clicks
+    - why does score Animation keep disappearing so quickly;
+    - make
+//done
+//    - make sure map level buttons don't work unless gameProgress is satisfactory;
+//    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
+//    - add arrow gif pointing at the next level in map?
+//    - add music for start menu and map
     */
 }

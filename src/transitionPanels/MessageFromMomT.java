@@ -1,8 +1,8 @@
 package src.transitionPanels;
 
 import src.DatabaseConnection.PlayerInfo;
-import src.levelObjects.Sound;
 import src.buttons.CloseButton;
+import src.levelObjects.Sound;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 

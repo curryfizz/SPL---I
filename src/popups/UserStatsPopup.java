@@ -1,10 +1,7 @@
 package src.popups;
 
 import src.DatabaseConnection.PlayerInfo;
-import src.buttons.CustomPopupCloseButton;
-import src.buttons.LevelCloseButton;
 import src.levelObjects.Sound;
-import src.levels.ALevelPanel;
 import src.setup.FontInfo;
 import src.transitionPanels.MapT;
 
@@ -21,6 +18,7 @@ public class UserStatsPopup extends JDialog{
     JLabel textLabel;
     public Sound objClickSound;
     String AdvancedInfo;
+    JButton closeButton;
 
     public UserStatsPopup(JFrame jFrame){
         this.jFrame = jFrame;
@@ -33,7 +31,7 @@ public class UserStatsPopup extends JDialog{
         getRootPane().setBorder(new LineBorder(Color.white,2));
         textLabel = new JLabel();
         textLabel.setPreferredSize(new Dimension(400,500));
-//        textLabel.setBackground(Color.blue);
+        textLabel.setBackground(Color.blue);
         textLabel.setLayout(new FlowLayout());
         textLabel.setForeground(Color.white);
 
@@ -45,15 +43,58 @@ public class UserStatsPopup extends JDialog{
         objClickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
         System.gc();
 
+//        textLabel.setOpaque(true);
         textLabel.setFont(FontInfo.getResizedFont(28f));
         add(textLabel);
         textLabel.setHorizontalAlignment(JLabel.CENTER);
-        setSize(420, 520);
+        setSize(420, 600);
         setLocationRelativeTo(jFrame);
         setResizable(false);
 
-        CustomPopupCloseButton exitButton = new CustomPopupCloseButton(this);
 
+
+        closeButton = new JButton();
+//        closeButton.setLocation(0,0);
+        closeButton.setBackground(Color.decode("#14171C"));
+        closeButton.setPreferredSize(new Dimension(110,30));
+        closeButton.setFocusPainted(false);
+        closeButton.setHorizontalAlignment(JButton.CENTER);
+        closeButton.setBorder(new LineBorder(Color.white,2));
+        closeButton.setForeground(Color.white);
+        closeButton.setFont(FontInfo.getResizedFont(25f));
+        closeButton.setOpaque(true);
+        closeButton.setText("Close");
+        closeButton.setVisible(true);
+        closeButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                dispose();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        add(closeButton);
+        repaint();
+        revalidate();
         setVisible(true);
     }
 
@@ -65,7 +106,7 @@ public class UserStatsPopup extends JDialog{
 
         AdvancedInfo = "User name: " + username + "\nemail: " + email + "\n";
 
-        AdvancedInfo += "Game Progress: ";
+        AdvancedInfo += "\nGame Progress: ";
         switch (PlayerInfo.gameProgress) {
             case 0 ->{
                 AdvancedInfo += "Just Started";
