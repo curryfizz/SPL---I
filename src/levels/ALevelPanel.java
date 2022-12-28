@@ -298,7 +298,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public abstract String getMessMessage();
 
     public void MessNotification(){
-        messNotification = new JButton("<html>Oh No, The room looks like it got ransacked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>");
+        messNotification = new JButton(getMessMessage());
         messNotification.setFont(FontInfo.getResizedFont(38f));
         messNotification.setFocusPainted(false);
         messNotification.setEnabled(false);

@@ -225,16 +225,16 @@ public class GameManager{
 //important
 
     - why does score Animation keep disappearing so quickly;
+    - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does
+    - fix item names in the levels
     - make score animation larger
-    - fix click path in map for dorm
+    - make UserStatsPopup longer
+//    - why are the actual texts not appearing in the Alevel panel text box
 
-
-//done
-//    - make sure map level buttons don't work unless gameProgress is satisfactory;
-//    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
-//    - add arrow gif pointing at the next level in map?
-//    - add music for start menu and map
-      - add sound effects for other button clicks
-//  - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does
     */
+
+    /**
+     * remember to fix Passing score in AlevelPanel to 400
+     * remember to uncomment the if condition in the onclick event in MapBUttonEvents
+     */
 }
