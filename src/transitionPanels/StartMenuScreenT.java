@@ -312,6 +312,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
                     clickSound.play();
 
                     jFrame.remove(StartMenuScreenT.this);
+                    System.out.println("Player Info's game progress in StartMenuT is : " + PlayerInfo.gameProgress);
                     if (PlayerInfo.gameProgress == 0) {
                         loadingAnimationT.changeNextScene(loadingAnimationT.messageFromMomT);
                     } else if (PlayerInfo.gameProgress > 0) {

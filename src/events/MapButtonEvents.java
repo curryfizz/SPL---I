@@ -74,7 +74,7 @@ public class MapButtonEvents implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(MapT.gameProgress > serial){
+        if(PlayerInfo.gameProgress > serial){
             clickSound.play();
             mapT.ArrowGif.setVisible(false);
 
@@ -114,7 +114,7 @@ public class MapButtonEvents implements MouseListener {
 
         hideAllText();
 
-        if(MapT.gameProgress > serial) {
+        if(PlayerInfo.gameProgress > serial) {
             motherButton.setBackground(mapT.hoveringActiveButtonColor);
             SidePanelText.setVisible(true);
         }else{
@@ -130,7 +130,7 @@ public class MapButtonEvents implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if(MapT.gameProgress-2 < serial) {
+        if(PlayerInfo.gameProgress-2 < serial) {
             CutOut.setVisible(false);
         }
         mapT.refreshButtonGrayness();
