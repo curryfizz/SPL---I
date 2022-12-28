@@ -75,6 +75,6 @@ public class DormRoomSceneT extends ALevelPanel{
     }
     @Override
     public String getMessMessage(){
-        return "<html>Oh No, The room looks like it got ransacked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>";
+        return "<html>Goodness! The room is such a mess! Where is my present?<br/> Guess I'll have to tidy up.. (Tap to Search)</html>";
     }
 }

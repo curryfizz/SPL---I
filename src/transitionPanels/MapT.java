@@ -46,8 +46,6 @@ public class MapT extends JPanel implements Runnable{
     JLabel LibraryColourCut;
     JLabel CDSColourCut;
     JLabel backgroundLabel;
-    PlayerScoreBoard playerScoreBoard;
-    JButton ProfileButton;
     int score;
     public int MaxDormScore =0;
     public int MaxLibraryScore =0;
@@ -158,9 +156,9 @@ public class MapT extends JPanel implements Runnable{
     private void AssignSideLabels() {
         defaultText = makeSidePanelTextLabels("<html>Level Locked<br/>Please complete previous levels to access.</html>");
         dormText = makeSidePanelTextLabels("<html>Mom packed a special Surprise for me?<br/>Let's go back to my room and see what it is.</html>");
-        classroomText = makeSidePanelTextLabels("<html>I should go back to my classroom <br/> If i can found some of my things<br/>Let's go  to my Classroom.</html>");
-        libraryText = makeSidePanelTextLabels("<html>I should check out the library ?<br/>Let's go  to my library and see if i can find this or not.</html>");
-        CDSText = makeSidePanelTextLabels("<html>I should go to Our CDS <br/> If i can found some of my things<br/>Here is the CDS.</html>");
+        classroomText = makeSidePanelTextLabels("<html>I couldn't find it in my room..<br/>Maybe mom kept it in my backpack and I left it in my Classroom.</br>Let's check there.</html>");
+        libraryText = makeSidePanelTextLabels("<html>I still can't find it!<br/>Did I actually leave it in the Library instead?</html>");
+        CDSText = makeSidePanelTextLabels("<html>Where could my Present be!<br/>I do remember visiting the Central Department Store.<br/>Did I drop it there?</html>");
     }
 
 
@@ -192,17 +190,16 @@ public class MapT extends JPanel implements Runnable{
     }
 
 
-    public void updateScore(){
-
-        score = MaxDormScore + MaxLibraryScore +MaxClassroomScore +MaxCDS_Score;
-        playerScoreBoard.setText("Current Score: " + score);
-    }
+//    public void updateScore(){
+//
+//        score = MaxDormScore + MaxLibraryScore +MaxClassroomScore +MaxCDS_Score;
+//        playerScoreBoard.setText("Current Score: " + score);
+//    }
 
 
     public void buildScene(){
         AddUnlockAnimation();
         AddArrowGif();
-        ProfileButton();
         AssignSideLabels();
         AssignCutOutLabels();
         addLockLabels();
@@ -210,7 +207,7 @@ public class MapT extends JPanel implements Runnable{
         addCutOuts();
         createBackgroundPanel();
         addCustomWindowCloseButton(jFrame);
-        playerScoreBoard = new PlayerScoreBoard(jFrame, this);
+//        playerScoreBoard = new PlayerScoreBoard(jFrame, this);
         this.add(createTranslucentSideBar((int) DeviceInformation.screenWidth /5));
         createMapBackground();
         refreshButtonGrayness();
@@ -352,7 +349,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void addCustomWindowCloseButton(JFrame jFrame){
-        closeButton = new CloseButton("X",jFrame);
+        closeButton = new CloseButton("X",jFrame, this);
         this.add(closeButton);
     }
 
@@ -432,44 +429,8 @@ public class MapT extends JPanel implements Runnable{
         }
     }
 
-    void ProfileButton(){
-        ProfileButton = new JButton("+");
-        ProfileButton.setBounds(500, 0, 30, 25);
-        ProfileButton.setBorder(new RoundedBorder(10)); //10 is the radius
-        ProfileButton.setForeground(Color.BLUE);
-        ProfileButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new UserStatsPopup(jFrame);
-            }
-        });
-        this.add(ProfileButton);
-    }
-
-    private static class RoundedBorder implements Border {
-
-        private int radius;
 
 
-        RoundedBorder(int radius) {
-            this.radius = radius;
-        }
-
-
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
-        }
-
-
-        public boolean isBorderOpaque() {
-            return true;
-        }
-
-
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            g.drawRoundRect(x, y, width-1, height-1, radius, radius);
-        }
-    }
 
 
 

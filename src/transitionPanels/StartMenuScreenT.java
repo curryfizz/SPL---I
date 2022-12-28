@@ -1,5 +1,6 @@
 package src.transitionPanels;
 
+import src.DatabaseConnection.PlayerInfo;
 import src.buttons.StartScreenButtons;
 import src.events.SignUpButtonEvent;
 import src.levelObjects.Sound;
@@ -71,7 +72,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         addGameIconAnimation();
         addBackGroundImageLabel();
         SwingUtilities.invokeLater(() -> gameIcon.startAnimation(5));
-        addLoginButtonMouseevents();
+        addLoginButtonMouseEvent();
 
     }
 
@@ -131,7 +132,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 //    }
 
 
-    private void addLoginButtonMouseevents(){
+    private void addLoginButtonMouseEvent(){
         loginButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -307,9 +308,15 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         startGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(startGameButton.isEnabled()) {
+                if(startGameButton.isEnabled()){
                     clickSound.play();
+
                     jFrame.remove(StartMenuScreenT.this);
+                    if (PlayerInfo.gameProgress == 0) {
+                        loadingAnimationT.changeNextScene(loadingAnimationT.messageFromMomT);
+                    } else if (PlayerInfo.gameProgress > 0) {
+                        loadingAnimationT.changeNextScene(loadingAnimationT.mapT);
+                    }
                     jFrame.add(loadingAnimationT);
                     loadingAnimationT.initializeTimer();
                     jFrame.revalidate();

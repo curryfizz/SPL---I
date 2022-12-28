@@ -395,9 +395,15 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         scoreBoard.score=0;
 
         timerLabel.setVisible(false);
-
+//        revalidate();
+//        repaint();
         scoreBoard.setVisible(false);
+//        revalidate();
+//        repaint();
 
+//
+//        musicPlayer = new MusicPlayer();
+//            musicPlayer.playMusic(music);
     }
 
 }

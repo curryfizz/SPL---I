@@ -33,7 +33,7 @@ public  class CDS_LevelPanelT extends ALevelPanel {
 
     @Override
     public String getMessMessage(){
-        return "<html>Oh No, The Classroom is very difficult to find  my things.<br/> Guess I'll have to look for my present (Tap to Search)</html>";
+        return "<html>The Central Department Store is as Chaotic as ever.<br/>Let's try looking here. (Tap to Search)</html>";
     }
 
     @Override
