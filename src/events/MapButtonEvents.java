@@ -27,12 +27,10 @@ public class MapButtonEvents implements MouseListener {
         this.serial = priority;
         this.motherButton = motherButton;
         this.mapT = mapT;
-
         this.SidePanelText = mapT.SidePanelTextList.get(serial+1);
         this.CutOut = mapT.CutOutList.get(serial);
         this.DefaultText = mapT.SidePanelTextList.get(0);
         this.padLock = mapT.PadLockList.get(serial);
-
         errorSound = new Sound();
         clickSound = new Sound();
         clickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
@@ -51,8 +49,9 @@ public class MapButtonEvents implements MouseListener {
             Scene = new LibrarySceneT(mapT.jFrame);
         } else if (serial == 3) {
             Scene = new CDS_LevelPanelT(mapT.jFrame);
+        } else if (serial==4) {
+            Scene = new FinalDormRoomSceneT(mapT.jFrame);
         }
-
         es.execute(Scene);
         es.shutdown();
         return Scene;
@@ -75,7 +74,7 @@ public class MapButtonEvents implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(MapT.gameProgress > serial){
+        if(PlayerInfo.gameProgress > serial){
             clickSound.play();
             mapT.ArrowGif.setVisible(false);
 
@@ -115,7 +114,7 @@ public class MapButtonEvents implements MouseListener {
 
         hideAllText();
 
-        if(MapT.gameProgress > serial) {
+        if(PlayerInfo.gameProgress > serial) {
             motherButton.setBackground(mapT.hoveringActiveButtonColor);
             SidePanelText.setVisible(true);
         }else{
@@ -124,14 +123,13 @@ public class MapButtonEvents implements MouseListener {
             padLock.setVisible(true);
         }
 
-
         mapT.revalidate();
         mapT.repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if(MapT.gameProgress-2 < serial) {
+        if(PlayerInfo.gameProgress-2 < serial) {
             CutOut.setVisible(false);
         }
         mapT.refreshButtonGrayness();

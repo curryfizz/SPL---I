@@ -227,7 +227,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         loadingAnimationT.iNeedYouToRemoveMe = true;
 
 //        mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
-//        mapT.updatePlayerStats();
+//        mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();

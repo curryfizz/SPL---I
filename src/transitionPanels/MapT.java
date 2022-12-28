@@ -38,19 +38,13 @@ public class MapT extends JPanel implements Runnable{
     MapLevelButton ClassroomButton;
     MapLevelButton LibraryButton;
     MapLevelButton CDSButton;
-    public static int gameProgress;
+    MapLevelButton FinalDormButton;
     public JFrame jFrame;
     JLabel DormColourCut;
     JLabel ClassroomColourCut;
     JLabel LibraryColourCut;
     JLabel CDSColourCut;
     JLabel backgroundLabel;
-    int score;
-    public int MaxDormScore =0;
-    public int MaxLibraryScore =0;
-    public int MaxClassroomScore =0;
-
-    public int MaxCDS_Score =0;
     JLabel padLockClassroom;
     JLabel padLockDorm;
     JLabel padLockLibrary;
@@ -68,7 +62,7 @@ public class MapT extends JPanel implements Runnable{
     public LoadingAnimationT loadingAnimationT;
 
     public MapT(JFrame jFrame, LoadingAnimationT loadingAnimationT){
-        gameProgress = PlayerInfo.gameProgress;
+        PlayerInfo.gameProgress = PlayerInfo.gameProgress;
 
         this.jFrame = jFrame;
         this.loadingAnimationT = loadingAnimationT;
@@ -79,7 +73,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void ShowUnlockAnimation(int level_number){
-        for(int i =0; i<=gameProgress-2; i++){
+        for(int i =0; i<=PlayerInfo.gameProgress-2; i++){
             CutOutList.get(i).setVisible(true);
         }
         HugeUnLock.setVisible(true);
@@ -100,13 +94,13 @@ public class MapT extends JPanel implements Runnable{
                 }
                 else  if(level_number==4) {
                     level2 = new Sound();
-                    level2.setFile("audio/soundeffects/lvl5unlock.wav");
+                    level2.setFile("audio/soundeffects/lvl4unlock.wav");
                     level2.play();
                 }
 
                 else  if(level_number==5) {
                     level2 = new Sound();
-                    level2.setFile("audio/soundeffects/lvl3unlock.wav");
+                    level2.setFile("audio/soundeffects/lvl5unlock.wav");
                     level2.play();
                 }
 
@@ -218,7 +212,7 @@ public class MapT extends JPanel implements Runnable{
 
     public void fixArrowPosition() {
         Point p = new Point(0,0);
-        switch (gameProgress) {
+        switch (PlayerInfo.gameProgress) {
             case 1, 5 -> {
                 p = DormButton.getLocation();
             }
@@ -314,11 +308,13 @@ public class MapT extends JPanel implements Runnable{
         ClassroomButton = new MapLevelButton(getX(255), getY(160),width, height,  "Classroom", 1,this);
         LibraryButton =  new MapLevelButton(getX(525), getY(600) ,width, height,  "Library",2, this);
         CDSButton = new MapLevelButton(getX(1200), getY(590),width, height,  "CDS", 3, this);
+        FinalDormButton= new MapLevelButton(getX(733), getY(170),width, height,  "Dormitory",0, this);
 
         mapButtonList.add(DormButton);
         mapButtonList.add(ClassroomButton);
         mapButtonList.add(LibraryButton);
         mapButtonList.add(CDSButton);
+        mapButtonList.add(FinalDormButton);
 
     }
 
@@ -365,36 +361,40 @@ public class MapT extends JPanel implements Runnable{
 
     public void refreshButtonHover(){
         Color hoverColour = Color.decode("#487844");
-        switch (gameProgress) {
+        switch (PlayerInfo.gameProgress) {
             case 1, 5, 6, 7 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(Color.darkGray);
                 LibraryButton.setBackground(Color.darkGray);
                 CDSButton.setBackground(Color.darkGray);
+                FinalDormButton.setBackground(Color.darkGray);
             }
             case 2 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
                 LibraryButton.setBackground(Color.darkGray);
                 CDSButton.setBackground(Color.darkGray);
+                FinalDormButton.setBackground(Color.darkGray);
             }
             case 3 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
                 LibraryButton.setBackground(hoverColour);
                 CDSButton.setBackground(Color.darkGray);
+
             }
             case 4 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
                 LibraryButton.setBackground(hoverColour);
                 CDSButton.setBackground(hoverColour);
+
             }
         }
     }
 
     public void refreshButtonGrayness() {
-        switch (gameProgress) {
+        switch (PlayerInfo.gameProgress) {
             case 1, 5, 6, 7 -> {
                 DormButton.setBackground(Color.decode("#14171C"));
                 ClassroomButton.setBackground(Color.darkGray);
