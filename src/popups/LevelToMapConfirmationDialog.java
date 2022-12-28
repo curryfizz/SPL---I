@@ -97,7 +97,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
             public void mouseClicked(MouseEvent e) {
 
                 Sound alert = new Sound();
-                alert.setFile("audio/soundeffects/alert.wav");
+                alert.setFile("audio/soundeffects/no.wav");
                 alert.play();
                 dispose();
             }
