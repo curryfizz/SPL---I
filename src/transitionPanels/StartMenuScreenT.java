@@ -61,15 +61,17 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     public void buildScene(){
         createBackgroundPanel();
         addLoginButton();
+        addStartGameButton();
+        addStartGameButtonMouseEvents();
         addSignupButton();
+        addPlayerStatsButton();
+        addPlayerStatsButtonMouseEvents();
         addQuitButton();
         addGameTitleLabel();
         addGameIconAnimation();
         addBackGroundImageLabel();
         SwingUtilities.invokeLater(() -> gameIcon.startAnimation(5));
         addLoginButtonMouseevents();
-
-//        doButtonThings();
 
     }
 
@@ -138,11 +140,12 @@ public class StartMenuScreenT extends JPanel implements Runnable{
                 if(loginDialog.isLoggedIn){
                     loginDialog.addStartMenuSceneT(StartMenuScreenT.this);
                     loginDialog.changeButtons(StartMenuScreenT.this);
-                    addPlayerStatsButton();
-                    addStartGameButton();
-                    addStartGameButtonMouseEvents();
-                    addPlayerStatsButtonMouseEvents();
-                    //login dialogue abar 2bar click sound dey
+                    playerStatsButton.setVisible(true);
+                    playerStatsButton.setEnabled(true);
+                    startGameButton.setVisible(true);
+                    startGameButton.setEnabled(true);
+                    repaint();
+                    revalidate();
                     repaint();
                     revalidate();
                     jFrame.repaint();
@@ -177,7 +180,8 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         startGameButton.setFont(FontInfo.getResizedFont(60f));
         startGameButton.setBounds(0, DeviceInformation.screenHeight/3, DeviceInformation.screenWidth/5, 70);
         add(startGameButton);
-//        loginButton = startGameButton;
+        startGameButton.setVisible(false);
+        startGameButton.setEnabled(false);
     }
 
     public void addPlayerStatsButton(){
@@ -185,7 +189,8 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         playerStatsButton.setFont(FontInfo.getResizedFont(60f));
         playerStatsButton.setBounds(0, DeviceInformation.screenHeight/2, DeviceInformation.screenWidth/5, 70);
         add(playerStatsButton);
-//        signupButton = playerStatsButton;
+        playerStatsButton.setVisible(false);
+        playerStatsButton.setEnabled(false);
     }
     public void addLoginButton(){
         loginButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Sign in");
@@ -271,8 +276,10 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         playerStatsButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                clickSound.play();
-                new UserStatsPopup(jFrame);
+                if(playerStatsButton.isEnabled()) {
+                    clickSound.play();
+                    new UserStatsPopup(jFrame);
+                }
             }
 
             @Override
@@ -300,13 +307,14 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         startGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                clickSound.play();
-
-                jFrame.remove(StartMenuScreenT.this);
-                jFrame.add(loadingAnimationT);
-                loadingAnimationT.initializeTimer();
-                jFrame.revalidate();
-                jFrame.repaint();
+                if(startGameButton.isEnabled()) {
+                    clickSound.play();
+                    jFrame.remove(StartMenuScreenT.this);
+                    jFrame.add(loadingAnimationT);
+                    loadingAnimationT.initializeTimer();
+                    jFrame.revalidate();
+                    jFrame.repaint();
+                }
             }
 
             @Override
