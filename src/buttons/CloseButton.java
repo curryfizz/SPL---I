@@ -1,6 +1,7 @@
 package src.buttons;
 
 import src.levelObjects.Sound;
+import src.popups.BackToMenuDialogue;
 import src.setup.DeviceInformation;
 import src.popups.ExitWindowConfirmationDialog;
 import src.setup.FontInfo;
@@ -16,7 +17,7 @@ public class CloseButton extends JButton {
 //    DeviceInformation deviceInformation;
 //    FontInfo fontInfo;
 
-    public CloseButton(String text, JFrame jFrame){
+    public CloseButton(String text, JFrame jFrame, JPanel backgroundPanel){
 //        this.deviceInformation = deviceInformation;
 //        this.fontInfo = fontInfo;
         setDefaultPosition();
@@ -33,7 +34,7 @@ public class CloseButton extends JButton {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ExitWindowConfirmationDialog exitWindowConfirmationDialog = new ExitWindowConfirmationDialog(jFrame,new FontInfo());
+                BackToMenuDialogue backToMenuDialogue = new BackToMenuDialogue(jFrame, backgroundPanel);
 
             }
 

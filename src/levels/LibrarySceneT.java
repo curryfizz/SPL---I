@@ -25,7 +25,7 @@ public class LibrarySceneT extends ALevelPanel {
 
     @Override
     public String getMessMessage(){
-        return "<html>Why is everywhere so messy?<br/> Let's try looking here (Tap to Search)</html>";
+        return "<html>Why is everywhere so messy?<br/>Time to start searching (Tap to Search)</html>";
     }
 
     @Override

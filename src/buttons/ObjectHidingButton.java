@@ -100,8 +100,6 @@ public class ObjectHidingButton extends JButton {
 
 
                     if(levelPanel.imagesFound == 6 && levelPanel.scoreBoard.score >= levelPanel.PassingScore){
-                        levelPanel.timerLabel.isTimeOver = true;
-                        levelPanel.imagesFound=0;
                         levelPanel.congratulationsConfetti.setVisible(true);
                         LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel);
                         if(PlayerInfo.gameProgress < levelPanel.getLevelNumber()){ // first time
@@ -110,6 +108,55 @@ public class ObjectHidingButton extends JButton {
                             levelPanel.loadingAnimationT.LevelOver_ProgressUpdated = true;
                             levelPanel.loadingAnimationT.level_number = levelPanel.getLevelNumber();
                         }
+                        switch(levelPanel.getLevelNumber()){
+                            case 2 ->{
+                                if(PlayerInfo.DormHighScore < levelPanel.scoreBoard.score){
+                                    PlayerInfo.DormHighScore = levelPanel.scoreBoard.score;
+                                }
+                                if(PlayerInfo.DormLeastTime < levelPanel.timerLabel.elapsedTime){
+                                    PlayerInfo.DormLeastTime = levelPanel.timerLabel.elapsedTime;
+                                }
+                            }
+                            case 3 ->{
+                                if(PlayerInfo.ClassroomHighScore < levelPanel.scoreBoard.score){
+                                    PlayerInfo.ClassroomHighScore = levelPanel.scoreBoard.score;
+                                }
+                                if(PlayerInfo.ClassroomLeastTime < levelPanel.timerLabel.elapsedTime){
+                                    PlayerInfo.ClassroomLeastTime = levelPanel.timerLabel.elapsedTime;
+                                }
+                            }
+                            case 4 ->{
+                                if(PlayerInfo.LibraryHighScore < levelPanel.scoreBoard.score){
+                                    PlayerInfo.LibraryHighScore = levelPanel.scoreBoard.score;
+                                }
+                                if(PlayerInfo.LibraryLeastTime < levelPanel.timerLabel.elapsedTime){
+                                    PlayerInfo.LibraryLeastTime = levelPanel.timerLabel.elapsedTime;
+                                }
+                            }
+                            case 5 ->{
+                                if(PlayerInfo.CDSHighScore < levelPanel.scoreBoard.score){
+                                    PlayerInfo.CDSHighScore = levelPanel.scoreBoard.score;
+                                }
+                                if(PlayerInfo.CDSLeastTime < levelPanel.timerLabel.elapsedTime){
+                                    PlayerInfo.CDSLeastTime = levelPanel.timerLabel.elapsedTime;
+                                }
+                            }
+                            case 6 ->{
+                                if(PlayerInfo.DormV2HighScore < levelPanel.scoreBoard.score){
+                                    PlayerInfo.DormV2HighScore = levelPanel.scoreBoard.score;
+                                }
+                                if(PlayerInfo.DormV2LeastTime < levelPanel.timerLabel.elapsedTime){
+                                    PlayerInfo.DormV2LeastTime = levelPanel.timerLabel.elapsedTime;
+                                }
+                            }
+
+                        }
+
+                        levelPanel.timerLabel.isTimeOver = true;
+                        levelPanel.imagesFound=0;
+
+
+
                         levelPanel.revalidate();
                         levelPanel.repaint();
                         levelPanel.jFrame.revalidate();

@@ -23,8 +23,8 @@ public class MessageFromMomT extends JPanel implements Runnable {
     JLabel Text1;
     public Sound objClickSound;
     JLabel Text2;
-    LoadingAnimationT loadingAnimationT;
-    JPanel nextScene;
+    public LoadingAnimationT loadingAnimationT;
+    public JPanel nextScene;
     int taps = 0;
 
 
@@ -34,7 +34,7 @@ public class MessageFromMomT extends JPanel implements Runnable {
         this.setLayout(null);
     }
     public void addCustomWindowCloseButton(){
-        CloseButton closeButton = new CloseButton("X",jFrame);
+        CloseButton closeButton = new CloseButton("X",jFrame, this);
         this.add(closeButton);
     }
 

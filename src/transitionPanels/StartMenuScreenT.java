@@ -1,5 +1,6 @@
 package src.transitionPanels;
 
+import src.DatabaseConnection.PlayerInfo;
 import src.buttons.StartScreenButtons;
 import src.events.SignUpButtonEvent;
 import src.levelObjects.Sound;
@@ -139,9 +140,23 @@ public class StartMenuScreenT extends JPanel implements Runnable{
                     loginDialog.addStartMenuSceneT(StartMenuScreenT.this);
                     loginDialog.changeButtons(StartMenuScreenT.this);
                     addPlayerStatsButton();
+                    addPlayerStatsButtonMouseEvents();
+
+                    repaint();
+                    revalidate();
+                    playerStatsButton.repaint();
+                    playerStatsButton.revalidate();
+                    playerStatsButton.setVisible(false);
+                    playerStatsButton.setVisible(true);
+                    playerStatsButton.setOpaque(false);
+                    playerStatsButton.setOpaque(true);
+                    repaint();
+                    revalidate();
+                    playerStatsButton.repaint();
+                    playerStatsButton.revalidate();
+
                     addStartGameButton();
                     addStartGameButtonMouseEvents();
-                    addPlayerStatsButtonMouseEvents();
                     //login dialogue abar 2bar click sound dey
                     repaint();
                     revalidate();
@@ -303,6 +318,11 @@ public class StartMenuScreenT extends JPanel implements Runnable{
                 clickSound.play();
 
                 jFrame.remove(StartMenuScreenT.this);
+                if(PlayerInfo.gameProgress == 0){
+                    loadingAnimationT.changeNextScene(loadingAnimationT.messageFromMomT);
+                }else if(PlayerInfo.gameProgress >0){
+                    loadingAnimationT.changeNextScene(loadingAnimationT.mapT);
+                }
                 jFrame.add(loadingAnimationT);
                 loadingAnimationT.initializeTimer();
                 jFrame.revalidate();

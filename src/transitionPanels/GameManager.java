@@ -201,6 +201,10 @@ public class GameManager{
         startMenu.PrepareForSceneTransition(loadingAnimationT, null); //nextscene is not being used
                                                                                 //perhaps later we can use player info to change next scene
                                                                                 //for loadingscene
+
+        loadingAnimationT.startMenuScreenT = startMenu;
+        loadingAnimationT.mapT = mapT;
+        loadingAnimationT.messageFromMomT = messageFromMomT;
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
 
         pl.execute(startMenu);

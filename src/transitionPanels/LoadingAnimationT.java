@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 import static java.lang.Math.ceil;
 
@@ -15,7 +16,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     public boolean LevelOver_ProgressUpdated;
     public int level_number = -1;
     JFrame jFrame;
-    JPanel nextScene;
+    public JPanel nextScene;
     public int calledBy;
     public boolean iNeedYouToRemoveMe;
     Timer timer;
@@ -31,6 +32,9 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
     boolean timerStopped;
     long animationRunTime;
     int increment;
+    public StartMenuScreenT startMenuScreenT;
+    public MapT mapT;
+    public MessageFromMomT messageFromMomT;
     public LoadingAnimationT(JFrame jFrame, int animationDuration, JPanel nextScene){
         this.jFrame = jFrame;
 //        this.deviceInfo = deviceInformation;

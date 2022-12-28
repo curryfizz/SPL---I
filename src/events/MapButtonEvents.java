@@ -1,5 +1,6 @@
 package src.events;
 
+import src.DatabaseConnection.PlayerInfo;
 import src.buttons.MapLevelButton;
 import src.levelObjects.Sound;
 import src.levels.*;
@@ -64,12 +65,13 @@ public class MapButtonEvents implements MouseListener {
     }
 
     private void hideAllCutOutsAndLock(){
-        for( JLabel cutout : mapT.CutOutList){
-            cutout.setVisible(false);
+        for(int i = 3; i > PlayerInfo.gameProgress-2 ; i--){
+            mapT.CutOutList.get(i).setVisible(false);
         }
-        for(JLabel lock : mapT.PadLockList){
-            lock.setVisible(false);
+        for(int i = 3; i > PlayerInfo.gameProgress-2 ; i--){
+            mapT.PadLockList.get(i).setVisible(false);
         }
+
     }
     @Override
     public void mouseClicked(MouseEvent e) {

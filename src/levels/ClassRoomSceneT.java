@@ -26,7 +26,7 @@ public class ClassRoomSceneT extends ALevelPanel{
 
     @Override
     public String getMessMessage(){
-        return "<html>Oh No, The Classroom is very difficult to find  my things.<br/> Guess I'll have to look for my present (Tap to Search)</html>";
+        return "<html>I know it's a free period but did everyone have to leave their stuff here?<br/>At least I can search in peace now. (Tap to Search)</html>";
     }
 
     @Override
