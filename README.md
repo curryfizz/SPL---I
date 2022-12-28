@@ -1,6 +1,6 @@
 # COURSE CODE: SWE 4304 COURSE TITLE: SOFTWARE PROJECT LAB-I :computer:
 
-## PROJECT TITLE: LOST TREASURE
+## PROJECT TITLE: LOST TREASURE  :package:
 
 ## Current Phase :
 ```
@@ -22,7 +22,7 @@ DONE
  ```
  
 
-## TECHNOLOGIES AND PLATFORMS :
+## :gear: :wrench: TECHNOLOGIES AND PLATFORMS :
 * :white_circle:  Platform   - Desktop Application
 * :white_circle:  Language   -  ![](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 * :white_circle:  Database   - ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=Oracle&logoColor=white)
@@ -34,7 +34,7 @@ DONE
  
 
 
- ## :package: CORE FEATURES : 
+ ##  :sparkles: CORE FEATURES : 
  ```
  1. START SCREEN
  Login/Registration
@@ -54,7 +54,7 @@ DONE
  If you click on the hidden object it will be regarded as “FOUND” and if you find all the items in the scenery you will pass that level and can play the next.
  ```
 
-## STORYLINE :
+## :clipboard: :books: STORYLINE :
 While moving into dorms for the first time, freshmen are very emotional and bring a lot of luggage for their first stay. A new game commences with you (the player, a freshman) looking at a text message in your phone from your mother. In the message, your mother wishes you good luck for your classes. She also mentions that she packed a special surprise for you in your luggage. The scene changes to a messy IUT dorm room. The gameplay starts from here and is split into 5 levels. Each level is played in a different scene. At the beginning and end of every level, a narration text box appears explaining the situation.
 
 :one: Dorm Room:  (First playthrough) You went back to your room to see the surprise your mother packed, but are faced with a tangled mess. The first level is the dorm room you are in. You have to find several items from a checklist from the dorm scene infront of you. After finding the items from the scene, the level is completed.
