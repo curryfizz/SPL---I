@@ -310,7 +310,6 @@ public class StartMenuScreenT extends JPanel implements Runnable{
             public void mouseClicked(MouseEvent e) {
                 if(startGameButton.isEnabled()){
                     clickSound.play();
-
                     jFrame.remove(StartMenuScreenT.this);
                     if (PlayerInfo.gameProgress == 0) {
                         loadingAnimationT.changeNextScene(loadingAnimationT.messageFromMomT);

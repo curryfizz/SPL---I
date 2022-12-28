@@ -25,14 +25,14 @@ public class LevelToMapConfirmationDialog extends JDialog {
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
-        jLabel.setPreferredSize(new Dimension(170,90));
+        jLabel.setPreferredSize(new Dimension(270,130));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Exit to Map?\n Progress will not be saved :( "));
-        jLabel.setFont(FontInfo.getResizedFont(26f));
+        jLabel.setFont(FontInfo.getResizedFont(35f));
         add(jLabel);
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
-        setSize(200,180);
+        setSize(300,200);
         setLocationRelativeTo(jFrame);
         setResizable(false);
         closeButton = new JButton();
