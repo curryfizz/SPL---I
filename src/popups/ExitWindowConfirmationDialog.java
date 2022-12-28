@@ -1,5 +1,6 @@
 package src.popups;
 
+import src.levelObjects.Sound;
 import src.setup.FontInfo;
 
 import javax.swing.*;
@@ -50,6 +51,9 @@ public class ExitWindowConfirmationDialog extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
 
+                Sound alert = new Sound();
+                alert.setFile("audio/soundeffects/alert.wav");
+                alert.play();
                 System.exit(0);
             }
 
@@ -92,6 +96,9 @@ public class ExitWindowConfirmationDialog extends JDialog {
         closeButton2.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Sound alert = new Sound();
+                alert.setFile("audio/soundeffects/alert.wav");
+                alert.play();
                 dispose();
             }
 

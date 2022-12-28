@@ -62,15 +62,17 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     public void buildScene(){
         createBackgroundPanel();
         addLoginButton();
+        addStartGameButton();
+        addStartGameButtonMouseEvents();
         addSignupButton();
+        addPlayerStatsButton();
+        addPlayerStatsButtonMouseEvents();
         addQuitButton();
         addGameTitleLabel();
         addGameIconAnimation();
         addBackGroundImageLabel();
         SwingUtilities.invokeLater(() -> gameIcon.startAnimation(5));
         addLoginButtonMouseevents();
-
-//        doButtonThings();
 
     }
 
@@ -139,25 +141,12 @@ public class StartMenuScreenT extends JPanel implements Runnable{
                 if(loginDialog.isLoggedIn){
                     loginDialog.addStartMenuSceneT(StartMenuScreenT.this);
                     loginDialog.changeButtons(StartMenuScreenT.this);
-                    addPlayerStatsButton();
-                    addPlayerStatsButtonMouseEvents();
-
-                    repaint();
-                    revalidate();
-                    playerStatsButton.repaint();
-                    playerStatsButton.revalidate();
-                    playerStatsButton.setVisible(false);
                     playerStatsButton.setVisible(true);
-                    playerStatsButton.setOpaque(false);
-                    playerStatsButton.setOpaque(true);
+                    playerStatsButton.setEnabled(true);
+                    startGameButton.setVisible(true);
+                    startGameButton.setEnabled(true);
                     repaint();
                     revalidate();
-                    playerStatsButton.repaint();
-                    playerStatsButton.revalidate();
-
-                    addStartGameButton();
-                    addStartGameButtonMouseEvents();
-                    //login dialogue abar 2bar click sound dey
                     repaint();
                     revalidate();
                     jFrame.repaint();
@@ -192,7 +181,8 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         startGameButton.setFont(FontInfo.getResizedFont(60f));
         startGameButton.setBounds(0, DeviceInformation.screenHeight/3, DeviceInformation.screenWidth/5, 70);
         add(startGameButton);
-//        loginButton = startGameButton;
+        startGameButton.setVisible(false);
+        startGameButton.setEnabled(false);
     }
 
     public void addPlayerStatsButton(){
@@ -200,7 +190,8 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         playerStatsButton.setFont(FontInfo.getResizedFont(60f));
         playerStatsButton.setBounds(0, DeviceInformation.screenHeight/2, DeviceInformation.screenWidth/5, 70);
         add(playerStatsButton);
-//        signupButton = playerStatsButton;
+        playerStatsButton.setVisible(false);
+        playerStatsButton.setEnabled(false);
     }
     public void addLoginButton(){
         loginButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Sign in");
@@ -286,8 +277,10 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         playerStatsButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                clickSound.play();
-                new UserStatsPopup(jFrame);
+                if(playerStatsButton.isEnabled()) {
+                    clickSound.play();
+                    new UserStatsPopup(jFrame);
+                }
             }
 
             @Override
@@ -315,18 +308,20 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         startGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                clickSound.play();
+                if(startGameButton.isEnabled()){
+                    clickSound.play();
 
-                jFrame.remove(StartMenuScreenT.this);
-                if(PlayerInfo.gameProgress == 0){
-                    loadingAnimationT.changeNextScene(loadingAnimationT.messageFromMomT);
-                }else if(PlayerInfo.gameProgress >0){
-                    loadingAnimationT.changeNextScene(loadingAnimationT.mapT);
+                    jFrame.remove(StartMenuScreenT.this);
+                    if (PlayerInfo.gameProgress == 0) {
+                        loadingAnimationT.changeNextScene(loadingAnimationT.messageFromMomT);
+                    } else if (PlayerInfo.gameProgress > 0) {
+                        loadingAnimationT.changeNextScene(loadingAnimationT.mapT);
+                    }
+                    jFrame.add(loadingAnimationT);
+                    loadingAnimationT.initializeTimer();
+                    jFrame.revalidate();
+                    jFrame.repaint();
                 }
-                jFrame.add(loadingAnimationT);
-                loadingAnimationT.initializeTimer();
-                jFrame.revalidate();
-                jFrame.repaint();
             }
 
             @Override

@@ -39,7 +39,6 @@ public class LoginDialog extends AccountDialog {
 
     public void addStartMenuSceneT(StartMenuScreenT startMenuScreenT){
         this.startMenuScreenT = startMenuScreenT;
-        startMenuScreenT.setBackground(Color.pink);
     }
 
 
@@ -65,8 +64,12 @@ public class LoginDialog extends AccountDialog {
     }
     public void changeButtons(StartMenuScreenT startMenuScreenT){
         startMenuScreenT.remove(startMenuScreenT.loginButton);
+        startMenuScreenT.repaint();
+        startMenuScreenT.revalidate();
         startMenuScreenT.remove(startMenuScreenT.signupButton);
         startMenuScreenT.repaint();
+
+        startMenuScreenT.revalidate();
     }
     private void addLoginSuccessFullExitLabel(){
         loginSuccessFullExitLabel = new AccountDialogLabel("", 400, 25);

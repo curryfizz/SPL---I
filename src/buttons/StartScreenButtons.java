@@ -11,7 +11,7 @@ import java.awt.event.*;
 public class StartScreenButtons extends BasicBlueButton{
 
     Color backGroundColor = getBackground();
-    Sound clickSound = new Sound("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
+//    Sound clickSound = new Sound("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
 
     public StartScreenButtons(int width, int height, String text) {
         super(width, height, text);
@@ -32,8 +32,8 @@ public class StartScreenButtons extends BasicBlueButton{
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                clickSound.stop();
-                clickSound.play();
+//                clickSound.stop();
+//                clickSound.play();
             }
 
             @Override
@@ -43,8 +43,8 @@ public class StartScreenButtons extends BasicBlueButton{
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                clickSound.stop();
-                clickSound.play();
+//                clickSound.stop();
+//                clickSound.play();
                 if(getBackground()!=backGroundColor){
                     setBackground(getBackground().darker());
                 }
