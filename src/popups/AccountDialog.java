@@ -22,7 +22,7 @@ public abstract class AccountDialog extends JDialog {
 
     BasicBlueButton cancelButton;
     JFrame jFrame;
-    protected void doExitCountDown(AccountDialogLabel exitLabel, String text){
+    void doExitCountDown(AccountDialogLabel exitLabel, String text){
         Timer timer = new Timer(0, new ActionListener() {
             int seconds = 10;
 

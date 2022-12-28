@@ -3,12 +3,14 @@ package src.popups;
 import src.DatabaseConnection.OracleDatabase;
 import src.buttons.BasicBlueButton;
 import src.setup.FontInfo;
+import src.transitionPanels.StartMenuScreenT;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
@@ -18,7 +20,8 @@ public class LoginDialog extends AccountDialog {
     JLabel loginFieldLabel;
     BasicBlueButton loginButton;
     AccountDialogLabel loginSuccessFullExitLabel;
-
+    public boolean isLoggedIn=false;
+    StartMenuScreenT startMenuScreenT;
     public LoginDialog(JFrame jFrame, OracleDatabase oracleDatabase) {
         super(jFrame, oracleDatabase);
         setSize(500, 220);
@@ -34,6 +37,36 @@ public class LoginDialog extends AccountDialog {
         setVisible(true);
     }
 
+    public void addStartMenuSceneT(StartMenuScreenT startMenuScreenT){
+        this.startMenuScreenT = startMenuScreenT;
+        startMenuScreenT.setBackground(Color.pink);
+    }
+
+
+    @Override
+    void doExitCountDown(AccountDialogLabel exitLabel, String text){
+        Timer timer = new Timer(0, new ActionListener() {
+            int seconds = 4;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exitLabel.updateText(seconds, text);
+                if(seconds==-1){
+                    isLoggedIn = true;
+                    dispose();
+                    return;
+                }
+                seconds--;
+
+            }
+        });
+
+        timer.setDelay(1000);
+        timer.start();
+    }
+    public void changeButtons(StartMenuScreenT startMenuScreenT){
+        startMenuScreenT.remove(startMenuScreenT.loginButton);
+        startMenuScreenT.remove(startMenuScreenT.signupButton);
+    }
     private void addLoginSuccessFullExitLabel(){
         loginSuccessFullExitLabel = new AccountDialogLabel("", 400, 25);
         loginSuccessFullExitLabel.setForeground(Color.pink);
