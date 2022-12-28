@@ -155,8 +155,8 @@ public class MapT extends JPanel implements Runnable{
     private void AssignSideLabels() {
         defaultText = makeSidePanelTextLabels("<html>Level Locked<br/>Please complete previous levels to access.</html>");
         dormText = makeSidePanelTextLabels("<html>Mom packed a special Surprise for me?<br/>Let's go back to my room and see what it is.</html>");
-        classroomText = makeSidePanelTextLabels("<html>I couldn't find it in my room..<br/>Maybe mom kept it in my backpack and I left it in my Classroom.</html>");
-        libraryText = makeSidePanelTextLabels("<html>I still can't find it!<br/>Did I accidentally leave it in the Library?</html>");
+        classroomText = makeSidePanelTextLabels("<html>I couldn't find it in my room..<br/>Maybe mom kept it in my backpack and I left it in my Classroom.</br>Let's check there.</html>");
+        libraryText = makeSidePanelTextLabels("<html>I still can't find it!<br/>Did I actually leave it in the Library instead?</html>");
         CDSText = makeSidePanelTextLabels("<html>Where could my Present be!<br/>I do remember visiting the Central Department Store.<br/>Did I drop it there?</html>");
     }
 

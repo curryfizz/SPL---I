@@ -72,7 +72,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         addGameIconAnimation();
         addBackGroundImageLabel();
         SwingUtilities.invokeLater(() -> gameIcon.startAnimation(5));
-        addLoginButtonMouseevents();
+        addLoginButtonMouseEvent();
 
     }
 
@@ -132,7 +132,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 //    }
 
 
-    private void addLoginButtonMouseevents(){
+    private void addLoginButtonMouseEvent(){
         loginButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {

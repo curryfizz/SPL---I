@@ -226,7 +226,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         loadingAnimationT.calledBy = getLevelNumber() - 2; //sending my serial so loading can remove the panel and call garbage
         loadingAnimationT.iNeedYouToRemoveMe = true;
 
-        mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
+//        mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
 //        mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
