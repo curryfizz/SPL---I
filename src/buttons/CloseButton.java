@@ -1,5 +1,6 @@
 package src.buttons;
 
+import src.levelObjects.Sound;
 import src.setup.DeviceInformation;
 import src.popups.ExitWindowConfirmationDialog;
 import src.setup.FontInfo;
@@ -33,6 +34,7 @@ public class CloseButton extends JButton {
             @Override
             public void mouseClicked(MouseEvent e) {
                 ExitWindowConfirmationDialog exitWindowConfirmationDialog = new ExitWindowConfirmationDialog(jFrame,new FontInfo());
+
             }
 
             @Override

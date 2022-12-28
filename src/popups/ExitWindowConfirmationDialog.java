@@ -28,6 +28,7 @@ public class ExitWindowConfirmationDialog extends JDialog {
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Do you want to exit?"));
+
         jLabel.setFont(FontInfo.getResizedFont(26f));
         add(jLabel);
         jLabel.setHorizontalTextPosition(JLabel.CENTER);

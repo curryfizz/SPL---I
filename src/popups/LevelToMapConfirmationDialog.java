@@ -1,5 +1,6 @@
 package src.popups;
 
+import src.levelObjects.Sound;
 import src.setup.FontInfo;
 import src.levels.ALevelPanel;
 

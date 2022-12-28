@@ -1,5 +1,6 @@
 package src.buttons;
 
+import src.levelObjects.Sound;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.popups.LevelToMapConfirmationDialog;
@@ -13,6 +14,7 @@ public class LevelCloseButton extends JButton {
 
     //too many one line methods
 
+    Sound alert;
 
     JPanel jPanel;
     public LevelCloseButton(String text, JFrame jFrame, JPanel jPanel){
@@ -31,6 +33,9 @@ public class LevelCloseButton extends JButton {
             @Override
             public void mouseClicked(MouseEvent e) {
                 LevelToMapConfirmationDialog confirmationDialog = new LevelToMapConfirmationDialog(jFrame,jPanel);
+                alert= new Sound();
+                alert.setFile("audio/soundeffects/alert.wav");
+                alert.play();
             }
 
             @Override

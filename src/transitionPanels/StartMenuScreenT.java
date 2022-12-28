@@ -236,6 +236,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
             public void mouseClicked(MouseEvent e) {
                 clickSound.play();
                 new ExitWindowConfirmationDialog(jFrame, new FontInfo());
+
             }
 
             @Override

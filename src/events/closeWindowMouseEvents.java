@@ -1,5 +1,6 @@
 package src.events;
 
+import src.levelObjects.Sound;
 import src.popups.ConfirmationWindowPopup;
 import src.setup.FontInfo;
 
@@ -21,6 +22,9 @@ public class closeWindowMouseEvents implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         jFrame.add(exitWindowPopup);
+        Sound alert = new Sound();
+        alert.setFile("audio/soundeffects/alert.wav");
+        alert.play();
         int choice = ConfirmationWindowPopup.showConfirmDialog(jFrame,"Do you want to exit?","Exit",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
         if(choice==JOptionPane.YES_OPTION){
             System.exit(0);
