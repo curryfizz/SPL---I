@@ -75,7 +75,7 @@ public class MapT extends JPanel implements Runnable{
         this.jFrame = jFrame;
         this.loadingAnimationT = loadingAnimationT;
         mapMusic = new Sound();
-        mapMusic.setFile("audio/background_music/mapBackgroundAudio_The Deli - 5_32PM.wav");
+        mapMusic.setFile("audio/background_music/map.wav");
         unlockMusic = new Sound();
         unlockMusic.setFile("audio/soundeffects/podong click sound.wav");
     }

@@ -1,5 +1,6 @@
 package src.popups;
 
+import src.levelObjects.Sound;
 import src.levels.ALevelPanel;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -57,6 +58,9 @@ public class HintConfirmationDialogue extends JDialog {
         YesButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Sound alert = new Sound();
+                alert.setFile("audio/soundeffects/alert.wav");
+                alert.play();
                 backgroundPanel.buttonList.get(indexOfObjectButton).HintWasUsed = true;
                 Rectangle rectangle = backgroundPanel.buttonList.get(indexOfObjectButton).getBounds();
                 rectangle.x -= hintEnlargement/2;
@@ -97,6 +101,9 @@ public class HintConfirmationDialogue extends JDialog {
         NoButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Sound alert = new Sound();
+                alert.setFile("audio/soundeffects/alert.wav");
+                alert.play();
                 backgroundPanel.hintAnimationGif.setVisible(false);
                 dispose();
             }
