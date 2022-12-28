@@ -23,6 +23,7 @@ import java.util.Objects;
 public class MapT extends JPanel implements Runnable{
 
     public Sound mapMusic;
+    public  Sound unlockMusic;
     public ArrayList<MapLevelButton> mapButtonList = new ArrayList<>();
     public ArrayList<JLabel> CutOutList = new ArrayList<>();
     public ArrayList<JLabel> SidePanelTextList = new ArrayList<>();
@@ -74,6 +75,8 @@ public class MapT extends JPanel implements Runnable{
         this.loadingAnimationT = loadingAnimationT;
         mapMusic = new Sound();
         mapMusic.setFile("audio/background_music/mapBackgroundAudio_The Deli - 5_32PM.wav");
+        unlockMusic = new Sound();
+        unlockMusic.setFile("audio/soundeffects/podong click sound.wav");
     }
 
     public void ShowUnlockAnimation(int level_number){
@@ -84,7 +87,9 @@ public class MapT extends JPanel implements Runnable{
         timer = new Timer(2800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                unlockMusic.play();
                 HugeUnLock.setVisible(false);
+
                 stopTimer();
                 LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);
                 fixArrowPosition();
