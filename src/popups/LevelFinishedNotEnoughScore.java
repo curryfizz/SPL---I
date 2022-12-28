@@ -42,7 +42,7 @@ public class LevelFinishedNotEnoughScore extends JDialog {
         System.gc();
 
         GameOverSound = new Sound();
-        GameOverSound.setFile("audio/soundeffects/Fail Sound Effect.wav");
+        GameOverSound.setFile("audio/soundeffects/failbg.wav");
 
         GameOverSound.play();
 

@@ -67,6 +67,9 @@ public class TimeOverConfirmationDialog extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 objClickSound.play();
+                Sound alert = new Sound();
+                alert.setFile("audio/soundeffects/alert.wav");
+                alert.play();
 //                GameOverSound.stop();
                 backgoundPanel.timerLabel.endLevel();
                 dispose();
