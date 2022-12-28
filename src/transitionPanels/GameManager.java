@@ -226,7 +226,7 @@ public class GameManager{
     - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does
     - add sound effects for other button clicks
     - why does score Animation keep disappearing so quickly;
-    - make
+    - make score animation larger
 //done
 //    - make sure map level buttons don't work unless gameProgress is satisfactory;
 //    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
