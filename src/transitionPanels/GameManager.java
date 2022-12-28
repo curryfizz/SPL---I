@@ -213,6 +213,7 @@ public class GameManager{
         pl.shutdown();
 
     }
+    ///////////////kkjhfgdfs
 
     /*TODO:
     - add small icon in map to go to player stats;
