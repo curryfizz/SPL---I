@@ -116,7 +116,13 @@ public class ObjectHidingButton extends JButton {
                         levelPanel.jFrame.repaint();
 
                     } else if (levelPanel.imagesFound == 6) {
+                        levelPanel.timerLabel.isTimeOver = true;
+                        levelPanel.imagesFound=0;
                         new LevelFinishedNotEnoughScore(levelPanel);
+                        levelPanel.revalidate();
+                        levelPanel.repaint();
+                        levelPanel.jFrame.revalidate();
+                        levelPanel.jFrame.repaint();
                     }
                 }
                 else {

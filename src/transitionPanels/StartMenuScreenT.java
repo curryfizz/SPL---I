@@ -148,12 +148,15 @@ public class StartMenuScreenT extends JPanel implements Runnable{
                 if(loginDialog.isLoggedIn){
                     loginDialog.addStartMenuSceneT(StartMenuScreenT.this);
                     loginDialog.changeButtons(StartMenuScreenT.this);
-                    addStartGameButton();
                     addPlayerStatsButton();
+                    addStartGameButton();
                     addStartGameButtonMouseEvents();
                     addPlayerStatsButtonMouseEvents();
+                    //login dialogue abar 2bar click sound dey
                     repaint();
                     revalidate();
+                    jFrame.repaint();
+                    jFrame.revalidate();
                 }
             }
 
@@ -187,7 +190,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     }
 
     public void addPlayerStatsButton(){
-        playerStatsButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Start Game");
+        playerStatsButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Player Statistics");
         playerStatsButton.setFont(FontInfo.getResizedFont(60f));
         playerStatsButton.setBounds(0, DeviceInformation.screenHeight/2, DeviceInformation.screenWidth/5, 70);
         add(playerStatsButton);
@@ -252,7 +255,6 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                System.exit(0);
             }
 
             @Override

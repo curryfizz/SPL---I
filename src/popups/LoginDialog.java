@@ -46,7 +46,7 @@ public class LoginDialog extends AccountDialog {
     @Override
     void doExitCountDown(AccountDialogLabel exitLabel, String text){
         Timer timer = new Timer(0, new ActionListener() {
-            int seconds = 4;
+            int seconds = 2;
             @Override
             public void actionPerformed(ActionEvent e) {
                 exitLabel.updateText(seconds, text);
@@ -66,6 +66,7 @@ public class LoginDialog extends AccountDialog {
     public void changeButtons(StartMenuScreenT startMenuScreenT){
         startMenuScreenT.remove(startMenuScreenT.loginButton);
         startMenuScreenT.remove(startMenuScreenT.signupButton);
+        startMenuScreenT.repaint();
     }
     private void addLoginSuccessFullExitLabel(){
         loginSuccessFullExitLabel = new AccountDialogLabel("", 400, 25);
