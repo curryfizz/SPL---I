@@ -32,7 +32,6 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     JFrame jFrame;
     JLabel backGroundImageLabel;
 
-    JLabel gameIconBackgroundLabel;
     Sound bgMusic;
     Sound clickSound;
     public StartGameButton startGameButton;
