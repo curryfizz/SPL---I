@@ -5,6 +5,7 @@ public class PlayerInfo {
     public static String email;
     public static int gameProgress = 0;
 
+    public static boolean hasStartedGame = false;
     public static int DormHighScore = -1;
     public static int DormLeastTime = -1;
 
