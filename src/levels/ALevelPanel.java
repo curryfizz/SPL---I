@@ -285,9 +285,9 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
     private void setupShowGottenScore() {
         ShowGottenScore = new JLabel("", SwingConstants.CENTER);
-        ShowGottenScore.setBounds(500,400, 50, 30);
+        ShowGottenScore.setBounds(500,400, 80, 35);
         ShowGottenScore.setBackground(null);
-        ShowGottenScore.setFont(FontInfo.getResizedFont(32f));
+        ShowGottenScore.setFont(FontInfo.getResizedFont(52f));
 //        ShowGottenScore.setForeground(new Color(30, 120, 20));
 //        ShowGottenScore.setForeground(new Color(255,0,0));
         ShowGottenScore.setVisible(false);
@@ -395,15 +395,9 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         scoreBoard.score=0;
 
         timerLabel.setVisible(false);
-//        revalidate();
-//        repaint();
-        scoreBoard.setVisible(false);
-//        revalidate();
-//        repaint();
 
-//
-//        musicPlayer = new MusicPlayer();
-//            musicPlayer.playMusic(music);
+        scoreBoard.setVisible(false);
+
     }
 
 }
