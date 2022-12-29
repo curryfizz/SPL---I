@@ -36,6 +36,10 @@ public class LevelCloseButton extends JButton {
                 alert= new Sound();
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
+                jPanel.repaint();
+                jPanel.revalidate();
+                confirmationDialog.repaint();
+                confirmationDialog.revalidate();
             }
 
             @Override

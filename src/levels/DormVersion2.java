@@ -55,6 +55,8 @@ public class DormVersion2 extends JPanel implements Runnable {
     }
     public void buildScene() throws IOException {
         createConfettiScreen();
+        addCustomWindowCloseButton();
+        addAudioButton();
         generateScreenWithAllObjectsAndButtons();
         TextBoxSetup();
         backgroundMusic = new Sound();
@@ -67,8 +69,6 @@ public class DormVersion2 extends JPanel implements Runnable {
         catSound.setFile("audio/soundeffects/meow.wav");
 
 
-        addCustomWindowCloseButton();
-        addAudioButton();
 
         revalidate();
         repaint();
@@ -90,13 +90,26 @@ public class DormVersion2 extends JPanel implements Runnable {
 
     public JLabel createObject(String image) throws IOException {
         JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
 
-        ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
-        obj1icon.setImage(obj1icon.getImage().getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT));
+        if(image.equals("images/EndScene/meow.gif")){
+            objectLabel.setBounds(1610,53,300,300);
 
-        objectLabel.setIcon(obj1icon);
-        objectLabel.setVisible(true);
+            ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+            obj1icon.setImage(obj1icon.getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT));
+
+            objectLabel.setIcon(obj1icon);
+            objectLabel.setVisible(false);
+            System.out.println("-----");
+        }
+        else{
+            objectLabel.setBounds(0,0,maxBounds.width,maxBounds.height-textBox_height);
+
+            ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
+            obj1icon.setImage(obj1icon.getImage().getScaledInstance(maxBounds.width, maxBounds.height-textBox_height, Image.SCALE_DEFAULT));
+
+            objectLabel.setIcon(obj1icon);
+            objectLabel.setVisible(true);
+        }
         imageList.add(objectLabel);
         return objectLabel;
 
@@ -137,20 +150,20 @@ public class DormVersion2 extends JPanel implements Runnable {
 
     public synchronized void generateScreenWithAllObjectsAndButtons() throws IOException {
 
+        createButton("images/EndScene/meow.gif", 1610, 53, 300, 300);
+        createText("What was that?! (Find the source of the sound)");
         createButton("images/dormImages/LevelOneMain.png", 1383, 126, 313, 500);
-        createText("I'm tired, let's take a shower.<br/>Where's my wardrobe? (Tap on the Wardrobe)");
-//        createButton("images/EndScene/almirahscene.png", getX(100), getY(100), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
-//        createText("Where's my T-shirt?");
-//        createButton("images/EndScene/meow.gif", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
-//        createText("What was that?! (Tap to Continue)");
-//        createButton("images/EndScene/bedinitial.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
-//        createText("(Remove the Blanket)");
-//        createButton("images/EndScene/bedafterremovingblanket.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
-//        createText("(Remove the Bag)");
-//        createButton("images/EndScene/bedafterremovingblanketandbag.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
-//        createText("That's such a cute cat. What's it doing here? Wait.. what's that? (Click on the shiny object)");
-//        createButton("images/EndScene/finalscene.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
-//        createText("So that's what my mom packed for me. The cat must have scavenged it from my bag.. It really is such a pleasant surprise, a precious treasure.");
+        createText("I'm tired, let's take a shower.<br/>Let's open my Wardrobe. (Tap on the Wardrobe)");
+        createButton("images/EndScene/almirahscene.png", 832, 355, 181, 277);
+        createText("Hmm, now where's my T-shirt..");
+        createButton("images/EndScene/bedinitial.png", 13, 450, 1100, 400);
+        createText("(Remove the Blanket)");
+        createButton("images/EndScene/bedafterremovingblanket.png", 1150,710, 500,220);
+        createText("(Remove the Bag)");
+        createButton("images/EndScene/bedafterremovingblanketandbag.png", 1070,866,100,60);
+        createText("That's such a cute cat. What's it doing here? Wait.. what's that in it's hands? (Click on the object)");
+        createButton("images/EndScene/finalscene.png",0,0, DeviceInformation.screenWidth,DeviceInformation.screenHeight);
+        createText("So that's what my mom packed for me. The cat must have scavenged it from my bag..\nIt really is such a pleasant surprise, a precious treasure. (Click anywhere)");
 
     }
 
@@ -185,7 +198,7 @@ public class DormVersion2 extends JPanel implements Runnable {
     }
 
     public void TextBoxSetup(){
-        TextBox = new JLabel(textList.get(0), SwingConstants.CENTER);
+        TextBox = new JLabel(textList.get(1), SwingConstants.CENTER);
         TextBox.setFont(FontInfo.getResizedFont(38f));
         TextBox.setBounds(0, DeviceInformation.screenHeight -(textBox_height*2), DeviceInformation.screenWidth, textBox_height*2);
         TextBox.setBackground(Color.decode("#14171C"));
@@ -260,7 +273,7 @@ public class DormVersion2 extends JPanel implements Runnable {
 //        for(JLabel image : imageList){
 //            image.setVisible(false);
 //        }
-        imageList.get(0).setVisible(true);
-        buttonList.get(0).setEnabled(true);
+//        imageList.get(0).setVisible(true);
+        buttonList.get(1).setEnabled(true);
     }
 }

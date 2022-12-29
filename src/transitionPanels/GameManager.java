@@ -240,6 +240,11 @@ public class GameManager{
     - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
     - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
 
+    // bugs
+    - dorm v2 is missing 2 objects
+    - innitial login sounds twice
+    - map buttons refresh during innital game start
+    - map button refresh after DOrm v2
     */
 
     /**

@@ -1,6 +1,7 @@
 package src.popups;
 
 import src.levelObjects.Sound;
+import src.levels.DormVersion2;
 import src.setup.FontInfo;
 import src.levels.ALevelPanel;
 
@@ -54,9 +55,11 @@ public class LevelToMapConfirmationDialog extends JDialog {
                     Sound alert = new Sound();
                     alert.setFile("audio/soundeffects/alert.wav");
                     alert.play();
+                } else if (jPanel instanceof DormVersion2) {
+                    ((DormVersion2) jPanel).EndLevel();
                 }
 
-                    dispose();
+                dispose();
             }
 
             @Override
@@ -123,6 +126,7 @@ public class LevelToMapConfirmationDialog extends JDialog {
             }
         });
         add(closeButton2);
+        System.out.println("l to m insteatiated");
         setVisible(true);
     }
 

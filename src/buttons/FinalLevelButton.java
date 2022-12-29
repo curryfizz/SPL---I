@@ -40,14 +40,14 @@ public class FinalLevelButton extends JButton{
 
         /* during debugging*/
 
-        setOpaque(true);
+//        setOpaque(true);
         setBackground(new Color(255, 0, 0, 100));
 
 
         /* stuff that works*/
 
-//        setOpaque(false);
-//        setContentAreaFilled(false);
+        setOpaque(false);
+        setContentAreaFilled(false);
 
         repaint();
         setFocusPainted(false);
@@ -88,21 +88,71 @@ public class FinalLevelButton extends JButton{
                     System.out.println("idk man, me a button got pushed, was enabled");
 
                     levelPanel.objClickSound.play();
-                    levelPanel.imageList.get(levelPanel.taps).setVisible(false);
+
                     levelPanel.taps++;
 
                     setEnabled(false);
 //                    associatedLabel.setVisible(false);
                     // here images found works more like taps on the screen
 
-                    if(levelPanel.buttonList.size()-1 >= myIndex+1){
-                        System.out.println("Bro wtf");
-                        levelPanel.buttonList.get(myIndex + 1).setEnabled(true);
-                        levelPanel.imageList.get(myIndex+1).setVisible(true);
+                    switch (myIndex){
+                        case 0 -> { // meow
+                            System.out.println("meow");
+                            levelPanel.imageList.get(myIndex).setVisible(false);
+                            levelPanel.imageList.get(2).setVisible(false);
+                            levelPanel.buttonList.get(3).setEnabled(true);
+
+                            levelPanel.TextBox.setText(levelPanel.textList.get(3));
+                        }
+                        case 1 -> { //dorm
+                            System.out.println("dorm");
+                            levelPanel.imageList.get(myIndex).setVisible(false);
+                            levelPanel.buttonList.get(myIndex+1).setEnabled(true);
+
+                            levelPanel.TextBox.setText(levelPanel.textList.get(myIndex+1));
+                        }
+                        case 2 -> { //almari
+                            System.out.println("almari");
+                            levelPanel.imageList.get(0).setVisible(true);
+                            levelPanel.buttonList.get(0).setEnabled(true);
+
+                            levelPanel.TextBox.setText(levelPanel.textList.get(0));
+                        }
+                        case 3 -> { //bed blanket
+                            System.out.println("bed blanket");
+                            levelPanel.imageList.get(myIndex).setVisible(false);
+                            levelPanel.buttonList.get(myIndex+1).setEnabled(true);
+
+                            levelPanel.TextBox.setText(levelPanel.textList.get(myIndex+1));
+                        }
+                        case 4 -> { //bed bag
+                            System.out.println("bed bag");
+                            levelPanel.imageList.get(myIndex).setVisible(false);
+                            levelPanel.buttonList.get(myIndex+1).setEnabled(true);
+
+                            levelPanel.TextBox.setText(levelPanel.textList.get(myIndex+1));
+                        }
+                        case 5 -> { //cat
+                            System.out.println("cat");
+                            levelPanel.imageList.get(myIndex).setVisible(false);
+                            levelPanel.buttonList.get(myIndex+1).setEnabled(true);
+
+                            levelPanel.TextBox.setText(levelPanel.textList.get(myIndex+1));
+                        }
+                        case 6 ->{ // portait
+                            System.out.println("portrait");
+                        }
 
                     }
+//                    if(levelPanel.buttonList.size()-1 >= myIndex+1){
+//                        System.out.println("making future visible");
+//                        levelPanel.buttonList.get(myIndex + 1).setEnabled(true);
+//                        levelPanel.imageList.get(myIndex+1).setVisible(true);
+//
+//                    }
 
                     if(levelPanel.taps == levelPanel.imageList.size()){
+                        System.out.println("level ended");
                         levelPanel.congratulationsConfetti.setVisible(true);
 
                         /** Change this JDialogue to another one **/
@@ -125,13 +175,12 @@ public class FinalLevelButton extends JButton{
                         levelPanel.jFrame.revalidate();
                         levelPanel.jFrame.repaint();
                     }
-                    else {
-                        levelPanel.buttonList.get(myIndex + 1).setEnabled(true);
-                    }
                 }
             }
             @Override
             public void mouseEntered(MouseEvent e){
+                repaint();
+                revalidate();
             }
         });
     }
