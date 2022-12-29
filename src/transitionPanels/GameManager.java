@@ -224,8 +224,6 @@ public class GameManager{
 
 //important
 
-    - why does score Animation keep disappearing so quickly;
-
     */
 
     /**
