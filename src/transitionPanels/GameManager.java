@@ -170,7 +170,7 @@ public class GameManager{
         System.setProperty("sun.java2d.uiScale", "1.0");
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
-        PlayerInfo player = new PlayerInfo(1); // taken from database
+        PlayerInfo player = new PlayerInfo(0); // taken from database
 
         System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
 
@@ -206,16 +206,12 @@ public class GameManager{
         loadingAnimationT.mapT = mapT;
         loadingAnimationT.messageFromMomT = messageFromMomT;
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
-
         pl.execute(startMenu);
         pl.execute(mapT);
         pl.execute(loadingAnimationT);
         pl.execute(messageFromMomT);
-
         jFrame.add(startMenu); //should be startmenu during real play
-
         pl.shutdown();
-
     }
 
     /*TODO:
@@ -228,15 +224,15 @@ public class GameManager{
 
 //important
 
-
     - why does score Animation keep disappearing so quickly;
     - make score animation larger
-//done
-//    - make sure map level buttons don't work unless gameProgress is satisfactory;
-//    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
-//    - add arrow gif pointing at the next level in map?
-//    - add music for start menu and map
-      - add sound effects for other button clicks
-//  - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does
+    - make UserStatsPopup longer
+//    - why are the actual texts not appearing in the Alevel panel text box
+
     */
+
+    /**
+     * remember to fix Passing score in AlevelPanel to 400
+     * remember to uncomment the if condition in the onclick event in MapBUttonEvents
+     */
 }

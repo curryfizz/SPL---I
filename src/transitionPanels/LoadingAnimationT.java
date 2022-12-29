@@ -114,7 +114,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
                 ((ALevelPanel) nextScene).StartLevel();
             }
             else if((nextScene instanceof MapT) && LevelOver_ProgressUpdated){
-
+                ((MapT) nextScene).ArrowGif.setVisible(false);
                 ((MapT) nextScene).ShowUnlockAnimation(level_number);
 
                 LevelOver_ProgressUpdated = false;
