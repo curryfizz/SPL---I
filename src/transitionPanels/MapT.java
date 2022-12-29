@@ -75,42 +75,45 @@ public class MapT extends JPanel implements Runnable{
             CutOutList.get(i).setVisible(true);
         }
 
-        HugeUnLock.setVisible(true);
-        timer = new Timer(2800, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                unlockMusic.play();
-                HugeUnLock.setVisible(false);
-                if(level_number==2) {
-                    level2 = new Sound();
-                    level2.setFile("audio/soundeffects/lvl2unlock.wav");
-                    level2.play();
-                }
-                else  if(level_number==3) {
-                    level2 = new Sound();
-                    level2.setFile("audio/soundeffects/lvl3unlock.wav");
-                    level2.play();
-                }
-                else  if(level_number==4) {
-                    level2 = new Sound();
-                    level2.setFile("audio/soundeffects/lvl4unlock.wav");
-                    level2.play();
-                }
+//        HugeUnLock.setVisible(true);
+//        timer = new Timer(2800, new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                unlockMusic.play();
+//                HugeUnLock.setVisible(false);
+//                if(level_number==2) {
+//                    level2 = new Sound();
+//                    level2.setFile("audio/soundeffects/lvl2unlock.wav");
+//                    level2.play();
+//                }
+//                else  if(level_number==3) {
+//                    level2 = new Sound();
+//                    level2.setFile("audio/soundeffects/lvl3unlock.wav");
+//                    level2.play();
+//                }
+//                else  if(level_number==4) {
+//                    level2 = new Sound();
+//                    level2.setFile("audio/soundeffects/lvl4unlock.wav");
+//                    level2.play();
+//                }
+//
+//                else  if(level_number==5) {
+//                    level2 = new Sound();
+//                    level2.setFile("audio/soundeffects/lvl5unlock.wav");
+//                    level2.play();
+//                }
+//
+//
+//                stopTimer();
+//                LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);
+//                fixArrowPosition();
+//            }
+//        });
+//
+//        timer.start();
 
-                else  if(level_number==5) {
-                    level2 = new Sound();
-                    level2.setFile("audio/soundeffects/lvl5unlock.wav");
-                    level2.play();
-                }
-
-
-                stopTimer();
-                LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);
-                fixArrowPosition();
-            }
-        });
-
-        timer.start();
+        LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);
+        fixArrowPosition();
 
     }
     public void stopTimer(){

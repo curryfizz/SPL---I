@@ -82,7 +82,7 @@ public class MapButtonEvents implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-//        if(PlayerInfo.gameProgress > serial){
+        if(PlayerInfo.gameProgress > serial){
             clickSound.play();
             mapT.ArrowGif.setVisible(false);
 
@@ -110,10 +110,10 @@ public class MapButtonEvents implements MouseListener {
 
             mapT.jFrame.revalidate();
             mapT.jFrame.repaint();
-//        }
-//        else{
-//            errorSound.play();
-//        }
+        }
+        else{
+            errorSound.play();
+        }
     }
 
     @Override
@@ -128,7 +128,7 @@ public class MapButtonEvents implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        if(serial == 0 && PlayerInfo.gameProgress == 5){
+        if(serial == 0 && PlayerInfo.gameProgress >= 5){
             this.SidePanelText = mapT.SidePanelTextList.get(5);
         }
         else {
