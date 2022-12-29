@@ -1,6 +1,7 @@
 package src.transitionPanels;
 
 import src.DatabaseConnection.OracleDatabase;
+import src.levels.CDS_LevelPanelT;
 import src.popups.LoginDialog;
 import src.popups.SignupDialog;
 import src.setup.DeviceInformation;
@@ -206,11 +207,13 @@ public class GameManager{
         loadingAnimationT.mapT = mapT;
         loadingAnimationT.messageFromMomT = messageFromMomT;
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
-        pl.execute(startMenu);
-        pl.execute(mapT);
-        pl.execute(loadingAnimationT);
-        pl.execute(messageFromMomT);
-        jFrame.add(startMenu); //should be startmenu during real play
+        CDS_LevelPanelT cds_levelPanelT = new CDS_LevelPanelT(jFrame);
+//        pl.execute(startMenu);
+//        pl.execute(mapT);
+//        pl.execute(loadingAnimationT);
+//        pl.execute(messageFromMomT);
+        pl.execute(cds_levelPanelT);
+        jFrame.add(cds_levelPanelT); //should be startmenu during real play
         pl.shutdown();
     }
 
