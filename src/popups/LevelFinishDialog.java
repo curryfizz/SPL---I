@@ -24,7 +24,7 @@ public class LevelFinishDialog extends JDialog {
     JButton closeButton2;
 
     Sound sound;
-    public LevelFinishDialog(JFrame jFrame, JPanel jPanel){
+    public LevelFinishDialog(JFrame jFrame,int level_number, JPanel jPanel){
         levelCompleted = new Sound();
         levelCompleted.setFile("audio/soundeffects/lvlcompleted.wav");
         levelCompleted.play();
@@ -48,7 +48,13 @@ public class LevelFinishDialog extends JDialog {
         JTextPane levelCompletedTextPane = new JTextPane();
         JTextPane timeTakenTextPane = new JTextPane();
         levelCompletedTextPane.setFont(FontInfo.getResizedFont(70f));
-        levelCompletedTextPane.setText("Level completed!");
+        if (level_number==6){
+            jLabel.setText(convertToMultiline("GAME FINISHED"));
+        }
+        else
+        {
+            levelCompletedTextPane.setText("Level completed!");
+        }
         levelCompletedTextPane.setBackground(Color.decode("#14171C"));
         levelCompletedTextPane.setForeground(Color.white);
         levelCompletedTextPane.setFocusable(false);

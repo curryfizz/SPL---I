@@ -18,6 +18,7 @@ public class ObjectHidingButton extends JButton {
     int buttonHeight;
     public JLabel associatedLabel;
     public ALevelPanel levelPanel;
+    int level_number;
     public int myIndex;
     public boolean HintWasUsed = false;
 
@@ -103,7 +104,7 @@ public class ObjectHidingButton extends JButton {
                     if(levelPanel.imagesFound == 6 && levelPanel.scoreBoard.score >= levelPanel.PassingScore){
                         levelPanel.timerLabel.isTimeOver = true;
                         levelPanel.congratulationsConfetti.setVisible(true);
-                        LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel);
+                        LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame,level_number,levelPanel);
                         System.out.println("Skipped levelFinishDialogue"); // IT DOESNT SKIP, IT WAITS FOR A RESPONSE
                         if(PlayerInfo.gameProgress < levelPanel.getLevelNumber()){ // first time
                             PlayerInfo.gameProgress = levelPanel.getLevelNumber();

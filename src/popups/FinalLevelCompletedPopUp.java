@@ -28,6 +28,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
         jLabel.setPreferredSize(new Dimension(300,200));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
+        jLabel.setText("GAME FINISHED");
         jLabel.setFont(FontInfo.getResizedFont(43f));
         add(jLabel);
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
