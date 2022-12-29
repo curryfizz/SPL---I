@@ -423,8 +423,4 @@ public class MapT extends JPanel implements Runnable{
     }
 
 
-
-
-
-
 }

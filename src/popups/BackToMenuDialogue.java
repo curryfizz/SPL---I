@@ -1,5 +1,6 @@
 package src.popups;
 
+import src.levelObjects.Sound;
 import src.levels.ALevelPanel;
 import src.setup.FontInfo;
 import src.transitionPanels.LoadingAnimationT;
@@ -54,6 +55,10 @@ public class BackToMenuDialogue extends JDialog {
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
+                Sound clicksound= new Sound();
+                clicksound.setFile("audio/soundeffects/click.wav");
+                clicksound.play();
 
                 LoadingAnimationT loadingAnimationT = null;
 
@@ -114,6 +119,9 @@ public class BackToMenuDialogue extends JDialog {
         closeButton2.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Sound clicksound= new Sound();
+                clicksound.setFile("audio/soundeffects/click.wav");
+                clicksound.play();
                 dispose();
             }
 
