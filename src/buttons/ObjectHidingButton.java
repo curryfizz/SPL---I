@@ -140,6 +140,7 @@ public class ObjectHidingButton extends JButton {
                                 if(PlayerInfo.LibraryLeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.LibraryLeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
+                                OracleDatabase.updatePlayerStats(4, PlayerInfo.LibraryHighScore, PlayerInfo.LibraryLeastTime);
                             }
                             case 5 ->{
                                 if(PlayerInfo.CDSHighScore < levelPanel.scoreBoard.score){
@@ -148,6 +149,7 @@ public class ObjectHidingButton extends JButton {
                                 if(PlayerInfo.CDSLeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.CDSLeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
+                                OracleDatabase.updatePlayerStats(4, PlayerInfo.CDSHighScore, PlayerInfo.CDSLeastTime);
                             }
                             case 6 ->{
                                 if(PlayerInfo.DormV2HighScore < levelPanel.scoreBoard.score){
@@ -156,6 +158,7 @@ public class ObjectHidingButton extends JButton {
                                 if(PlayerInfo.DormV2LeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.DormV2LeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
+                                OracleDatabase.updatePlayerStats(4, PlayerInfo.DormV2HighScore, PlayerInfo.DormV2LeastTime);
                             }
 
                         }

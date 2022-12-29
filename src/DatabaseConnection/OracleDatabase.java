@@ -103,7 +103,7 @@ public class OracleDatabase {
                 rs.close();
                 prepareStatementforCheckingLevelPlayed();
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"1");
+                preparedStatement.setString(2,"2");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.DormHighScore = rs.getInt("score");
@@ -111,15 +111,15 @@ public class OracleDatabase {
                 }
 
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"2");
+                preparedStatement.setString(2,"3");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.ClassroomHighScore = rs.getInt("score");
-                    PlayerInfo.ClassroomHighScore = rs.getInt("time_taken");
+                    PlayerInfo.ClassroomLeastTime = rs.getInt("time_taken");
                 }
 
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"3");
+                preparedStatement.setString(2,"4");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.LibraryHighScore = rs.getInt("score");
@@ -127,7 +127,7 @@ public class OracleDatabase {
                 }
 
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"4");
+                preparedStatement.setString(2,"5");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.CDSHighScore = rs.getInt("score");
@@ -135,7 +135,7 @@ public class OracleDatabase {
                 }
 
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"5");
+                preparedStatement.setString(2,"6");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.DormV2HighScore = rs.getInt("score");
@@ -181,16 +181,16 @@ public class OracleDatabase {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            prepareStatementforUserInfoUpdate();
+            preparedStatement.setString(1, String.valueOf(PlayerInfo.gameProgress));
+            preparedStatement.setString(2, PlayerInfo.email);
+            preparedStatement.executeUpdate();
+            System.out.println("herhe");
             prepareStatementforCheckingLevelPlayed();
             preparedStatement.setString(1, PlayerInfo.email);
             preparedStatement.setString(2,level.toString());
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
-                prepareStatementforUserInfoUpdate();
-                preparedStatement.setString(1, String.valueOf(PlayerInfo.gameProgress));
-                preparedStatement.setString(2, PlayerInfo.email);
-                preparedStatement.executeUpdate();
-                System.out.println("herhe");
 
                 prepareStatementForScoreUpdate();
                 preparedStatement.setString(1, score.toString());
