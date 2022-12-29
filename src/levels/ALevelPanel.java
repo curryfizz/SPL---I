@@ -7,6 +7,8 @@ import src.buttons.LevelCloseButton;
 import src.buttons.ObjectHidingButton;
 import src.levelObjects.ScoreBoard;
 import src.levelObjects.TimerLabel;
+import src.popups.HintConfirmationDialogue;
+import src.popups.TimeOverConfirmationDialog;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
 import src.setup.RandomGenerator;
@@ -54,6 +56,10 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public ArrayList<Integer> RandObjIndices;
     /**change to implement**/
     public int PassingScore = 400;
+
+    public HintConfirmationDialogue hintConfirmationDialogue;
+    public TimeOverConfirmationDialog timeOverConfirmationDialog;
+
 
     ALevelPanel(JFrame jFrame){
         this.jFrame = jFrame;
@@ -157,8 +163,8 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
     public void ResetTimerAndScore(){
         timerLabel.isTimeOver = false;
-        timerLabel.second = 30;
-        timerLabel.minute = 2;
+        timerLabel.second = 10;
+        timerLabel.minute = 0;
         timerLabel.elapsedTime = 0;
         scoreBoard.score=0;
         scoreBoard.setText("0000");

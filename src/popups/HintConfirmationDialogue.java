@@ -47,7 +47,7 @@ public class HintConfirmationDialogue extends JDialog {
         confirmationDialogText.setPreferredSize(new Dimension(DeviceInformation.screenWidth/9,DeviceInformation.screenHeight/5));
         confirmationDialogText.setLayout(new FlowLayout());
         confirmationDialogText.setForeground(Color.white);
-        confirmationDialogText.setText(convertToMultiline("See Hint for this Item?\nYou will get less points and loose your combo 😓"));
+        confirmationDialogText.setText(convertToMultiline("See Hint for this Item?\nYou will get less points and loose your combo :("));
         confirmationDialogText.setFont(FontInfo.getResizedFont(31f));
         confirmationDialogText.setHorizontalTextPosition(JLabel.CENTER);
 
