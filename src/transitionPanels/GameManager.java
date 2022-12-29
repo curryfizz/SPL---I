@@ -212,6 +212,8 @@ public class GameManager{
         pl.execute(messageFromMomT);
         jFrame.add(startMenu); //should be startmenu during real play
         pl.shutdown();
+
+        PlayerInfo.gameProgress = 5;
     }
 
     /*TODO:

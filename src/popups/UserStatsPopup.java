@@ -154,8 +154,7 @@ public class UserStatsPopup extends JDialog{
 
     }
 
-    public static String convertToMultiline(String orig)
-    {
+    public static String convertToMultiline(String orig) {
         return "<html>" + orig.replaceAll("\n", "<br>") + "</html>";
     }
 
