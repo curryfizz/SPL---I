@@ -21,6 +21,9 @@ public class DormVersion2 extends JPanel implements Runnable {
     public JFrame jFrame;
     Rectangle maxBounds;
     public Sound objClickSound;
+    public  Sound catSound;
+    public  Sound tada;
+
     public LoadingAnimationT loadingAnimationT;
     MapT mapT;
     boolean levelFinished;
@@ -65,8 +68,11 @@ public class DormVersion2 extends JPanel implements Runnable {
         objClickSound = new Sound();
         objClickSound.setFile("audio/soundeffects/objectFoundClick2.wav");
 
-        Sound catSound = new Sound();
+        catSound = new Sound();
         catSound.setFile("audio/soundeffects/meow.wav");
+
+        tada = new Sound();
+        tada.setFile("audio/soundeffects/levelFinishTada.wav");
 
 
 
@@ -84,8 +90,10 @@ public class DormVersion2 extends JPanel implements Runnable {
         ImageIcon gif = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/congratulations/levelFinishedSuccessfullyConfetti.gif")));
         gif.setImage(gif.getImage().getScaledInstance(DeviceInformation.screenWidth, DeviceInformation.screenHeight, Image.SCALE_DEFAULT));
         congratulationsConfetti.setIcon(gif);
+        tada.play();
         congratulationsConfetti.setVisible(false);
         this.add(congratulationsConfetti);
+
     }
 
     public JLabel createObject(String image) throws IOException {
@@ -94,6 +102,7 @@ public class DormVersion2 extends JPanel implements Runnable {
         if(image.equals("images/EndScene/meow.gif")){
             objectLabel.setBounds(1610,53,300,300);
 
+            catSound.play();
             ImageIcon  obj1icon= new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(image)));
             obj1icon.setImage(obj1icon.getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT));
 
