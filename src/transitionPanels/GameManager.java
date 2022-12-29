@@ -225,6 +225,8 @@ public class GameManager{
         pl.execute(mapT);
         pl.execute(loadingAnimationT);
         pl.execute(messageFromMomT);
+
+
       //  pl.execute(cds_levelPanelT);
         jFrame.add(startMenu); //should be startmenu during real play
         pl.shutdown();
