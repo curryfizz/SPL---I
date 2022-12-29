@@ -66,7 +66,7 @@ public class DormRoomSceneT extends ALevelPanel{
 
     @Override
     public String getBackgroundPath() {
-        return "images/dormImages/LevelOneMain.png";
+        return "images/cdsimages/cds.png";
     }
 
     @Override
