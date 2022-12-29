@@ -47,10 +47,7 @@ public class MapButtonEvents implements MouseListener {
         ExecutorService es = Executors.newFixedThreadPool(1);
 
         if(serial == 0){
-            if(PlayerInfo.gameProgress == 5)
-                Scene = new FinalDormRoomSceneT(mapT.jFrame);
-            else
-                Scene = new DormRoomSceneT(mapT.jFrame);
+            Scene = new DormRoomSceneT(mapT.jFrame);
         } else if (serial == 1) {
             Scene = new ClassRoomSceneT(mapT.jFrame);
         } else if (serial == 2) {
@@ -58,7 +55,7 @@ public class MapButtonEvents implements MouseListener {
         } else if (serial == 3) {
             Scene = new CDS_LevelPanelT(mapT.jFrame);
         } else if (serial==4) {
-            Scene = new FinalDormRoomSceneT(mapT.jFrame);
+            System.out.println("wtff in menumouseevents");
         }
         es.execute(Scene);
         es.shutdown();
@@ -89,12 +86,19 @@ public class MapButtonEvents implements MouseListener {
             clickSound.play();
             mapT.ArrowGif.setVisible(false);
 
-            ALevelPanel SceneT = getPanel(serial);
-            mapT.mapMusic.stop();
+            if(PlayerInfo.gameProgress <5) {
+                ALevelPanel SceneT = getPanel(serial);
+                mapT.loadingAnimationT.changeNextScene(SceneT);
+                SceneT.PrepareForSceneTransition(mapT.loadingAnimationT, mapT);
+            }
+            else{
+                DormVersion2 dormVersion2 = new DormVersion2(mapT.jFrame);
+                mapT.loadingAnimationT.changeNextScene(dormVersion2);
+                dormVersion2.PrepareForSceneTransition(mapT.loadingAnimationT,mapT);
 
+            }
+            mapT.mapMusic.stop();
             mapT.jFrame.remove(mapT);
-            mapT.loadingAnimationT.changeNextScene(SceneT);
-            SceneT.PrepareForSceneTransition(mapT.loadingAnimationT, mapT);
             mapT.jFrame.add(mapT.loadingAnimationT);
             mapT.loadingAnimationT.initializeTimer();
 

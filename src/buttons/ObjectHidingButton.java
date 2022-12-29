@@ -151,15 +151,15 @@ public class ObjectHidingButton extends JButton {
                                 }
                                 OracleDatabase.updatePlayerStats(4, PlayerInfo.CDSHighScore, PlayerInfo.CDSLeastTime);
                             }
-                            case 6 ->{
-                                if(PlayerInfo.DormV2HighScore < levelPanel.scoreBoard.score){
-                                    PlayerInfo.DormV2HighScore = levelPanel.scoreBoard.score;
-                                }
-                                if(PlayerInfo.DormV2LeastTime < levelPanel.timerLabel.elapsedTime){
-                                    PlayerInfo.DormV2LeastTime = levelPanel.timerLabel.elapsedTime;
-                                }
-                                OracleDatabase.updatePlayerStats(4, PlayerInfo.DormV2HighScore, PlayerInfo.DormV2LeastTime);
-                            }
+//                            case 6 ->{
+//                                if(PlayerInfo.DormV2HighScore < levelPanel.scoreBoard.score){
+//                                    PlayerInfo.DormV2HighScore = levelPanel.scoreBoard.score;
+//                                }
+//                                if(PlayerInfo.DormV2LeastTime < levelPanel.timerLabel.elapsedTime){
+//                                    PlayerInfo.DormV2LeastTime = levelPanel.timerLabel.elapsedTime;
+//                                }
+//                                OracleDatabase.updatePlayerStats(4, PlayerInfo.DormV2HighScore, PlayerInfo.DormV2LeastTime);
+//                            }
 
                         }
 
