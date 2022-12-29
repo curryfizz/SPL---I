@@ -104,7 +104,6 @@ public class LevelFinishDialog extends JDialog {
             public void mouseClicked(MouseEvent e) {
                 if(jPanel instanceof ALevelPanel) {
                     ((ALevelPanel) jPanel).timerLabel.endLevel();
-                    sound.stop();
                     Sound alert = new Sound();
                     alert.setFile("audio/soundeffects/alert.wav");
                     alert.play();
