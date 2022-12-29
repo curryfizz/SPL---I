@@ -86,12 +86,8 @@ public class MapButtonEvents implements MouseListener {
             clickSound.play();
             mapT.ArrowGif.setVisible(false);
 
-            if(PlayerInfo.gameProgress <5) {
-                ALevelPanel SceneT = getPanel(serial);
-                mapT.loadingAnimationT.changeNextScene(SceneT);
-                SceneT.PrepareForSceneTransition(mapT.loadingAnimationT, mapT);
-            }
-            else{
+            if(serial == 0 && PlayerInfo.gameProgress >= 5){
+
                 DormVersion2 dormVersion2 = new DormVersion2(mapT.jFrame);
                 ExecutorService es = Executors.newFixedThreadPool(1);
                 es.execute(dormVersion2);
@@ -100,6 +96,12 @@ public class MapButtonEvents implements MouseListener {
                 dormVersion2.PrepareForSceneTransition(mapT.loadingAnimationT,mapT);
 
             }
+            else {
+                ALevelPanel SceneT = getPanel(serial);
+                mapT.loadingAnimationT.changeNextScene(SceneT);
+                SceneT.PrepareForSceneTransition(mapT.loadingAnimationT, mapT);
+            }
+
             mapT.mapMusic.stop();
             mapT.jFrame.remove(mapT);
             mapT.jFrame.add(mapT.loadingAnimationT);
@@ -129,6 +131,7 @@ public class MapButtonEvents implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         if(serial == 0 && PlayerInfo.gameProgress >= 5){
+
             this.SidePanelText = mapT.SidePanelTextList.get(5);
         }
         else {

@@ -23,6 +23,10 @@ public class TimeOverConfirmationDialog extends JDialog {
         this.jFrame = jFrame;
         this.backgoundPanel = jPanel;
 
+        if(backgoundPanel.hintConfirmationDialogue != null){
+            backgoundPanel.hintConfirmationDialogue.dispose();
+        }
+
         setModal(true);
         setUndecorated(true);
 

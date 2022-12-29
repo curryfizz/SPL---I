@@ -22,7 +22,7 @@ public class LabelListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        HintConfirmationDialogue hintConfirmationDialogue = new HintConfirmationDialogue(jFrame, backgroundPanel, indexOfObjectButton);
+        backgroundPanel.hintConfirmationDialogue = new HintConfirmationDialogue(jFrame, backgroundPanel, indexOfObjectButton);
     }
 
     @Override
