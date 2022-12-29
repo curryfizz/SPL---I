@@ -47,7 +47,7 @@ public class LevelUnlockPopUp extends JDialog {
 
             jLabel.setText(convertToMultiline("BE AWARE !!! THIS IS THE FINAL LEVEL"));
         }
-        jLabel.setFont(FontInfo.getResizedFont(43f));
+        jLabel.setFont(FontInfo.getResizedFont(38f));
         repaint();
         revalidate();
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
