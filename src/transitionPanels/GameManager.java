@@ -57,14 +57,6 @@ public class GameManager{
         FontInfo fontInfo = new FontInfo();
         PlayerInfo player = new PlayerInfo(0); // taken from database
 
-
-
-
-
-
-
-
-
         double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
         double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
         System.out.println("X:" +  mouseX);
