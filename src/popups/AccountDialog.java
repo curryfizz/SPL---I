@@ -2,6 +2,7 @@ package src.popups;
 
 import src.DatabaseConnection.OracleDatabase;
 import src.buttons.BasicBlueButton;
+import src.levelObjects.Sound;
 import src.setup.FontInfo;
 
 import javax.swing.*;
@@ -128,6 +129,9 @@ public abstract class AccountDialog extends JDialog {
         cancelButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Sound alert = new Sound();
+                alert.setFile("audio/soundeffects/alert.wav");
+                alert.play();
                 try {
                     Thread.sleep(100);
                     dispose();
