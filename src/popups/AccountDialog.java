@@ -2,6 +2,7 @@ package src.popups;
 
 import src.DatabaseConnection.OracleDatabase;
 import src.buttons.BasicBlueButton;
+import src.levelObjects.Sound;
 import src.setup.FontInfo;
 
 import javax.swing.*;
@@ -103,7 +104,8 @@ public abstract class AccountDialog extends JDialog {
     }
 
     protected boolean isEmailValid(String email){
-        String regex = "^(.+)@(.+)$";
+        String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
@@ -127,6 +129,9 @@ public abstract class AccountDialog extends JDialog {
         cancelButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Sound alert = new Sound();
+                alert.setFile("audio/soundeffects/alert.wav");
+                alert.play();
                 try {
                     Thread.sleep(100);
                     dispose();

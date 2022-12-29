@@ -31,7 +31,7 @@ public class LevelUnlockPopUp extends JDialog {
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
 
-        jLabel.setPreferredSize(new Dimension(400,65));
+        jLabel.setPreferredSize(new Dimension(450,75));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         if(level_number==2){
@@ -44,6 +44,7 @@ public class LevelUnlockPopUp extends JDialog {
             jLabel.setText(convertToMultiline("Central Departmental Store  Unlocked "));
         }
         else if (level_number==5){
+
             jLabel.setText(convertToMultiline("BE AWARE !!! THIS IS THE FINAL LEVEL"));
         }
         jLabel.setFont(FontInfo.getResizedFont(43f));
@@ -51,7 +52,7 @@ public class LevelUnlockPopUp extends JDialog {
         revalidate();
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
         jLabel.setHorizontalAlignment(JLabel.CENTER);
-        setSize(500,400);
+        setSize(550,430);
         setLocationRelativeTo(jFrame);
         setResizable(false);
 
