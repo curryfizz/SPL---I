@@ -93,6 +93,9 @@ public class MapButtonEvents implements MouseListener {
             }
             else{
                 DormVersion2 dormVersion2 = new DormVersion2(mapT.jFrame);
+                ExecutorService es = Executors.newFixedThreadPool(1);
+                es.execute(dormVersion2);
+                es.shutdown();
                 mapT.loadingAnimationT.changeNextScene(dormVersion2);
                 dormVersion2.PrepareForSceneTransition(mapT.loadingAnimationT,mapT);
 

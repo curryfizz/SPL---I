@@ -77,7 +77,7 @@ public class FinalLevelButton extends JButton{
                         levelPanel.congratulationsConfetti.setVisible(true);
 
                         /** Change this JDialogue to another one **/
-                        LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel);
+                        LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel.getLevelNumber(),  levelPanel);
 
                         System.out.println("Skipped levelFinishDialogue"); // IT DOESNT SKIP, IT WAITS FOR A RESPONSE FROM THE JDIALOGUE
 
