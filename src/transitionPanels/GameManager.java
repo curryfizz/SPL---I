@@ -2,6 +2,7 @@ package src.transitionPanels;
 
 import src.DatabaseConnection.OracleDatabase;
 import src.levels.CDS_LevelPanelT;
+import src.popups.FinalLevelCompletedPopUp;
 import src.popups.LoginDialog;
 import src.popups.SignupDialog;
 import src.setup.DeviceInformation;
@@ -43,129 +44,11 @@ public class GameManager{
         JFrame jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setBounds(300, 100, 600, 600);
-//        LoginDialog loginDialog = new LoginDialog(jFrame,oracleDatabase);
-        SignupDialog signupDialog = new SignupDialog(jFrame, oracleDatabase);
         jFrame.setVisible(true);
-//        try {
 
-//            DeviceInformation deviceInformation = new DeviceInformation();
-//            System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
-//            /* Set up the frame*/
-//            JFrame jFrame = new JFrame();
-//            jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            jFrame.setBounds(300, 100, 600, 600);
-//            JPanel jPanel = new JPanel();
-//            jPanel.setBackground(new Color(220, 90, 70, 255));
-//            jPanel.setPreferredSize(new Dimension(500, 500));
-//            JButton signup = new JButton("Signup");
-//            JTextField jTextField = new JTextField();
-//            jTextField.setPreferredSize(new Dimension(100, 60));
-//            JTextField jTextField2 = new JTextField();
-//            jTextField2.setPreferredSize(new Dimension(100, 60));
-//
-//            JTextField getUser = new JTextField();
-//            getUser.setPreferredSize(new Dimension(200,50));
-//            JTextPane showDeets =  new JTextPane();
-//            showDeets.setPreferredSize(new Dimension(300,80));
-//            JButton login = new JButton("login");
-//            signup.addMouseListener(new MouseListener() {
-//                @Override
-//                public void mouseClicked(MouseEvent e) {
-//                    SignupDialog signupDialog = new SignupDialog(jFrame, oracleDatabase);
-//                    if(signup.isEnabled()) {
-//                        jTextField2.setEnabled(false);
-//                        jTextField.setEnabled(false);
-//                        try {
-//                            if(oracleDatabase.insertUser(jTextField.getText(), jTextField2.getText()) == false){
-//                                System.out.println("User already exists!");
-//                            }
-//
-//                        } catch (SQLException ex) {
-//                            ex.printStackTrace();
-//                        }
-//                        signup.setEnabled(false);
-//                    }
-//                }
-//
-//                @Override
-//                public void mousePressed(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseReleased(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseEntered(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseExited(MouseEvent e) {
-//
-//                }
-//            });
-//
-//            login.addMouseListener(new MouseListener() {
-//                @Override
-//                public void mouseClicked(MouseEvent e) {
-//                    if(login.isEnabled()) {
-//                        try {
-//                            if (oracleDatabase.retrieveUserInfo(getUser.getText())) {
-//                                showDeets.setText(PlayerInfo.getString());
-//                            } else {
-//                                showDeets.setForeground(Color.red);
-//                                showDeets.setText("User doesnt exist!");
-//                            }
-//
-//                        } catch (SQLException ex) {
-//
-//                            ex.printStackTrace();
-//                        } finally {
-//
-//                            login.setEnabled(false);
-//                        }
-//                    }
-//                }
-//
-//                @Override
-//                public void mousePressed(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseReleased(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseEntered(MouseEvent e) {
-//
-//                }
-//
-//                @Override
-//                public void mouseExited(MouseEvent e) {
-//
-//                }
-//            });
-//            jPanel.add(jTextField2);
-//            jPanel.add(jTextField);
-//            jPanel.add(signup);
-//            jPanel.add(getUser);
-//            jPanel.add(login);
-//            jPanel.add(showDeets);
-//            jFrame.add(jPanel);
-//            jFrame.pack();
-//            jFrame.setVisible(true);
-//            System.out.println(PlayerInfo.getString());
-////        testAnimation testAnimation = new testAnimation();
-////        jFrame.add(testAnimation);
-////        testAnimation.initializeTimer();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+        PlayerInfo playerInfo = new PlayerInfo(1);
+        FinalLevelCompletedPopUp finalLevelCompletedPopUp = new FinalLevelCompletedPopUp(jFrame, 6);
+
     }
     public GameManager() throws IOException {
         System.setProperty("sun.java2d.uiScale", "1.0");
