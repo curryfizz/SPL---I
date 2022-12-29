@@ -228,6 +228,8 @@ public class GameManager{
       //  pl.execute(cds_levelPanelT);
         jFrame.add(startMenu); //should be startmenu during real play
         pl.shutdown();
+
+        PlayerInfo.gameProgress = 5;
     }
 
     /*TODO:
