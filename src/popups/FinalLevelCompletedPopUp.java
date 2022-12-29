@@ -163,6 +163,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
                 PlayerInfo.gameProgress = 1;
+                resetPlayerStats();
                 repaint();
                 OracleDatabase.resetPlayerInfo();
                 resetPlayerInfoLabel.setVisible(true);
