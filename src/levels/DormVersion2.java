@@ -157,7 +157,7 @@ public class DormVersion2 extends JPanel implements Runnable {
 
         createButton("images/EndScene/meow.gif", 1610, 53, 300, 300);
         createText("What was that?! (Find the source of the sound)");
-        createButton("images/dormImages/LevelOneMain.png", 1383, 126, 313, 500);
+        createButton("images/dormImages/mainbg.png", 1383, 126, 313, 500);
         createText("I'm tired, let's take a shower.<br/>Let's open my Wardrobe. (Tap on the Wardrobe)");
         createButton("images/EndScene/almirahscene.png", 832, 355, 181, 277);
         createText("Hmm, now where's my T-shirt..");
