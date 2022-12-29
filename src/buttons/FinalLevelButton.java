@@ -5,6 +5,7 @@ import src.DatabaseConnection.PlayerInfo;
 import src.events.SceneObjectEvents;
 import src.levels.ALevelPanel;
 import src.levels.DormVersion2;
+import src.popups.FinalLevelCompletedPopUp;
 import src.popups.LevelFinishDialog;
 import src.popups.LevelFinishedNotEnoughScore;
 
@@ -156,7 +157,7 @@ public class FinalLevelButton extends JButton{
                         levelPanel.congratulationsConfetti.setVisible(true);
 
                         /** Change this JDialogue to another one **/
-                        LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel.getLevelNumber(),  levelPanel);
+                        FinalLevelCompletedPopUp finalLevelCompletedPopUp = new FinalLevelCompletedPopUp(levelPanel.jFrame, levelPanel.getLevelNumber(), levelPanel);
 
                         System.out.println("Skipped levelFinishDialogue"); // IT DOESNT SKIP, IT WAITS FOR A RESPONSE FROM THE JDIALOGUE
 

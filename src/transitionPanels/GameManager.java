@@ -46,8 +46,8 @@ public class GameManager{
         jFrame.setBounds(300, 100, 600, 600);
         jFrame.setVisible(true);
 
-        PlayerInfo playerInfo = new PlayerInfo(1);
-        FinalLevelCompletedPopUp finalLevelCompletedPopUp = new FinalLevelCompletedPopUp(jFrame, 6);
+        PlayerInfo playerInfo = new PlayerInfo(0);
+//        FinalLevelCompletedPopUp finalLevelCompletedPopUp = new FinalLevelCompletedPopUp(jFrame, 6);
 
     }
     public GameManager() throws IOException {

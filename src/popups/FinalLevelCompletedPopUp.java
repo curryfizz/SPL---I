@@ -3,7 +3,9 @@ package src.popups;
 import src.DatabaseConnection.OracleDatabase;
 import src.DatabaseConnection.PlayerInfo;
 import src.levelObjects.Sound;
+import src.levels.DormVersion2;
 import src.setup.FontInfo;
+import src.transitionPanels.LoadingAnimationT;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -13,16 +15,20 @@ import java.awt.event.MouseListener;
 import java.util.Objects;
 
 public class FinalLevelCompletedPopUp extends JDialog {
+    JFrame jFrame;
+    DormVersion2 dormVersion2;
     JLabel animationGifLabel;
     JButton closeButton;
     JButton restartGameButton;
     JLabel congratulationsLabel;
     JLabel completedGameLabel;
-
+    LoadingAnimationT loadingAnimationT;
     JLabel resetPlayerInfoLabel;
 
-    public FinalLevelCompletedPopUp(JFrame jFrame, int level_number)
+    public FinalLevelCompletedPopUp(JFrame jFrame, int level_number, DormVersion2 dormVersion2)
     {
+        this.jFrame = jFrame;
+        this.loadingAnimationT = dormVersion2.loadingAnimationT;
         setModal(true);
         setUndecorated(true);
         getContentPane().setBackground(Color.decode("#14171C"));
@@ -145,7 +151,14 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 OracleDatabase.resetPlayerInfo();
                 resetPlayerInfoLabel.setVisible(true);
                 repaint();
-//                System.exit(0);
+
+//                System.out.println("its supposed to go man");
+//
+//                loadingAnimationT.changeNextScene(loadingAnimationT.startMenuScreenT);
+//                jFrame.remove(dormVersion2);
+//                jFrame.add(loadingAnimationT);
+//                loadingAnimationT.initializeTimer();
+//                dispose();
             }
 
             @Override
@@ -166,7 +179,13 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 resetPlayerInfoLabel.setVisible(true);
                 repaint();
 //                System.exit(0);
+                System.out.println("its supposed to go man");
 
+//                loadingAnimationT.changeNextScene(loadingAnimationT.startMenuScreenT);
+//                jFrame.remove(dormVersion2);
+//                jFrame.add(loadingAnimationT);
+//                loadingAnimationT.initializeTimer();
+//                dispose();
             }
 
             @Override
