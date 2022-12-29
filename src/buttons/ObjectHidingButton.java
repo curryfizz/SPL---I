@@ -8,6 +8,7 @@ import src.popups.LevelFinishedNotEnoughScore;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class ObjectHidingButton extends JButton {
@@ -40,14 +41,14 @@ public class ObjectHidingButton extends JButton {
 
         /* during debugging*/
 
-//        setOpaque(true);
-//        setBackground(new Color(255, 0, 0, 100));
+        setOpaque(true);
+        setBackground(new Color(255, 0, 0, 100));
 
 
         /* stuff that works*/
 
-        setOpaque(false);
-        setContentAreaFilled(false);
+      //  setOpaque(false);
+     //   setContentAreaFilled(false);
 
         repaint();
         setFocusPainted(false);
