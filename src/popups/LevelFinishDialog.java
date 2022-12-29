@@ -28,9 +28,7 @@ public class LevelFinishDialog extends JDialog {
         levelCompleted = new Sound();
         levelCompleted.setFile("audio/soundeffects/lvlcompleted.wav");
         levelCompleted.play();
-        sound = new Sound();
-        sound.setSoundEffectFile("levelFinishTada");
-        sound.play();
+
 
         setModal(true);
         setUndecorated(true);

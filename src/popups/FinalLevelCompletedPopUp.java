@@ -27,6 +27,10 @@ public class FinalLevelCompletedPopUp extends JDialog {
 
     public FinalLevelCompletedPopUp(JFrame jFrame, int level_number, DormVersion2 dormVersion2)
     {
+        Sound sound = new Sound();
+        sound.setSoundEffectFile("levelFinishTada");
+        sound.play();
+        
         this.jFrame = jFrame;
         this.loadingAnimationT = dormVersion2.loadingAnimationT;
         setModal(true);
