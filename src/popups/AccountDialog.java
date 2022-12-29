@@ -111,7 +111,7 @@ public abstract class AccountDialog extends JDialog {
 
     protected void addEmailVerificationLabel(String text){
         emailVerificationLabel = new AccountDialogLabel(text, 400, 20);
-        emailVerificationLabel.setFont(FontInfo.getResizedFont(22f));
+        emailVerificationLabel.setFont(FontInfo.getResizedFont(25f));
         emailVerificationLabel.setForeground(Color.red);
         emailVerificationLabel.setVisible(false);
         emailFieldLabel.add(emailVerificationLabel);

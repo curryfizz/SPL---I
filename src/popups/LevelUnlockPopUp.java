@@ -52,12 +52,12 @@ public class LevelUnlockPopUp extends JDialog {
 
         closeButton = new JButton();
         closeButton.setBackground(Color.decode("#14171C"));
-        closeButton.setPreferredSize(new Dimension(110,30));
+        closeButton.setPreferredSize(new Dimension(210,40));
         closeButton.setFocusPainted(false);
         closeButton.setHorizontalAlignment(JButton.CENTER);
-        closeButton.setBorder(new LineBorder(Color.white,2));
+        closeButton.setBorder(new LineBorder(Color.white,3));
         closeButton.setForeground(Color.white);
-        closeButton.setFont(FontInfo.getResizedFont(25f));
+        closeButton.setFont(FontInfo.getResizedFont(28f));
         closeButton.setOpaque(true);
         closeButton.setText("Okay");
         closeButton.addMouseListener(new MouseListener() {

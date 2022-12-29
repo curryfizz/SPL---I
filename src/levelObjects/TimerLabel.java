@@ -188,7 +188,7 @@ public class TimerLabel extends JLabel implements Runnable{
                     miliFPS = 0;
                     FramesDone++;
                     lastAnimated = System.currentTimeMillis();
-                    if(FramesDone > 30){
+                    if(FramesDone > 60){
                         FramesDone = 0;
                         doingScoreAnimation = false;
                         lastAnimated = 0;

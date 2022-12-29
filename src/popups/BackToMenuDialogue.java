@@ -29,25 +29,25 @@ public class BackToMenuDialogue extends JDialog {
         setLayout(new FlowLayout());
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
-        jLabel.setPreferredSize(new Dimension(170,90));
+        jLabel.setPreferredSize(new Dimension(300,230));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         jLabel.setText(convertToMultiline("Do you want to go back to Start Menu?"));
 
-        jLabel.setFont(FontInfo.getResizedFont(26f));
+        jLabel.setFont(FontInfo.getResizedFont(35f));
         add(jLabel);
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
-        setSize(200,180);
+        setSize(330,320);
         setLocationRelativeTo(jFrame);
         setResizable(false);
         closeButton = new JButton();
         closeButton.setBackground(Color.decode("#14171C"));
-        closeButton.setPreferredSize(new Dimension(110,30));
+        closeButton.setPreferredSize(new Dimension(120,50));
         closeButton.setFocusPainted(false);
         closeButton.setHorizontalAlignment(JButton.CENTER);
         closeButton.setBorder(new LineBorder(Color.white,2));
         closeButton.setForeground(Color.white);
-        closeButton.setFont(FontInfo.getResizedFont(25f));
+        closeButton.setFont(FontInfo.getResizedFont(27f));
         closeButton.setOpaque(true);
         closeButton.setText("Yes");
 
@@ -102,9 +102,9 @@ public class BackToMenuDialogue extends JDialog {
 
 
         closeButton2 = new JButton();
-        closeButton2.setFont(FontInfo.getResizedFont(25f));
+        closeButton2.setFont(FontInfo.getResizedFont(27f));
         closeButton2.setBackground(Color.decode("#14171C"));
-        closeButton2.setPreferredSize(new Dimension(110,30));
+        closeButton2.setPreferredSize(new Dimension(120,50));
         closeButton2.setFocusPainted(false);
         closeButton2.setHorizontalAlignment(JButton.CENTER);
         closeButton2.setBorder(new LineBorder(Color.white,2));

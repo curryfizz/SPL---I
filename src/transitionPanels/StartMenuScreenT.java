@@ -61,13 +61,13 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 
     public void buildScene(){
         createBackgroundPanel();
+        addQuitButton();
         addLoginButton();
         addStartGameButton();
         addStartGameButtonMouseEvents();
         addSignupButton();
         addPlayerStatsButton();
         addPlayerStatsButtonMouseEvents();
-        addQuitButton();
         addGameTitleLabel();
         addGameIconAnimation();
         addBackGroundImageLabel();
