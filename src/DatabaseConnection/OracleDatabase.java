@@ -173,7 +173,7 @@ public class OracleDatabase {
 
     }
 
-    private static void prepareStatementforUserInfoUpdate() throws SQLException{
+    private static void prepareStatementforUserInfoLevelsCompletedUpdate() throws SQLException{
         preparedStatement = conn.prepareStatement("update user_info set levels_completed = ? where email = ?");
     }
 
@@ -181,7 +181,7 @@ public class OracleDatabase {
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
-            prepareStatementforUserInfoUpdate();
+            prepareStatementforUserInfoLevelsCompletedUpdate();
             preparedStatement.setString(1, String.valueOf(PlayerInfo.gameProgress));
             preparedStatement.setString(2, PlayerInfo.email);
             preparedStatement.executeUpdate();
@@ -222,9 +222,35 @@ public class OracleDatabase {
 
         }
 
+    }
 
+    public static boolean resetPlayerInfo(){
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            prepareStatementforUserInfoLevelsCompletedUpdate();
+            preparedStatement.setString(1, String.valueOf(PlayerInfo.gameProgress));
+            preparedStatement.setString(2, PlayerInfo.email);
+            preparedStatement.executeUpdate();
+            System.out.println("herhe");
+            prepareStatementForReset();
+            preparedStatement.setString(1, PlayerInfo.email);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+            conn.close();
+            return true;
+        }catch (SQLDataException e){
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
 
+        }
 
+        return false;
+
+    }
+    private static void prepareStatementForReset() throws SQLException {
+        preparedStatement = conn.prepareStatement("delete from level_info where email=?");
     }
 
 
