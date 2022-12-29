@@ -44,7 +44,7 @@ public class UserStatsPopup extends JDialog{
         this.add(profileImage);
 
         textLabel = new JLabel();
-        textLabel.setPreferredSize(new Dimension(400,500));
+        textLabel.setPreferredSize(new Dimension(500,700));
         textLabel.setBackground(Color.blue);
         textLabel.setLayout(new FlowLayout());
         textLabel.setForeground(Color.white);
@@ -56,10 +56,10 @@ public class UserStatsPopup extends JDialog{
         System.gc();
 
 //        textLabel.setOpaque(true);
-        textLabel.setFont(FontInfo.getResizedFont(28f));
+        textLabel.setFont(FontInfo.getResizedFont(30f));
         add(textLabel);
         textLabel.setHorizontalAlignment(JLabel.CENTER);
-        setSize(420, 600);
+        setSize(520, 800);
         setLocationRelativeTo(jFrame);
         setResizable(false);
 
@@ -68,12 +68,12 @@ public class UserStatsPopup extends JDialog{
         closeButton = new JButton();
 //        closeButton.setLocation(0,0);
         closeButton.setBackground(Color.decode("#14171C"));
-        closeButton.setPreferredSize(new Dimension(110,30));
+        closeButton.setPreferredSize(new Dimension(210,50));
         closeButton.setFocusPainted(false);
         closeButton.setHorizontalAlignment(JButton.CENTER);
         closeButton.setBorder(new LineBorder(Color.white,2));
         closeButton.setForeground(Color.white);
-        closeButton.setFont(FontInfo.getResizedFont(25f));
+        closeButton.setFont(FontInfo.getResizedFont(30f));
         closeButton.setOpaque(true);
         closeButton.setText("Close");
         closeButton.setVisible(true);

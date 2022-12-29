@@ -74,7 +74,7 @@ public class LoginDialog extends AccountDialog {
     private void addLoginSuccessFullExitLabel(){
         loginSuccessFullExitLabel = new AccountDialogLabel("", 400, 25);
         loginSuccessFullExitLabel.setForeground(Color.pink);
-        loginSuccessFullExitLabel.setFont(FontInfo.getResizedFont(22f));
+        loginSuccessFullExitLabel.setFont(FontInfo.getResizedFont(25f));
         loginFieldLabel.add(loginSuccessFullExitLabel);
     }
 

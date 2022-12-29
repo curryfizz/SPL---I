@@ -225,9 +225,6 @@ public class GameManager{
 //important
 
     - why does score Animation keep disappearing so quickly;
-    - make score animation larger
-    - make UserStatsPopup longer
-//    - why are the actual texts not appearing in the Alevel panel text box
 
     */
 
