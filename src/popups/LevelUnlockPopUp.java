@@ -11,8 +11,11 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.Objects;
 
 public class LevelUnlockPopUp extends JDialog {
+
+    JLabel unlockGif;
     JLabel jLabel;
     JButton closeButton;
 
@@ -28,7 +31,7 @@ public class LevelUnlockPopUp extends JDialog {
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
 
-        jLabel.setPreferredSize(new Dimension(300,200));
+        jLabel.setPreferredSize(new Dimension(400,65));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         if(level_number==2){
@@ -44,9 +47,11 @@ public class LevelUnlockPopUp extends JDialog {
             jLabel.setText(convertToMultiline("BE AWARE !!! THIS IS THE FINAL LEVEL"));
         }
         jLabel.setFont(FontInfo.getResizedFont(43f));
-        add(jLabel);
+        repaint();
+        revalidate();
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
-        setSize(320,280);
+        jLabel.setHorizontalAlignment(JLabel.CENTER);
+        setSize(500,400);
         setLocationRelativeTo(jFrame);
         setResizable(false);
 
@@ -90,8 +95,23 @@ public class LevelUnlockPopUp extends JDialog {
 
             }
         });
+        addUnlockGif();
+        add(jLabel);
         add(closeButton);
         setVisible(true);
+    }
+
+    private void addUnlockGif(){
+        unlockGif = new JLabel();
+        unlockGif.setPreferredSize(new Dimension(250,250));
+        unlockGif.setLayout(null);
+        unlockGif.setHorizontalAlignment(JLabel.CENTER);
+        ImageIcon animationGifIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("images/Map_images/lockgif.gif")));
+        animationGifIcon.setImage(animationGifIcon.getImage().getScaledInstance((int) (animationGifIcon.getIconWidth()*0.625), (int) (animationGifIcon.getIconHeight()*0.625), Image.SCALE_DEFAULT));
+        unlockGif.setIcon(animationGifIcon);
+        unlockGif.setBackground(null);
+        repaint();
+        add(unlockGif);
     }
     public static String convertToMultiline(String orig)
     {

@@ -3,6 +3,7 @@ package src.transitionPanels;
 import src.DatabaseConnection.OracleDatabase;
 import src.levels.CDS_LevelPanelT;
 import src.popups.FinalLevelCompletedPopUp;
+import src.popups.LevelUnlockPopUp;
 import src.popups.LoginDialog;
 import src.popups.SignupDialog;
 import src.setup.DeviceInformation;

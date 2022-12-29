@@ -148,6 +148,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
                 PlayerInfo.gameProgress = 1;
+                resetPlayerStats();
                 OracleDatabase.resetPlayerInfo();
                 resetPlayerInfoLabel.setVisible(true);
                 repaint();
@@ -175,9 +176,10 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
                 PlayerInfo.gameProgress = 1;
+                resetPlayerStats();
+                repaint();
                 OracleDatabase.resetPlayerInfo();
                 resetPlayerInfoLabel.setVisible(true);
-                repaint();
 //                System.exit(0);
                 System.out.println("its supposed to go man");
 
@@ -235,6 +237,27 @@ public class FinalLevelCompletedPopUp extends JDialog {
     public static String convertToMultiline(String orig)
     {
         return "<html>" + orig.replaceAll("\n", "<br>");
+    }
+
+
+    private void resetPlayerStats(){
+        PlayerInfo.hasStartedGame = false;
+        PlayerInfo.DormHighScore = -1;
+        PlayerInfo.DormLeastTime = -1;
+
+        PlayerInfo.ClassroomHighScore = -1;
+        PlayerInfo.ClassroomLeastTime = -1;
+
+        PlayerInfo.LibraryHighScore = -1;
+        PlayerInfo.LibraryLeastTime = -1;
+
+        PlayerInfo.CDSHighScore = -1;
+        PlayerInfo.CDSLeastTime = -1;
+
+        PlayerInfo.DormV2HighScore = -1;
+        PlayerInfo.DormV2LeastTime = -1;
+
+        PlayerInfo.numberOfFinished = 0;
     }
 }
 
