@@ -1,6 +1,7 @@
 package src.transitionPanels;
 
 import src.DatabaseConnection.OracleDatabase;
+import src.levels.CDS_LevelPanelT;
 import src.popups.LoginDialog;
 import src.popups.SignupDialog;
 import src.setup.DeviceInformation;
@@ -172,6 +173,19 @@ public class GameManager{
         FontInfo fontInfo = new FontInfo();
         PlayerInfo player = new PlayerInfo(0); // taken from database
 
+
+
+
+
+
+
+
+
+        double mouseX = MouseInfo.getPointerInfo().getLocation().getX();
+        double mouseY = MouseInfo.getPointerInfo().getLocation().getY();
+        System.out.println("X:" +  mouseX);
+        System.out.println("Y:" + mouseY);
+
         System.out.println(deviceInformation.screenHeight + " " + deviceInformation.screenWidth);
 
         /* Set up the frame*/
@@ -206,12 +220,16 @@ public class GameManager{
         loadingAnimationT.mapT = mapT;
         loadingAnimationT.messageFromMomT = messageFromMomT;
         messageFromMomT.PrepareForSceneTransition(loadingAnimationT, mapT);
+       // CDS_LevelPanelT cds_levelPanelT = new CDS_LevelPanelT(jFrame);
         pl.execute(startMenu);
         pl.execute(mapT);
         pl.execute(loadingAnimationT);
         pl.execute(messageFromMomT);
+      //  pl.execute(cds_levelPanelT);
         jFrame.add(startMenu); //should be startmenu during real play
         pl.shutdown();
+
+        PlayerInfo.gameProgress = 5;
     }
 
     /*TODO:
