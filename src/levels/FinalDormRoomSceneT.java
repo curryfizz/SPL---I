@@ -1,5 +1,8 @@
 package src.levels;
 
+import src.buttons.ObjectHidingButton;
+import src.setup.DeviceInformation;
+
 import javax.swing.*;
 import java.io.IOException;
 
@@ -18,22 +21,27 @@ public class FinalDormRoomSceneT extends ALevelPanel{
     @Override
     public synchronized void generateScreenWithAllObjectsAndButtons() throws IOException {
 
-        createButton("images/dormImages/01.png", getX(308), getY(428), getX(68), getY(85));
-        createText("Cornflakes Box");
-        createButton("images/dormImages/02.png", getX(1188), getY(493), getX(18), getY(37));
-        createText("CocaCola Can");
-        createButton("images/dormImages/03.png", getX(1235), getY(400), getX(86), getY(65));
-        createText("Shoulder Bag");
-        createButton("images/dormImages/04.png", getX(1130), getY(730), getX(67), getY(26));
-        createText("HeadPhone");
-        createButton("images/dormImages/05.png", getX(325), getY(728), getX(43), getY(32));
-        createText("Phone");
-        createButton("images/dormImages/06.png", getX(419), getY(672), getX(60), getY(19));
-        createText("Calculator");
-        createButton("images/dormImages/07.png", getX(1102), getY(703), getX(70), getY(25));
-        createText("Sunglasses");
-
+        createButton("images/EndScene/bedafterremovingblanketandbag.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
+        createText("So that's what my mom packed for me. The cat must have scavenged it from my bag.. It really is such a pleasant surprise, a precious treasure.");
+        createButton("images/EndScene/bedafterremovingblanketandbag.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
+        createText("That's such a cute cat. What's it doing here? Wait.. what's that? (Click on the shiny object)");
+        createButton("images/EndScene/bedafterremovingblanket.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
+        createText("(Remove the Bag)");
+        createButton("images/EndScene/bedinitial.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
+        createText("(Remove the Blanket)");
+        createText("What was that?! (Tap to Continue)");
+        createButton("images/EndScene/almirahscene.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
+        createText("Where's my T-shirt?");
         this.add(backgroundLabel);
+
+    }
+    @Override
+    public void createButton(String image,int posx, int posy, int sizex,int sizey) throws IOException {
+        JLabel objectLabel = createObject(image);
+        ObjectHidingButton objectHidingButton = new ObjectHidingButton(posx,posy,sizex,sizey, imageList.get(imageList.size()-1), this, buttonList.size());
+        this.add(objectHidingButton);
+        this.add(objectLabel);
+        buttonList.add(objectHidingButton);
     }
 
     @Override
@@ -48,7 +56,7 @@ public class FinalDormRoomSceneT extends ALevelPanel{
 
     @Override
     public String getMessMessage(){
-        return "<html>Oh No, The room looks like it got ransacked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>";
+        return "<html>I'm tired, let's take a shower.<br/>Where's my wardrobe? (Tap on the Wardrobe)</html>";
     }
 }
 

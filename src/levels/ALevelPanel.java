@@ -287,9 +287,9 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
     private void setupShowGottenScore() {
         ShowGottenScore = new JLabel("", SwingConstants.CENTER);
-        ShowGottenScore.setBounds(500,400, 50, 30);
+        ShowGottenScore.setBounds(500,400, 150, 60);
         ShowGottenScore.setBackground(null);
-        ShowGottenScore.setFont(FontInfo.getResizedFont(32f));
+        ShowGottenScore.setFont(FontInfo.getResizedFont(52f));
 //        ShowGottenScore.setForeground(new Color(30, 120, 20));
 //        ShowGottenScore.setForeground(new Color(255,0,0));
         ShowGottenScore.setVisible(false);

@@ -8,6 +8,7 @@ import src.levelObjects.StartMenuBackGroundLabels;
 import src.levelObjects.StartMenuLabel;
 import src.popups.ExitWindowConfirmationDialog;
 import src.popups.LoginDialog;
+import src.popups.SignupDialog;
 import src.popups.UserStatsPopup;
 import src.setup.DeviceInformation;
 import src.setup.FontInfo;
@@ -37,7 +38,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         this.jFrame = jFrame;
        // bgMusic = new Sound();
         clickSound = new Sound();
-        clickSound.setFile("audio/soundeffects/mixkit-mouse-click-close-1113.wav");
+        clickSound.setFile("audio/soundeffects/click.wav");
         startMusic= new Sound();
         startMusic.setFile("audio/soundeffects/startmusic.wav");
         startMusic.play();
@@ -61,13 +62,13 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 
     public void buildScene(){
         createBackgroundPanel();
+        addQuitButton();
         addLoginButton();
         addStartGameButton();
         addStartGameButtonMouseEvents();
         addSignupButton();
         addPlayerStatsButton();
         addPlayerStatsButtonMouseEvents();
-        addQuitButton();
         addGameTitleLabel();
         addGameIconAnimation();
         addBackGroundImageLabel();
@@ -177,6 +178,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     }
 
     public void addStartGameButton(){
+        clickSound.play();
         startGameButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Start Game");
         startGameButton.setFont(FontInfo.getResizedFont(60f));
         startGameButton.setBounds(0, DeviceInformation.screenHeight/3, DeviceInformation.screenWidth/5, 70);
@@ -186,6 +188,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     }
 
     public void addPlayerStatsButton(){
+        clickSound.play();
         playerStatsButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Player Statistics");
         playerStatsButton.setFont(FontInfo.getResizedFont(60f));
         playerStatsButton.setBounds(0, DeviceInformation.screenHeight/2, DeviceInformation.screenWidth/5, 70);
@@ -194,19 +197,55 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         playerStatsButton.setEnabled(false);
     }
     public void addLoginButton(){
+        clickSound.play();
         loginButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Sign in");
         loginButton.setBounds(0, DeviceInformation.screenHeight/3, DeviceInformation.screenWidth/5, 70);
         add(loginButton);
     }
 
     public void addSignupButton(){
+        clickSound.play();
         signupButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Sign up");
         signupButton.setBounds(0, DeviceInformation.screenHeight/2, DeviceInformation.screenWidth/5, 70);
-        signupButton.addMouseListener(new SignUpButtonEvent(jFrame));
         add(signupButton);
+        addSignupButtonMouseEvent();
     }
 
+    private void addSignupButtonMouseEvent(){
+        signupButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                clickSound.play();
+                SignupDialog signupDialog = new SignupDialog(jFrame);
+                }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+    }
+
+
+
+
     public void addQuitButton(){
+        clickSound.play();
         quitButton = new StartScreenButtons(DeviceInformation.screenWidth/4, 70, "Quit");
         quitButton.setBounds(0, DeviceInformation.screenHeight*2/3, DeviceInformation.screenWidth/5, 70);
         add(quitButton);
@@ -272,6 +311,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
         this.loadingAnimationT = loadingAnimationT;
         this.nextScene = nextScene;
     }
+
 
     private void addPlayerStatsButtonMouseEvents(){
         playerStatsButton.addMouseListener(new MouseListener() {
