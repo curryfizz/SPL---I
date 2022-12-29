@@ -8,6 +8,7 @@ import src.popups.LevelFinishedNotEnoughScore;
 import src.transitionPanels.MapT;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class ObjectHidingButton extends JButton {
