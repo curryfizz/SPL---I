@@ -2,6 +2,7 @@ package src.popups;
 
 import src.DatabaseConnection.OracleDatabase;
 import src.buttons.BasicBlueButton;
+import src.levelObjects.Sound;
 import src.setup.FontInfo;
 
 import javax.swing.JFrame;
@@ -115,7 +116,9 @@ public class SignupDialog extends AccountDialog {
         submitButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                Sound countdown= new Sound();
+                countdown.setFile("audio/soundeffects/countdown.wav");
+                countdown.play();
                 doButtonActions();
 
 
@@ -150,7 +153,7 @@ public class SignupDialog extends AccountDialog {
             disableUserFields();
             disableEmailFields();
             disableSubmitButton();
-            Thread.sleep(500);
+            Thread.sleep(300);
                 System.out.println(userNameTextArea.getText());
                 System.out.println(emailTextArea.getText());
             if(!isEmailValid(emailTextArea.getText())){

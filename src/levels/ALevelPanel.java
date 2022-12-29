@@ -40,6 +40,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     boolean levelFinished;
     public int imagesFound;
     int textBox_height;
+    int level_number;
     JButton messNotification; // notification that someone messed up your dorm room
     RandomGenerator randomGenerator;
     boolean InitiallyClicked = false;
@@ -161,10 +162,18 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     }
     public abstract int getLevelNumber();
 
-    public void ResetTimerAndScore(){
+    public void ResetTimerAndScore( int level_number){
         timerLabel.isTimeOver = false;
-        timerLabel.second = 30;
-        timerLabel.minute = 2;
+        if(level_number==5)
+        {
+            timerLabel.second = 60;
+            timerLabel.minute = 0;
+        }
+        else
+        {
+            timerLabel.second = 30;
+            timerLabel.minute = 2;
+        }
         timerLabel.elapsedTime = 0;
         scoreBoard.score=0;
         scoreBoard.setText("0000");
@@ -199,7 +208,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         MakeRandomItemListAtBottomOfScreen();
         InitiallyClicked = false;
         resetVariables();
-        ResetTimerAndScore();
+        ResetTimerAndScore(getLevelNumber());
     }
     public void resetItemNameLabelList() {
 

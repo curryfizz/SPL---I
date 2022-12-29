@@ -74,7 +74,7 @@ public class MapT extends JPanel implements Runnable{
         for(int i =0; i<=PlayerInfo.gameProgress-2; i++){
             CutOutList.get(i).setVisible(true);
         }
-        unlockMusic.play();
+
         if(level_number==2) {
             level2 = new Sound();
             level2.setFile("audio/soundeffects/lvl2unlock.wav");
@@ -96,6 +96,7 @@ public class MapT extends JPanel implements Runnable{
             level2.setFile("audio/soundeffects/lvl5unlock.wav");
             level2.play();
         }
+        unlockMusic.play();
 
         LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);
         fixArrowPosition();

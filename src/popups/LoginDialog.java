@@ -121,6 +121,11 @@ public class LoginDialog extends AccountDialog {
                 Sound clicksound= new Sound();
                 clicksound.setFile("audio/soundeffects/click.wav");
                 clicksound.play();
+
+                Sound countdown= new Sound();
+                countdown.setFile("audio/soundeffects/countdown.wav");
+                countdown.play();
+
                 doButtonActions();
             }
 

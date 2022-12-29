@@ -117,6 +117,7 @@ public class FinalLevelButton extends JButton{
                             levelPanel.imageList.get(0).setVisible(true);
                             levelPanel.buttonList.get(0).setEnabled(true);
 
+                            levelPanel.catSound.play();
                             levelPanel.TextBox.setText(levelPanel.textList.get(0));
                         }
                         case 3 -> { //bed blanket

@@ -1,6 +1,7 @@
 package src.popups;
 
 import src.buttons.BasicBlueButton;
+import src.levelObjects.Sound;
 import src.setup.FontInfo;
 
 import javax.swing.JDialog;
@@ -45,7 +46,36 @@ public abstract class AccountNotSuccessDialog extends JDialog {
         addYesButtonMouseEvents();
     }
 
-    protected abstract void addYesButtonMouseEvents();
+    protected void addYesButtonMouseEvents(){
+        yesButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Sound countdown= new Sound();
+                countdown.setFile("audio/soundeffects/countdown.wav");
+                countdown.play();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+    }
     protected void addNoButton(){
         noButton = new BasicBlueButton(180, 40, "Try Again!");
         noButton.setFont(FontInfo.getResizedFont(30f));
