@@ -114,7 +114,6 @@ public class GameManager{
         jFrame.add(startMenu); //should be startmenu during real play
         pl.shutdown();
 
-        PlayerInfo.gameProgress = 5;
     }
 
     /*TODO:
@@ -130,6 +129,9 @@ public class GameManager{
     - innitial login sounds twice
     - map buttons refresh during innital game start
     - map button refresh after DOrm v2
+    - innitial login click sounds too loud
+    - bring arrow gif closer
+    - insert meow
     */
 
     /**
