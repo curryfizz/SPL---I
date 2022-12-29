@@ -41,6 +41,7 @@ public class DormVersion2 extends JPanel implements Runnable {
         maxBounds = DeviceInformation.graphicsEnvironment.getMaximumWindowBounds();
         textBox_height = DeviceInformation.screenHeight*50/864;
         this.setLayout(null);
+
     }
 
     @Override
@@ -62,6 +63,8 @@ public class DormVersion2 extends JPanel implements Runnable {
         objClickSound = new Sound();
         objClickSound.setFile("audio/soundeffects/objectFoundClick2.wav");
 
+        Sound catSound = new Sound();
+        catSound.setFile("audio/soundeffects/meow.wav");
 
 
         addCustomWindowCloseButton();
