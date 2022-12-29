@@ -134,10 +134,10 @@ public class DormVersion2 extends JPanel implements Runnable {
 
     public synchronized void generateScreenWithAllObjectsAndButtons() throws IOException {
 
-        createButton("images/dormImages/LevelOneMain.png", getX(1383), getY(126), getX(313), getY(500));
+        createButton("images/dormImages/LevelOneMain.png", 1383, 126, 313, 500);
         createText("I'm tired, let's take a shower.<br/>Where's my wardrobe? (Tap on the Wardrobe)");
-        createButton("images/EndScene/almirahscene.png", getX(100), getY(100), getX(222), getY(222));
-        createText("Where's my T-shirt?");
+//        createButton("images/EndScene/almirahscene.png", getX(100), getY(100), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
+//        createText("Where's my T-shirt?");
 //        createButton("images/EndScene/meow.gif", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
 //        createText("What was that?! (Tap to Continue)");
 //        createButton("images/EndScene/bedinitial.png", getX(0), getY(0), getX(DeviceInformation.screenWidth), getY(DeviceInformation.screenHeight));
@@ -194,7 +194,7 @@ public class DormVersion2 extends JPanel implements Runnable {
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println((e.getX())*1980/1 + " " + e.getY());
+                System.out.println(e.getX() + " " + e.getY());
             }
 
             @Override
