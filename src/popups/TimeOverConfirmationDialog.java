@@ -23,7 +23,9 @@ public class TimeOverConfirmationDialog extends JDialog {
         this.jFrame = jFrame;
         this.backgoundPanel = jPanel;
 
+        System.out.println("entered timer");
         if(backgoundPanel.hintConfirmationDialogue != null){
+            System.out.println("tried offing the hind animation");
             backgoundPanel.hintConfirmationDialogue.dispose();
         }
 
