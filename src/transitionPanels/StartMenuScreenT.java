@@ -27,6 +27,8 @@ public class StartMenuScreenT extends JPanel implements Runnable{
     Sound clickSound;
     LoadingAnimationT loadingAnimationT;
     JPanel nextScene;
+
+    public StartMenuLabel developedByLabel;
     public StartScreenButtons startGameButton;
     public StartScreenButtons playerStatsButton;
     public StartScreenButtons loginButton;
@@ -62,6 +64,7 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 
     public void buildScene(){
         createBackgroundPanel();
+        addDevelopedByLabel();
         addQuitButton();
         addLoginButton();
         addStartGameButton();
@@ -133,6 +136,17 @@ public class StartMenuScreenT extends JPanel implements Runnable{
 //    }
 
 
+    private void addDevelopedByLabel(){
+        developedByLabel = new StartMenuLabel();
+
+        developedByLabel.setBounds(DeviceInformation.screenWidth/3, DeviceInformation.screenHeight-35, DeviceInformation.screenWidth*2/3 - 10, 35);
+        developedByLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        developedByLabel.setHorizontalTextPosition(SwingConstants.RIGHT);
+        developedByLabel.setFont(FontInfo.getResizedFont(30f));
+        developedByLabel.setText("Developed by: Nawsheen Mehereen, Lomatul Mahzabin, AyeshaAfrozaMohsin");
+        developedByLabel.setForeground(Color.lightGray);
+        add(developedByLabel);
+    }
     private void addLoginButtonMouseEvent(){
         loginButton.addMouseListener(new MouseListener() {
             @Override

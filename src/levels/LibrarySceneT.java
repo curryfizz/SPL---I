@@ -255,10 +255,9 @@ public class LibrarySceneT extends ALevelPanel {
                 DeviceInformation.screenWidth *58/1536, DeviceInformation.screenHeight *75/864);
         createText(" Box");
         createLabelOnly("images/libraryImages/levelTwoWithOutlines/item 79.PNG");
-        //idk
         createButton("images/libraryImages/levelTwoWithOutlines/item 80.PNG", DeviceInformation.screenWidth *925/1536, DeviceInformation.screenHeight *574/864,
                 DeviceInformation.screenWidth *35/1536, DeviceInformation.screenHeight *23/864);
-        createText("Cornflakes Box");
+        createText("NewsPaper");
         createButton("images/libraryImages/levelTwoWithOutlines/item 81.PNG", DeviceInformation.screenWidth *929/1536, DeviceInformation.screenHeight *746/864,
                 DeviceInformation.screenWidth *78/1536, DeviceInformation.screenHeight *20/864);
         createText(" White Wrist watch");
@@ -289,7 +288,6 @@ public class LibrarySceneT extends ALevelPanel {
         createButton("images/libraryImages/levelTwoWithOutlines/item 90.PNG", DeviceInformation.screenWidth *1050/1536, DeviceInformation.screenHeight *606/864,
                 DeviceInformation.screenWidth *64/1536, DeviceInformation.screenHeight *22/864);
         createText("A pair of glass");
-
 
         this.add(backgroundLabel);
     }

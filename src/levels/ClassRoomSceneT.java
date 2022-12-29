@@ -125,12 +125,9 @@ public class ClassRoomSceneT extends ALevelPanel{
         createButton("images/Classroom images/classroom objects/item 28.PNG",  DeviceInformation.screenWidth *1086/1920, DeviceInformation.screenHeight *480/1080,
                 DeviceInformation.screenWidth *20/1920, DeviceInformation.screenHeight *40/1080);
         createText("Duck");
-
-
-        //need to check
         createButton("images/Classroom images/classroom objects/item 29.PNG",  DeviceInformation.screenWidth *1009/1920, DeviceInformation.screenHeight *493/1080,
                 DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *40/1080);
-        createText("<html>Black and white <br/> Photo </html>");
+        createText("<html>Black and white <br/> Box on table </html>");
         createButton("images/Classroom images/classroom objects/item 30.PNG",  DeviceInformation.screenWidth *1010/1920, DeviceInformation.screenHeight *453/1080,
                 DeviceInformation.screenWidth *75/1920, DeviceInformation.screenHeight *40/1080);
         createText("Mango Juice");
@@ -148,13 +145,12 @@ public class ClassRoomSceneT extends ALevelPanel{
         createButton("images/Classroom images/classroom objects/item 33.PNG",   DeviceInformation.screenWidth *777/1920, DeviceInformation.screenHeight *485/1080,
                 DeviceInformation.screenWidth *125/1920, DeviceInformation.screenHeight *25/1080);
         createText("Open Diary");
-        //need to know
         createButton("images/Classroom images/classroom objects/item 34.PNG",   DeviceInformation.screenWidth *786/1920, DeviceInformation.screenHeight *420/1080,
                 DeviceInformation.screenWidth *30/1920, DeviceInformation.screenHeight *35/1080);
-        createText("<html>Black and white <br/> Photo </html>");
+        createText("<html>kirby</html>");
         createButton("images/Classroom images/classroom objects/item 35.PNG",   DeviceInformation.screenWidth *711/1920, DeviceInformation.screenHeight *450/1080,
                 DeviceInformation.screenWidth *35/1920, DeviceInformation.screenHeight *50/1080);
-        createText("Pokemon");
+        createText("Pikachu");
         createButton("images/Classroom images/classroom objects/item 36.PNG",   DeviceInformation.screenWidth *543/1920, DeviceInformation.screenHeight *527/1080,
                 DeviceInformation.screenWidth *60/1920, DeviceInformation.screenHeight *28/1080);
         createText("Pink Book");
@@ -170,21 +166,18 @@ public class ClassRoomSceneT extends ALevelPanel{
 
 
 
-
-        //need to know
         createButton("images/Classroom images/classroom objects/item 40.PNG",  DeviceInformation.screenWidth *1046/1920, DeviceInformation.screenHeight *897/1080,
                 DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *55/1080);
-        createText("<html>Black and white <br/> Photo </html>");
+        createText("<html>Music <br/> player </html>");
         createButton("images/Classroom images/classroom objects/item 41.PNG", DeviceInformation.screenWidth *132/1920, DeviceInformation.screenHeight *423/1080,
                 DeviceInformation.screenWidth *45/1920, DeviceInformation.screenHeight *55/1080);
         createText("Closed Paper Bag");
         createButton("images/Classroom images/classroom objects/item 42.PNG", DeviceInformation.screenWidth *490/1920, DeviceInformation.screenHeight *428/1080,
                 DeviceInformation.screenWidth *35/1920, DeviceInformation.screenHeight *40/1080);
         createText("Mug");
-        //need to know
         createButton("images/Classroom images/classroom objects/item 43.PNG", DeviceInformation.screenWidth *417/1920, DeviceInformation.screenHeight *456/1080,
                 DeviceInformation.screenWidth *44/1920, DeviceInformation.screenHeight *60/1080);
-        createText("<html>Black and white <br/> Photo </html>");
+        createText("<html>Jenga<br/> tower </html>");
         createButton("images/Classroom images/classroom objects/item 45.PNG", DeviceInformation.screenWidth *876/1920, DeviceInformation.screenHeight *711/1080,
                 DeviceInformation.screenWidth *125/1920, DeviceInformation.screenHeight *33/1080);
         createText("Puzzle");
