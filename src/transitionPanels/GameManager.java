@@ -3,6 +3,7 @@ package src.transitionPanels;
 import src.DatabaseConnection.OracleDatabase;
 import src.levels.CDS_LevelPanelT;
 import src.popups.FinalLevelCompletedPopUp;
+import src.popups.LevelUnlockPopUp;
 import src.popups.LoginDialog;
 import src.popups.SignupDialog;
 import src.setup.DeviceInformation;
@@ -47,7 +48,8 @@ public class GameManager{
         jFrame.setVisible(true);
 
         PlayerInfo playerInfo = new PlayerInfo(1);
-        FinalLevelCompletedPopUp finalLevelCompletedPopUp = new FinalLevelCompletedPopUp(jFrame, 6);
+        LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,2);
+//        FinalLevelCompletedPopUp finalLevelCompletedPopUp = new FinalLevelCompletedPopUp(jFrame, 6);
 
     }
     public GameManager() throws IOException {
