@@ -23,7 +23,6 @@ public class LevelFinishDialog extends JDialog {
 
     JButton closeButton2;
 
-    Sound sound;
     public LevelFinishDialog(JFrame jFrame,int level_number, JPanel jPanel){
         levelCompleted = new Sound();
         levelCompleted.setFile("audio/soundeffects/lvlcompleted.wav");
@@ -104,7 +103,6 @@ public class LevelFinishDialog extends JDialog {
             public void mouseClicked(MouseEvent e) {
                 if(jPanel instanceof ALevelPanel) {
                     ((ALevelPanel) jPanel).timerLabel.endLevel();
-                    sound.stop();
                     Sound alert = new Sound();
                     alert.setFile("audio/soundeffects/alert.wav");
                     alert.play();
