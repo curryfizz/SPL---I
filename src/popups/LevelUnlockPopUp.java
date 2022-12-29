@@ -34,6 +34,7 @@ public class LevelUnlockPopUp extends JDialog {
         jLabel.setPreferredSize(new Dimension(450,75));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
+        jLabel.setFont(FontInfo.getResizedFont(30f));
         if(level_number==2){
             jLabel.setText(convertToMultiline("ClassRoom  Unlocked "));
         }
@@ -46,8 +47,8 @@ public class LevelUnlockPopUp extends JDialog {
         else if (level_number==5){
 
             jLabel.setText(convertToMultiline("BE AWARE !!! THIS IS THE FINAL LEVEL"));
+            jLabel.setFont(FontInfo.getResizedFont(30f));
         }
-        jLabel.setFont(FontInfo.getResizedFont(38f));
         repaint();
         revalidate();
         jLabel.setHorizontalTextPosition(JLabel.CENTER);
