@@ -8,19 +8,13 @@
 DONE
 ```
 
-## Assigned works :
+## Group Members :
  ## Ayesha Afroza Mohsin  ID-200042106
- ```
- kjbyugyv
- ```
+
  ## Lomatul Mahzabin ID-200042113
- ```
- kjbhuyvvbnj
- ```
+
  ## Nawsheen Mehereen ID-200042134
- ```
- huygygukjhiuh
- ```
+
  
 
 ## :gear: :wrench: TECHNOLOGIES AND PLATFORMS :
