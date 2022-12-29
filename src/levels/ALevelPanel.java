@@ -226,6 +226,8 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         loadingAnimationT.calledBy = getLevelNumber() - 2; //sending my serial so loading can remove the panel and call garbage
         loadingAnimationT.iNeedYouToRemoveMe = true;
 
+//        mapT.MaxDormScore = Math.max(scoreBoard.score, mapT.MaxDormScore);
+//        mapT.updateScore();
 
         jFrame.add(loadingAnimationT);
         loadingAnimationT.initializeTimer();
@@ -285,9 +287,9 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
 
     private void setupShowGottenScore() {
         ShowGottenScore = new JLabel("", SwingConstants.CENTER);
-        ShowGottenScore.setBounds(500,400, 80, 35);
+        ShowGottenScore.setBounds(500,400, 50, 30);
         ShowGottenScore.setBackground(null);
-        ShowGottenScore.setFont(FontInfo.getResizedFont(52f));
+        ShowGottenScore.setFont(FontInfo.getResizedFont(32f));
 //        ShowGottenScore.setForeground(new Color(30, 120, 20));
 //        ShowGottenScore.setForeground(new Color(255,0,0));
         ShowGottenScore.setVisible(false);
@@ -298,7 +300,7 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
     public abstract String getMessMessage();
 
     public void MessNotification(){
-        messNotification = new JButton("<html>Oh No, The room looks like it got ransacked?! Where is my present?<br/> Guess I'll have to tidy up (Tap to Search)</html>");
+        messNotification = new JButton(getMessMessage());
         messNotification.setFont(FontInfo.getResizedFont(38f));
         messNotification.setFocusPainted(false);
         messNotification.setEnabled(false);
@@ -395,9 +397,15 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         scoreBoard.score=0;
 
         timerLabel.setVisible(false);
-
+//        revalidate();
+//        repaint();
         scoreBoard.setVisible(false);
+//        revalidate();
+//        repaint();
 
+//
+//        musicPlayer = new MusicPlayer();
+//            musicPlayer.playMusic(music);
     }
 
 }

@@ -27,7 +27,12 @@ public class MapButtonEvents implements MouseListener {
         this.serial = priority;
         this.motherButton = motherButton;
         this.mapT = mapT;
-        this.SidePanelText = mapT.SidePanelTextList.get(serial+1);
+        if(serial == 0 && PlayerInfo.gameProgress == 5){
+            this.SidePanelText = mapT.SidePanelTextList.get(5);
+        }
+        else {
+            this.SidePanelText = mapT.SidePanelTextList.get(serial + 1);
+        }
         this.CutOut = mapT.CutOutList.get(serial);
         this.DefaultText = mapT.SidePanelTextList.get(0);
         this.padLock = mapT.PadLockList.get(serial);
@@ -42,7 +47,10 @@ public class MapButtonEvents implements MouseListener {
         ExecutorService es = Executors.newFixedThreadPool(1);
 
         if(serial == 0){
-            Scene = new DormRoomSceneT(mapT.jFrame);
+            if(PlayerInfo.gameProgress == 5)
+                Scene = new FinalDormRoomSceneT(mapT.jFrame);
+            else
+                Scene = new DormRoomSceneT(mapT.jFrame);
         } else if (serial == 1) {
             Scene = new ClassRoomSceneT(mapT.jFrame);
         } else if (serial == 2) {
@@ -70,11 +78,14 @@ public class MapButtonEvents implements MouseListener {
         for(int i = 3; i > PlayerInfo.gameProgress-2 ; i--){
             mapT.PadLockList.get(i).setVisible(false);
         }
+        if(PlayerInfo.gameProgress == 5){
+            mapT.CutOutList.get(0).setVisible(false);
+        }
 
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(PlayerInfo.gameProgress > serial){
+//        if(PlayerInfo.gameProgress > serial){
             clickSound.play();
             mapT.ArrowGif.setVisible(false);
 
@@ -92,10 +103,10 @@ public class MapButtonEvents implements MouseListener {
 
             mapT.jFrame.revalidate();
             mapT.jFrame.repaint();
-        }
-        else{
-            errorSound.play();
-        }
+//        }
+//        else{
+//            errorSound.play();
+//        }
     }
 
     @Override
@@ -110,9 +121,16 @@ public class MapButtonEvents implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        if(serial == 0 && PlayerInfo.gameProgress == 5){
+            this.SidePanelText = mapT.SidePanelTextList.get(5);
+        }
+        else {
+            this.SidePanelText = mapT.SidePanelTextList.get(serial + 1);
+        }
         CutOut.setVisible(true);
 
         hideAllText();
+
 
         if(PlayerInfo.gameProgress > serial) {
             motherButton.setBackground(mapT.hoveringActiveButtonColor);
@@ -123,14 +141,13 @@ public class MapButtonEvents implements MouseListener {
             padLock.setVisible(true);
         }
 
-
         mapT.revalidate();
         mapT.repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if(PlayerInfo.gameProgress-2 < serial) {
+        if((PlayerInfo.gameProgress-2 < serial) || (PlayerInfo.gameProgress == 5 && serial == 0)) {
             CutOut.setVisible(false);
         }
         mapT.refreshButtonGrayness();

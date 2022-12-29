@@ -20,6 +20,7 @@ public class StartScreenButtons extends BasicBlueButton{
 
     @Override
     void addButtonStyles(int width, int height, String text){
+
         super.addButtonStyles(width, height, text);
         setFont(FontInfo.getResizedFont(60f));
         setBorder(BorderFactory.createMatteBorder(3,0,3,3, Color.LIGHT_GRAY));

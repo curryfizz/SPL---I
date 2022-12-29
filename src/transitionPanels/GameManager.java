@@ -217,22 +217,22 @@ public class GameManager{
     /*TODO:
     - tie all the music and sound effects together, or make them seperate, people may find it too loud;
     - try re-rendering dormscene if there's time, it looks bad compared to it's fancy classroom and fancy library brothers
-    - add transcucent background image for text Box in AlevelPanels, black box looks kinda bad;
+    - add translucent background image for text Box in AlevelPanels, black box looks kinda bad;
     - add background image for timer label and score label;
     - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
     - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
 
 //important
 
-
     - why does score Animation keep disappearing so quickly;
     - make score animation larger
-//done
-//    - make sure map level buttons don't work unless gameProgress is satisfactory;
-//    - Just completing the level shouldn't be counted as completing, there should be a threshold score to achieve eg:500 points
-//    - add arrow gif pointing at the next level in map?
-//    - add music for start menu and map
-      - add sound effects for other button clicks
-//  - message from momT does not give 2 sounds if clicked too quickly, make 2 sound objs so that it does
+    - make UserStatsPopup longer
+//    - why are the actual texts not appearing in the Alevel panel text box
+
     */
+
+    /**
+     * remember to fix Passing score in AlevelPanel to 400
+     * remember to uncomment the if condition in the onclick event in MapBUttonEvents
+     */
 }

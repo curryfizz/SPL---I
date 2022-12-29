@@ -39,19 +39,12 @@ public class MapT extends JPanel implements Runnable{
     MapLevelButton LibraryButton;
     MapLevelButton CDSButton;
     MapLevelButton FinalDormButton;
-//    public static int gameProgress;
     public JFrame jFrame;
     JLabel DormColourCut;
     JLabel ClassroomColourCut;
     JLabel LibraryColourCut;
     JLabel CDSColourCut;
     JLabel backgroundLabel;
-    int score;
-    public int MaxDormScore =0;
-    public int MaxLibraryScore =0;
-    public int MaxClassroomScore =0;
-
-    public int MaxCDS_Score =0;
     JLabel padLockClassroom;
     JLabel padLockDorm;
     JLabel padLockLibrary;
@@ -63,14 +56,12 @@ public class MapT extends JPanel implements Runnable{
     JLabel classroomText;
     JLabel defaultText;
     JLabel CDSText;
-
+    JLabel dormV2Text;
     Timer timer;
 
     public LoadingAnimationT loadingAnimationT;
 
     public MapT(JFrame jFrame, LoadingAnimationT loadingAnimationT){
-        PlayerInfo.gameProgress = PlayerInfo.gameProgress;
-
         this.jFrame = jFrame;
         this.loadingAnimationT = loadingAnimationT;
         mapMusic = new Sound();
@@ -83,6 +74,7 @@ public class MapT extends JPanel implements Runnable{
         for(int i =0; i<=PlayerInfo.gameProgress-2; i++){
             CutOutList.get(i).setVisible(true);
         }
+
         HugeUnLock.setVisible(true);
         timer = new Timer(2800, new ActionListener() {
             @Override
@@ -159,6 +151,7 @@ public class MapT extends JPanel implements Runnable{
         classroomText = makeSidePanelTextLabels("<html>I couldn't find it in my room..<br/>Maybe mom kept it in my backpack and I left it in my Classroom.</br>Let's check there.</html>");
         libraryText = makeSidePanelTextLabels("<html>I still can't find it!<br/>Did I actually leave it in the Library instead?</html>");
         CDSText = makeSidePanelTextLabels("<html>Where could my Present be!<br/>I do remember visiting the Central Department Store.<br/>Did I drop it there?</html>");
+        dormV2Text = makeSidePanelTextLabels("<html>I'm tired.. I still couldn't find it.<br/>Let's go back to my room. I'll think about it tomorrow.</html>");
     }
 
 
@@ -190,7 +183,7 @@ public class MapT extends JPanel implements Runnable{
     }
 
 
-//    public void updateScore(){
+//    public void updatePlayerStats(){
 //
 //        score = MaxDormScore + MaxLibraryScore +MaxClassroomScore +MaxCDS_Score;
 //        playerScoreBoard.setText("Current Score: " + score);
@@ -315,13 +308,13 @@ public class MapT extends JPanel implements Runnable{
         ClassroomButton = new MapLevelButton(getX(255), getY(160),width, height,  "Classroom", 1,this);
         LibraryButton =  new MapLevelButton(getX(525), getY(600) ,width, height,  "Library",2, this);
         CDSButton = new MapLevelButton(getX(1200), getY(590),width, height,  "CDS", 3, this);
-        FinalDormButton= new MapLevelButton(getX(733), getY(170),width, height,  "Dormitory",0, this);
+//        FinalDormButton= new MapLevelButton(getX(733), getY(170),width, height,  "Dormitory",0, this);
 
         mapButtonList.add(DormButton);
         mapButtonList.add(ClassroomButton);
         mapButtonList.add(LibraryButton);
         mapButtonList.add(CDSButton);
-        mapButtonList.add(FinalDormButton);
+//        mapButtonList.add(FinalDormButton);
 
     }
 
@@ -374,14 +367,14 @@ public class MapT extends JPanel implements Runnable{
                 ClassroomButton.setBackground(Color.darkGray);
                 LibraryButton.setBackground(Color.darkGray);
                 CDSButton.setBackground(Color.darkGray);
-                FinalDormButton.setBackground(Color.darkGray);
+//                FinalDormButton.setBackground(Color.darkGray);
             }
             case 2 -> {
                 DormButton.setBackground(hoverColour);
                 ClassroomButton.setBackground(hoverColour);
                 LibraryButton.setBackground(Color.darkGray);
                 CDSButton.setBackground(Color.darkGray);
-                FinalDormButton.setBackground(Color.darkGray);
+//                FinalDormButton.setBackground(Color.darkGray);
             }
             case 3 -> {
                 DormButton.setBackground(hoverColour);
@@ -402,7 +395,7 @@ public class MapT extends JPanel implements Runnable{
 
     public void refreshButtonGrayness() {
         switch (PlayerInfo.gameProgress) {
-            case 1, 5, 6, 7 -> {
+            case 1, 5 -> {
                 DormButton.setBackground(Color.decode("#14171C"));
                 ClassroomButton.setBackground(Color.darkGray);
                 LibraryButton.setBackground(Color.darkGray);

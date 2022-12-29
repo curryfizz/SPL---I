@@ -1,4 +1,5 @@
 package src.buttons;
+import src.DatabaseConnection.OracleDatabase;
 import src.DatabaseConnection.PlayerInfo;
 import src.events.SceneObjectEvents;
 import src.levels.ALevelPanel;
@@ -100,11 +101,12 @@ public class ObjectHidingButton extends JButton {
 
 
                     if(levelPanel.imagesFound == 6 && levelPanel.scoreBoard.score >= levelPanel.PassingScore){
+                        levelPanel.timerLabel.isTimeOver = true;
                         levelPanel.congratulationsConfetti.setVisible(true);
                         LevelFinishDialog levelFinishDialog = new LevelFinishDialog(levelPanel.jFrame, levelPanel);
+                        System.out.println("Skipped levelFinishDialogue"); // IT DOESNT SKIP, IT WAITS FOR A RESPONSE
                         if(PlayerInfo.gameProgress < levelPanel.getLevelNumber()){ // first time
                             PlayerInfo.gameProgress = levelPanel.getLevelNumber();
-//                            MapT.gameProgress = levelPanel.getLevelNumber();
                             levelPanel.loadingAnimationT.LevelOver_ProgressUpdated = true;
                             levelPanel.loadingAnimationT.level_number = levelPanel.getLevelNumber();
                         }
@@ -112,10 +114,14 @@ public class ObjectHidingButton extends JButton {
                             case 2 ->{
                                 if(PlayerInfo.DormHighScore < levelPanel.scoreBoard.score){
                                     PlayerInfo.DormHighScore = levelPanel.scoreBoard.score;
+
                                 }
                                 if(PlayerInfo.DormLeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.DormLeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
+
+                                OracleDatabase.updatePlayerStats(2, PlayerInfo.DormHighScore, PlayerInfo.DormLeastTime);
+
                             }
                             case 3 ->{
                                 if(PlayerInfo.ClassroomHighScore < levelPanel.scoreBoard.score){
@@ -124,6 +130,8 @@ public class ObjectHidingButton extends JButton {
                                 if(PlayerInfo.ClassroomLeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.ClassroomLeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
+
+                                OracleDatabase.updatePlayerStats(3, PlayerInfo.ClassroomHighScore, PlayerInfo.ClassroomLeastTime);
                             }
                             case 4 ->{
                                 if(PlayerInfo.LibraryHighScore < levelPanel.scoreBoard.score){
@@ -132,6 +140,7 @@ public class ObjectHidingButton extends JButton {
                                 if(PlayerInfo.LibraryLeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.LibraryLeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
+                                OracleDatabase.updatePlayerStats(4, PlayerInfo.LibraryHighScore, PlayerInfo.LibraryLeastTime);
                             }
                             case 5 ->{
                                 if(PlayerInfo.CDSHighScore < levelPanel.scoreBoard.score){
@@ -140,6 +149,7 @@ public class ObjectHidingButton extends JButton {
                                 if(PlayerInfo.CDSLeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.CDSLeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
+                                OracleDatabase.updatePlayerStats(4, PlayerInfo.CDSHighScore, PlayerInfo.CDSLeastTime);
                             }
                             case 6 ->{
                                 if(PlayerInfo.DormV2HighScore < levelPanel.scoreBoard.score){
@@ -148,6 +158,7 @@ public class ObjectHidingButton extends JButton {
                                 if(PlayerInfo.DormV2LeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.DormV2LeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
+                                OracleDatabase.updatePlayerStats(4, PlayerInfo.DormV2HighScore, PlayerInfo.DormV2LeastTime);
                             }
 
                         }
