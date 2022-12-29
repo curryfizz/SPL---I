@@ -21,6 +21,7 @@ public class HintConfirmationDialogue extends JDialog {
 
     JButton NoButton;
     public HintConfirmationDialogue(JFrame jFrame, ALevelPanel jPanel, int index){
+        jPanel.hintConfirmationDialogue = this;
         this.indexOfObjectButton = index;
         this.backgroundPanel = jPanel;
         setModal(true);
