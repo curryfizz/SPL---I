@@ -103,7 +103,7 @@ public class OracleDatabase {
                 rs.close();
                 prepareStatementforCheckingLevelPlayed();
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"1");
+                preparedStatement.setString(2,"2");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.DormHighScore = rs.getInt("score");
@@ -111,15 +111,15 @@ public class OracleDatabase {
                 }
 
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"2");
+                preparedStatement.setString(2,"3");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.ClassroomHighScore = rs.getInt("score");
-                    PlayerInfo.ClassroomHighScore = rs.getInt("time_taken");
+                    PlayerInfo.ClassroomLeastTime = rs.getInt("time_taken");
                 }
 
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"3");
+                preparedStatement.setString(2,"4");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.LibraryHighScore = rs.getInt("score");
@@ -127,7 +127,7 @@ public class OracleDatabase {
                 }
 
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"4");
+                preparedStatement.setString(2,"5");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.CDSHighScore = rs.getInt("score");
@@ -135,7 +135,7 @@ public class OracleDatabase {
                 }
 
                 preparedStatement.setString(1, PlayerInfo.email);
-                preparedStatement.setString(2,"5");
+                preparedStatement.setString(2,"6");
                 rs = preparedStatement.executeQuery();
                 if(rs.next()){
                     PlayerInfo.DormV2HighScore = rs.getInt("score");
@@ -161,6 +161,71 @@ public class OracleDatabase {
         return true;
     }
 
+    private static void prepareStatementForScoreUpdate() throws SQLException {
+        preparedStatement = conn.prepareStatement("update level_info set score = ? where email = ? and level_number = ?");
+    }
+
+    private static void prepareStatementForTimeUpdate() throws SQLException {
+        preparedStatement = conn.prepareStatement("update level_info set time_taken = ? where email = ? and level_number = ?");
+    }
+    private static void prepareStatementForLevelInsert() throws SQLException{
+        preparedStatement = conn.prepareStatement("insert into level_info values(?,?,?,?)");
+
+    }
+
+    private static void prepareStatementforUserInfoUpdate() throws SQLException{
+        preparedStatement = conn.prepareStatement("update user_info set levels_completed = ? where email = ?");
+    }
+
+    public static void updatePlayerStats(Integer level, Integer score, Integer time){
+        try {
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            prepareStatementforUserInfoUpdate();
+            preparedStatement.setString(1, String.valueOf(PlayerInfo.gameProgress));
+            preparedStatement.setString(2, PlayerInfo.email);
+            preparedStatement.executeUpdate();
+            System.out.println("herhe");
+            prepareStatementforCheckingLevelPlayed();
+            preparedStatement.setString(1, PlayerInfo.email);
+            preparedStatement.setString(2,level.toString());
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+
+                prepareStatementForScoreUpdate();
+                preparedStatement.setString(1, score.toString());
+                preparedStatement.setString(2, PlayerInfo.email);
+                preparedStatement.setString(3,level.toString());
+                preparedStatement.executeUpdate();
+
+                prepareStatementForTimeUpdate();
+                preparedStatement.setString(1, time.toString());
+                preparedStatement.setString(2, PlayerInfo.email);
+                preparedStatement.setString(3,level.toString());
+                preparedStatement.executeUpdate();
+
+            }else{
+                prepareStatementForLevelInsert();
+                preparedStatement.setString(1, PlayerInfo.email);
+                preparedStatement.setString(2, level.toString());
+                preparedStatement.setString(3, score.toString());
+                preparedStatement.setString(4, time.toString());
+                preparedStatement.execute();
+            }
+
+            preparedStatement.close();
+            conn.close();
+        }catch (SQLDataException e){
+            e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+
+
+
+
+    }
 
 
 }
