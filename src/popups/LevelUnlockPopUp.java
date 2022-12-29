@@ -13,6 +13,8 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 
 public class LevelUnlockPopUp extends JDialog {
+
+    JLabel unlockGif;
     JLabel jLabel;
     JButton closeButton;
 
@@ -28,7 +30,7 @@ public class LevelUnlockPopUp extends JDialog {
         getRootPane().setBorder(new LineBorder(Color.white,2));
         jLabel = new JLabel();
 
-        jLabel.setPreferredSize(new Dimension(300,200));
+        jLabel.setPreferredSize(new Dimension(500,500));
         jLabel.setLayout(new FlowLayout());
         jLabel.setForeground(Color.white);
         if(level_number==2){
@@ -92,6 +94,10 @@ public class LevelUnlockPopUp extends JDialog {
         });
         add(closeButton);
         setVisible(true);
+    }
+
+    private void addUnlockGif(){
+
     }
     public static String convertToMultiline(String orig)
     {
