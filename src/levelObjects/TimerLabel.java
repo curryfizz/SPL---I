@@ -151,6 +151,7 @@ public class TimerLabel extends JLabel implements Runnable{
     public void AnimateScore(Point point){
 //        p = point;
 //        backGroundPanel.ShowGottenScore.setLocation(point);
+        resetScoreAnimationVariables();
         doingScoreAnimation = true;
         lastAnimated = System.currentTimeMillis();
         backGroundPanel.ShowGottenScore.setVisible(true);
@@ -185,15 +186,10 @@ public class TimerLabel extends JLabel implements Runnable{
                     backGroundPanel.ShowGottenScore.setLocation(p);
                     backGroundPanel.ShowGottenScore.repaint();
                     backGroundPanel.repaint();
-                    miliFPS = 0;
                     FramesDone++;
                     lastAnimated = System.currentTimeMillis();
-                    if(FramesDone > 30){
-                        FramesDone = 0;
-                        doingScoreAnimation = false;
-                        lastAnimated = 0;
-                        backGroundPanel.ShowGottenScore.setVisible(false);
-                        st_alpha=255;
+                    if(FramesDone > 30 ){
+                        resetScoreAnimationVariables();
                     }
                 }
             }
@@ -209,6 +205,8 @@ public class TimerLabel extends JLabel implements Runnable{
 
 
 
+
+
 //        timer = new Timer(1000, new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
@@ -220,5 +218,13 @@ public class TimerLabel extends JLabel implements Runnable{
 //
 //        });
 //        timer.start();
+    }
+
+    void resetScoreAnimationVariables(){
+        FramesDone = 0;
+        doingScoreAnimation = false;
+        lastAnimated = 0;
+        backGroundPanel.ShowGottenScore.setVisible(false);
+        st_alpha=255;
     }
 }
