@@ -1,5 +1,7 @@
 package src.popups;
 
+import src.levelObjects.Sound;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -20,6 +22,9 @@ public class EmailNotFoundDialog extends AccountNotSuccessDialog{
             @Override
             public void mouseClicked(MouseEvent e) {
                 dispose();
+                Sound clicksound= new Sound();
+                clicksound.setFile("audio/soundeffects/click.wav");
+                clicksound.play();
                 parentAccountDialog.dispose();
                 SignupDialog signupDialog = new SignupDialog(parentAccountDialog.jFrame, parentAccountDialog.database);
                 parentAccountDialog.jFrame.repaint();

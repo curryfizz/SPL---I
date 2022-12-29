@@ -9,105 +9,75 @@ import java.io.IOException;
 public  class CDS_LevelPanelT extends ALevelPanel {
 
 
-    public CDS_LevelPanelT(JFrame jFrame) {
+    public CDS_LevelPanelT(JFrame jFrame){
         super(jFrame);
     }
 
     @Override
     public int getLevelNumber() {
-        return 5;
-    }
-
-
-    @Override
-    public String getBackgroundPath() {
-        return "images/Classroom images/classroomMain.PNG";
-    }
-
-
-    @Override
-    public String getBackgroundMusicPath() {
-        return "audio/background_music/libraryBackGroundAudio.wav";
-    }
-
-
-    @Override
-    public String getMessMessage(){
-        return "<html>The Central Department Store is as Chaotic as ever.<br/>Let's try looking here. (Tap to Search)</html>";
+        return 2;
     }
 
     @Override
     public synchronized void generateScreenWithAllObjectsAndButtons() throws IOException {
-        createButton("images/Classroom images/classroom objects/item 0.PNG", DeviceInformation.screenWidth *0/1920, DeviceInformation.screenHeight *435/1080,
-                DeviceInformation.screenWidth *25/1920, DeviceInformation.screenHeight *50/1080);
-        createText("<html>Brown Coffee<br/> cup </html>");
-        createButton("images/Classroom images/classroom objects/item 1.PNG",DeviceInformation.screenWidth *1837/1920, DeviceInformation.screenHeight *640/1080,
-                DeviceInformation.screenWidth *80/1920, DeviceInformation.screenHeight *20/1080);
-        createText("Pencil");
-        createButton("images/Classroom images/classroom objects/item 2.PNG",DeviceInformation.screenWidth *1782/1920, DeviceInformation.screenHeight *658/1080,
-                DeviceInformation.screenWidth *110/1920, DeviceInformation.screenHeight *35/1080);
+        createButton("images/dormImages/01.png", getX(308), getY(428), getX(68), getY(85));
+        createText("Cornflakes Box");
+        createButton("images/dormImages/02.png", getX(1188), getY(493), getX(18), getY(37));
+        createText("CocaCola Can");
+        createButton("images/dormImages/03.png", getX(1235), getY(400), getX(86), getY(65));
+        createText("Shoulder Bag");
+        createButton("images/dormImages/04.png", getX(1130), getY(730), getX(67), getY(26));
+        createText("HeadPhone");
+        createButton("images/dormImages/05.png", getX(325), getY(728), getX(43), getY(32));
+        createText("Phone");
+        createButton("images/dormImages/06.png", getX(419), getY(672), getX(60), getY(19));
+        createText("Calculator");
+        createButton("images/dormImages/07.png", getX(1102), getY(703), getX(70), getY(25));
+        createText("Sunglasses");
+        createButton("images/dormImages/08.png", getX(850), getY(384), getX(40), getY(15));
+        createText("Garbage");
+        createButton("images/dormImages/09.png", getX(482), getY(348), getX(40), getY(48));
+        createText("Toilet Paper");
+        createButton("images/dormImages/10.png", getX(542), getY(410), getX(72), getY(26));
+        createText("Food");
+        createButton("images/dormImages/11.png", getX(95), getY(737), getX(168), getY(27));
+        createText("Blanket");
+        createButton("images/dormImages/12.png", getX(740), getY(520), getX(90), getY(90));
+        createText("BackPack");
+        createButton("images/dormImages/13.png", getX(515), getY(595), getX(42), getY(80));
+        createText("Cloth Pile");
+        createButton("images/dormImages/14.png", getX(190), getY(425), getX(85), getY(103));
+        createText("Pizza Box");
+        createButton("images/dormImages/15.png", getX(1033), getY(417), getX(32), getY(17));
+        createText("Folded Clothes");
+        createButton("images/dormImages/16.png", getX(894), getY(505), getX(28), getY(28));
         createText("Chips Packet");
-        createButton("images/Classroom images/classroom objects/item 3.PNG",DeviceInformation.screenWidth *1702/1920, DeviceInformation.screenHeight *640/1080,
-                DeviceInformation.screenWidth *60/1920, DeviceInformation.screenHeight *30/1080);
-        createText("Eraser");
-        createButton("images/Classroom images/classroom objects/item 4.PNG",DeviceInformation.screenWidth *1554/1920, DeviceInformation.screenHeight *535/1080,
-                DeviceInformation.screenWidth *40/1920, DeviceInformation.screenHeight *50/1080);
-        createText("Pokemon Ball");
-        createButton("images/Classroom images/classroom objects/item 5.PNG",DeviceInformation.screenWidth *1703/1920, DeviceInformation.screenHeight *528/1080,
-                DeviceInformation.screenWidth *50/1920, DeviceInformation.screenHeight *50/1080);
-        createText("Orange");
-        createButton("images/Classroom images/classroom objects/item 6.PNG",DeviceInformation.screenWidth *1850/1920, DeviceInformation.screenHeight *375/1080,
-                DeviceInformation.screenWidth *40/1920, DeviceInformation.screenHeight *120/1080);
-        createText("Lamp");
-/*
-        createButton("images/Classroom images/classroom objects/item 7.PNG", DeviceInformation.screenWidth *1871/1920, DeviceInformation.screenHeight *476/1080,
-                DeviceInformation.screenWidth *60/1920, DeviceInformation.screenHeight *40/1080);
-        createText("Tissue Box");
-        createButton("images/Classroom images/classroom objects/item 8.PNG", DeviceInformation.screenWidth *1683/1920, DeviceInformation.screenHeight *402/1080,
-                DeviceInformation.screenWidth *40/1920, DeviceInformation.screenHeight *60/1080);
-        createText("Milk Bottle");
-        createButton("images/Classroom images/classroom objects/item 9.PNG", DeviceInformation.screenWidth *1481/1920, DeviceInformation.screenHeight *427/1080,
-                DeviceInformation.screenWidth *40/1920, DeviceInformation.screenHeight *50/1080);
-        createText("Brown Coffee cup");
-        createButton("images/Classroom images/classroom objects/item 10.PNG", DeviceInformation.screenWidth *1523/1920, DeviceInformation.screenHeight *340/1080,
-                DeviceInformation.screenWidth *30/1920, DeviceInformation.screenHeight *70/1080);
-        createText("Water Bottle");
-        createButton("images/Classroom images/classroom objects/item 11.PNG",DeviceInformation.screenWidth *1465/1920, DeviceInformation.screenHeight *491/1080,
-                DeviceInformation.screenWidth *40/1920, DeviceInformation.screenHeight *50/1080);
-        createText("Red Mug");
-        createButton("images/Classroom images/classroom objects/item 12.PNG", DeviceInformation.screenWidth *1172/1920, DeviceInformation.screenHeight *525/1080,
-                DeviceInformation.screenWidth *100/1920, DeviceInformation.screenHeight *30/1080);
-        createText("keyBoard");
-        createButton("images/Classroom images/classroom objects/item 13.PNG", DeviceInformation.screenWidth *1314/1920, DeviceInformation.screenHeight *581/1080,
-                DeviceInformation.screenWidth *80/1920, DeviceInformation.screenHeight *35/1080);
-        createText("Kitkat");
-        createButton("images/Classroom images/classroom objects/item 14.PNG", DeviceInformation.screenWidth *1199/1920, DeviceInformation.screenHeight *485/1080,
-                DeviceInformation.screenWidth *70/1920, DeviceInformation.screenHeight *30/1080);
-        createText("Diary");
-        createButton("images/Classroom images/classroom objects/item 15.PNG",DeviceInformation.screenWidth *1308/1920, DeviceInformation.screenHeight *445/1080,
-                DeviceInformation.screenWidth *50/1920, DeviceInformation.screenHeight *20/1080);
-        createText("Banana");
-        createButton("images/Classroom images/classroom objects/item 16.PNG", DeviceInformation.screenWidth *1319/1920, DeviceInformation.screenHeight *417/1080,
-                DeviceInformation.screenWidth *30/1920, DeviceInformation.screenHeight *30/1080);
-        createText("Among us");
-        createButton("images/Classroom images/classroom objects/item 17.PNG", DeviceInformation.screenWidth *1172/1920, DeviceInformation.screenHeight *410/1080,
-                DeviceInformation.screenWidth *40/1920, DeviceInformation.screenHeight *50/1080);
-        createText("Paper Packet");
-        createButton("images/Classroom images/classroom objects/item 18.PNG", DeviceInformation.screenWidth *1087/1920, DeviceInformation.screenHeight *399/1080,
-                DeviceInformation.screenWidth *20/1920, DeviceInformation.screenHeight *60/1080);
-        createText("Coca Cola bottle");
-        createButton("images/Classroom images/classroom objects/item 19.PNG", DeviceInformation.screenWidth *1186/1920, DeviceInformation.screenHeight *204/1080,
-                DeviceInformation.screenWidth *30/1920, DeviceInformation.screenHeight *190/1080);
-        createText("Side Bag");
-        createButton("images/Classroom images/classroom objects/item 20.PNG",DeviceInformation.screenWidth *1041/1920, DeviceInformation.screenHeight *237/1080,
-                DeviceInformation.screenWidth *55/1920, DeviceInformation.screenHeight *60/1080);
-        createText("Painting");
-
-
-      */
-
+        createButton("images/dormImages/17.png", getX(1204), getY(725), getX(110), getY(43));
+        createText("Unfolded Cloth");
+        createButton("images/dormImages/18.png", getX(722), getY(0) , getX(165), getY(23));
+        createText("Quilt");
+        createButton("images/dormImages/19.png", getX(924), getY(500), getX(43), getY(20));
+        createText("Book");
+        createButton("images/dormImages/20.png", getX(1365), getY(751), getX(70), getY(19));
+        createText("FoodPlate");
+        createButton("images/dormImages/21.png", getX(934), getY(456), getX(44), getY(33));
+        createText("Shoes");
+        createButton("images/dormImages/22.png", getX(489), getY(400), getX(26), getY(20));
+        createText("TeaCup");
+        this.add(backgroundLabel);
     }
 
+    @Override
+    public String getBackgroundPath() {
+        return "images/cdsimages/cds.png";
+    }
 
-
+    @Override
+    public String getBackgroundMusicPath() {
+        return "audio/background_music/dormBackgroundAudio.wav";
+    }
+    @Override
+    public String getMessMessage(){
+        return "<html>Goodness! The room is such a mess! Where is my present?<br/> Guess I'll have to tidy up.. (Tap to Search)</html>";
+    }
 }

@@ -2,6 +2,7 @@ package src.popups;
 
 import src.DatabaseConnection.OracleDatabase;
 import src.buttons.BasicBlueButton;
+import src.levelObjects.Sound;
 import src.setup.FontInfo;
 import src.transitionPanels.StartMenuScreenT;
 
@@ -117,6 +118,9 @@ public class LoginDialog extends AccountDialog {
         loginButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                Sound clicksound= new Sound();
+                clicksound.setFile("audio/soundeffects/click.wav");
+                clicksound.play();
                 doButtonActions();
             }
 
