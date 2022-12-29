@@ -57,6 +57,6 @@ public  class CDS_LevelPanelT extends ALevelPanel {
     }
     @Override
     public String getMessMessage(){
-        return "<html>The Central Departmental Store  is always  a mess!<br/> Guess I'll have to look up for my things.. (Tap to Search)</html>";
+        return "<html>There's no one here right now.<br/>Let's look around here. (Tap to Search)</html>";
     }
 }
