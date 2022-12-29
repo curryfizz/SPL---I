@@ -225,8 +225,6 @@ public class GameManager{
     - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
     - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
 
-//important
-
     */
 
     /**

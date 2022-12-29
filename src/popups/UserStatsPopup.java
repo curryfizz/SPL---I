@@ -146,7 +146,9 @@ public class UserStatsPopup extends JDialog{
         if(PlayerInfo.gameProgress > 3)
             AdvancedInfo += "\n\nLibrary Highest Score: " + PlayerInfo.LibraryHighScore + "\nLibrary Least Time taken: " + PlayerInfo.LibraryLeastTime;
         if(PlayerInfo.gameProgress > 4)
-            AdvancedInfo += "\n\nDormRoom Version2 Highest Score: " + PlayerInfo.DormV2HighScore + "\nDormRoom Version2 Least Time taken: " + PlayerInfo.DormV2LeastTime;
+            AdvancedInfo += "\n\nCDS Highest Score: " + PlayerInfo.CDSHighScore + "\nCDS Least Time taken: " + PlayerInfo.CDSLeastTime;
+//        if(PlayerInfo.gameProgress > 5)
+//            AdvancedInfo += "\n\nDormRoom Version2 Highest Score: " + PlayerInfo.DormV2HighScore + "\nDormRoom Version2 Least Time taken: " + PlayerInfo.DormV2LeastTime;
 
 
 
