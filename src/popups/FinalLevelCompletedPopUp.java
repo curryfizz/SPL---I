@@ -6,6 +6,8 @@ import src.levelObjects.Sound;
 import src.levels.DormVersion2;
 import src.setup.FontInfo;
 import src.transitionPanels.LoadingAnimationT;
+import src.transitionPanels.MapT;
+import src.transitionPanels.MessageFromMomT;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -33,6 +35,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
         
         this.jFrame = jFrame;
         this.loadingAnimationT = dormVersion2.loadingAnimationT;
+        this.dormVersion2 = dormVersion2;
         setModal(true);
         setUndecorated(true);
         getContentPane().setBackground(Color.decode("#14171C"));
@@ -96,6 +99,23 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 Sound alert = new Sound();
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
+//                if(backgroundPanel instanceof MessageFromMomT){
+//                    loadingAnimationT = ((MessageFromMomT) backgroundPanel).loadingAnimationT;
+//                } else if (backgroundPanel instanceof MapT) {
+//                    loadingAnimationT = ((MapT) backgroundPanel).loadingAnimationT;
+//                    ((MapT) backgroundPanel).mapMusic.stop();
+//                }else{
+//                    System.out.println("idk what you sent but its not message from mom or map");
+//                }
+
+//                jFrame.remove(dormVersion2);
+//                repaint();
+//                revalidate();
+//                loadingAnimationT.changeNextScene(dormVersion2.loadingAnimationT.startMenuScreenT);
+//                jFrame.add(loadingAnimationT);
+//                loadingAnimationT.initializeTimer();
+
+                dispose();
                 System.exit(0);
             }
 
@@ -112,6 +132,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 Sound alert = new Sound();
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
+                dispose();
                 System.exit(0);
             }
 
@@ -144,14 +165,14 @@ public class FinalLevelCompletedPopUp extends JDialog {
         restartGameButton.setFont(FontInfo.getResizedFont(28f));
         restartGameButton.setOpaque(true);
         restartGameButton.setFocusPainted(false);
-        restartGameButton.setText("Restart Game");
+        restartGameButton.setText("New Game?");
         restartGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Sound alert = new Sound();
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
-                PlayerInfo.gameProgress = 1;
+                PlayerInfo.gameProgress = 0;
                 resetPlayerStats();
                 OracleDatabase.resetPlayerInfo();
                 resetPlayerInfoLabel.setVisible(true);
@@ -179,7 +200,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 Sound alert = new Sound();
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
-                PlayerInfo.gameProgress = 1;
+                PlayerInfo.gameProgress = 0;
                 resetPlayerStats();
                 repaint();
                 OracleDatabase.resetPlayerInfo();

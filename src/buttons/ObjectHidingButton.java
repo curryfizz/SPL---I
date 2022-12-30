@@ -151,7 +151,7 @@ public class ObjectHidingButton extends JButton {
                                 if(PlayerInfo.CDSLeastTime < levelPanel.timerLabel.elapsedTime){
                                     PlayerInfo.CDSLeastTime = levelPanel.timerLabel.elapsedTime;
                                 }
-                                OracleDatabase.updatePlayerStats(4, PlayerInfo.CDSHighScore, PlayerInfo.CDSLeastTime);
+                                OracleDatabase.updatePlayerStats(5, PlayerInfo.CDSHighScore, PlayerInfo.CDSLeastTime);
                             }
 //                            case 6 ->{
 //                                if(PlayerInfo.DormV2HighScore < levelPanel.scoreBoard.score){
@@ -167,8 +167,6 @@ public class ObjectHidingButton extends JButton {
 
                         levelPanel.timerLabel.isTimeOver = true;
                         levelPanel.imagesFound=0;
-
-
 
                         levelPanel.revalidate();
                         levelPanel.repaint();
