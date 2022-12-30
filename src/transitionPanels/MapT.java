@@ -98,7 +98,7 @@ public class MapT extends JPanel implements Runnable{
             level2.play();
         }
         unlockMusic.play();
-
+        refreshButtonGrayness();
         LevelUnlockPopUp levelUnlockPopUp = new LevelUnlockPopUp(jFrame,level_number);
         fixArrowPosition();
 
@@ -220,6 +220,15 @@ public class MapT extends JPanel implements Runnable{
 //        p.y = p.y-(35)*1080/DeviceInformation.screenHeight;
         ArrowGif.setLocation(p);
         ArrowGif.setVisible(true);
+    }
+
+    public void setVisibleCutOuts() {
+        for (int i = 0; i < PlayerInfo.gameProgress - 2; i++) {
+            CutOutList.get(i).setVisible(true);
+        }
+        if (PlayerInfo.gameProgress == 5) {
+            CutOutList.get(0).setVisible(false);
+        }
     }
 
     public void AddArrowGif(){
@@ -403,7 +412,7 @@ public class MapT extends JPanel implements Runnable{
                 LibraryButton.setBackground(Color.decode("#14171C"));
                 CDSButton.setBackground(Color.darkGray);
             }
-            case 4 -> {
+            case 4, 6 -> {
                 DormButton.setBackground(Color.decode("#14171C"));
                 ClassroomButton.setBackground(Color.decode("#14171C"));
                 LibraryButton.setBackground(Color.decode("#14171C"));

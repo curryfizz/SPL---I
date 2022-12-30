@@ -130,6 +130,7 @@ public class LoadingAnimationT extends JPanel implements ActionListener,Runnable
                 ((MapT) nextScene).mapMusic.play();
                 ((MapT) nextScene).mapMusic.loop();
                 ((MapT) nextScene).refreshButtonGrayness();
+                ((MapT) nextScene).setVisibleCutOuts();
 //                ((MapT) nextScene).fixArrowPosition();
             }
 
