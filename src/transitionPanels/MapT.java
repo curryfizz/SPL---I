@@ -223,11 +223,37 @@ public class MapT extends JPanel implements Runnable{
     }
 
     public void setVisibleCutOuts() {
-        for (int i = 0; i < PlayerInfo.gameProgress - 2; i++) {
-            CutOutList.get(i).setVisible(true);
+        for (JLabel cutout : CutOutList){
+            cutout.setVisible(false);
         }
-        if (PlayerInfo.gameProgress == 5) {
-            CutOutList.get(0).setVisible(false);
+
+        switch (PlayerInfo.gameProgress){
+            case 0, 1 -> {
+
+            }
+            case 2 ->{
+                CutOutList.get(0).setVisible(true);
+            }
+            case 3 ->{
+                CutOutList.get(0).setVisible(true);
+                CutOutList.get(1).setVisible(true);
+            }
+            case 4 ->{
+                CutOutList.get(0).setVisible(true);
+                CutOutList.get(1).setVisible(true);
+                CutOutList.get(2).setVisible(true);
+            }
+            case 5 ->{
+
+                CutOutList.get(1).setVisible(true);
+                CutOutList.get(2).setVisible(true);
+                CutOutList.get(3).setVisible(true);
+            }
+            case 6 ->{
+                for(JLabel cutout : CutOutList)
+                    cutout.setVisible(true);
+            }
+
         }
     }
 

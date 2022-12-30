@@ -30,7 +30,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
         Sound sound = new Sound();
         sound.setSoundEffectFile("levelFinishTada");
         sound.play();
-        
+        this.dormVersion2 = dormVersion2;
         this.jFrame = jFrame;
         this.loadingAnimationT = dormVersion2.loadingAnimationT;
         setModal(true);
@@ -89,14 +89,23 @@ public class FinalLevelCompletedPopUp extends JDialog {
         closeButton.setFont(FontInfo.getResizedFont(28f));
         closeButton.setOpaque(true);
         closeButton.setFocusPainted(false);
-        closeButton.setText("Quit");
+        closeButton.setText("Back to Menu");
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Sound alert = new Sound();
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
-                System.exit(0);
+//                System.exit(0);
+
+                jFrame.remove(dormVersion2);
+                loadingAnimationT.changeNextScene(loadingAnimationT.startMenuScreenT);
+                jFrame.add(loadingAnimationT);
+                loadingAnimationT.initializeTimer();
+
+                jFrame.repaint();
+                jFrame.revalidate();
+                dispose();
             }
 
             @Override
@@ -112,7 +121,23 @@ public class FinalLevelCompletedPopUp extends JDialog {
                 Sound alert = new Sound();
                 alert.setFile("audio/soundeffects/alert.wav");
                 alert.play();
-                System.exit(0);
+//                System.exit(0);
+                System.out.println("In FinalLEvelCOmpletedpOpup so far so good");
+
+                jFrame.remove(dormVersion2);
+                loadingAnimationT.changeNextScene(loadingAnimationT.startMenuScreenT);
+                jFrame.add(loadingAnimationT);
+                loadingAnimationT.initializeTimer();
+
+                jFrame.repaint();
+                jFrame.revalidate();
+                loadingAnimationT.repaint();
+                loadingAnimationT.revalidate();
+                loadingAnimationT.mapT.repaint();
+                loadingAnimationT.mapT.revalidate();
+
+                dispose();
+                System.out.println("disposed it,far so good");
             }
 
             @Override
@@ -144,7 +169,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
         restartGameButton.setFont(FontInfo.getResizedFont(28f));
         restartGameButton.setOpaque(true);
         restartGameButton.setFocusPainted(false);
-        restartGameButton.setText("Restart Game");
+        restartGameButton.setText("New Game?");
         restartGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
