@@ -92,7 +92,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
         closeButton.setFont(FontInfo.getResizedFont(28f));
         closeButton.setOpaque(true);
         closeButton.setFocusPainted(false);
-        closeButton.setText("Quit");
+        closeButton.setText("Exit Game");
         closeButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -165,7 +165,7 @@ public class FinalLevelCompletedPopUp extends JDialog {
         restartGameButton.setFont(FontInfo.getResizedFont(28f));
         restartGameButton.setOpaque(true);
         restartGameButton.setFocusPainted(false);
-        restartGameButton.setText("New Game?");
+        restartGameButton.setText("Reset Progress");
         restartGameButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
