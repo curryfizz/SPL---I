@@ -107,28 +107,10 @@ public class GameManager{
         jFrame.add(startMenu); //should be startmenu during real play
         pl.shutdown();
 
+        PlayerInfo.gameProgress = 5;
+
     }
 
-    /*TODO:
-    - tie all the music and sound effects together, or make them seperate, people may find it too loud;
-    - try re-rendering dormscene if there's time, it looks bad compared to it's fancy classroom and fancy library brothers
-    - add translucent background image for text Box in AlevelPanels, black box looks kinda bad;
-    - add background image for timer label and score label;
-    - the buttons in mapT looks kinda bad, I vote changing to transparent buttons with  text on them;
-    - time over, do you want to exit to map, all these confirmation dialogue's text is too small. should be larger and should be scaled
 
-    // bugs
-    - dorm v2 is missing 2 objects
-    - innitial login sounds twice
-    - map buttons refresh during innital game start
-    - map button refresh after DOrm v2
-    - innitial login click sounds too loud
-    - bring arrow gif closer
-    - insert meow
-    */
 
-    /**
-     * remember to fix Passing score in AlevelPanel to 400
-     * remember to uncomment the if condition in the onclick event in MapBUttonEvents
-     */
 }
