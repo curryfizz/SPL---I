@@ -166,12 +166,12 @@ public abstract class ALevelPanel extends JPanel implements Runnable{
         timerLabel.isTimeOver = false;
         if(level_number==5)
         {
-            timerLabel.second = 60;
+            timerLabel.second = 40;
             timerLabel.minute = 0;
         }
         else
         {
-            timerLabel.second = 30;
+            timerLabel.second = 00;
             timerLabel.minute = 2;
         }
         timerLabel.elapsedTime = 0;
