@@ -53,6 +53,7 @@ public class GameManager{
 
     }
     public GameManager() throws IOException {
+        OracleDatabase oracleDatabase = new OracleDatabase();
         System.setProperty("sun.java2d.uiScale", "1.0");
         DeviceInformation deviceInformation = new DeviceInformation();
         FontInfo fontInfo = new FontInfo();
@@ -108,7 +109,7 @@ public class GameManager{
         jFrame.add(startMenu); //should be startmenu during real play
         pl.shutdown();
 
-        PlayerInfo.gameProgress = 5;
+//        PlayerInfo.gameProgress = 4;
 
     }
 

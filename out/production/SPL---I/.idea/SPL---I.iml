@@ -9,19 +9,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/ojdbc14.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://F:/3rd semester/DBMS/lab/lab 8/ojdbc14.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../oraclexe/app/oracle/product/11.2.0/server/jdbc/lib/ojdbc6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

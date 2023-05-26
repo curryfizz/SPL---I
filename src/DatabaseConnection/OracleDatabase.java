@@ -4,6 +4,9 @@ import java.sql.*;
 
 public class OracleDatabase {
 
+        // you have to manually add jar dependency "C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar"
+        // then you have to create user gameAdmin identified by gameAdminpassword3 and give all
+        // privileges and create the necessary tables -_-)
     static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
     static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
     static final String USER = "gameAdmin";
@@ -12,21 +15,21 @@ public class OracleDatabase {
     static Connection conn = null;
 
     static PreparedStatement preparedStatement;
+    static Statement statement = null;
     public OracleDatabase(){
 
         Statement stmt = null;
         try {
             Class.forName(JDBC_DRIVER);
-            System.out.println("Connecting to database");
+            System.out.println("Connecting to database from Constructor");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
             System.out.println("Creating statement");
-            stmt = conn.prepareStatement("desc user_info");
+            stmt = conn.prepareStatement("DESC user_info");
 
         }catch (SQLDataException e){
             e.printStackTrace();
         }catch (Exception e){
             e.printStackTrace();
-
         }
     }
 
@@ -35,10 +38,9 @@ public class OracleDatabase {
         preparedStatement.setString(2,email);
     }
     public static boolean insertUser(String userName, String email) throws SQLException{
-
         try {
             Class.forName(JDBC_DRIVER);
-            System.out.println("Connecting to database");
+            System.out.println("Connecting to database from InsertUser");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
             System.out.println("Inserting user");
             prepareStatementforRetrieval();
@@ -83,11 +85,16 @@ public class OracleDatabase {
     public static boolean retrieveUserInfo(String email) throws SQLException{
         try {
             Class.forName(JDBC_DRIVER);
-            System.out.println("Connecting to database");
-            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            System.out.println("Connecting to database from retrieveUserInfo");
+//            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            conn = DriverManager.getConnection(DB_URL,"system","test123");
             System.out.println("Getting user");
             prepareStatementforRetrieval();
             preparedStatement.setString(1,email);
+
+//            statement = conn.createStatement();
+//            statement.executeUpdate("conn system/test123;\nalter user gameAdmin identified by gameAdminpassword3;\n");
+
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
                 System.out.println(rs.toString());
