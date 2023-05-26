@@ -17,7 +17,7 @@ public class Sound {
     public Sound() {
 
         previousVolume = 0;
-        currentVolume = -25;
+        currentVolume = -15;
         mute = false;
 
 
@@ -26,7 +26,7 @@ public class Sound {
 
         setFile(path);
         previousVolume = 0;
-        currentVolume = -25;
+        currentVolume = -15;
         mute = false;
 
 
